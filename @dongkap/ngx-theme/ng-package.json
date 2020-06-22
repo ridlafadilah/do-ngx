@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@dongkap/ngx-theme",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      "@nebular/theme": "@nebular/theme",
+      "@nebular/eva-icons": "@nebular/eva-icons",
+      "@nebular/security": "@nebular/security",
+      "@dongkap/ngx-core": "@dongkap/ngx-core"
+    }
+  }
+}
