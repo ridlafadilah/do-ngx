@@ -1,0 +1,11 @@
+@import '~@dongkap/ngx-theme/styles/themes';
+
+@include nb-install-component() {
+  input {
+    width: 100%;
+  }
+
+  .cancel {
+    margin-right: 1rem;
+  }
+}

@@ -1,0 +1,5 @@
+@import '~@dongkap/ngx-theme/styles/themes';
+
+@include nb-install-component() {
+  padding: 1rem;
+}
