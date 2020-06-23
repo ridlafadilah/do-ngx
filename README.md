@@ -7,7 +7,7 @@ Skeleton of Ngx-Dongkap
 ```sh
 $ ng new do-ngx --create-application=false --routing=false --prefix=ngx --style=scss --skipGit=true --commit=false -S --newProjectRoot=@dongkap
 ```
-- copy src from [akveo](https://github.com/akveo/ngx-admin)
+- copy source from [akveo](https://github.com/akveo/ngx-admin)
 
 ### 2.	Generate Application
 ```sh
