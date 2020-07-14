@@ -19,7 +19,9 @@
       "dom"
     ],
     "plugins": [
-      { "name": "tslint-language-service"}
+      {
+        "name": "tslint-language-service"
+      }
     ],
     "paths": {
       "@angular/*": [
@@ -33,6 +35,15 @@
       ],
       "@dongkap/ngx-theme": [
         "@dongkap/ngx-theme/src"
+      ],
+      "@dongkap/ngx-common": [
+        "@dongkap/ngx-common/src"
+      ],
+      "@dongkap/ngx-auth": [
+        "@dongkap/ngx-auth/src"
+      ],
+      "@dongkap/ngx-extra": [
+        "@dongkap/ngx-extra/src"
       ]
     }
   },

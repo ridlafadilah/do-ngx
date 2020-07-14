@@ -1,0 +1,36 @@
+<ngx-container-outlet
+  [name]="name" [label]="label"
+  [colLabel]="colLabel" [colContent]="colInput"
+  [required]="required" [hasErrors]="hasErrors"
+  [errorMessages]="errorMessages" [paramError]="paramError"
+  [skeleton]="skeleton">
+  <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
+    <ngx-mce-core
+      [name]="name"
+      [required]="required"
+      [readonly]="disabled"
+      [plugins]="plugins"
+      [height]="height"
+      [value]="value"
+      [(ngModel)]="value"
+      (change)="onChange($event)"
+      (focus)="onTouched($event)"
+      (editorchange)="editorChange($event.target.contentAreaContainer)"
+      (focus)="editorChange($event.target.contentAreaContainer)"
+      (blur)="editorChange($event.target.contentAreaContainer)">
+    </ngx-mce-core>
+  </div>
+  <ng-template #contentskeleton>
+    <div class="col-sm-{{colInput}}">
+      <div
+        [ngClass]="{
+          'skeleton': skeleton
+        }"
+        [ngStyle]="{ 
+          'width':  '100%',
+          'height':  height + 'px'
+        }">
+      </div>
+    </div>
+  </ng-template>
+</ngx-container-outlet>

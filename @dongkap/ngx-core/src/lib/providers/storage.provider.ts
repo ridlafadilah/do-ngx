@@ -1,0 +1,15 @@
+import { InjectionToken } from '@angular/core';
+import { IndexedDBEncFactoryService } from '../services/utils/indexeddb-enc-factory.service';
+import { IndexedDBFactoryService } from '../services/utils/indexeddb-factory.service';
+
+export const AUTH_INDEXED_DB: InjectionToken<IndexedDBEncFactoryService> =
+new InjectionToken<IndexedDBEncFactoryService>('Auth IndexedDB Resource');
+
+export const PROFILE_INDEXED_DB: InjectionToken<IndexedDBFactoryService> =
+new InjectionToken<IndexedDBFactoryService>('Profile IndexedDB Resource');
+
+export const SETTINGS_INDEXED_DB: InjectionToken<IndexedDBFactoryService> =
+new InjectionToken<IndexedDBFactoryService>('Settings IndexedDB Resource');
+
+export const PANIC_INDEXED_DB: InjectionToken<IndexedDBFactoryService> =
+new InjectionToken<IndexedDBFactoryService>('Panic IndexedDB Resource');

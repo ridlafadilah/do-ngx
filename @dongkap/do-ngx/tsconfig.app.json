@@ -1,0 +1,56 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../out-tsc/@dongkap/do-ngx",
+    "baseUrl": "./",
+    "paths": {
+      "@dongkap/ngx-core": [
+        "../../@dongkap/ngx-core/src"
+      ],
+      "@dongkap/ngx-core/*": [
+        "../../@dongkap/ngx-core/src/*"
+      ],
+      "@dongkap/ngx-theme": [
+        "../../@dongkap/ngx-theme/src"
+      ],
+      "@dongkap/ngx-theme/*": [
+        "../../@dongkap/ngx-theme/src/*"
+      ],
+      "@dongkap/ngx-common": [
+        "../../@dongkap/ngx-common/src"
+      ],
+      "@dongkap/ngx-common/*": [
+        "../../@dongkap/ngx-common/src/*"
+      ],
+      "@dongkap/ngx-auth": [
+        "../../@dongkap/ngx-auth/src"
+      ],
+      "@dongkap/ngx-auth/*": [
+        "../../@dongkap/ngx-auth/src/*"
+      ],
+      "@dongkap/ngx-extra": [
+        "../../@dongkap/ngx-extra/src"
+      ],
+      "@dongkap/ngx-extra/*": [
+        "../../@dongkap/ngx-extra/src/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts",
+    "../../node_modules/@nebular/**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts",
+    "../../node_modules/@nebular/**/*.ts"
+  ]
+}

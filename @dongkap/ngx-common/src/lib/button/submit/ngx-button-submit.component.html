@@ -1,0 +1,22 @@
+<div class="form-group row">
+  <div class="offset-sm-{{colLabel}} col-sm-{{colButton}}" *ngIf="!skeleton; else contentskeleton">
+    <button
+      type="{{type}}"
+      status="{{status}}"
+      (click)="click($event)"
+      [disabled]="formGroupButton.invalid || formGroupButton.pristine || disabledButton"
+      nbButton>
+      {{ name | translate}}
+    </button>
+  </div>
+  <ng-template #contentskeleton>
+    <div class="offset-sm-{{colLabel}} col-sm-{{colButton}}">
+      <div
+        [ngClass]="{
+          'button-skeleton': true,
+          'skeleton': skeleton
+        }">
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -19,3 +19,9 @@ export abstract class UserData {
   abstract getContacts(): Observable<Contacts[]>;
   abstract getRecentUsers(): Observable<RecentUsers[]>;
 }
+
+export abstract class UserInfo {
+  abstract loadPhotoUser(): void;
+  abstract updatePhotoUser(file: File, checksum: string): Observable<User>;
+  abstract getUser(): Observable<User>;
+}

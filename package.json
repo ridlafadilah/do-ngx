@@ -5,13 +5,19 @@
     "start:do-mock": "ng serve @dongkap/do-mock --port 4242 --base-href=/",
     "clean:ngx-core": "node_modules/.bin/rimraf dist/@dongkap/ngx-core",
     "clean:ngx-theme": "node_modules/.bin/rimraf dist/@dongkap/ngx-theme",
+    "clean:ngx-common": "node_modules/.bin/rimraf dist/@dongkap/ngx-common",
     "build:ngx-core": "ng build @dongkap/ngx-core --prod",
     "build:ngx-theme": "ng build @dongkap/ngx-theme --prod",
+    "build:ngx-common": "ng build @dongkap/ngx-common --prod",
     "copy:ngx-theme": "node_modules/.bin/cpx \"./@dongkap/ngx-theme/src/styles/**/*\" \"./dist/@dongkap/ngx-theme/styles\"",
+    "copy:ngx-common-assets": "node_modules/.bin/cpx \"./@dongkap/ngx-common/src/assets/**/*\" \"./dist/@dongkap/ngx-common/assets/\"",
+    "copy:ngx-common-styles": "node_modules/.bin/cpx \"./@dongkap/ngx-common/src/styles/**/*\" \"./dist/@dongkap/ngx-common/styles/\"",
     "p:ngx-core": "npm run clean:ngx-core && npm run build:ngx-core && cd dist/@dongkap/ngx-core && npm pack",
     "p:ngx-theme": "npm run clean:ngx-theme && npm run build:ngx-theme && npm run copy:ngx-theme && cd dist/@dongkap/ngx-theme && npm pack",
+    "p:ngx-common": "npm run clean:ngx-common && npm run build:ngx-common && npm run copy:ngx-common-assets && npm run copy:ngx-common-styles && cd dist/@dongkap/ngx-common && npm pack",
     "install:ngx-core": "npm run p:ngx-core && npm r @dongkap/ngx-core && npm i -O ./dist/@dongkap/ngx-core/dongkap-ngx-core-0.0.1.tgz",
     "install:ngx-theme": "npm run p:ngx-theme && npm r @dongkap/ngx-theme && npm i -O ./dist/@dongkap/ngx-theme/dongkap-ngx-theme-0.0.1.tgz",
+    "install:ngx-common": "npm run p:ngx-common && npm r @dongkap/ngx-common && npm i -O ./dist/@dongkap/ngx-common/dongkap-ngx-common-0.0.1.tgz",
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
@@ -19,6 +25,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.5",
     "@akveo/ng2-completer": "^9.0.1",
     "@angular/animations": "9.0.7",
     "@angular/cdk": "^9.2.3",
@@ -121,6 +128,7 @@
     "typescript": "3.7.5"
   },
   "optionalDependencies": {
+    "@dongkap/ngx-common": "file:dist/@dongkap/ngx-common/dongkap-ngx-common-0.0.1.tgz",
     "@dongkap/ngx-core": "file:dist/@dongkap/ngx-core/dongkap-ngx-core-0.0.1.tgz",
     "@dongkap/ngx-theme": "file:dist/@dongkap/ngx-theme/dongkap-ngx-theme-0.0.1.tgz"
   }

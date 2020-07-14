@@ -1,0 +1,46 @@
+<div class="body-upload">
+  <div *ngIf="!skeleton; else contentskeleton"
+    class="upload-container"
+    (click)="img.click()"
+    ngxDragDrop
+    [opacity]="opacity"
+    (onFileDropped)="upload($event)"
+    [ngStyle]="{ 
+      'background-image': 'url(' + (image? image: imageDefault) + ')',
+      'height':  height + 'px',
+      'width':  width + 'px',
+      'border-radius':  radius + '%'
+    }">
+    <input
+      hidden
+      type="file"
+      accept="image/png, image/jpeg, image/jpg"
+      (change)="upload($event.target.files)"
+      #img>
+  </div>
+  <ng-template #contentskeleton>
+    <div
+      class="upload-container"
+      [ngStyle]="{ 
+        'background-image': 'url(' + image + ')',
+        'height':  height + 'px',
+        'width':  width + 'px',
+        'border-radius':  radius + '%'
+      }">
+    </div>
+  </ng-template>
+  <button *ngIf="buttonUpload"
+    class="upload-bg"
+    [size]="'small'"
+    [shape]="'round'"
+    [status]="'primary'"
+    [disabled]="ngControl.pristine || disabled"
+    (click)="doUpload()"
+    nbButton
+    [ngStyle]="{ 
+      'top': 'calc('+height+'px + 0.075rem)'
+    }">
+    <nb-icon class="upload-icon" icon="cloud-upload-outline" pack="eva"></nb-icon>
+    {{ 'Upload' | translate}}
+  </button>
+</div>

@@ -1,0 +1,19 @@
+<ngx-container-outlet
+  [name]="name" [label]="label" [nolabel]="nolabel" 
+  [colLabel]="colLabel" [colContent]="colContent"
+  [required]="required" [paramError]="paramError"
+  [skeleton]="skeleton">
+  <div class="col-sm-{{colContent}}" *ngIf="!skeleton; else contentskeleton">
+    <span class="label-content">{{content | translate}}</span>
+  </div>
+  <ng-template #contentskeleton>
+    <div class="col-sm-{{colContent}}">
+      <div
+        [ngClass]="{
+          'input-skeleton': true,
+          'skeleton': skeleton
+        }">
+      </div>
+    </div>
+  </ng-template>
+</ngx-container-outlet>

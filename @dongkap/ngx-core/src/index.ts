@@ -4,9 +4,25 @@
 
 export * from './lib/ngx-core.module';
 
-export { LayoutService } from './lib/services/utils/layout.service';
-export { AnalyticsService } from './lib/services/utils/analytics.service';
-export { StateService } from './lib/services/utils/state.service';
-export { SeoService } from './lib/services/utils/seo.service';
+export * from './lib/models';
 
-export * from './lib/models/utils/users';
+export { AnalyticsService } from './lib/services/utils/analytics.service';
+export { LayoutService } from './lib/services/utils/layout.service';
+export { SeoService } from './lib/services/utils/seo.service';
+export { StateService } from './lib/services/utils/state.service';
+
+export { HttpCommonService } from './lib/services/utils/http-common.service';
+export { HttpFactoryService } from './lib/services/utils/http-factory.service';
+export { IndexedDBFactoryService } from './lib/services/utils/indexeddb-factory.service';
+export { IndexedDBEncFactoryService } from './lib/services/utils/indexeddb-enc-factory.service';
+
+export { OAUTH_INFO, USER_INFO } from './lib/providers/oauth.provider';
+export { API } from './lib/providers/api.provider';
+export { HTTP_SERVICE } from './lib/providers/http.provider';
+export { ENVIRONMENT } from './lib/providers/environment.provider';
+export {
+    AUTH_INDEXED_DB,
+    PROFILE_INDEXED_DB,
+    SETTINGS_INDEXED_DB,
+    PANIC_INDEXED_DB,
+} from './lib/providers/storage.provider';

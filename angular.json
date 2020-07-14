@@ -3,6 +3,127 @@
   "version": 1,
   "newProjectRoot": "@dongkap",
   "projects": {
+    "@dongkap/do-ngx": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "@dongkap/do-ngx",
+      "sourceRoot": "@dongkap/do-ngx/src",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/@dongkap/do-ngx",
+            "index": "@dongkap/do-ngx/src/index.html",
+            "main": "@dongkap/do-ngx/src/main.ts",
+            "polyfills": "@dongkap/do-ngx/src/polyfills.ts",
+            "tsConfig": "@dongkap/do-ngx/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "@dongkap/do-ngx/src/favicon.ico",
+              "@dongkap/do-ngx/src/assets"
+            ],
+            "styles": [
+              "@dongkap/do-ngx/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "@dongkap/do-ngx/src/environments/environment.ts",
+                  "with": "@dongkap/do-ngx/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "do-ngx:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "do-ngx:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "do-ngx:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@dongkap/do-ngx/src/test.ts",
+            "polyfills": "@dongkap/do-ngx/src/polyfills.ts",
+            "tsConfig": "@dongkap/do-ngx/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-ngx/karma.conf.js",
+            "assets": [
+              "@dongkap/do-ngx/src/favicon.ico",
+              "@dongkap/do-ngx/src/assets"
+            ],
+            "styles": [
+              "@dongkap/do-ngx/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "@dongkap/do-ngx/tsconfig.app.json",
+              "@dongkap/do-ngx/tsconfig.spec.json",
+              "@dongkap/do-ngx/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "@dongkap/do-ngx/e2e/protractor.conf.js",
+            "devServerTarget": "do-ngx:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "do-ngx:serve:production"
+            }
+          }
+        }
+      }
+    },
     "@dongkap/do-mock": {
       "projectType": "application",
       "schematics": {
@@ -267,6 +388,126 @@
             "tsConfig": [
               "@dongkap/ngx-theme/tsconfig.lib.json",
               "@dongkap/ngx-theme/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@dongkap/ngx-common": {
+      "projectType": "library",
+      "root": "@dongkap/ngx-common",
+      "sourceRoot": "@dongkap/ngx-common/src",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "@dongkap/ngx-common/tsconfig.lib.json",
+            "project": "@dongkap/ngx-common/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "@dongkap/ngx-common/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@dongkap/ngx-common/src/test.ts",
+            "tsConfig": "@dongkap/ngx-common/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/ngx-common/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "@dongkap/ngx-common/tsconfig.lib.json",
+              "@dongkap/ngx-common/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@dongkap/ngx-auth": {
+      "projectType": "library",
+      "root": "@dongkap/ngx-auth",
+      "sourceRoot": "@dongkap/ngx-auth/src",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "@dongkap/ngx-auth/tsconfig.lib.json",
+            "project": "@dongkap/ngx-auth/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "@dongkap/ngx-auth/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@dongkap/ngx-auth/src/test.ts",
+            "tsConfig": "@dongkap/ngx-auth/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/ngx-auth/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "@dongkap/ngx-auth/tsconfig.lib.json",
+              "@dongkap/ngx-auth/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@dongkap/ngx-extra": {
+      "projectType": "library",
+      "root": "@dongkap/ngx-extra",
+      "sourceRoot": "@dongkap/ngx-extra/src",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "@dongkap/ngx-extra/tsconfig.lib.json",
+            "project": "@dongkap/ngx-extra/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "@dongkap/ngx-extra/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@dongkap/ngx-extra/src/test.ts",
+            "tsConfig": "@dongkap/ngx-extra/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/ngx-extra/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "@dongkap/ngx-extra/tsconfig.lib.json",
+              "@dongkap/ngx-extra/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

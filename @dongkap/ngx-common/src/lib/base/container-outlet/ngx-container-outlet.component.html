@@ -1,0 +1,24 @@
+<div class="form-group row">
+  <label
+    *ngIf="(!skeleton || nolabel);else labelskeleton"
+    for="{{name}}"
+    class="label col-sm-{{colLabel}} col-form-label">
+    {{label | translate}}{{ (!nolabel) ? ((required) ? ' *' : '') : '' }}
+  </label>
+  <ng-template #labelskeleton>
+    <div class="col-sm-{{colLabel}}">
+      <label
+        class="label col-form-label"
+        [ngClass]="{
+          'label-skeleton': true,
+          'skeleton': skeleton
+        }">
+      </label>
+    </div>
+  </ng-template>
+  <ng-content></ng-content>
+  <div class="offset-sm-{{colLabel}} col-sm-{{colContent}}">
+    <ngx-error-message [hasErrors]="hasErrors" [errorMessages]="errorMessages" [param]="paramError">
+    </ngx-error-message>
+  </div>
+</div>
