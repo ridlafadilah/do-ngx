@@ -13,7 +13,7 @@ import { TreeNode } from './tree-node.model';
 
 @Component({
   exportAs: 'ngxTreeNode',
-  selector: 'ngx-tree-node',
+  selector: 'do-tree-node',
   templateUrl: './ngx-tree-node.component.html',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,

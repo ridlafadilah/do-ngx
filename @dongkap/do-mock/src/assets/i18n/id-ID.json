@@ -1,0 +1,117 @@
+{
+	"Name": "Nama",
+	"Email": "Email",
+	"Address": "Alamat",
+	"Username": "Nama Pengguna",
+	"Password": "Kata Sandi",
+	"Date": "Tanggal",
+	"Login": "Masuk",
+	"Logout": "Keluar",
+	"Settings": "Pengaturan",
+	"Profile": "Profil",
+	"Update Profile": "Ubah Profil",
+	"Change Password" : "Ubah Kata Sandi",
+	"New Password": "Kata Sandi Baru",
+	"Confirm Password": "Konfirmasi Kata Sandi",
+	"Update Password" : "Ubah Kata Sandi",
+	"Language": "Bahasa",
+	"Update Settings": "Ubah Pengaturan",
+	"Security": "Keamanan",
+	"Success": "Berhasil",
+	"Notification": "Notifikasi",
+	"Warning": "Peringatan",
+	"Failure": "Kesalahan",
+	"Information": "Informasi",
+	"Deactivate Account": "Nonaktifkan Akun",
+	"Upload": "Unggah",
+	"Province": "Provinsi",
+	"City": "Kota",
+	"District": "Kecamatan",
+	"Sub District": "Kelurahan",
+	"Telephone": "Telepon",
+	"Mobile Phone": "Telepon Genggam",
+	"Welcome": "Selamat Datang",
+	"Hi": "Halo",
+	"Civilians Emergency Report": "Laporan Darurat Warga Sipil",
+	"Add": "Tambah",
+	"Edit": "Ubah",
+	"Delete": "Hapus",
+	"Cancel": "Batal",
+	"Parameter Group": "Grup Parameter",
+	"Parameter Code": "Kode Parameter",
+	"Parameter Value": "Nilai Parameter",
+	"Add Parameter Group": "Tambah Grup Parameter",
+	"Edit Parameter Group": "Ubah Group Parameter",
+	"Add Parameter": "Tambah Parameter",
+	"Edit Parameter": "Ubah Parameter",
+	"Parameter Group Name": "Nama Grup Parameter",
+	"Parameter Group Code": "Kode Grup Parameter",
+	"Language Code": "Kode Bahasa",
+	"Edit Language": "Ubah Bahasa",
+	"Add Language": "Tambah Bahasa",
+	"Icon": "Ikon",
+	"System Default Language": "Bahasa Standar Sistem",
+	"Created": "Dibuat",
+	"Created Date": "Dibuat Tanggal",
+	"Modified": "Diubah",
+	"Modified Date": "Diubah Tanggal",
+	"Fake Report": "Laporan Palsu",
+	"message": {
+		"danger-zone": "Zona Bahaya",
+		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
+		"deactivate-form": "Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.",
+		"input-password": "Silakan masukan kata sandi anda untuk konfirmasi.",
+		"button-deactivate": "Saya mengerti konsekuensinya, nonaktifkan akun",
+		"fake-form": "Mohon dipastikan kembali, laporan yang anda selidiki sungguh tidak valid."
+	},
+	"error": {
+		"pattern": {
+			"email": "Silakan masukkan alamat email yang valid!",
+			"Password": "Pastikan setidaknya 8 karakter termasuk angka, huruf kecil, dan huruf besar",
+			"newPassword": "Pastikan setidaknya 8 karakter termasuk angka, huruf kecil, dan huruf besar",
+			"general": "Silakan masukkan data yang valid!",
+			"date": "Silakan masukkan tanggal yang valid!",
+			"phoneNumber": "Silakan masukkan format nomor telepon yang valid!",
+			"mobileNumber": "Silakan masukkan format nomor telepon genggam yang valid!"
+		},
+		"equal": {
+			"newPassword": "Kata Sandi lama dan Kata Sandi Baru tidak boleh sama",
+			"confirmPassword": "Kata Sandi Baru dan Konfirmasi Kata Sandi tidak sama"
+		},
+		"minlength": "Panjang minimal {{value}} karakter",
+		"incorrect": {
+			"password": "Kata Sandi tidak sesuai"
+		},
+		"username": "Nama Pengguna wajib diisi!",
+		"password": "Kata Sandi wajib diisi!",
+		"required": "Wajib diisi!",
+		"translate": "Silakan muat ulang Browser!",
+		"0": "Koneksi Terputus",
+		"400": "Permintaan akses gagal",
+		"401": "Akses tidak diizinkan",
+		"403": "Akses ditolak",
+		"404": "Data tidak ditemukan",
+		"500": "Server gagal diakses",
+		"504": "Server timeout"
+	},
+	"Bad credentials": "Nama Pengguna atau Kata Sandi salah",
+	"User account is locked": "Akun telah dikunci",
+	"User is disabled": "Akun sudah dinonaktifkan",
+	"User account has expired": "Akun sudah kadaluwarsa",
+	"select": {
+		"notfound": "Data tidak ditemukan",
+		"typesearch": "Silakan masukkan {{value}} karakter atau lebih"
+	},
+	"datatable": {
+		"typesearch": "Ketik untuk menelusuri"
+	},
+	"subtitle": {
+		"login" : "Halo! Masuk dengan nama pengguna Anda."
+	},
+	"alert": {
+		"title": {
+			"login" : "Gagal Masuk!"
+		},
+		"delete": "Apakah anda yakin ingin menghapus data ini?"
+	}
+}

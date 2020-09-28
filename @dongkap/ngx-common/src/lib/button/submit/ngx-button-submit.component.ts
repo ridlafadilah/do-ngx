@@ -2,7 +2,7 @@ import { Component, Input, ViewEncapsulation, Optional, Self, Inject, LOCALE_ID,
 import { NgControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'ngx-button-submit',
+  selector: 'do-button-submit',
   styleUrls: ['./ngx-button-submit.component.scss'],
   templateUrl: './ngx-button-submit.component.html',
   encapsulation: ViewEncapsulation.None,

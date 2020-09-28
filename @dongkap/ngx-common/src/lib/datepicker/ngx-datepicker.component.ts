@@ -5,7 +5,7 @@ import { DatePattern } from '@dongkap/ngx-core';
 import { NgxValueAccessor } from '../base/ngx-value-accessor.component';
 
 @Component({
-  selector: 'ngx-datepicker',
+  selector: 'do-datepicker',
   styleUrls: ['./ngx-datepicker.component.scss'],
   templateUrl: './ngx-datepicker.component.html',
 })

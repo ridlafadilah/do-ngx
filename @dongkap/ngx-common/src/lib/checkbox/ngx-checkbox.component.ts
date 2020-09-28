@@ -4,7 +4,7 @@ import { NgxValueAccessor } from '../base/ngx-value-accessor.component';
 import { CheckboxModel } from './checkbox.model';
 
 @Component({
-  selector: 'ngx-checkbox',
+  selector: 'do-checkbox',
   styleUrls: ['./ngx-checkbox.component.scss'],
   templateUrl: './ngx-checkbox.component.html',
 })

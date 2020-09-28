@@ -14,7 +14,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
 @Component({
-  selector: 'ngx-datatable-collapse, [ngx-datatable-collapse]',
+  selector: 'do-datatable-collapse, [do-datatable-collapse]',
   styleUrls: ['./ngx-datatable-collapse.component.scss'],
   templateUrl: './ngx-datatable-collapse.component.html',
   animations: [

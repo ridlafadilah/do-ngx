@@ -1,71 +1,104 @@
-<ngx-page-outlet [header]="'Exercise'">
+<do-page-outlet [header]="'Exercise'">
+  <div class="col-md-12 col-lg-12 col-xxxl-6">
+    <do-datatable
+      [api]="apiDatatable"
+      [formGroupFilter]="formGroupFilter"
+      [filters]="filters"
+      (onFilter)="doFilterAdvanced($event)"
+      [columns]="columns">
+      <form [formGroup]="formGroupFilter">
+        <do-input-text
+          [name]="'name'"
+          [label]="'Name'"
+          formControlName="name">
+        </do-input-text>
+        <do-input-text
+          [name]="'gender'"
+          [label]="'Gender'"
+          formControlName="gender">
+        </do-input-text>
+        <do-input-text
+          [name]="'company'"
+          [label]="'Company'"
+          formControlName="company">
+        </do-input-text>
+      </form>
+    </do-datatable>
+  </div>
   <form [formGroup]="formGroup">
     <div class="col-md-12 col-lg-12 col-xxxl-6">
-      <ngx-image-upload
+      <do-image-upload
         [radius]="50"
         [required]="false"
         (onUpload)="uploadImage($event)"
         formControlName="image">
-      </ngx-image-upload>
+      </do-image-upload>
     </div>
-    <ngx-input-text
+    <do-input-text
       [name]="'username'"
       [label]="'Username'"
       [required]="true"
       formControlName="username">
-    </ngx-input-text>
-    <ngx-input-currency
+    </do-input-text>
+    <do-input-currency
       [name]="'currency'"
       [label]="'Currency'"
       [required]="true"
       formControlName="currency">
-    </ngx-input-currency>
-    <ngx-datepicker
+    </do-input-currency>
+    <do-datepicker
       [name]="'date'"
       [label]="'Date'"
       [required]="true"
       formControlName="date">
-    </ngx-datepicker>
-    <ngx-checkbox
+    </do-datepicker>
+    <do-checkbox
       [name]="'checkbox'"
       [label]="'Checkbox'"
       [required]="true"
       [data]="dataCheckbox"
       formControlName="checkbox">
-    </ngx-checkbox>
-    <ngx-radio
+    </do-checkbox>
+    <do-radio
       [name]="'radio'"
       [label]="'Radio'"
       [data]="dataRadio"
       [required]="true"
       formControlName="radio">
-    </ngx-radio>
-    <ngx-select
-      [name]="'select'"
-      [label]="'Select'"
+    </do-radio>
+    <do-select
+      [name]="'searchSelect'"
+      [label]="'Search Select'"
+      [api]="apiSelect"
+      formControlName="searchSelect">
+    </do-select>
+    <do-select
+      [name]="'staticSelect'"
+      [label]="'Static Select'"
       [required]="true"
-      [items]="dataSelect"
-      formControlName="select">
-    </ngx-select>
-    <ngx-textarea
+      [items]="dataStaticSelect"
+      formControlName="staticSelect">
+    </do-select>
+    <do-textarea
       [name]="'textarea'"
       [label]="'Textarea'"
       [minLength]="minLength"
       [required]="true"
       formControlName="textarea">
-    </ngx-textarea>
-    <ngx-ckeditor
+    </do-textarea>
+    <do-ckeditor
       [name]="'ckeditor'"
       [label]="'CKEditor'"
       [required]="true"
       formControlName="ckeditor">
-    </ngx-ckeditor>
-    <ngx-tiny-mce
+    </do-ckeditor>
+    <do-tiny-mce
+      [id]="'tinyMCE01'"
       [name]="'tinyMCE'"
       [label]="'TinyMCE'"
       [required]="true"
       formControlName="tinyMCE">
-    </ngx-tiny-mce>
+    </do-tiny-mce>
     <div class="form-group row">
       <div class="offset-sm-3 col-sm-9">
         <button
@@ -79,4 +112,4 @@
       </div>
     </div>
   </form>
-</ngx-page-outlet>
+</do-page-outlet>

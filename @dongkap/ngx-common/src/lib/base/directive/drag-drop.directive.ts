@@ -1,7 +1,7 @@
 import { Directive, Output, Input, EventEmitter, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[ngxDragDrop]',
+  selector: '[doDragDrop]',
 })
 export class DragDropDirective {
     @Output() onFileDropped = new EventEmitter<any>();

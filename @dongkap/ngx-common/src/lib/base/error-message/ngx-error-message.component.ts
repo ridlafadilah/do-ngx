@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'ngx-error-message',
+  selector: 'do-error-message',
   styleUrls: ['./ngx-error-message.component.scss'],
   templateUrl: './ngx-error-message.component.html',
   encapsulation: ViewEncapsulation.None,

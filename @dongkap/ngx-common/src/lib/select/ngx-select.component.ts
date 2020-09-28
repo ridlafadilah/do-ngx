@@ -25,7 +25,7 @@ import { NgSelectComponent } from '@ng-select/ng-select';
 import { ContentSelectDirective } from './directive/content-select.directive';
 
 @Component({
-  selector: 'ngx-select',
+  selector: 'do-select',
   styleUrls: ['./ngx-select.component.scss'],
   templateUrl: './ngx-select.component.html',
   encapsulation: ViewEncapsulation.None,
@@ -215,31 +215,19 @@ export class NgxSelectComponent extends NgxValueAccessor<any> implements OnDestr
 
     onKeyDown(event: KeyboardEvent, term: string) {
       if (
-        ['delete', 'backspace', 'tab', 'escape', 'Enter', 'decimal point', 'period', 'dash'].indexOf(event.key) !== -1 ||
-        (event.key === 'a' && event.ctrlKey === true) || // Allow: Ctrl+A
-        (event.key === 'c' && event.ctrlKey === true) || // Allow: Ctrl+C
-        (event.key === 'v' && event.ctrlKey === true) || // Allow: Ctrl+V
-        (event.key === 'x' && event.ctrlKey === true) || // Allow: Ctrl+X
-        (event.key === 'a' && event.metaKey === true) || // Cmd+A (Mac)
-        (event.key === 'c' && event.metaKey === true) || // Cmd+C (Mac)
-        (event.key === 'v' && event.metaKey === true) || // Cmd+V (Mac)
-        (event.key === 'x' && event.metaKey === true) || // Cmd+X (Mac)
-        (event.key === 'end') ||
-        (event.key === 'home') ||
-        (event.key === 'left arrow') ||
-        (event.key === 'right arrow') ||
-          (event.keyCode >= 65 && event.keyCode <= 90) ||
-          (!event.shiftKey && (event.keyCode >= 48 && event.keyCode <= 57)) ||
-          (event.keyCode >= 96 && event.keyCode <= 105)) {
-          if (((!event.ctrlKey && !event.altKey && !event.metaKey) &&
-              (([46, 8, 32].indexOf(event.keyCode) !== -1) ||
-              (event.keyCode >= 65 && event.keyCode <= 90) ||
-              (event.keyCode >= 48 && event.keyCode <= 57) ||
-              (event.keyCode >= 96 && event.keyCode <= 105))) ||
-              ((event.ctrlKey || event.metaKey) && event.keyCode === 90) ||
-              ((event.ctrlKey || event.metaKey) && event.keyCode === 89)) {
-            this.reset();
-          }
+        ['DELETE', 'BACKSPACE', 'TAB', 'ESCAPE', 'ENTER', 'DECIMAL POINT', 'PERIOD', 'DASH'].indexOf(event.key.toUpperCase()) !== -1 ||
+        (event.key.toUpperCase() === 'A' && event.ctrlKey === true) || // Allow: Ctrl+A
+        (event.key.toUpperCase() === 'C' && event.ctrlKey === true) || // Allow: Ctrl+C
+        (event.key.toUpperCase() === 'V' && event.ctrlKey === true) || // Allow: Ctrl+V
+        (event.key.toUpperCase() === 'X' && event.ctrlKey === true) || // Allow: Ctrl+X
+        (event.key.toUpperCase() === 'A' && event.metaKey === true) || // Cmd+A (Mac)
+        (event.key.toUpperCase() === 'C' && event.metaKey === true) || // Cmd+C (Mac)
+        (event.key.toUpperCase() === 'V' && event.metaKey === true) || // Cmd+V (Mac)
+        (event.key.toUpperCase() === 'X' && event.metaKey === true) || // Cmd+X (Mac)
+        (event.key.toUpperCase() === 'END') ||
+        (event.key.toUpperCase() === 'HOME') ||
+        (event.key.toUpperCase() === 'LEFT ARROW') ||
+        (event.key.toUpperCase() === 'RIGHT ARROW') || (!event.key.match(/[!@#$%^&*()?":{}|<>\[\];\\=~`]/g))) {
           if (term) {
             if (term.length > this.maxTermLength) {
               return false;

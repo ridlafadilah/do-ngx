@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'ngx-label-text',
+  selector: 'do-label-text',
   styleUrls: ['./ngx-label-text.component.scss'],
   templateUrl: './ngx-label-text.component.html',
   encapsulation: ViewEncapsulation.None,

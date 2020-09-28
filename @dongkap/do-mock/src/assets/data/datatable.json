@@ -1,4 +1,7 @@
-[
+{
+	"totalFiltered": 10,
+	"totalRecord": 70,
+	"data": [
     {
       "name": "Ethel Price",
       "gender": "female",
@@ -502,4 +505,5 @@
       "gender": "male",
       "company": "Corepan"
     }
-]
+  ]
+}

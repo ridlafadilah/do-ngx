@@ -14,7 +14,7 @@
         </nb-icon>
     </div>
     <div class="header-filter" *ngIf="filter">
-        <ngx-input-base-icon
+        <do-input-base-icon
             [name]="'_filter.datatable'"
             [placeholder]="'datatable.typesearch'"
             [iconcursor]="true"
@@ -22,7 +22,7 @@
             (clickIcon)="doSearch($event)"
             (keydown)="onKeyDown($event)"
             (focus)="onFocusSearch()">
-        </ngx-input-base-icon>
+        </do-input-base-icon>
     </div>
     <div class="filter-funnel" *ngIf="filter && formGroupFilter">
         <nb-icon
@@ -32,7 +32,7 @@
         </nb-icon>
     </div>
 </div>
-<div *ngIf="filter && formGroupFilter" ngx-datatable-collapse #collapse>
+<div *ngIf="filter && formGroupFilter" do-datatable-collapse #collapse>
     <ng-content></ng-content>
     <div class="form-group row">
         <div class="offset-sm-3 col-sm-9">

@@ -2,7 +2,7 @@ import { Directive, HostListener, Input, ElementRef } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-    selector: 'input[ngxCurrency]',
+    selector: 'input[doCurrency]',
 })
 export class CurrencyMaskDirective {
     @Input('prefix') prefix: string = 'Rp';
@@ -58,36 +58,31 @@ export class CurrencyMaskDirective {
     }
 
     @HostListener('keydown', ['$event'])
-    onKeyDown(e: KeyboardEvent) {
+    onKeyDown(event: KeyboardEvent) {
         if (
-            ['delete', 'backspace', 'tab', 'escape', 'Enter', 'decimal point', 'period', 'dash'].indexOf(e.key) !== -1 ||
-            (e.key === 'a' && e.ctrlKey === true) || // Allow: Ctrl+A
-            (e.key === 'c' && e.ctrlKey === true) || // Allow: Ctrl+C
-            (e.key === 'v' && e.ctrlKey === true) || // Allow: Ctrl+V
-            (e.key === 'x' && e.ctrlKey === true) || // Allow: Ctrl+X
-            (e.key === 'a' && e.metaKey === true) || // Cmd+A (Mac)
-            (e.key === 'c' && e.metaKey === true) || // Cmd+C (Mac)
-            (e.key === 'v' && e.metaKey === true) || // Cmd+V (Mac)
-            (e.key === 'x' && e.metaKey === true) || // Cmd+X (Mac)
-            (e.key === 'end') ||
-            (e.key === 'home') ||
-            (e.key === 'left arrow') ||
-            (e.key === 'right arrow')
+            ['DELETE', 'BACKSPACE', 'TAB', 'ESCAPE', 'ENTER', 'DECIMAL POINT', 'PERIOD', 'DASH'].indexOf(event.key.toUpperCase()) !== -1 ||
+            (event.key.toUpperCase() === 'A' && event.ctrlKey === true) || // Allow: Ctrl+A
+            (event.key.toUpperCase() === 'C' && event.ctrlKey === true) || // Allow: Ctrl+C
+            (event.key.toUpperCase() === 'V' && event.ctrlKey === true) || // Allow: Ctrl+V
+            (event.key.toUpperCase() === 'X' && event.ctrlKey === true) || // Allow: Ctrl+X
+            (event.key.toUpperCase() === 'A' && event.metaKey === true) || // Cmd+A (Mac)
+            (event.key.toUpperCase() === 'C' && event.metaKey === true) || // Cmd+C (Mac)
+            (event.key.toUpperCase() === 'V' && event.metaKey === true) || // Cmd+V (Mac)
+            (event.key.toUpperCase() === 'X' && event.metaKey === true) || // Cmd+X (Mac)
+            (event.key.toUpperCase() === 'END') ||
+            (event.key.toUpperCase() === 'HOME') ||
+            (event.key.toUpperCase() === 'LEFT ARROW') ||
+            (event.key.toUpperCase() === 'RIGHT ARROW') || (event.key.match(/[0-9.,\-]/g))
         ) {
             return;  // let it happen, don't do anything
         }
 
         // Ensure that it is a number and stop the keypress
-        if (e.shiftKey ||
-            ([
-                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-                'numpad 0', 'numpad 1', 'numpad 2',
-                'numpad 3', 'numpad 4', 'numpad 5',
-                'numpad 6', 'numpad 7', 'numpad 8',
-                'numpad 9'
-            ].indexOf(e.key) !== -1)) {
-            e.preventDefault();
+        /*
+        if ((event.shiftKey || (event.key.match(/[0-9.,\-+]/g)))) {
+            event.preventDefault();
         }
+        */
     }
 
     onLeave(value): string {

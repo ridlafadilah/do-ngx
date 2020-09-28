@@ -1,0 +1,117 @@
+{
+	"Name": "Name",
+	"Email": "Email",
+	"Address": "Address",
+	"Username": "Username",
+	"Password": "Password",
+	"Date": "Date",
+	"Login": "Login",
+	"Logout": "Logout",
+	"Settings": "Settings",
+	"Profile": "Profile",
+	"Update Profile": "Update Profile",
+	"Change Password" : "Change Password",
+	"New Password": "New Password",
+	"Confirm Password": "Confirm Password",
+	"Update Password" : "Update Password",
+	"Language": "Language",
+	"Update Settings": "Update Settings",
+	"Security": "Security",
+	"Success": "Success",
+	"Notification": "Notification",
+	"Warning": "Warning",
+	"Failure": "Failure",
+	"Information": "Information",
+	"Deactivate Account": "Deactivate Account",
+	"Upload": "Upload",
+	"Province": "Province",
+	"City": "City",
+	"District": "District",
+	"Sub District": "Sub District",
+	"Telephone": "Telephone",
+	"Mobile Phone": "Mobile Phone",
+	"Welcome": "Welcome",
+	"Hi": "Hi",
+	"Civilians Emergency Report": "Civilians Emergency Report",
+	"Add": "Add",
+	"Edit": "Edit",
+	"Delete": "Delete",
+	"Cancel": "Cancel",
+	"Parameter Group": "Parameter Group",
+	"Parameter Code": "Parameter Code",
+	"Parameter Value": "Parameter Value",
+	"Add Parameter Group": "Add Parameter Group",
+	"Edit Parameter Group": "Edit Parameter Group",
+	"Add Parameter": "Add Parameter",
+	"Edit Parameter": "Edit Parameter",
+	"Parameter Group Name": "Parameter Group Name",
+	"Parameter Group Code": "Parameter Group Code",
+	"Language Code": "Language Code",
+	"Edit Language": "Edit Language",
+	"Add Language": "Add Language",
+	"Icon": "Icon",
+	"System Default Language": "System Default Language",
+	"Created": "Created",
+	"Created Date": "Created Date",
+	"Modified": "Modified",
+	"Modified Date": "Modified Date",
+	"Fake Report": "Fake Report",
+	"message": {
+		"danger-zone": "Danger Zone",
+		"deactivated-account": "Once you deactivated account, there is no going back. Please be certain.",
+		"deactivate-form": "This action cannot be undone. This will permanently disable your account.",
+		"input-password": "Please enter your password to confirm.",
+		"button-deactivate": "I understand the consequences, deactivate account",
+		"fake-form": "Please make sure again, the report you are investigating is really invalid."
+	},
+	"error": {
+		"pattern": {
+			"email": "Please enter valid email address!",
+			"Password": "Make sure it's at least 8 characters including a number, a lowercase, and uppercase letter",
+			"newPassword": "Make sure it's at least 8 characters including a number, a lowercase, and uppercase letter",
+			"general": "Please enter valid data!",
+			"date": "Please enter valid date!",
+			"phoneNumber": "Please enter valid Telephone Number!",
+			"mobileNumber": "Please enter valid Mobile Phone Number!"
+		},
+		"equal": {
+			"newPassword": "Old Password and New Password cannot be the same",
+			"confirmPassword": "New Password and Confirm Password not match"
+		},
+		"minlength": "Minimum length of {{value}} characters",
+		"incorrect": {
+			"password": "Incorrect Password"
+		},
+		"username": "Username is required!",
+		"password": "Password is required!",
+		"required": "This field is required!",
+		"translate": "Please reload Browser!",
+		"0": "Connection Refused",
+		"400": "Bad Request",
+		"401": "Unauthorized",
+		"403": "Access Denied",
+		"404": "Not Found",
+		"500": "Internal Server Error",
+		"504": "Timeout Server"
+	},
+	"Bad credentials": "Incorrect Username or Password",
+	"User account is locked": "Account has been locked",
+	"User is disabled": "Account has been deactivated",
+	"User account has expired": "Account has been expired",
+	"select": {
+		"notfound": "No items found",
+		"typesearch": "Please enter {{value}} or more characters"
+	},
+	"datatable": {
+		"typesearch": "Type to search"
+	},
+	"subtitle": {
+		"login" : "Hello! Login with your username."
+	},
+	"alert": {
+		"title": {
+			"login" : "Login Failed!"
+		},
+		"delete": "Are you sure you want to delete this data?"
+	}
+}

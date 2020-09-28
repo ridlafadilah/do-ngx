@@ -9,7 +9,7 @@ import {
   Keyword,
   DatatableFilter,
 } from '@dongkap/ngx-common';
-import { APIModel, API, HttpBaseModel } from '@dongkap/ngx-core';
+import { HttpBaseModel, HttpMethod } from '@dongkap/ngx-core';
 
 @Component({
   selector: 'ngx-exercise',
@@ -49,7 +49,7 @@ export class ExerciseComponent implements OnInit {
       value: 'Radio 2',
     },
   ];
-  dataSelect: SelectResponseModel[] = [
+  dataStaticSelect: SelectResponseModel[] = [
     {
       'label': 'Data',
       'value': '1',
@@ -70,16 +70,29 @@ export class ExerciseComponent implements OnInit {
 
   rows: any[] = [];
   columns: TableColumn[] = [
-    { name: 'Code', prop: 'cityCode', width: 50, frozenLeft: true },
-    { name: 'City', prop: 'cityName', width: 200, frozenLeft: true },
-    { name: 'Province', prop: 'provinceName' },
-    { name: 'Created', prop: 'createdBy' },
-    { name: 'Created Date', prop: 'createdDate' },
-    { name: 'Modified', prop: 'modifiedBy' },
-    { name: 'Modified Date', prop: 'modifiedDate' },
-    { name: 'Active', prop: 'active' },
+    { name: 'Name', prop: 'name', width: 150, frozenLeft: true },
+    { name: 'Gender', prop: 'gender', width: 50, frozenLeft: true },
+    { name: 'Age', prop: 'age', width: 25, frozenLeft: true },
+    { name: 'Company', prop: 'company', width: 200 },
   ];
-  apiPath: HttpBaseModel;
+  apiDatatable: HttpBaseModel = {
+    server: {
+      protocol: 'http',
+      host: 'localhost',
+      port: 4242,
+    },
+    path: '/assets/data/datatable.json',
+    method: HttpMethod.GET,
+  };
+  apiSelect: HttpBaseModel = {
+    server: {
+      protocol: 'http',
+      host: 'localhost',
+      port: 4242,
+    },
+    path: '/assets/data/select.json',
+    method: HttpMethod.GET,
+  };
   formGroupFilter: FormGroup;
   filters: DatatableFilter[];
   keyword: Keyword;
@@ -135,14 +148,14 @@ export class ExerciseComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     public _d: DomSanitizer) {
       this.formGroupFilter = this.formBuilder.group({
-        'cityCode': [],
-        'cityName': [],
-        'provinceName': [],
+        'name': [],
+        'gender': [],
+        'company': [],
       });
       this.filters = [
-        { controlName: 'cityCode', type: 'input' },
-        { controlName: 'cityName', type: 'input' },
-        { controlName: 'provinceName', type: 'input' }];
+        { controlName: 'name', type: 'input' },
+        { controlName: 'gender', type: 'input' },
+        { controlName: 'company', type: 'input' }];
       this.formGroup = this.formBuilder.group({
         'image': [],
         'username': [{
@@ -159,7 +172,8 @@ export class ExerciseComponent implements OnInit {
           value: 'Radio 2',
           disabled: false,
         }],
-        'select': [{
+        'searchSelect': [],
+        'staticSelect': [{
             label: 'number',
         }],
         'textarea': [{

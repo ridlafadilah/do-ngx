@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'ngx-container-outlet',
+  selector: 'do-container-outlet',
   styleUrls: ['./ngx-container-outlet.component.scss'],
   templateUrl: './ngx-container-outlet.component.html',
   encapsulation: ViewEncapsulation.None,

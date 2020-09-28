@@ -11,7 +11,7 @@ import { NgxDatatableCollapseComponent } from './collapse/ngx-datatable-collapse
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'ngx-datatable-header',
+  selector: 'do-datatable-header',
   styleUrls: ['./ngx-datatable-header.component.scss'],
   templateUrl: './ngx-datatable-header.component.html',
   encapsulation: ViewEncapsulation.None,
@@ -67,7 +67,7 @@ export class NgxDatatableHeaderComponent implements OnDestroy {
   }
 
   onKeyDown(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
+    if (event.key.toUpperCase() === 'ENTER') {
       this.doSearch(this._search);
     }
   }

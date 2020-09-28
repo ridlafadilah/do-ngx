@@ -16,8 +16,8 @@ import { ENVIRONMENT, Environment } from '@dongkap/ngx-core';
 declare var tinymce: any;
 
 @Component({
-  selector: 'ngx-mce-core',
-  template: '',
+  selector: 'do-mce-core',
+  template: '<div id="{{id}}"></div>',
   encapsulation: ViewEncapsulation.None,
   providers: [{
       provide: NG_VALUE_ACCESSOR,
@@ -29,6 +29,7 @@ export class MCECoreComponent implements OnDestroy, AfterViewInit, ControlValueA
 
   @Input() plugins: string[] = ['link', 'paste', 'table'];
   @Input() height: number = 320;
+  @Input() id: string = 'tinyMce';
   @Input() readonly: boolean = false;
   @Input('value')  _value: any;
   @Output() change: EventEmitter<any> = new EventEmitter<any>();
@@ -47,9 +48,24 @@ export class MCECoreComponent implements OnDestroy, AfterViewInit, ControlValueA
 
   ngAfterViewInit() {
     tinymce.init({
+      selector: '#' + this.id,
       target: this.host.nativeElement,
       plugins: this.plugins,
-      skin_url: `${document.getElementsByTagName('base')[0].href}assets/skins/lightgray`,
+      menu: {
+        file: { title: 'File', items: 'newdocument restoredraft | preview | print ' },
+        edit: { title: 'Edit', items: 'undo redo | cut copy paste | selectall | searchreplace' },
+        view: { title: 'View', items: 'code | visualaid visualchars visualblocks | spellchecker | preview fullscreen' },
+        insert: { title: 'Insert', items: 'image link media template codesample inserttable | charmap emoticons hr | pagebreak nonbreaking anchor toc | insertdatetime' },
+        format: { title: 'Format', items: 'bold italic underline strikethrough superscript subscript codeformat | formats blockformats fontformats fontsizes align | forecolor backcolor | removeformat' },
+        tools: { title: 'Tools', items: 'spellchecker spellcheckerlanguage | code wordcount' },
+        table: { title: 'Table', items: 'inserttable | cell row column | tableprops deletetable' },
+        help: { title: 'Help', items: 'help' }
+      },
+      toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+        'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+        'forecolor backcolor emoticons | help',
+      height: this.height,
+      readonly: this.readonly,
       setup: editor => {
         this.editor = editor;
         editor.on('keyup', (event) => {
@@ -67,8 +83,6 @@ export class MCECoreComponent implements OnDestroy, AfterViewInit, ControlValueA
       init_instance_callback: (editor: any) => {
         editor && this.value && this.editor.setContent(this.value);
       },
-      height: this.height,
-      readonly: this.readonly,
     });
   }
 

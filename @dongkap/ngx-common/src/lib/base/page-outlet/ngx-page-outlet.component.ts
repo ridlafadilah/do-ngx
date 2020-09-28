@@ -2,7 +2,7 @@ import { Component, Input, ViewEncapsulation, Output, EventEmitter } from '@angu
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'ngx-page-outlet',
+  selector: 'do-page-outlet',
   styleUrls: ['./ngx-page-outlet.component.scss'],
   templateUrl: './ngx-page-outlet.component.html',
   encapsulation: ViewEncapsulation.None,

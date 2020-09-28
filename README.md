@@ -11,12 +11,15 @@ $ ng generate library ngx-auth --prefix=ngx
 $ ng generate library ngx-extra --prefix=ngx
 ```
 
-### 5.	Restructure @dongkap/do-mock
-- Add features :
+### 2.	Restructure @dongkap/do-mock
+- Added features :
 1. *@dongkap/do-mock/src/app/@mock/pages/exercise*
-2. *@dongkap/do-mock/src/configs*
-3. *@dongkap/do-mock/src/assets/data*
+2. *@dongkap/do-mock/src/assets/data*
 3. *@dongkap/do-mock/src/assets/images/avatars*
+4. *@dongkap/do-mock/src/assets/i18n*
 - Changed features :
 1. *@dongkap/do-mock/src/environments*
 2. *@dongkap/do-mock/src/app/app.module.ts*
+3. *@dongkap/do-mock/src/app/app.component.ts*
+4. *@dongkap/do-mock/src/index.html*
+5. *@dongkap/do-mock/src/app/@mock/pages/editors/ckeditor/ckeditor.component.ts*

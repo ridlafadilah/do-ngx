@@ -1,4 +1,4 @@
-<ngx-datatable-header
+<do-datatable-header
     [header]="header"
     [add]="add"
     [delete]="isDelete"
@@ -9,8 +9,8 @@
     (onAdd)="doAdd($event)"
     (onDelete)="doDelete()">
     <ng-content></ng-content>
-</ngx-datatable-header>
-<ngx-datatable-base
+</do-datatable-header>
+<do-datatable-base
     [rows]="rows"
     [columns]="columns"
     [selected]="selected"
@@ -43,4 +43,4 @@
     (select)="onSelect($event)"
     (activate)="doEdit($event)"
     (onButtonCell)="onClickButton($event)">
-</ngx-datatable-base>
+</do-datatable-base>

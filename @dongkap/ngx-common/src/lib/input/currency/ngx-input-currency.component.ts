@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 
 @Component({
-  selector: 'ngx-input-currency',
+  selector: 'do-input-currency',
   styleUrls: ['./ngx-input-currency.component.scss'],
   templateUrl: './ngx-input-currency.component.html',
   encapsulation: ViewEncapsulation.None,

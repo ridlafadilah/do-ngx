@@ -1,6 +1,6 @@
-<div class="ngx-tree" [class.one-leaf]="hasOneLeaf">
+<div class="do-tree" [class.one-leaf]="hasOneLeaf">
   <ul class="vertical-list">
-    <ngx-tree-node
+    <do-tree-node
       *ngFor="let node of nodes"
       [node]="node"
       [expandable]="node.expandable"
@@ -16,8 +16,8 @@
       (deactivate)="deactivate.emit($event)"
       (selectNode)="selectNode.emit($event)"
     >
-    </ngx-tree-node>
+    </do-tree-node>
     <ng-content *ngIf="!nodes"></ng-content>
   </ul>
-  <div class="ngx-tree-vr" *ngIf="nodes?.length || nodeElms?.length"></div>
+  <div class="do-tree-vr" *ngIf="nodes?.length || nodeElms?.length"></div>
 </div>

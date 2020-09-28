@@ -8,11 +8,11 @@ import {
   LOCALE_ID,
   ElementRef,
 } from '@angular/core';
-import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 import { NgControl } from '@angular/forms';
+import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 
 @Component({
-  selector: 'ngx-tiny-mce',
+  selector: 'do-tiny-mce',
   styleUrls: ['./tiny-mce.component.scss'],
   templateUrl: './tiny-mce.component.html',
   encapsulation: ViewEncapsulation.None,
@@ -23,6 +23,7 @@ export class TinyMCEComponent extends NgxValueAccessor<string> {
   @Input() colInput: number = 9;
   @Input() plugins: string[] = ['link', 'paste', 'table'];
   @Input() height: number = 320;
+  @Input() id: string = 'tinyMce';
 
   constructor(@Optional() @Self() ngControl: NgControl,
     @Inject(LOCALE_ID) public locale: string,
@@ -33,7 +34,7 @@ export class TinyMCEComponent extends NgxValueAccessor<string> {
   editorChange(element: Element) {
     if (!element) {
       element = this.element.nativeElement;
-      element = element.getElementsByClassName('mce-edit-area').item(0);
+      element = element.getElementsByClassName('tox-edit-area').item(0);
     }
     if (this.ngControl.invalid) {
       if (!element.getAttribute('class').endsWith('status-danger'))

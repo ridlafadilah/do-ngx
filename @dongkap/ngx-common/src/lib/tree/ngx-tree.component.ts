@@ -20,7 +20,7 @@ import { NgxTreeNodeComponent } from './ngx-tree-node.component';
 import { TreeNode } from './tree-node.model';
 
 @Component({
-  selector: 'ngx-tree',
+  selector: 'do-tree',
   templateUrl: './ngx-tree.component.html',
   styleUrls: ['./ngx-tree.component.scss'],
   encapsulation: ViewEncapsulation.None,

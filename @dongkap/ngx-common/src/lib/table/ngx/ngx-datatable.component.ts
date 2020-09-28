@@ -22,7 +22,7 @@ import { LayoutService } from '@dongkap/ngx-core';
 import { Page, Sort, Keyword, DatatableFilter, DatatableColumn } from '../models/datatable.model';
 
 @Component({
-  selector: 'ngx-datatable-common',
+  selector: 'do-datatable',
   styleUrls: ['./ngx-datatable.component.scss'],
   templateUrl: './ngx-datatable.component.html',
   encapsulation: ViewEncapsulation.None,

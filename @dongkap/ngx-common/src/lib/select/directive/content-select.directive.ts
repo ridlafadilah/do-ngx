@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[ngxContentSelect]',
+  selector: '[doContentSelect]',
 })
 export class ContentSelectDirective {}

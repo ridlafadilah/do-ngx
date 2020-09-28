@@ -20,12 +20,10 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 
-import { MockModule } from './@mock/mock.module';
-import { API, ENVIRONMENT, NgxCoreModule, OAUTH_INFO } from '@dongkap/ngx-core';
+import { ENVIRONMENT, NgxCoreModule } from '@dongkap/ngx-core';
 import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { MockModule } from './@mock/mock.module';
 import { environment } from '../environments/environment';
-import { apiPath } from '../configs/api.config';
-import { oauthResource } from '../configs/security.config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -60,9 +58,6 @@ import { oauthResource } from '../configs/security.config';
     },
     {
       provide: ENVIRONMENT, useValue: environment,
-    },
-    {
-      provide: API, useValue: apiPath,
     },
   ],
 })

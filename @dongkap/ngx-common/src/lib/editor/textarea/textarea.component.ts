@@ -12,7 +12,7 @@ import { NgControl } from '@angular/forms';
 import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 
 @Component({
-  selector: 'ngx-textarea',
+  selector: 'do-textarea',
   styleUrls: ['./textarea.component.scss'],
   templateUrl: './textarea.component.html',
   encapsulation: ViewEncapsulation.None,

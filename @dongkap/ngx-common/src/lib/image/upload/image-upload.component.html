@@ -2,7 +2,7 @@
   <div *ngIf="!skeleton; else contentskeleton"
     class="upload-container"
     (click)="img.click()"
-    ngxDragDrop
+    doDragDrop
     [opacity]="opacity"
     (onFileDropped)="upload($event)"
     [ngStyle]="{ 

@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 
 @Component({
-  selector: 'ngx-input-base-icon',
+  selector: 'do-input-base-icon',
   styleUrls: ['./ngx-input-base-icon.component.scss'],
   templateUrl: './ngx-input-base-icon.component.html',
   encapsulation: ViewEncapsulation.None,

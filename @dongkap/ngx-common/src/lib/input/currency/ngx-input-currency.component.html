@@ -1,4 +1,4 @@
-<ngx-container-outlet
+<do-container-outlet
   [name]="name" [label]="label"
   [colLabel]="colLabel" [colContent]="colInput"
   [required]="required" [hasErrors]="hasErrors"
@@ -22,7 +22,7 @@
       (change)="onChange($event.target.toNumber)"
       (blur)="onTouched($event.target.toNumber)"
       [(ngModel)]="value"
-      ngxCurrency
+      doCurrency
       [prefix]="prefix"
       [decimal]="decimalSeparator"
       [thousand]="thousandsSeparator"
@@ -40,4 +40,4 @@
       </div>
     </div>
   </ng-template>
-</ngx-container-outlet>
+</do-container-outlet>

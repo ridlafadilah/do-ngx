@@ -4,7 +4,7 @@ import { NgxValueAccessor } from '../base/ngx-value-accessor.component';
 import { RadioModel } from './radio.model';
 
 @Component({
-  selector: 'ngx-radio',
+  selector: 'do-radio',
   styleUrls: ['./ngx-radio.component.scss'],
   templateUrl: './ngx-radio.component.html',
   encapsulation: ViewEncapsulation.None,

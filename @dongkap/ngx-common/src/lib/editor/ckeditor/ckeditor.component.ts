@@ -12,7 +12,7 @@ import { NgControl } from '@angular/forms';
 import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 
 @Component({
-  selector: 'ngx-ckeditor',
+  selector: 'do-ckeditor',
   styleUrls: ['./ckeditor.component.scss'],
   templateUrl: './ckeditor.component.html',
   encapsulation: ViewEncapsulation.None,

@@ -12,7 +12,7 @@ import { ColumnMode, SelectionType, SortType } from '@swimlane/ngx-datatable';
 import { Page, DatatableColumn } from '../../models/datatable.model';
 
 @Component({
-  selector: 'ngx-datatable-base',
+  selector: 'do-datatable-base',
   styleUrls: ['./ngx-datatable-base.component.scss'],
   templateUrl: './ngx-datatable-base.component.html',
   encapsulation: ViewEncapsulation.None,

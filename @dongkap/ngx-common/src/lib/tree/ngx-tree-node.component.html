@@ -1,5 +1,5 @@
 <li
-  class="ngx-tree-node"
+  class="do-tree-node"
   [class.selectable]="selectable"
   (click)="onClick($event)"
   (focus)="activate.emit(this.data)"
@@ -8,22 +8,22 @@
 >
   <span
     *ngIf="expandable"
-    class="ngx-expander"
+    class="do-expander"
     (click)="onExpandClick()"
     [class.disabled]="disabled"
     [ngClass]="expanded ? icons.expand : icons.collapse"
   >
   <nb-icon [icon]="expanded ? icons.expand : icons.collapse" pack="eva"></nb-icon>
   </span>
-  <span *ngIf="!template" [innerHTML]="label" [class.disabled]="disabled" class="ngx-node-label"> </span>
+  <span *ngIf="!template" [innerHTML]="label" [class.disabled]="disabled" class="do-node-label"> </span>
   <ng-template *ngIf="template" [ngTemplateOutlet]="template" [ngTemplateOutletContext]="data"> </ng-template>
   <ng-content *ngIf="expanded"></ng-content>
-  <ngx-tree
+  <do-tree
     *ngIf="children?.length && expandable && expanded"
-    class="ngx-sub-tree"
+    class="do-sub-tree"
     [nodes]="children"
     [template]="template"
     [icons]="icons"
   >
-  </ngx-tree>
+  </do-tree>
 </li>

@@ -12,7 +12,7 @@
       },
       "root": "@dongkap/do-ngx",
       "sourceRoot": "@dongkap/do-ngx/src",
-      "prefix": "ngx",
+      "prefix": "do",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -24,13 +24,55 @@
             "tsConfig": "@dongkap/do-ngx/tsconfig.app.json",
             "aot": true,
             "assets": [
+              "@dongkap/do-ngx/src/assets",
               "@dongkap/do-ngx/src/favicon.ico",
-              "@dongkap/do-ngx/src/assets"
+              "@dongkap/do-ngx/src/favicon.png",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images",
+                "output": "/assets/img/markers"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce/icons",
+                "output": "/icons"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce/skins",
+                "output": "/skins"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "output": "/assets/ckeditor"
+              }
             ],
             "styles": [
-              "@dongkap/do-ngx/src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/typeface-exo/index.css",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/ionicons/scss/ionicons.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/socicon/css/socicon.css",
+              "node_modules/nebular-icons/scss/nebular-icons.scss",
+              "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/@dongkap/ngx-theme/styles/styles.scss",
+              "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/pace-js/pace.min.js",
+              "node_modules/tinymce/tinymce.min.js",
+              "node_modules/tinymce/themes/silver/theme.min.js",
+              "node_modules/tinymce/plugins/link/plugin.min.js",
+              "node_modules/tinymce/plugins/paste/plugin.min.js",
+              "node_modules/tinymce/plugins/table/plugin.min.js",
+              "node_modules/echarts/dist/echarts.min.js",
+              "node_modules/echarts/dist/extension/bmap.min.js",
+              "node_modules/chart.js/dist/Chart.min.js",
+              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
+            ],
             "allowedCommonJsDependencies": [
               "angular2-chartjs",
               "echarts",
@@ -95,21 +137,54 @@
             "polyfills": "@dongkap/do-ngx/src/polyfills.ts",
             "tsConfig": "@dongkap/do-ngx/tsconfig.spec.json",
             "karmaConfig": "@dongkap/do-ngx/karma.conf.js",
-            "assets": [
-              "@dongkap/do-ngx/src/favicon.ico",
-              "@dongkap/do-ngx/src/assets"
+            "scripts": [
+              "node_modules/pace-js/pace.min.js",
+              "node_modules/tinymce/tinymce.min.js",
+              "node_modules/tinymce/themes/silver/theme.min.js",
+              "node_modules/tinymce/plugins/link/plugin.min.js",
+              "node_modules/tinymce/plugins/paste/plugin.min.js",
+              "node_modules/tinymce/plugins/table/plugin.min.js",
+              "node_modules/echarts/dist/echarts.min.js",
+              "node_modules/echarts/dist/extension/bmap.min.js",
+              "node_modules/chart.js/dist/Chart.min.js",
+              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
             ],
             "styles": [
-              "@dongkap/do-ngx/src/styles.scss"
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/typeface-exo/index.css",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "node_modules/ionicons/scss/ionicons.scss",
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/socicon/css/socicon.css",
+              "node_modules/nebular-icons/scss/nebular-icons.scss",
+              "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
+              "node_modules/@dongkap/ngx-theme/styles/styles.scss",
+              "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
-            "scripts": [],
-            "allowedCommonJsDependencies": [
-              "angular2-chartjs",
-              "echarts",
-              "lodash",
-              "zrender/lib/svg/svg",
-              "zrender/lib/vml/vml",
-              "style-loader!leaflet/dist/leaflet.css"
+            "assets": [
+              "@dongkap/do-mock/src/assets",
+              "@dongkap/do-mock/src/favicon.ico",
+              "@dongkap/do-mock/src/favicon.png",
+              {
+                "glob": "**/*",
+                "input": "node_modules/leaflet/dist/images",
+                "output": "/assets/img/markers"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce/icons",
+                "output": "/icons"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce/skins",
+                "output": "/skins"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "output": "/assets/ckeditor"
+              }
             ]
           }
         },
@@ -178,6 +253,11 @@
                 "glob": "**/*",
                 "input": "node_modules/tinymce/skins",
                 "output": "/skins"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "output": "/assets/ckeditor"
               }
             ],
             "styles": [
@@ -196,13 +276,14 @@
             "scripts": [
               "node_modules/pace-js/pace.min.js",
               "node_modules/tinymce/tinymce.min.js",
-              "node_modules/tinymce/themes/modern/theme.min.js",
+              "node_modules/tinymce/themes/silver/theme.min.js",
               "node_modules/tinymce/plugins/link/plugin.min.js",
               "node_modules/tinymce/plugins/paste/plugin.min.js",
               "node_modules/tinymce/plugins/table/plugin.min.js",
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
-              "node_modules/chart.js/dist/Chart.min.js"
+              "node_modules/chart.js/dist/Chart.min.js",
+              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
             ],
             "allowedCommonJsDependencies": [
               "angular2-chartjs",
@@ -271,13 +352,14 @@
             "scripts": [
               "node_modules/pace-js/pace.min.js",
               "node_modules/tinymce/tinymce.min.js",
-              "node_modules/tinymce/themes/modern/theme.min.js",
+              "node_modules/tinymce/themes/silver/theme.min.js",
               "node_modules/tinymce/plugins/link/plugin.min.js",
               "node_modules/tinymce/plugins/paste/plugin.min.js",
               "node_modules/tinymce/plugins/table/plugin.min.js",
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
-              "node_modules/chart.js/dist/Chart.min.js"
+              "node_modules/chart.js/dist/Chart.min.js",
+              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -290,14 +372,6 @@
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
               "node_modules/@dongkap/ngx-theme/styles/styles.scss",
               "node_modules/flag-icon-css/css/flag-icon.min.css"
-            ],
-            "allowedCommonJsDependencies": [
-              "angular2-chartjs",
-              "echarts",
-              "lodash",
-              "zrender/lib/svg/svg",
-              "zrender/lib/vml/vml",
-              "style-loader!leaflet/dist/leaflet.css"
             ],
             "assets": [
               "@dongkap/do-mock/src/assets",
@@ -317,6 +391,11 @@
                 "glob": "**/*",
                 "input": "node_modules/tinymce/skins",
                 "output": "/skins"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "output": "/assets/ckeditor"
               }
             ]
           }

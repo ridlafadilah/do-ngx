@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ngx-chart',
+  selector: 'do-chart',
   styleUrls: ['./ngx-chart.component.scss'],
   templateUrl: './ngx-chart.component.html',
 })

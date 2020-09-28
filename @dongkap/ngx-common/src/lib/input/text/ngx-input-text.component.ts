@@ -3,7 +3,7 @@ import { NgControl } from '@angular/forms';
 import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 
 @Component({
-  selector: 'ngx-input-text',
+  selector: 'do-input-text',
   styleUrls: ['./ngx-input-text.component.scss'],
   templateUrl: './ngx-input-text.component.html',
   encapsulation: ViewEncapsulation.None,

@@ -6,7 +6,7 @@ import { delay } from 'rxjs/operators';
 import { LeafletModel } from '../models/leaflet.model';
 
 @Component({
-  selector: 'ngx-maps-leaflet',
+  selector: 'do-maps-leaflet',
   styleUrls: ['./ngx-maps-leaflet.component.scss'],
   templateUrl: './ngx-maps-leaflet.component.html',
 })

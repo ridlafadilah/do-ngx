@@ -15,7 +15,7 @@ import { NgxValueAccessor } from '../../base/ngx-value-accessor.component';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'ngx-image-upload',
+  selector: 'do-image-upload',
   styleUrls: ['./image-upload.component.scss'],
   templateUrl: './image-upload.component.html',
   encapsulation: ViewEncapsulation.None,
