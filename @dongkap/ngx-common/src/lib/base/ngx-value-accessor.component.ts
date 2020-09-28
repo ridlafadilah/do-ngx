@@ -1,9 +1,10 @@
 import { NgControl } from '@angular/forms';
 import { formatDate } from '@angular/common';
-import { Input } from '@angular/core';
+import { Component, Directive, Input } from '@angular/core';
 import { DateFormat } from '@dongkap/ngx-core';
 import { NgxValidatorAccessor } from './ngx-validator-accessor.component';
 
+@Directive()
 export abstract class NgxValueAccessor<T> extends NgxValidatorAccessor {
 
     @Input() format: string = DateFormat.DATE;

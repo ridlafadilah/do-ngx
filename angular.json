@@ -30,7 +30,15 @@
             "styles": [
               "@dongkap/do-ngx/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "angular2-chartjs",
+              "echarts",
+              "lodash",
+              "zrender/lib/svg/svg",
+              "zrender/lib/vml/vml",
+              "style-loader!leaflet/dist/leaflet.css"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,7 +102,15 @@
             "styles": [
               "@dongkap/do-ngx/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "angular2-chartjs",
+              "echarts",
+              "lodash",
+              "zrender/lib/svg/svg",
+              "zrender/lib/vml/vml",
+              "style-loader!leaflet/dist/leaflet.css"
+            ]
           }
         },
         "lint": {
@@ -180,13 +196,21 @@
             "scripts": [
               "node_modules/pace-js/pace.min.js",
               "node_modules/tinymce/tinymce.min.js",
-              "node_modules/tinymce/themes/silver/theme.min.js",
+              "node_modules/tinymce/themes/modern/theme.min.js",
               "node_modules/tinymce/plugins/link/plugin.min.js",
               "node_modules/tinymce/plugins/paste/plugin.min.js",
               "node_modules/tinymce/plugins/table/plugin.min.js",
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
               "node_modules/chart.js/dist/Chart.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "angular2-chartjs",
+              "echarts",
+              "lodash",
+              "zrender/lib/svg/svg",
+              "zrender/lib/vml/vml",
+              "style-loader!leaflet/dist/leaflet.css"
             ]
           },
           "configurations": {
@@ -247,7 +271,7 @@
             "scripts": [
               "node_modules/pace-js/pace.min.js",
               "node_modules/tinymce/tinymce.min.js",
-              "node_modules/tinymce/themes/silver/theme.min.js",
+              "node_modules/tinymce/themes/modern/theme.min.js",
               "node_modules/tinymce/plugins/link/plugin.min.js",
               "node_modules/tinymce/plugins/paste/plugin.min.js",
               "node_modules/tinymce/plugins/table/plugin.min.js",
@@ -266,6 +290,14 @@
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
               "node_modules/@dongkap/ngx-theme/styles/styles.scss",
               "node_modules/flag-icon-css/css/flag-icon.min.css"
+            ],
+            "allowedCommonJsDependencies": [
+              "angular2-chartjs",
+              "echarts",
+              "lodash",
+              "zrender/lib/svg/svg",
+              "zrender/lib/vml/vml",
+              "style-loader!leaflet/dist/leaflet.css"
             ],
             "assets": [
               "@dongkap/do-mock/src/assets",

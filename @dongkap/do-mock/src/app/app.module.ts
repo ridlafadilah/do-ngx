@@ -5,7 +5,8 @@
  */
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { APP_BASE_HREF, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,8 +21,11 @@ import {
 } from '@nebular/theme';
 
 import { MockModule } from './@mock/mock.module';
-import { NgxCoreModule } from '@dongkap/ngx-core';
+import { API, ENVIRONMENT, NgxCoreModule, OAUTH_INFO } from '@dongkap/ngx-core';
 import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { environment } from '../environments/environment';
+import { apiPath } from '../configs/api.config';
+import { oauthResource } from '../configs/security.config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,6 +48,23 @@ import { NgxThemeModule } from '@dongkap/ngx-theme';
     MockModule.forRoot(),
   ],
   bootstrap: [AppComponent],
+  providers: [
+    {
+      provide: LOCALE_ID, useValue: environment.locale,
+    },
+    {
+      provide: LocationStrategy, useClass: PathLocationStrategy,
+    },
+    {
+      provide: APP_BASE_HREF, useValue: environment.basePath,
+    },
+    {
+      provide: ENVIRONMENT, useValue: environment,
+    },
+    {
+      provide: API, useValue: apiPath,
+    },
+  ],
 })
 export class AppModule {
 }

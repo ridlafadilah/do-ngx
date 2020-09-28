@@ -5,6 +5,7 @@ import { MockComponent } from './mock.component';
 import { ECommerceComponent } from './pages/e-commerce/e-commerce.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundComponent } from './pages/miscellaneous/not-found/not-found.component';
+import { ExerciseComponent } from './pages/exercise/exercise.component';
 
 const routes: Routes = [{
   path: '',
@@ -17,6 +18,10 @@ const routes: Routes = [{
     {
       path: 'iot-dashboard',
       component: DashboardComponent,
+    },
+    {
+      path: 'exercise',
+      component: ExerciseComponent,
     },
     {
       path: 'layout',

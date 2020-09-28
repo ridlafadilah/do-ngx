@@ -21,8 +21,8 @@ export const TOASTR_PROVIDERS = [
   ],
 })
 export class NgxToastrModule {
-  static forRoot(): ModuleWithProviders {
-    return <ModuleWithProviders>{
+  static forRoot(): ModuleWithProviders<NgxToastrModule> {
+    return {
       ngModule: NgxToastrModule,
       providers: [
         ...TOASTR_PROVIDERS,

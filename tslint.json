@@ -101,15 +101,19 @@
         "check-typecast"
       ]
     },
-    "object-literal-shorthand": [
+    "ban": [
       true,
+      "eval",
+      "fit",
+      "fdescribe",
       {
-        "property": "never"
+        "name": "$",
+        "message": "please don't"
       }
     ],
     "component-class-suffix": true,
     "contextual-lifecycle": true,
-    "directive-class-suffix": true,
+    "directive-class-suffix": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": false,

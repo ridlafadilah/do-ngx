@@ -208,23 +208,26 @@ export class NgxSelectComponent extends NgxValueAccessor<any> implements OnDestr
           map((response: any) => {
             this.totalRecord = Number(response.totalRecord);
             this.total = this.total + Number(response.totalFiltered);
-            return (<SelectResponseModel[]> response['data']);
+            return response['data'] as SelectResponseModel[];
           }),
           catchError(() => of([])));
     }
 
     onKeyDown(event: KeyboardEvent, term: string) {
       if (
-          [46, 8, 27, 13, 32, 110, 190, 189, 16, 20, 18, 222, 191].indexOf(event.keyCode) !== -1 ||
-          (event.keyCode === 65 && event.ctrlKey === true) || // Allow: Ctrl+A
-          (event.keyCode === 67 && event.ctrlKey === true) || // Allow: Ctrl+C
-          (event.keyCode === 86 && event.ctrlKey === true) || // Allow: Ctrl+V
-          (event.keyCode === 88 && event.ctrlKey === true) || // Allow: Ctrl+X
-          (event.keyCode === 65 && event.metaKey === true) || // Cmd+A (Mac)
-          (event.keyCode === 67 && event.metaKey === true) || // Cmd+C (Mac)
-          (event.keyCode === 86 && event.metaKey === true) || // Cmd+V (Mac)
-          (event.keyCode === 88 && event.metaKey === true) || // Cmd+X (Mac)
-          (event.keyCode >= 35 && event.keyCode <= 39) || // Home, End, Left, Right
+        ['delete', 'backspace', 'tab', 'escape', 'Enter', 'decimal point', 'period', 'dash'].indexOf(event.key) !== -1 ||
+        (event.key === 'a' && event.ctrlKey === true) || // Allow: Ctrl+A
+        (event.key === 'c' && event.ctrlKey === true) || // Allow: Ctrl+C
+        (event.key === 'v' && event.ctrlKey === true) || // Allow: Ctrl+V
+        (event.key === 'x' && event.ctrlKey === true) || // Allow: Ctrl+X
+        (event.key === 'a' && event.metaKey === true) || // Cmd+A (Mac)
+        (event.key === 'c' && event.metaKey === true) || // Cmd+C (Mac)
+        (event.key === 'v' && event.metaKey === true) || // Cmd+V (Mac)
+        (event.key === 'x' && event.metaKey === true) || // Cmd+X (Mac)
+        (event.key === 'end') ||
+        (event.key === 'home') ||
+        (event.key === 'left arrow') ||
+        (event.key === 'right arrow') ||
           (event.keyCode >= 65 && event.keyCode <= 90) ||
           (!event.shiftKey && (event.keyCode >= 48 && event.keyCode <= 57)) ||
           (event.keyCode >= 96 && event.keyCode <= 105)) {

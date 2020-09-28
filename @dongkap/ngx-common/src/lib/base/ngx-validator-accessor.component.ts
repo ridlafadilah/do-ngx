@@ -1,4 +1,4 @@
-import { Input, OnInit } from '@angular/core';
+import { Directive, Input, OnInit } from '@angular/core';
 import {
     ControlValueAccessor,
     NgControl,
@@ -9,6 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 
+@Directive()
 export abstract class NgxValidatorAccessor implements ControlValueAccessor, Validator, OnInit {
 
     @Input() name: string;
@@ -23,7 +24,7 @@ export abstract class NgxValidatorAccessor implements ControlValueAccessor, Vali
     protected onInit(): void {}
 
     constructor(protected ngControl: NgControl) {
-        // ngControl && (ngControl.valueAccessor = this); // unused expression
+        ngControl && (ngControl.valueAccessor = this);
     }
 
     public ngOnInit(): void {

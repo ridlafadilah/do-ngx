@@ -13,6 +13,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/iot-dashboard',
   },
   {
+    title: 'Exercise',
+    icon: 'question-mark-circle-outline',
+    link: '/pages/exercise',
+  },
+  {
     title: 'FEATURES',
     group: true,
   },

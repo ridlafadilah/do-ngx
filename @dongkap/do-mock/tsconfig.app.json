@@ -15,6 +15,12 @@
       ],
       "@dongkap/ngx-theme/*": [
         "../../@dongkap/ngx-theme/src/*"
+      ],
+      "@dongkap/ngx-common": [
+        "../../@dongkap/ngx-common/src"
+      ],
+      "@dongkap/ngx-common/*": [
+        "../../@dongkap/ngx-common/src/*"
       ]
     }
   },

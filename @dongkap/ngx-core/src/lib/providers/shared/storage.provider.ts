@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
-import { IndexedDBEncFactoryService } from '../services/utils/indexeddb-enc-factory.service';
-import { IndexedDBFactoryService } from '../services/utils/indexeddb-factory.service';
+import { IndexedDBEncFactoryService } from '../../services/utils/indexeddb-enc-factory.service';
+import { IndexedDBFactoryService } from '../../services/utils/indexeddb-factory.service';
 
 export const AUTH_INDEXED_DB: InjectionToken<IndexedDBEncFactoryService> =
 new InjectionToken<IndexedDBEncFactoryService>('Auth IndexedDB Resource');

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 import * as L from 'leaflet';
-import 'style-loader!leaflet/dist/leaflet.css';
+// import 'style-loader!leaflet/dist/leaflet.css';
 import { delay } from 'rxjs/operators';
 import { LeafletModel } from '../models/leaflet.model';
 

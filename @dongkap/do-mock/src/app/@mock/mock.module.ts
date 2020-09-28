@@ -53,6 +53,7 @@ import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ECommerceModule } from './pages/e-commerce/e-commerce.module';
 import { MiscellaneousModule } from './pages/miscellaneous/miscellaneous.module';
 import { MockComponent } from './mock.component';
+import { ExerciseModule } from './pages/exercise/exercise.module';
 
 const socialLinks = [
   {
@@ -151,6 +152,7 @@ export const MOCK_PROVIDERS = [
     DashboardModule,
     ECommerceModule,
     MiscellaneousModule,
+    ExerciseModule,
   ],
   exports: [
     NbAuthModule,

@@ -16,13 +16,13 @@ export { HttpFactoryService } from './lib/services/utils/http-factory.service';
 export { IndexedDBFactoryService } from './lib/services/utils/indexeddb-factory.service';
 export { IndexedDBEncFactoryService } from './lib/services/utils/indexeddb-enc-factory.service';
 
-export { OAUTH_INFO, USER_INFO } from './lib/providers/oauth.provider';
-export { API } from './lib/providers/api.provider';
 export { HTTP_SERVICE } from './lib/providers/http.provider';
-export { ENVIRONMENT } from './lib/providers/environment.provider';
+export { OAUTH_INFO, USER_INFO } from './lib/providers/shared/oauth.provider';
+export { API } from './lib/providers/shared/api.provider';
+export { ENVIRONMENT } from './lib/providers/shared/environment.provider';
 export {
     AUTH_INDEXED_DB,
     PROFILE_INDEXED_DB,
     SETTINGS_INDEXED_DB,
     PANIC_INDEXED_DB,
-} from './lib/providers/storage.provider';
+} from './lib/providers/shared/storage.provider';
