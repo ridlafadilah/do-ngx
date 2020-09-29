@@ -14,7 +14,7 @@ import {
 } from '@nebular/theme';
 
 // modules
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { ModalOverlaysRoutingModule } from './modal-overlays-routing.module';
 
 // components
@@ -59,7 +59,7 @@ const ENTRY_COMPONENTS = [
 
 const MODULES = [
   FormsModule,
-  NgxThemeModule,
+  DoThemeModule,
   ModalOverlaysRoutingModule,
   NbDialogModule.forChild(),
   NbWindowModule.forChild(),

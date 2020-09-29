@@ -3,7 +3,7 @@ import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
 import { ProfitChart } from '../../../../data/profit-chart';
-import { LayoutService } from '@dongkap/ngx-core';
+import { LayoutService } from '@dongkap/do-core';
 
 @Component({
   selector: 'ngx-profit-chart',

@@ -6,9 +6,9 @@ Dongkap | Web Application
 ### 1.	Generate Application
 ```sh
 $ ng generate application do-ngx --routing=true --prefix=do --style=scss
-$ ng generate library ngx-common --prefix=do
-$ ng generate library ngx-auth --prefix=do
-$ ng generate library ngx-extra --prefix=do
+$ ng generate library do-common --prefix=do
+$ ng generate library do-auth --prefix=do
+$ ng generate library do-extra --prefix=do
 ```
 
 ### 2.	Restructure @dongkap/do-mock

@@ -6,7 +6,7 @@
 import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
-import { AnalyticsService, SeoService } from '@dongkap/ngx-core';
+import { AnalyticsService, SeoService } from '@dongkap/do-core';
 
 @Component({
   selector: 'ngx-app',

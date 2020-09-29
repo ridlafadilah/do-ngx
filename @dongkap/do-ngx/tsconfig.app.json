@@ -4,35 +4,35 @@
     "outDir": "../../out-tsc/@dongkap/do-ngx",
     "baseUrl": "./",
     "paths": {
-      "@dongkap/ngx-core": [
-        "../../@dongkap/ngx-core/src"
+      "@dongkap/do-core": [
+        "../../@dongkap/do-core/src"
       ],
-      "@dongkap/ngx-core/*": [
-        "../../@dongkap/ngx-core/src/*"
+      "@dongkap/do-core/*": [
+        "../../@dongkap/do-core/src/*"
       ],
-      "@dongkap/ngx-theme": [
-        "../../@dongkap/ngx-theme/src"
+      "@dongkap/do-theme": [
+        "../../@dongkap/do-theme/src"
       ],
-      "@dongkap/ngx-theme/*": [
-        "../../@dongkap/ngx-theme/src/*"
+      "@dongkap/do-theme/*": [
+        "../../@dongkap/do-theme/src/*"
       ],
-      "@dongkap/ngx-common": [
-        "../../@dongkap/ngx-common/src"
+      "@dongkap/do-common": [
+        "../../@dongkap/do-common/src"
       ],
-      "@dongkap/ngx-common/*": [
-        "../../@dongkap/ngx-common/src/*"
+      "@dongkap/do-common/*": [
+        "../../@dongkap/do-common/src/*"
       ],
-      "@dongkap/ngx-auth": [
-        "../../@dongkap/ngx-auth/src"
+      "@dongkap/do-auth": [
+        "../../@dongkap/do-auth/src"
       ],
-      "@dongkap/ngx-auth/*": [
-        "../../@dongkap/ngx-auth/src/*"
+      "@dongkap/do-auth/*": [
+        "../../@dongkap/do-auth/src/*"
       ],
-      "@dongkap/ngx-extra": [
-        "../../@dongkap/ngx-extra/src"
+      "@dongkap/do-extra": [
+        "../../@dongkap/do-extra/src"
       ],
-      "@dongkap/ngx-extra/*": [
-        "../../@dongkap/ngx-extra/src/*"
+      "@dongkap/do-extra/*": [
+        "../../@dongkap/do-extra/src/*"
       ]
     }
   },

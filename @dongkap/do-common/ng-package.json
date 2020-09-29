@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@dongkap/do-common",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      "@ngx-translate/core": "@ngx-translate/core",
+      "@nebular/theme": "@nebular/theme",
+      "@swimlane/ngx-charts": "@swimlane/ngx-charts",
+      "ngx-echarts": "ngx-echarts",
+      "angular2-chartjs": "angular2-chartjs",
+      "@dongkap/do-core": "@dongkap/do-core",
+      "ng2-ckeditor": "ng2-ckeditor",
+      "@agm/core": "@agm/core",
+      "asymmetrik/ngx-leaflet": "asymmetrik/ngx-leaflet",
+      "leaflet": "leaflet",
+      "@ng-select/ng-select": "@ng-select/ng-select",
+      "@swimlane/ngx-datatable": "@swimlane/ngx-datatable",
+      "@nebular/date-fns": "@nebular/date-fns",
+      "@nebular/moment": "@nebular/moment"
+    }
+  }
+}

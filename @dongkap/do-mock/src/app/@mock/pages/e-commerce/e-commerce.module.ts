@@ -12,7 +12,7 @@ import {
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { ECommerceComponent } from './e-commerce.component';
 import { ProfitCardComponent } from './profit-card/profit-card.component';
 import { ECommerceChartsPanelComponent } from './charts-panel/charts-panel.component';
@@ -58,7 +58,7 @@ import { EarningLiveUpdateChartComponent } from './earning-card/front-side/earni
 
 @NgModule({
   imports: [
-    NgxThemeModule,
+    DoThemeModule,
     NbCardModule,
     NbUserModule,
     NbButtonModule,

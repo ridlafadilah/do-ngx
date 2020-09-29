@@ -15,7 +15,7 @@ import {
   NbTabsetModule,
 } from '@nebular/theme';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { ExtraComponentsRoutingModule } from './extra-components-routing.module';
 
 // components
@@ -71,7 +71,7 @@ const MODULES = [
   NbSelectModule,
   NbSpinnerModule,
   NbTabsetModule,
-  NgxThemeModule,
+  DoThemeModule,
   ExtraComponentsRoutingModule,
 ];
 

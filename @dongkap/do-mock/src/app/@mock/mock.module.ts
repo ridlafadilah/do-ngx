@@ -5,8 +5,8 @@ import { NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
 import { NbSecurityModule, NbRoleProvider } from '@nebular/security';
 import { NbMenuModule } from '@nebular/theme';
 
-import { UserData } from '@dongkap/ngx-core';
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { UserData } from '@dongkap/do-core';
+import { DoThemeModule } from '@dongkap/do-theme';
 
 import { PlayerService } from './utils/player.service';
 import { ElectricityData } from './data/electricity';
@@ -147,7 +147,7 @@ export const MOCK_PROVIDERS = [
   imports: [
     CommonModule,
     MockRoutingModule,
-    NgxThemeModule,
+    DoThemeModule,
     NbMenuModule,
     DashboardModule,
     ECommerceModule,

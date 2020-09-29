@@ -44,7 +44,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "input": "./node_modules/@dongkap/do-common/assets/ckeditor",
                 "output": "/assets/ckeditor"
               }
             ],
@@ -58,7 +58,7 @@
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
               "node_modules/leaflet/dist/leaflet.css",
-              "node_modules/@dongkap/ngx-theme/styles/styles.scss",
+              "node_modules/@dongkap/do-theme/styles/styles.scss",
               "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
             "scripts": [
@@ -71,7 +71,7 @@
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
               "node_modules/chart.js/dist/Chart.min.js",
-              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
+              "node_modules/@dongkap/do-common/assets/ckeditor/ckeditor.js"
             ],
             "allowedCommonJsDependencies": [
               "angular2-chartjs",
@@ -147,7 +147,7 @@
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
               "node_modules/chart.js/dist/Chart.min.js",
-              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
+              "node_modules/@dongkap/do-common/assets/ckeditor/ckeditor.js"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -158,7 +158,7 @@
               "node_modules/socicon/css/socicon.css",
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
-              "node_modules/@dongkap/ngx-theme/styles/styles.scss",
+              "node_modules/@dongkap/do-theme/styles/styles.scss",
               "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
             "assets": [
@@ -182,7 +182,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "input": "./node_modules/@dongkap/do-common/assets/ckeditor",
                 "output": "/assets/ckeditor"
               }
             ]
@@ -256,7 +256,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "input": "./node_modules/@dongkap/do-common/assets/ckeditor",
                 "output": "/assets/ckeditor"
               }
             ],
@@ -270,7 +270,7 @@
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
               "node_modules/leaflet/dist/leaflet.css",
-              "node_modules/@dongkap/ngx-theme/styles/styles.scss",
+              "node_modules/@dongkap/do-theme/styles/styles.scss",
               "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
             "scripts": [
@@ -283,7 +283,7 @@
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
               "node_modules/chart.js/dist/Chart.min.js",
-              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
+              "node_modules/@dongkap/do-common/assets/ckeditor/ckeditor.js"
             ],
             "allowedCommonJsDependencies": [
               "angular2-chartjs",
@@ -359,7 +359,7 @@
               "node_modules/echarts/dist/echarts.min.js",
               "node_modules/echarts/dist/extension/bmap.min.js",
               "node_modules/chart.js/dist/Chart.min.js",
-              "node_modules/@dongkap/ngx-common/assets/ckeditor/ckeditor.js"
+              "node_modules/@dongkap/do-common/assets/ckeditor/ckeditor.js"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.css",
@@ -370,7 +370,7 @@
               "node_modules/socicon/css/socicon.css",
               "node_modules/nebular-icons/scss/nebular-icons.scss",
               "node_modules/pace-js/templates/pace-theme-flash.tmpl.css",
-              "node_modules/@dongkap/ngx-theme/styles/styles.scss",
+              "node_modules/@dongkap/do-theme/styles/styles.scss",
               "node_modules/flag-icon-css/css/flag-icon.min.css"
             ],
             "assets": [
@@ -394,7 +394,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/@dongkap/ngx-common/assets/ckeditor",
+                "input": "./node_modules/@dongkap/do-common/assets/ckeditor",
                 "output": "/assets/ckeditor"
               }
             ]
@@ -427,38 +427,38 @@
         }
       }
     },
-    "@dongkap/ngx-core": {
+    "@dongkap/do-core": {
       "projectType": "library",
-      "root": "@dongkap/ngx-core",
-      "sourceRoot": "@dongkap/ngx-core/src",
+      "root": "@dongkap/do-core",
+      "sourceRoot": "@dongkap/do-core/src",
       "prefix": "do",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "@dongkap/ngx-core/tsconfig.lib.json",
-            "project": "@dongkap/ngx-core/ng-package.json"
+            "tsConfig": "@dongkap/do-core/tsconfig.lib.json",
+            "project": "@dongkap/do-core/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "@dongkap/ngx-core/tsconfig.lib.prod.json"
+              "tsConfig": "@dongkap/do-core/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "@dongkap/ngx-core/src/test.ts",
-            "tsConfig": "@dongkap/ngx-core/tsconfig.spec.json",
-            "karmaConfig": "@dongkap/ngx-core/karma.conf.js"
+            "main": "@dongkap/do-core/src/test.ts",
+            "tsConfig": "@dongkap/do-core/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-core/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "@dongkap/ngx-core/tsconfig.lib.json",
-              "@dongkap/ngx-core/tsconfig.spec.json"
+              "@dongkap/do-core/tsconfig.lib.json",
+              "@dongkap/do-core/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -467,38 +467,38 @@
         }
       }
     },
-    "@dongkap/ngx-theme": {
+    "@dongkap/do-theme": {
       "projectType": "library",
-      "root": "@dongkap/ngx-theme",
-      "sourceRoot": "@dongkap/ngx-theme/src",
-      "prefix": "ngx",
+      "root": "@dongkap/do-theme",
+      "sourceRoot": "@dongkap/do-theme/src",
+      "prefix": "do",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "@dongkap/ngx-theme/tsconfig.lib.json",
-            "project": "@dongkap/ngx-theme/ng-package.json"
+            "tsConfig": "@dongkap/do-theme/tsconfig.lib.json",
+            "project": "@dongkap/do-theme/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "@dongkap/ngx-theme/tsconfig.lib.prod.json"
+              "tsConfig": "@dongkap/do-theme/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "@dongkap/ngx-theme/src/test.ts",
-            "tsConfig": "@dongkap/ngx-theme/tsconfig.spec.json",
-            "karmaConfig": "@dongkap/ngx-theme/karma.conf.js"
+            "main": "@dongkap/do-theme/src/test.ts",
+            "tsConfig": "@dongkap/do-theme/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-theme/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "@dongkap/ngx-theme/tsconfig.lib.json",
-              "@dongkap/ngx-theme/tsconfig.spec.json"
+              "@dongkap/do-theme/tsconfig.lib.json",
+              "@dongkap/do-theme/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -507,38 +507,38 @@
         }
       }
     },
-    "@dongkap/ngx-common": {
+    "@dongkap/do-common": {
       "projectType": "library",
-      "root": "@dongkap/ngx-common",
-      "sourceRoot": "@dongkap/ngx-common/src",
+      "root": "@dongkap/do-common",
+      "sourceRoot": "@dongkap/do-common/src",
       "prefix": "do",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "@dongkap/ngx-common/tsconfig.lib.json",
-            "project": "@dongkap/ngx-common/ng-package.json"
+            "tsConfig": "@dongkap/do-common/tsconfig.lib.json",
+            "project": "@dongkap/do-common/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "@dongkap/ngx-common/tsconfig.lib.prod.json"
+              "tsConfig": "@dongkap/do-common/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "@dongkap/ngx-common/src/test.ts",
-            "tsConfig": "@dongkap/ngx-common/tsconfig.spec.json",
-            "karmaConfig": "@dongkap/ngx-common/karma.conf.js"
+            "main": "@dongkap/do-common/src/test.ts",
+            "tsConfig": "@dongkap/do-common/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-common/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "@dongkap/ngx-common/tsconfig.lib.json",
-              "@dongkap/ngx-common/tsconfig.spec.json"
+              "@dongkap/do-common/tsconfig.lib.json",
+              "@dongkap/do-common/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -547,38 +547,38 @@
         }
       }
     },
-    "@dongkap/ngx-auth": {
+    "@dongkap/do-auth": {
       "projectType": "library",
-      "root": "@dongkap/ngx-auth",
-      "sourceRoot": "@dongkap/ngx-auth/src",
+      "root": "@dongkap/do-auth",
+      "sourceRoot": "@dongkap/do-auth/src",
       "prefix": "do",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "@dongkap/ngx-auth/tsconfig.lib.json",
-            "project": "@dongkap/ngx-auth/ng-package.json"
+            "tsConfig": "@dongkap/do-auth/tsconfig.lib.json",
+            "project": "@dongkap/do-auth/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "@dongkap/ngx-auth/tsconfig.lib.prod.json"
+              "tsConfig": "@dongkap/do-auth/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "@dongkap/ngx-auth/src/test.ts",
-            "tsConfig": "@dongkap/ngx-auth/tsconfig.spec.json",
-            "karmaConfig": "@dongkap/ngx-auth/karma.conf.js"
+            "main": "@dongkap/do-auth/src/test.ts",
+            "tsConfig": "@dongkap/do-auth/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-auth/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "@dongkap/ngx-auth/tsconfig.lib.json",
-              "@dongkap/ngx-auth/tsconfig.spec.json"
+              "@dongkap/do-auth/tsconfig.lib.json",
+              "@dongkap/do-auth/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -587,38 +587,38 @@
         }
       }
     },
-    "@dongkap/ngx-extra": {
+    "@dongkap/do-extra": {
       "projectType": "library",
-      "root": "@dongkap/ngx-extra",
-      "sourceRoot": "@dongkap/ngx-extra/src",
+      "root": "@dongkap/do-extra",
+      "sourceRoot": "@dongkap/do-extra/src",
       "prefix": "do",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "@dongkap/ngx-extra/tsconfig.lib.json",
-            "project": "@dongkap/ngx-extra/ng-package.json"
+            "tsConfig": "@dongkap/do-extra/tsconfig.lib.json",
+            "project": "@dongkap/do-extra/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "@dongkap/ngx-extra/tsconfig.lib.prod.json"
+              "tsConfig": "@dongkap/do-extra/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "@dongkap/ngx-extra/src/test.ts",
-            "tsConfig": "@dongkap/ngx-extra/tsconfig.spec.json",
-            "karmaConfig": "@dongkap/ngx-extra/karma.conf.js"
+            "main": "@dongkap/do-extra/src/test.ts",
+            "tsConfig": "@dongkap/do-extra/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-extra/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "@dongkap/ngx-extra/tsconfig.lib.json",
-              "@dongkap/ngx-extra/tsconfig.spec.json"
+              "@dongkap/do-extra/tsconfig.lib.json",
+              "@dongkap/do-extra/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

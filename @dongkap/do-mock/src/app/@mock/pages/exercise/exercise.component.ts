@@ -8,8 +8,8 @@ import {
   SelectResponseModel,
   Keyword,
   DatatableFilter,
-} from '@dongkap/ngx-common';
-import { HttpBaseModel, HttpMethod } from '@dongkap/ngx-core';
+} from '@dongkap/do-common';
+import { HttpBaseModel, HttpMethod } from '@dongkap/do-core';
 
 @Component({
   selector: 'ngx-exercise',

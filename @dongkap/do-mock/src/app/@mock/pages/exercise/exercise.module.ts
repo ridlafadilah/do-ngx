@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbCardModule, NbButtonModule } from '@nebular/theme';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
-import { NgxCommonModule } from '@dongkap/ngx-common';
+import { DoThemeModule } from '@dongkap/do-theme';
+import { DoCommonModule } from '@dongkap/do-common';
 import { ExerciseComponent } from './exercise.component';
 
 const components = [
@@ -15,8 +15,8 @@ const modules = [
   ReactiveFormsModule,
   NbCardModule,
   NbButtonModule,
-  NgxThemeModule,
-  NgxCommonModule,
+  DoThemeModule,
+  DoCommonModule,
 ];
 
 @NgModule({

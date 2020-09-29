@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/mixins/breakpoints';
 @import '~@nebular/theme/styles/global/breakpoints';
 
-@import '~@dongkap/ngx-theme/styles/themes';
+@import '~@dongkap/do-theme/styles/themes';
 
 @include nb-install-component() {
   button + button {

@@ -1,0 +1,29 @@
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { NbRadioModule } from '@nebular/theme';
+import { DoBaseModule } from '../base/do-base.module';
+import { DoRadioComponent } from './do-radio.component';
+
+export const components = [
+  DoRadioComponent,
+];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    NbRadioModule,
+    DoBaseModule,
+  ],
+  declarations: [
+    ...components,
+  ],
+  exports: [
+    ...components,
+  ],
+})
+export class DoRadioModule { }

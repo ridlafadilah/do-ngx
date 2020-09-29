@@ -12,7 +12,7 @@ import {
 } from '@nebular/theme';
 import { NgxEchartsModule } from 'ngx-echarts';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { DashboardComponent } from './dashboard.component';
 import { StatusCardComponent } from './status-card/status-card.component';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -34,7 +34,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     FormsModule,
-    NgxThemeModule,
+    DoThemeModule,
     NbCardModule,
     NbUserModule,
     NbButtonModule,
