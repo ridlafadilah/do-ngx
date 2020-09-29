@@ -12,7 +12,7 @@ $ ng new do-ngx --create-application=false --routing=false --prefix=ngx --style=
 ### 2.	Generate Application
 ```sh
 $ ng generate application do-mock --routing=true --prefix=ngx --style=scss
-$ ng generate library ngx-core --prefix=ngx
+$ ng generate library ngx-core --prefix=do
 $ ng generate library ngx-theme --prefix=ngx
 ```
 
