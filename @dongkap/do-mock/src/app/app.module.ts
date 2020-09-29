@@ -20,8 +20,8 @@ import {
 } from '@nebular/theme';
 
 import { MockModule } from './@mock/mock.module';
-import { NgxCoreModule } from '@dongkap/ngx-core';
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoCoreModule } from '@dongkap/do-core';
+import { DoThemeModule } from '@dongkap/do-theme';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,8 +39,8 @@ import { NgxThemeModule } from '@dongkap/ngx-theme';
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
-    NgxCoreModule.forRoot(),
-    NgxThemeModule.forRoot(),
+    DoCoreModule.forRoot(),
+    DoThemeModule.forRoot(),
     MockModule.forRoot(),
   ],
   bootstrap: [AppComponent],

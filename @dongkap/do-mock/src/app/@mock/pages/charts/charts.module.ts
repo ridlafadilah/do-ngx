@@ -4,7 +4,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ChartModule } from 'angular2-chartjs';
 import { NbCardModule } from '@nebular/theme';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 
 import { ChartsRoutingModule, routedComponents } from './charts-routing.module';
 import { ChartjsBarComponent } from './chartjs/chartjs-bar.component';
@@ -51,7 +51,7 @@ const components = [
 
 @NgModule({
   imports: [
-    NgxThemeModule,
+    DoThemeModule,
     ChartsRoutingModule,
     NgxEchartsModule,
     NgxChartsModule,

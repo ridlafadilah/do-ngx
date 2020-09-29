@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NbAlertModule, NbCardModule, NbIconModule, NbPopoverModule, NbSearchModule } from '@nebular/theme';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { UiFeaturesRoutingModule } from './ui-features-routing.module';
 import { UiFeaturesComponent } from './ui-features.component';
 import { GridComponent } from './grid/grid.component';
@@ -24,7 +24,7 @@ const components = [
     NbSearchModule,
     NbIconModule,
     NbAlertModule,
-    NgxThemeModule,
+    DoThemeModule,
     UiFeaturesRoutingModule,
   ],
   declarations: [

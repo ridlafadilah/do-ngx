@@ -4,12 +4,12 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { NbCardModule } from '@nebular/theme';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { MapsRoutingModule, routedComponents } from './maps-routing.module';
 
 @NgModule({
   imports: [
-    NgxThemeModule,
+    DoThemeModule,
     GoogleMapsModule,
     LeafletModule.forRoot(),
     MapsRoutingModule,

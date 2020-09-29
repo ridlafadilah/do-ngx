@@ -5,63 +5,63 @@ Skeleton of Ngx-Dongkap
 
 ### 1.	Generate Project
 ```sh
-$ ng new do-ngx --create-application=false --routing=false --prefix=ngx --style=scss --skipGit=true --commit=false -S --newProjectRoot=@dongkap
+$ ng new do-ngx --create-application=false --routing=false --style=scss --skipGit=true --commit=false -S --newProjectRoot=@dongkap
 ```
 - copy source from [akveo](https://github.com/akveo/ngx-admin)
 
 ### 2.	Generate Application
 ```sh
 $ ng generate application do-mock --routing=true --prefix=ngx --style=scss
-$ ng generate library ngx-core --prefix=do
-$ ng generate library ngx-theme --prefix=ngx
+$ ng generate library do-core --prefix=do
+$ ng generate library do-theme --prefix=do
 ```
 
-### 3.	Config Library @dongkap/ngx-core
-- change name angular.json `projects.ngx-core` to `@dongkap/ngx-core`
-- rename file *@dongkap/ngx-core/src/public-api.ts* to *index.ts*
-- change name *@dongkap/ngx-core/ng-package.json* `src/public-api.ts` to `src/index.ts`
-- change name *@dongkap/ngx-core/ng-package.json* `/dist/ngx-core` to `/dist/@dongkap/ngx-core`
-- change name *@dongkap/ngx-core/package.json* at `"name": "ngx-core "` to `"name": "@dongkap/ngx-core"`
+### 3.	Config Library @dongkap/do-core
+- change name angular.json `projects.do-core` to `@dongkap/do-core`
+- rename file *@dongkap/do-core/src/public-api.ts* to *index.ts*
+- change name *@dongkap/do-core/ng-package.json* `src/public-api.ts` to `src/index.ts`
+- change name *@dongkap/do-core/ng-package.json* `/dist/do-core` to `/dist/@dongkap/do-core`
+- change name *@dongkap/do-core/package.json* at `"name": "do-core "` to `"name": "@dongkap/do-core"`
 - adjust *tsconfig.lib.json*
 - adjust *tsconfig.spec.json*
-- create new file *@dongkap/ngx-core/src/lib/core.module.ts*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/analytics.service.ts* to *@dongkap/ngx-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/layout.service.ts* to *@dongkap/ngx-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/seo.service.ts* to *@dongkap/ngx-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/state.service.ts* to *@dongkap/ngx-core/src/lib/services/utils*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/module-import-guard.ts* to *@dongkap/ngx-core/src/lib*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/data/users.ts* to *@dongkap/ngx-core/src/lib/models/utils*
+- create new file *@dongkap/do-core/src/lib/core.module.ts*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/analytics.service.ts* to *@dongkap/do-core/src/lib/services/utils*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/layout.service.ts* to *@dongkap/do-core/src/lib/services/utils*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/seo.service.ts* to *@dongkap/do-core/src/lib/services/utils*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/utils/state.service.ts* to *@dongkap/do-core/src/lib/services/utils*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/module-import-guard.ts* to *@dongkap/do-core/src/lib*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *src/app/@core/data/users.ts* to *@dongkap/do-core/src/lib/models/utils*
 
-### 4.	Config Library @dongkap/ngx-theme
-- change name angular.json `projects.ngx-theme` to `@dongkap/ngx-theme`
-- rename file *@dongkap/ngx-theme/src/public-api.ts* to *index.ts*
-- change name *@dongkap/ngx-theme/ng-package.json* `src/public-api.ts` to `src/index.ts`
-- change name *@dongkap/ngx-theme/ng-package.json* `/dist/ngx-theme` to `/dist/@dongkap/ngx-theme`
-- change name *@dongkap/ngx-theme/package.json* at `"name": "ngx-theme "` to `"name": "@dongkap/ngx-theme"`
+### 4.	Config Library @dongkap/do-theme
+- change name angular.json `projects.do-theme` to `@dongkap/do-theme`
+- rename file *@dongkap/do-theme/src/public-api.ts* to *index.ts*
+- change name *@dongkap/do-theme/ng-package.json* `src/public-api.ts` to `src/index.ts`
+- change name *@dongkap/do-theme/ng-package.json* `/dist/do-theme` to `/dist/@dongkap/do-theme`
+- change name *@dongkap/do-theme/package.json* at `"name": "do-theme "` to `"name": "@dongkap/do-theme"`
 - adjust *tsconfig.lib.json*
 - adjust *tsconfig.spec.json*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/components* to *@dongkap/ngx-theme/src/lib*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/directives* to *@dongkap/ngx-theme/src/lib*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/layouts* to *@dongkap/ngx-theme/src/lib*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/pipes* to *@dongkap/ngx-theme/src/lib*
-- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/styles* to *@dongkap/ngx-theme/src/lib*
-- `mkdir @dongkap/ngx-theme/src/styles`
-- copy `@dongkap/ngx-theme/src/lib/styles/*.scss` to `@dongkap/ngx-theme/src/styles`
-- copy `opensans.css`, `fonts/*` from [master](https://github.com/ridlafadilah/do-ngx/tree/master/%40dongkap/ngx-theme/src/styles)
-- change in *@dongkap/ngx-theme/src/styles/syles.scss*  `@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');` to `@import 'opensans.css';`
-- delete `@dongkap/ngx-theme/src/lib/components/tiny-mce`
-- adjust *ngx-theme.module.ts*
-- change `@dongkap/ngx-theme/src/lib/layouts/*.scss` `@import '../../styles/themes';` to `@import '../../../styles/themes`
-- change `@dongkap/ngx-theme/src/lib/components/*.scss` `@import '../../styles/themes';` to `@import '../../../styles/themes`
-- delete in *@dongkap/ngx-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes';`
-- add in *@dongkap/ngx-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/default';`
-- add in *@dongkap/ngx-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/dark';`
-- add in *@dongkap/ngx-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/cosmic';`
-- add in *@dongkap/ngx-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/corporate';`
-- delete *@dongkap/ngx-theme/src/lib/components/index.ts*
-- delete *@dongkap/ngx-theme/src/lib/layouts/index.ts*
-- delete *@dongkap/ngx-theme/src/lib/pipes/index.ts*
-- change angular.json `src/app/@theme/styles/styles.scss` to `node_modules/@dongkap/ngx-theme/styles/styles.scss`
+- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/components* to *@dongkap/do-theme/src/lib*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/directives* to *@dongkap/do-theme/src/lib*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/layouts* to *@dongkap/do-theme/src/lib*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/pipes* to *@dongkap/do-theme/src/lib*
+- copy from [akveo](https://github.com/akveo/ngx-admin) *@theme/styles* to *@dongkap/do-theme/src/lib*
+- `mkdir @dongkap/do-theme/src/styles`
+- copy `@dongkap/do-theme/src/lib/styles/*.scss` to `@dongkap/do-theme/src/styles`
+- copy `opensans.css`, `fonts/*` from [master](https://github.com/ridlafadilah/do-ngx/tree/master/%40dongkap/do-theme/src/styles)
+- change in *@dongkap/do-theme/src/styles/syles.scss*  `@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');` to `@import 'opensans.css';`
+- delete `@dongkap/do-theme/src/lib/components/tiny-mce`
+- adjust *do-theme.module.ts*
+- change `@dongkap/do-theme/src/lib/layouts/*.scss` `@import '../../styles/themes';` to `@import '../../../styles/themes`
+- change `@dongkap/do-theme/src/lib/components/*.scss` `@import '../../styles/themes';` to `@import '../../../styles/themes`
+- delete in *@dongkap/do-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes';`
+- add in *@dongkap/do-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/default';`
+- add in *@dongkap/do-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/dark';`
+- add in *@dongkap/do-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/cosmic';`
+- add in *@dongkap/do-theme/src/styles/theme.scss* `@import '~@nebular/theme/styles/themes/corporate';`
+- delete *@dongkap/do-theme/src/lib/components/index.ts*
+- delete *@dongkap/do-theme/src/lib/layouts/index.ts*
+- delete *@dongkap/do-theme/src/lib/pipes/index.ts*
+- change angular.json `src/app/@theme/styles/styles.scss` to `node_modules/@dongkap/do-theme/styles/styles.scss`
 - add angular.json `node_modules/flag-icon-css/css/flag-icon.min.css`
 
 ### 5.	Restructure Template @dongkap/do-mock

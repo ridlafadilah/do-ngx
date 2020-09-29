@@ -10,7 +10,7 @@ import {
   NbTabsetModule, NbUserModule,
 } from '@nebular/theme';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { Tab1Component, Tab2Component, TabsComponent } from './tabs/tabs.component';
@@ -26,7 +26,7 @@ import { NewsService } from './news.service';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    NgxThemeModule,
+    DoThemeModule,
     NbTabsetModule,
     NbRouteTabsetModule,
     NbStepperModule,

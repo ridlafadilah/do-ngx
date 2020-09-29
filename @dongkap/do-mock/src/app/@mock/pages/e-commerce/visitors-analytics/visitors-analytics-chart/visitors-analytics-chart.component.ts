@@ -1,7 +1,7 @@
 import { delay, takeWhile } from 'rxjs/operators';
 import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
-import { LayoutService } from '@dongkap/ngx-core';
+import { LayoutService } from '@dongkap/do-core';
 import { OutlineData } from '../../../../data/visitors-analytics';
 
 @Component({

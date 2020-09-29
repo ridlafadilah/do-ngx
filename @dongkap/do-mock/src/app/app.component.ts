@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 import { Component, OnInit } from '@angular/core';
-import { AnalyticsService, SeoService } from '@dongkap/ngx-core';
+import { AnalyticsService, SeoService } from '@dongkap/do-core';
 
 @Component({
   selector: 'ngx-app',

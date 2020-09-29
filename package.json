@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "start:do-mock": "ng serve @dongkap/do-mock --port 4242 --base-href=/",
-    "clean:ngx-core": "node_modules/.bin/rimraf dist/@dongkap/ngx-core",
-    "clean:ngx-theme": "node_modules/.bin/rimraf dist/@dongkap/ngx-theme",
-    "build:ngx-core": "ng build @dongkap/ngx-core --prod",
-    "build:ngx-theme": "ng build @dongkap/ngx-theme --prod",
-    "copy:ngx-theme": "node_modules/.bin/cpx \"./@dongkap/ngx-theme/src/styles/**/*\" \"./dist/@dongkap/ngx-theme/styles\"",
-    "p:ngx-core": "npm run clean:ngx-core && npm run build:ngx-core && cd dist/@dongkap/ngx-core && npm pack",
-    "p:ngx-theme": "npm run clean:ngx-theme && npm run build:ngx-theme && npm run copy:ngx-theme && cd dist/@dongkap/ngx-theme && npm pack",
-    "install:ngx-core": "npm run p:ngx-core && npm r @dongkap/ngx-core && npm i -O ./dist/@dongkap/ngx-core/dongkap-ngx-core-0.0.1.tgz",
-    "install:ngx-theme": "npm run p:ngx-theme && npm r @dongkap/ngx-theme && npm i -O ./dist/@dongkap/ngx-theme/dongkap-ngx-theme-0.0.1.tgz",
+    "clean:do-core": "node_modules/.bin/rimraf dist/@dongkap/do-core",
+    "clean:do-theme": "node_modules/.bin/rimraf dist/@dongkap/do-theme",
+    "build:do-core": "ng build @dongkap/do-core --prod",
+    "build:do-theme": "ng build @dongkap/do-theme --prod",
+    "copy:do-theme": "node_modules/.bin/cpx \"./@dongkap/do-theme/src/styles/**/*\" \"./dist/@dongkap/do-theme/styles\"",
+    "p:do-core": "npm run clean:do-core && npm run build:do-core && cd dist/@dongkap/do-core && npm pack",
+    "p:do-theme": "npm run clean:do-theme && npm run build:do-theme && npm run copy:do-theme && cd dist/@dongkap/do-theme && npm pack",
+    "install:do-core": "npm run p:do-core && npm r @dongkap/do-core && npm i -O ./dist/@dongkap/do-core/dongkap-do-core-0.0.1.tgz",
+    "install:do-theme": "npm run p:do-theme && npm r @dongkap/do-theme && npm i -O ./dist/@dongkap/do-theme/dongkap-do-theme-0.0.1.tgz",
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
@@ -121,7 +121,7 @@
     "typescript": "3.9.7"
   },
   "optionalDependencies": {
-    "@dongkap/ngx-core": "file:dist/@dongkap/ngx-core/dongkap-ngx-core-0.0.1.tgz",
-    "@dongkap/ngx-theme": "file:dist/@dongkap/ngx-theme/dongkap-ngx-theme-0.0.1.tgz"
+    "@dongkap/do-core": "file:dist/@dongkap/do-core/dongkap-do-core-0.0.1.tgz",
+    "@dongkap/do-theme": "file:dist/@dongkap/do-theme/dongkap-do-theme-0.0.1.tgz"
   }
 }

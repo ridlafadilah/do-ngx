@@ -28,11 +28,11 @@
       "@nebular/*": [
         "node_modules/@nebular/*"
       ],
-      "@dongkap/ngx-core": [
-        "@dongkap/ngx-core/src"
+      "@dongkap/do-core": [
+        "@dongkap/do-core/src"
       ],
-      "@dongkap/ngx-theme": [
-        "@dongkap/ngx-theme/src"
+      "@dongkap/do-theme": [
+        "@dongkap/do-theme/src"
       ]
     }
   },

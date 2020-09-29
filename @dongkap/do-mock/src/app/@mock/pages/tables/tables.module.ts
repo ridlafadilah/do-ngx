@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { TablesRoutingModule, routedComponents } from './tables-routing.module';
 import { FsIconComponent } from './tree-grid/tree-grid.component';
 
@@ -12,7 +12,7 @@ import { FsIconComponent } from './tree-grid/tree-grid.component';
     NbTreeGridModule,
     NbIconModule,
     NbInputModule,
-    NgxThemeModule,
+    DoThemeModule,
     TablesRoutingModule,
     Ng2SmartTableModule,
   ],

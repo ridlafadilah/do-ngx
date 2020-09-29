@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
-import { LayoutService } from '@dongkap/ngx-core';
+import { LayoutService } from '@dongkap/do-core';
 
 @Component({
   selector: 'ngx-stats-bar-animation-chart',

@@ -3,7 +3,7 @@ import { NbThemeService } from '@nebular/theme';
 import { delay, takeWhile } from 'rxjs/operators';
 
 import { OrdersChart } from '../../../../data/orders-chart';
-import { LayoutService } from '@dongkap/ngx-core';
+import { LayoutService } from '@dongkap/do-core';
 
 @Component({
   selector: 'ngx-orders-chart',

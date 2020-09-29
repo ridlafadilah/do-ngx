@@ -11,7 +11,7 @@ import {
   NbUserModule,
 } from '@nebular/theme';
 
-import { NgxThemeModule } from '@dongkap/ngx-theme';
+import { DoThemeModule } from '@dongkap/do-theme';
 import { FormsRoutingModule } from './forms-routing.module';
 import { FormsComponent } from './forms.component';
 import { FormInputsComponent } from './form-inputs/form-inputs.component';
@@ -22,7 +22,7 @@ import { FormsModule as ngFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    NgxThemeModule,
+    DoThemeModule,
     NbInputModule,
     NbCardModule,
     NbButtonModule,
