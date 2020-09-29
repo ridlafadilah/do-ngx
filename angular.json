@@ -187,7 +187,7 @@
       "projectType": "library",
       "root": "@dongkap/ngx-core",
       "sourceRoot": "@dongkap/ngx-core/src",
-      "prefix": "ngx",
+      "prefix": "do",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
