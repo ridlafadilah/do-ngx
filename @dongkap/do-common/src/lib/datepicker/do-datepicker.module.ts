@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DoBaseModule } from '../base/do-base.module';
 import { DoDatePickerComponent } from './do-datepicker.component';
 
-export const components = [
+export const DATEPICKER_COMPONENTS = [
   DoDatePickerComponent,
 ];
 
@@ -28,10 +28,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...DATEPICKER_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...DATEPICKER_COMPONENTS,
   ],
 })
 export class DoDatePickerModule { }

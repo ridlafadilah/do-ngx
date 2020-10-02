@@ -7,7 +7,7 @@ import { NbCardModule } from '@nebular/theme';
 import { DoMapsLeafletComponent } from './leaflet/do-maps-leaflet.component';
 import { DoMapsAgmComponent } from './agm/do-maps-agm.component';
 
-export const components = [
+export const MAPS_COMPONENTS = [
   DoMapsLeafletComponent,
   DoMapsAgmComponent,
 ];
@@ -24,10 +24,10 @@ export const components = [
     NbCardModule,
   ],
   declarations: [
-    ...components,
+    ...MAPS_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...MAPS_COMPONENTS,
   ],
 })
 export class DoMapsModule { }

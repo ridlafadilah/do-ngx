@@ -46,7 +46,7 @@ const NB_MODULES = [
   NbIconModule,
   NbEvaIconsModule,
 ];
-const COMPONENTS = [
+const THEME_COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
@@ -54,7 +54,7 @@ const COMPONENTS = [
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
 ];
-const PIPES = [
+const THEME_PIPES = [
   CapitalizePipe,
   PluralPipe,
   RoundPipe,
@@ -64,8 +64,8 @@ const PIPES = [
 
 @NgModule({
   imports: [CommonModule, ...NB_MODULES],
-  exports: [CommonModule, ...PIPES, ...COMPONENTS],
-  declarations: [...COMPONENTS, ...PIPES],
+  exports: [CommonModule, ...THEME_PIPES, ...THEME_COMPONENTS],
+  declarations: [...THEME_COMPONENTS, ...THEME_PIPES],
 })
 export class DoThemeModule {
   static forRoot(): ModuleWithProviders<DoThemeModule> {

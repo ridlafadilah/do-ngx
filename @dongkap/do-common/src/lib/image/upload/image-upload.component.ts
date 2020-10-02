@@ -1,7 +1,6 @@
 import {
   Component,
   Inject,
-  OnDestroy,
   Input,
   ViewEncapsulation,
   Optional,
@@ -10,6 +9,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { DoValueAccessor } from '../../base/do-value-accessor.component';
 import { DomSanitizer } from '@angular/platform-browser';

@@ -1,14 +1,14 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { LayoutService } from './services/utils/layout.service';
 import { AnalyticsService } from './services/utils/analytics.service';
 import { StateService } from './services/utils/state.service';
 import { SeoService } from './services/utils/seo.service';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient } from '@angular/common/http';
-import { TranslationService } from './services/security/translation.service';
+import { TranslationService } from './services/utils/translation.service';
 import { HTTP_SERVICE } from './providers/http.provider';
 import { HttpCommonService } from './services/utils/http-common.service';
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-export const components = [
+export const CALENDAR_COMPONENTS = [
 ];
 
 @NgModule({
@@ -9,10 +9,10 @@ export const components = [
     FormsModule,
   ],
   declarations: [
-    ...components,
+    ...CALENDAR_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...CALENDAR_COMPONENTS,
   ],
 })
 export class DoCalendarModule { }

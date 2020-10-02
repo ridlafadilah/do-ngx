@@ -17,7 +17,8 @@
       "@ng-select/ng-select": "@ng-select/ng-select",
       "@swimlane/ngx-datatable": "@swimlane/ngx-datatable",
       "@nebular/date-fns": "@nebular/date-fns",
-      "@nebular/moment": "@nebular/moment"
+      "@nebular/moment": "@nebular/moment",
+      "@asymmetrik/ngx-leaflet": "@asymmetrik/ngx-leaflet"
     }
   }
 }

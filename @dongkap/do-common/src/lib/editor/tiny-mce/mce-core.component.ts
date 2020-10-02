@@ -1,7 +1,5 @@
 import {
   Component,
-  OnDestroy,
-  AfterViewInit,
   ElementRef,
   ViewEncapsulation,
   Input,
@@ -10,7 +8,10 @@ import {
   EventEmitter,
   Inject,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { OnDestroy } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor } from '@angular/forms';
 import { ENVIRONMENT, Environment } from '@dongkap/do-core';
 
 declare var tinymce: any;

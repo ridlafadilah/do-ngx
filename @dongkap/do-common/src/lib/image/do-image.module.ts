@@ -5,7 +5,7 @@ import { DoBaseModule } from '../base/do-base.module';
 import { ImageUploadComponent } from './upload/image-upload.component';
 import { NbButtonModule, NbIconModule } from '@nebular/theme';
 
-export const components = [
+export const IMAGE_COMPONENTS = [
   ImageUploadComponent,
 ];
 
@@ -19,10 +19,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...IMAGE_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...IMAGE_COMPONENTS,
   ],
 })
 export class DoImageModule { }

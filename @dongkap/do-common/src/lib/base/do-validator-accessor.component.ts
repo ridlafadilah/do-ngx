@@ -1,13 +1,13 @@
 import { Directive, Input, OnInit } from '@angular/core';
 import {
-    ControlValueAccessor,
     NgControl,
-    Validator,
-    AbstractControl,
-    ValidationErrors,
-    ValidatorFn,
     Validators,
 } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
+import { Validator } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms';
+import { ValidationErrors } from '@angular/forms';
+import { ControlValueAccessor } from '@angular/forms';
 
 @Directive()
 export abstract class DoValidatorAccessor implements ControlValueAccessor, Validator, OnInit {

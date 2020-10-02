@@ -9,7 +9,7 @@ import { DoInputCurrencyComponent } from './currency/do-input-currency.component
 import { DoInputIconComponent } from './icon/do-input-icon.component';
 import { DoInputBaseIconComponent } from './icon/do-input-base-icon.component';
 
-export const components = [
+export const INPUT_COMPONENTS = [
   DoInputTextComponent,
   DoInputBaseIconComponent,
   DoInputIconComponent,
@@ -27,10 +27,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...INPUT_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...INPUT_COMPONENTS,
     NbInputModule,
   ],
 })

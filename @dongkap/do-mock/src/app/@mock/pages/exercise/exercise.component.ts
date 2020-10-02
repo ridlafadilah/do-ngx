@@ -183,7 +183,7 @@ export class ExerciseComponent implements OnInit {
         [Validators.minLength(this.minLength)]],
         'ckeditor': [{
           value: '<p>CKEditor</p>',
-          disabled: true,
+          disabled: false,
         }],
         'tinyMCE': [{
           value: '<p>TinyMCE</p>',

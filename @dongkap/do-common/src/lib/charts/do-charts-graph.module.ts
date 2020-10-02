@@ -6,7 +6,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { ChartModule } from 'angular2-chartjs';
 import { DoChartComponent } from './base/do-chart.component';
 
-export const components = [
+export const CHART_COMPONENTS = [
   DoChartComponent,
 ];
 
@@ -19,10 +19,10 @@ export const components = [
     NgxEchartsModule,
   ],
   declarations: [
-    ...components,
+    ...CHART_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...CHART_COMPONENTS,
   ],
 })
 export class DoChartsGraphModule { }

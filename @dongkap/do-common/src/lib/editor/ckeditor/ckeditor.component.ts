@@ -1,13 +1,13 @@
 import {
   Component,
   Inject,
-  OnDestroy,
   Input,
   ViewEncapsulation,
   Optional,
   Self,
   LOCALE_ID,
 } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { DoValueAccessor } from '../../base/do-value-accessor.component';
 

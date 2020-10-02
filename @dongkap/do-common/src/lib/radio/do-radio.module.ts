@@ -6,7 +6,7 @@ import { NbRadioModule } from '@nebular/theme';
 import { DoBaseModule } from '../base/do-base.module';
 import { DoRadioComponent } from './do-radio.component';
 
-export const components = [
+export const RADIO_COMPONENTS = [
   DoRadioComponent,
 ];
 
@@ -20,10 +20,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...RADIO_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...RADIO_COMPONENTS,
   ],
 })
 export class DoRadioModule { }

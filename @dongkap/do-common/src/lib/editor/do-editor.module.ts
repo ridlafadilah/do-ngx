@@ -10,7 +10,7 @@ import { MCECoreComponent } from './tiny-mce/mce-core.component';
 import { DoTextareaComponent } from './textarea/textarea.component';
 import { NbInputModule } from '@nebular/theme';
 
-export const components = [
+export const EDITOR_COMPONENTS = [
   MCECoreComponent,
   TinyMCEComponent,
   CaldeiraKnabbenEditorComponent,
@@ -28,10 +28,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...EDITOR_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...EDITOR_COMPONENTS,
   ],
 })
 export class DoEditorModule { }

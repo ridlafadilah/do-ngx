@@ -2,11 +2,11 @@ import {
   Component,
   Input,
   ViewEncapsulation,
-  OnDestroy,
   Output,
   EventEmitter,
   ViewChild,
 } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { DoDatatableCollapseComponent } from './collapse/do-datatable-collapse.component';
 import { FormGroup } from '@angular/forms';
 

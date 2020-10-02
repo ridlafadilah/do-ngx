@@ -547,6 +547,46 @@
         }
       }
     },
+    "@dongkap/do-storage": {
+      "projectType": "library",
+      "root": "@dongkap/do-storage",
+      "sourceRoot": "@dongkap/do-storage/src",
+      "prefix": "do",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "@dongkap/do-storage/tsconfig.lib.json",
+            "project": "@dongkap/do-storage/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "@dongkap/do-storage/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "@dongkap/do-storage/src/test.ts",
+            "tsConfig": "@dongkap/do-storage/tsconfig.spec.json",
+            "karmaConfig": "@dongkap/do-storage/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "@dongkap/do-storage/tsconfig.lib.json",
+              "@dongkap/do-storage/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "@dongkap/do-auth": {
       "projectType": "library",
       "root": "@dongkap/do-auth",

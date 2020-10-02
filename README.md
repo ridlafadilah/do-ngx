@@ -7,6 +7,7 @@ Dongkap | Web Application
 ```sh
 $ ng generate application do-ngx --routing=true --prefix=do --style=scss
 $ ng generate library do-common --prefix=do
+$ ng generate library do-storage --prefix=do
 $ ng generate library do-auth --prefix=do
 $ ng generate library do-extra --prefix=do
 ```

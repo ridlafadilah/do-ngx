@@ -4,7 +4,10 @@
   "lib": {
     "entryFile": "src/index.ts",
     "umdModuleIds": {
-      "@nebular/theme": "@nebular/theme"
+      "@nebular/theme": "@nebular/theme",
+      "@ngx-translate/core": "@ngx-translate/core",
+      "@ngx-translate/http-loader": "@ngx-translate/http-loader",
+      "crypto-js": "crypto-js"
     }
   }
 }

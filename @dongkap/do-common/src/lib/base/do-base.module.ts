@@ -12,13 +12,13 @@ import { NotEqualValidator } from './directive/not-equal-validator.directive';
 import { DoToastrModule } from '../toastr/do-toastr.module';
 import { DragDropDirective } from './directive/drag-drop.directive';
 
-export const components = [
+export const BASE_COMPONENTS = [
   DoPageOutletComponent,
   DoContainerOutletComponent,
   DoErrorMessageComponent,
 ];
 
-export const directives = [
+export const BASE_DIRECTIVES = [
   CurrencyMaskDirective,
   EqualValidator,
   NotEqualValidator,
@@ -36,12 +36,12 @@ export const directives = [
     DoToastrModule.forRoot(),
   ],
   declarations: [
-    ...components,
-    ...directives,
+    ...BASE_COMPONENTS,
+    ...BASE_DIRECTIVES,
   ],
   exports: [
-    ...components,
-    ...directives,
+    ...BASE_COMPONENTS,
+    ...BASE_DIRECTIVES,
     TranslateModule,
   ],
 })

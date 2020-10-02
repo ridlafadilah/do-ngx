@@ -18,7 +18,7 @@ import { DoImageModule } from './image/do-image.module';
 import { DoTreeModule } from './tree/do-tree.module';
 import { DoLabelModule } from './label/do-label.module';
 
-const modules = [
+const COMMON_MODULES = [
   DoBaseModule,
   DoInputModule,
   DoButtonModule,
@@ -41,10 +41,10 @@ const modules = [
 @NgModule({
   declarations: [],
   imports: [
-    ...modules,
+    ...COMMON_MODULES,
   ],
   exports: [
-    ...modules,
+    ...COMMON_MODULES,
   ],
 })
 export class DoCommonModule {}

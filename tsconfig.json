@@ -39,11 +39,18 @@
       "@dongkap/do-common": [
         "@dongkap/do-common/src"
       ],
+      "@dongkap/do-storage": [
+        "@dongkap/do-storage/src"
+      ],
       "@dongkap/do-auth": [
         "@dongkap/do-auth/src"
       ],
       "@dongkap/do-extra": [
         "@dongkap/do-extra/src"
+      ],
+      "do-storage": [
+        "dist/do-storage/do-storage",
+        "dist/do-storage"
       ]
     }
   },

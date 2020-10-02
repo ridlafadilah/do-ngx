@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DoBaseModule } from '../base/do-base.module';
 import { DoLabelTextComponent } from './do-label-text.component';
 
-export const components = [
+export const LABEL_COMPONENTS = [
   DoLabelTextComponent,
 ];
 
@@ -17,10 +17,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...LABEL_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...LABEL_COMPONENTS,
   ],
 })
 export class DoLabelModule { }

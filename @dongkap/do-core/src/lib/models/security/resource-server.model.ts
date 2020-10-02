@@ -60,8 +60,8 @@ export interface OauthInfoModel {
 
 export const signatureHeader = {
     authorization: 'Authorization',
-    signature: 'X-XA-Signature',
-    timestamp: 'X-XA-Timestamp',
-    key: 'X-XA-Key',
-    mark: 'X-XA-Mark',
+    signature: 'X-DONGKAP-Signature',
+    timestamp: 'X-DONGKAP-Timestamp',
+    key: 'X-DONGKAP-Key',
+    mark: 'X-DONGKAP-Mark',
 };

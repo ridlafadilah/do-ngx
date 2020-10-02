@@ -12,7 +12,7 @@ import { DoDatatableCollapseComponent } from './ngx/header/collapse/do-datatable
 import { DoDatatableBaseComponent } from './ngx/base/do-datatable-base.component';
 import { DoButtonModule } from '../button/do-button.module';
 
-export const components = [
+export const TABLE_COMPONENTS = [
   DoDatatableComponent,
   DoDatatableBaseComponent,
   DoDatatableHeaderComponent,
@@ -33,10 +33,10 @@ export const components = [
     DoButtonModule,
   ],
   declarations: [
-    ...components,
+    ...TABLE_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...TABLE_COMPONENTS,
   ],
 })
 export class DoTableModule { }

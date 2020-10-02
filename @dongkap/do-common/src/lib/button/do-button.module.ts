@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DoBaseModule } from '../base/do-base.module';
 import { DoButtonSubmitComponent } from './submit/do-button-submit.component';
 
-export const components = [
+export const BUTTON_COMPONENTS = [
   DoButtonSubmitComponent,
 ];
 
@@ -17,10 +17,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...BUTTON_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...BUTTON_COMPONENTS,
     NbButtonModule,
   ],
 })

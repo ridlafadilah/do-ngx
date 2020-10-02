@@ -10,6 +10,9 @@ export { AnalyticsService } from './lib/services/utils/analytics.service';
 export { LayoutService } from './lib/services/utils/layout.service';
 export { SeoService } from './lib/services/utils/seo.service';
 export { StateService } from './lib/services/utils/state.service';
+export { TranslationService } from './lib/services/utils/translation.service';
+
+export { EncryptionService } from './lib/services/security/encryption.service';
 
 export { HttpCommonService } from './lib/services/utils/http-common.service';
 export { HttpFactoryService } from './lib/services/utils/http-factory.service';

@@ -7,12 +7,12 @@ import {
   ViewEncapsulation,
   ContentChildren,
   TemplateRef,
-  QueryList,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  OnDestroy,
-  AfterContentInit,
 } from '@angular/core';
+import { OnDestroy } from '@angular/core';
+import { AfterContentInit } from '@angular/core';
+import { QueryList } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 

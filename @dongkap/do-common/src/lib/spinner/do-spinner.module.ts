@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-export const components = [
+export const SPINNER_COMPONENTS = [
 ];
 
 @NgModule({
@@ -9,10 +9,10 @@ export const components = [
     FormsModule,
   ],
   declarations: [
-    ...components,
+    ...SPINNER_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...SPINNER_COMPONENTS,
   ],
 })
 export class DoSpinnerModule { }

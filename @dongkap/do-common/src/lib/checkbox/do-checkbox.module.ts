@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DoBaseModule } from '../base/do-base.module';
 import { DoCheckboxComponent } from './do-checkbox.component';
 
-export const components = [
+export const CHECKBOX_COMPONENTS = [
   DoCheckboxComponent,
 ];
 
@@ -20,10 +20,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...CHECKBOX_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...CHECKBOX_COMPONENTS,
     NbCheckboxModule,
   ],
 })

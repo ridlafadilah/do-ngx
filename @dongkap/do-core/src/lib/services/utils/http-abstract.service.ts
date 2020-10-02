@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs';
-import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { HttpFactoryService } from './http-factory.service';
 import { HttpBaseModel } from '../../models';
 

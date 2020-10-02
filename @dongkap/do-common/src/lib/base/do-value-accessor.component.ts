@@ -1,6 +1,6 @@
 import { NgControl } from '@angular/forms';
 import { formatDate } from '@angular/common';
-import { Component, Directive, Input } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 import { DateFormat } from '@dongkap/do-core';
 import { DoValidatorAccessor } from './do-validator-accessor.component';
 

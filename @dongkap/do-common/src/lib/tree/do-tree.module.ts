@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { DoBaseModule } from '../base/do-base.module';
 import { NbIconModule } from '@nebular/theme';
 
-export const components = [
+export const TREE_COMPONENTS = [
   DoTreeComponent,
   DoTreeNodeComponent,
 ];
@@ -23,10 +23,10 @@ export const components = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
+    ...TREE_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...TREE_COMPONENTS,
   ],
 })
 export class DoTreeModule {}

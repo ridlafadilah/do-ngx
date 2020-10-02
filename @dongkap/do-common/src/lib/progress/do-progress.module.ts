@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-export const components = [
+export const PROGRESS_COMPONENTS = [
 ];
 
 @NgModule({
@@ -9,10 +9,10 @@ export const components = [
     FormsModule,
   ],
   declarations: [
-    ...components,
+    ...PROGRESS_COMPONENTS,
   ],
   exports: [
-    ...components,
+    ...PROGRESS_COMPONENTS,
   ],
 })
 export class DoProgressModule { }

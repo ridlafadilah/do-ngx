@@ -1,5 +1,7 @@
 import { Directive, forwardRef, Attribute } from '@angular/core';
-import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
+import { NG_VALIDATORS } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
+import { Validator } from '@angular/forms';
 
 @Directive({
     selector: '[doValidateNotEqual][formControlName],[doValidateNotEqual][formControl],[doValidateNotEqual][ngModel]',

@@ -7,11 +7,11 @@ import { DoBaseModule } from '../base/do-base.module';
 import { DoSelectComponent } from './do-select.component';
 import { ContentSelectDirective } from './directive/content-select.directive';
 
-export const components = [
+export const SELECT_COMPONENTS = [
   DoSelectComponent,
 ];
 
-export const directives = [
+export const SELECT_DIRECTIVES = [
   ContentSelectDirective,
 ];
 
@@ -25,12 +25,12 @@ export const directives = [
     DoBaseModule,
   ],
   declarations: [
-    ...components,
-    ...directives,
+    ...SELECT_COMPONENTS,
+    ...SELECT_DIRECTIVES,
   ],
   exports: [
-    ...components,
-    ...directives,
+    ...SELECT_COMPONENTS,
+    ...SELECT_DIRECTIVES,
   ],
 })
 export class DoSelectModule { }

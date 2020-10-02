@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 
 // import 'style-loader!angular2-toaster/toaster.css';
 import {
-  NbComponentStatus,
   NbGlobalPhysicalPosition,
-  NbGlobalPosition,
   NbToastrService,
 } from '@nebular/theme';
+import { NbGlobalPosition } from '@nebular/theme';
+import { NbComponentStatus } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()

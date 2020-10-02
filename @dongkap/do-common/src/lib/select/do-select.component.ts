@@ -8,13 +8,13 @@ import {
   LOCALE_ID,
   Injector,
   ChangeDetectorRef,
-  OnDestroy,
   Output,
   EventEmitter,
   ViewChild,
   ContentChild,
   TemplateRef,
 } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { DoValueAccessor } from '../base/do-value-accessor.component';
 import { Observable, Subject, of } from 'rxjs';
