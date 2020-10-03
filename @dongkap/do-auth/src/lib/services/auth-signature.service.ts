@@ -1,9 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpHeaders, HttpRequest } from '@angular/common/http';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/observable/empty';
-import 'rxjs/add/operator/takeUntil';
 import { TranslateService } from '@ngx-translate/core';
 import { DatePipe } from '@angular/common';
 import { Observable, of, combineLatest } from 'rxjs';

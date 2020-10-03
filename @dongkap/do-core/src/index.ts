@@ -11,6 +11,8 @@ export { LayoutService } from './lib/services/utils/layout.service';
 export { SeoService } from './lib/services/utils/seo.service';
 export { StateService } from './lib/services/utils/state.service';
 export { TranslationService } from './lib/services/utils/translation.service';
+export { CustomPreloadingStrategy } from './lib/services/preloading-strategy.service';
+export { ErrorHandlerService } from './lib/services/error-handler.service';
 
 export { EncryptionService } from './lib/services/security/encryption.service';
 

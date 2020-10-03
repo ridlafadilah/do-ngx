@@ -85,27 +85,29 @@ export class AuthUserService extends UserInfo {
     }
 
     private getImage(checksum: any, name: string) {
-        this.httpBaseService.HTTP_AUTH(
-        this.apiPath['file']['vw-photo-profile'], null, null, null,
-        [checksum], 'arraybuffer')
-        .pipe(tap((response: any) => {
-            let picture: string;
-            const imageBlob = new Blob([response], {
-                type: 'image/png',
-            });
-            this.profileIndexedDB.put('image-blob', imageBlob).then();
-            const reader: FileReader = new FileReader();
-            reader.readAsDataURL(imageBlob);
-            reader.onloadend = () => {
-                picture = reader.result.toString();
-                const user: User = {
-                    name: name,
-                    picture: picture,
+        if (checksum != null) {
+            this.httpBaseService.HTTP_AUTH(
+            this.apiPath['file']['vw-photo-profile'], null, null, null,
+            [checksum], 'arraybuffer')
+            .pipe(tap((response: any) => {
+                let picture: string;
+                const imageBlob = new Blob([response], {
+                    type: 'image/png',
+                });
+                this.profileIndexedDB.put('image-blob', imageBlob).then();
+                const reader: FileReader = new FileReader();
+                reader.readAsDataURL(imageBlob);
+                reader.onloadend = () => {
+                    picture = reader.result.toString();
+                    const user: User = {
+                        name: name,
+                        picture: picture,
+                    };
+                    this.profileIndexedDB.put('image-b64', picture).then();
+                    this.loaderUserSubject$.next(user);
                 };
-                this.profileIndexedDB.put('image-b64', picture).then();
-                this.loaderUserSubject$.next(user);
-            };
-        })).subscribe();
+            })).subscribe();
+        }
     }
 
 }

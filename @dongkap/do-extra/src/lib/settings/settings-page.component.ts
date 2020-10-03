@@ -1,15 +1,17 @@
-import { Component, OnInit, OnDestroy, Injector, Inject } from '@angular/core';
+import { Component, Injector, Inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import {
-  HttpBaseModel,
-  ApiBaseResponse,
-  IndexedDBFactoryService,
   IndexedDBEncFactoryService,
   AUTH_INDEXED_DB,
   SETTINGS_INDEXED_DB,
   ResponseCode,
 } from '@dongkap/do-core';
+import { HttpBaseModel } from '@dongkap/do-core';
+import { ApiBaseResponse } from '@dongkap/do-core';
+import { IndexedDBFactoryService } from '@dongkap/do-core';
 import { CheckboxModel, BaseFormComponent } from '@dongkap/do-common';
 
 @Component({

@@ -14,7 +14,7 @@ import {
   NbThemeModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbSecurityModule } from '@nebular/security';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -32,7 +32,8 @@ import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
 
-const NB_MODULES = [
+export const NB_MODULES = [
+  TranslateModule,
   NbLayoutModule,
   NbMenuModule,
   NbUserModule,
@@ -40,13 +41,12 @@ const NB_MODULES = [
   NbSearchModule,
   NbSidebarModule,
   NbContextMenuModule,
-  NbSecurityModule,
   NbButtonModule,
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
 ];
-const THEME_COMPONENTS = [
+export const THEME_COMPONENTS = [
   HeaderComponent,
   FooterComponent,
   SearchInputComponent,
@@ -54,7 +54,7 @@ const THEME_COMPONENTS = [
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
 ];
-const THEME_PIPES = [
+export const THEME_PIPES = [
   CapitalizePipe,
   PluralPipe,
   RoundPipe,

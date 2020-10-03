@@ -1,0 +1,80 @@
+<do-page-outlet [url]="'/app/mgmt/user/end'" [header]="'User Profile'">
+  <div class="row">
+    <div class="col-md-4 col-lg-4 col-xxxl-6">
+      <div class="photo-profile"
+        [ngStyle]="{ 
+          'background-image': 'url(' + (image? image: imageDefault) + ')'
+        }">
+      </div>
+    </div>
+    <div class="col-md-8 col-lg-8 col-xxxl-6">
+      <div class="split-row">
+        <do-label-text
+          [label]="'Name'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.name"
+          [skeleton]="loadingForm">
+        </do-label-text>
+        <do-label-text
+          [label]="'ID Number'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.idNumber"
+          [skeleton]="loadingForm">
+        </do-label-text>
+        <do-label-text
+          [label]="'Gender'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.gender"
+          [skeleton]="loadingForm">
+        </do-label-text>
+        <do-label-text
+          [label]="'Place / Date of Birth'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.placeOfBirth ? (profile.placeOfBirth + ', ' + profile.dateOfBirth) : ''"
+          [skeleton]="loadingForm">
+        </do-label-text>
+      </div>
+      <div class="split-row">
+        <do-label-text
+          [label]="'Username'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.username"
+          [skeleton]="loadingForm">
+        </do-label-text>
+        <do-label-text
+          [label]="'Email'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.email"
+          [skeleton]="loadingForm">
+        </do-label-text>
+        <do-label-text
+          [label]="'Phone Number'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.phoneNumber"
+          [skeleton]="loadingForm">
+        </do-label-text>
+        <do-label-text
+          [label]="'Address'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.address"
+          [skeleton]="loadingForm">
+        </do-label-text>
+        <do-label-text
+          [label]="'Country'"
+          [colLabel]="4"
+          [colContent]="8"
+          [content]="profile.country"
+          [skeleton]="loadingForm">
+        </do-label-text>
+      </div>
+    </div>
+  </div>
+</do-page-outlet>

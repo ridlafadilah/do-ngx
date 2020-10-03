@@ -2,8 +2,7 @@
  * Public API Surface of do-theme
  */
 
-export * from './lib/do-theme.module';
-
+export { DoThemeModule } from './lib/do-theme.module';
 export { HeaderComponent } from './lib/components/header/header.component';
 export { FooterComponent } from './lib/components/footer/footer.component';
 export { SearchInputComponent } from './lib/components/search-input/search-input.component';

@@ -4,11 +4,11 @@ import { takeUntil } from 'rxjs/operators';
 import {
   Pattern,
   EncryptionService,
-  ApiBaseResponse,
   ResponseCode,
   OAUTH_INFO,
   SecurityResourceModel,
 } from '@dongkap/do-core';
+import { ApiBaseResponse } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-common';
 
 @Component({

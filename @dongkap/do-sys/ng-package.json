@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/@dongkap/do-sys",
+  "lib": {
+    "entryFile": "src/index.ts",
+    "umdModuleIds": {
+      "idb": "idb",
+      "@nebular/theme": "@nebular/theme",
+      "@swimlane/ngx-datatable": "@swimlane/ngx-datatable",
+      "@dongkap/do-core": "@dongkap/do-core",
+      "@dongkap/do-theme": "@dongkap/do-theme",
+      "@dongkap/do-common": "@dongkap/do-common",
+      "@dongkap/do-auth": "@dongkap/do-auth"
+    }
+  }
+}

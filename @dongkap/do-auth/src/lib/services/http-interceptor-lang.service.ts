@@ -1,7 +1,7 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { signatureHeader } from '@dongkap/do-core';
 import { AuthLanguageService } from './auth-lang.service';
 
@@ -26,7 +26,7 @@ export class HttpInterceptorLangService implements HttpInterceptor, OnDestroy {
                 }));
             }
         }
-        return next.handle(req).takeUntil(this.destroy$);
+        return next.handle(req).pipe(takeUntil(this.destroy$));
     }
 
 }

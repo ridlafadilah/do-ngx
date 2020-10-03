@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/@dongkap/do-extra-spec",
+    "outDir": "../../out-tsc/@dongkap/do-storage-spec",
     "types": [
       "jasmine",
       "node"

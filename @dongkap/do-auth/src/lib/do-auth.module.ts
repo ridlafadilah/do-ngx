@@ -31,10 +31,31 @@ import { ProfileIndexedDBService } from './storage/profile-indexeddb.service';
 import { SettingsIndexedDBService } from './storage/settings-indexeddb.service';
 import { AuthLanguageService } from './services/auth-lang.service';
 
+const AUTH_PROVIDERS = [
+  { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorTokenService, multi: true},
+  { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorSignatureService, multi: true},
+  { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorLangService, multi: true},
+  { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorErrorService, multi: true},
+  { provide: USER_INFO, useClass: AuthUserService },
+  { provide: AUTH_INDEXED_DB, useClass: AuthIndexedDBService },
+  { provide: PROFILE_INDEXED_DB, useClass: ProfileIndexedDBService },
+  { provide: SETTINGS_INDEXED_DB, useClass: SettingsIndexedDBService },
+  AuthGuardService,
+  UnauthorizeGuardService,
+  AuthTokenService,
+  AuthGuardChildService,
+  AuthSignatureService,
+  AuthLanguageService,
+];
+
+const AUTH_COMPONENTS = [
+  LoginPageComponent,
+  LogoutComponent,
+];
+
 @NgModule({
   declarations: [
-    LoginPageComponent,
-    LogoutComponent,
+    ...AUTH_COMPONENTS,
   ],
   imports: [
     NbCheckboxModule,
@@ -52,8 +73,7 @@ import { AuthLanguageService } from './services/auth-lang.service';
     DoAuthRoutingModule,
   ],
   exports: [
-    LoginPageComponent,
-    LogoutComponent,
+    ...AUTH_COMPONENTS,
   ],
 })
 export class DoAuthModule {
@@ -61,20 +81,7 @@ export class DoAuthModule {
     return {
       ngModule: DoAuthModule,
       providers: [
-        AuthGuardService,
-        UnauthorizeGuardService,
-        AuthTokenService,
-        AuthGuardChildService,
-        AuthSignatureService,
-        AuthLanguageService,
-        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorTokenService, multi: true},
-        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorSignatureService, multi: true},
-        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorLangService, multi: true},
-        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorErrorService, multi: true},
-        { provide: USER_INFO, useClass: AuthUserService },
-        { provide: AUTH_INDEXED_DB, useClass: AuthIndexedDBService },
-        { provide: PROFILE_INDEXED_DB, useClass: ProfileIndexedDBService },
-        { provide: SETTINGS_INDEXED_DB, useClass: SettingsIndexedDBService },
+        ...AUTH_PROVIDERS,
       ],
     };
   }

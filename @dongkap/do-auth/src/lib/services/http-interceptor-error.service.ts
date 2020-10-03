@@ -1,8 +1,8 @@
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Subject } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { HttpErrorHandler } from './http-error.handler';
 import { AuthTokenService } from './auth-token.service';
@@ -34,9 +34,9 @@ export class HttpInterceptorErrorService extends HttpErrorHandler implements Htt
                 if (error instanceof HttpErrorResponse) {
                     return this.errorHandler(error, req, next);
                 } else {
-                    return Observable.throw(error);
+                    return throwError(error);
                 }
-        })).takeUntil(this.destroy$);
+        })).pipe(takeUntil(this.destroy$));
     }
 
 }

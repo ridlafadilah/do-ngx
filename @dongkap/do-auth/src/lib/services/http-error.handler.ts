@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, throwError } from 'rxjs';
 import { filter, take, switchMap, catchError } from 'rxjs/operators';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { AuthTokenService } from './auth-token.service';
@@ -41,7 +41,7 @@ export class HttpErrorHandler {
             case 200:
             case 201:
             case 304:
-                return Observable.empty();
+                return EMPTY;
             case 400:
                 return this.error400(err);
             case 401:
@@ -51,11 +51,11 @@ export class HttpErrorHandler {
             case 500:
             case 504:
             case 0:
-                return Observable.throw(this.errorDefault(err));
+                return throwError(this.errorDefault(err));
             default:
                 break;
         }
-        return Observable.throw(err);
+        return throwError(err);
     }
 
     protected errorDefault(error: any | HttpErrorResponse): ApiBaseResponse {
@@ -77,7 +77,7 @@ export class HttpErrorHandler {
         return err;
     }
 
-    protected error400 (error: HttpErrorResponse): Observable<HttpEvent<any>> {
+    protected error400(error: HttpErrorResponse): Observable<HttpEvent<any>> {
         if (error.error['respStatusCode']) {
             if (error.error['respStatusCode'] === 'invalid_grant') {
                 switch (error.error['respStatusMessage']['invalid_grant']) {
@@ -85,16 +85,16 @@ export class HttpErrorHandler {
                     case 'User account is locked':
                     case 'User is disabled':
                     case 'User account has expired':
-                        return Observable.throw(this.errorDefault(error));
+                        return throwError(this.errorDefault(error));
                     default:
                         this.authToken.logout();
-                        return Observable.throw(this.errorDefault(error));
+                        return throwError(this.errorDefault(error));
                 }
             } else {
-                return Observable.throw(this.errorDefault(error));
+                return throwError(this.errorDefault(error));
             }
         }
-        return Observable.throw(error);
+        return throwError(error);
     }
 
     protected error401 (error: HttpErrorResponse, request: HttpRequest<any>, next: HttpHandler):
@@ -144,6 +144,6 @@ export class HttpErrorHandler {
                 }
             }
         }
-        return Observable.throw(error);
+        return throwError(error);
     }
 }

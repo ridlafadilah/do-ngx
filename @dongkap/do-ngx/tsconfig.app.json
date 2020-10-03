@@ -4,6 +4,9 @@
     "outDir": "../../out-tsc/@dongkap/do-ngx",
     "baseUrl": "./",
     "paths": {
+      "crypto": [
+        "../../node_modules/crypto-js"
+      ],
       "@dongkap/do-core": [
         "../../@dongkap/do-core/src"
       ],
@@ -22,6 +25,12 @@
       "@dongkap/do-common/*": [
         "../../@dongkap/do-common/src/*"
       ],
+      "@dongkap/do-storage": [
+        "../../@dongkap/do-storage/src"
+      ],
+      "@dongkap/do-storage/*": [
+        "../../@dongkap/do-storage/src/*"
+      ],
       "@dongkap/do-auth": [
         "../../@dongkap/do-auth/src"
       ],
@@ -33,12 +42,25 @@
       ],
       "@dongkap/do-extra/*": [
         "../../@dongkap/do-extra/src/*"
+      ],
+      "@dongkap/do-sys": [
+        "../../@dongkap/do-sys/src"
+      ],
+      "@dongkap/do-sys/*": [
+        "../../@dongkap/do-sys/src/*"
+      ],
+      "@dongkap/do-exercise": [
+        "../../@dongkap/do-exercise/src"
+      ],
+      "@dongkap/do-exercise/*": [
+        "../../@dongkap/do-exercise/src/*"
       ]
     }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "enableIvy": false
   },
   "files": [
     "src/main.ts",

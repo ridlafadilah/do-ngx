@@ -1,11 +1,41 @@
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from '@dongkap/do-auth';
+import { CustomPreloadingStrategy } from '@dongkap/do-core';
 
+const routes: Routes = [
+  {
+    path: 'app',
+    loadChildren: () => import('./pages/main/pages.module').then(m => m.PagesModule),
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./pages/auth/auth-wrapper.module').then(m => m.AuthWrapperModule),
+    data: {
+      preload: true,
+    },
+  },
+  {
+    path: 'miscellaneous',
+    loadChildren: () => import('./pages/miscellaneous/miscellaneous-wrapper.module')
+    .then(m => m.MiscellaneousWrapperModule),
+    data: {
+      preload: true,
+    },
+  },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '**', redirectTo: 'miscellaneous/404' },
+];
 
-const routes: Routes = [];
+const config: ExtraOptions = {
+  useHash: false,
+  preloadingStrategy: CustomPreloadingStrategy,
+};
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, config)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

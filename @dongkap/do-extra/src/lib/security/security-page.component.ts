@@ -3,12 +3,12 @@ import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NbDialogService } from '@nebular/theme';
 import {
-  ApiBaseResponse,
   ResponseCode,
   OAUTH_INFO,
   SecurityResourceModel,
   EncryptionService
  } from '@dongkap/do-core';
+import { ApiBaseResponse } from '@dongkap/do-core';
 import { AuthTokenService } from '@dongkap/do-auth';
 import { BaseFormComponent } from '@dongkap/do-common';
 import { DeactivatedPromptComponent } from './prompt/deactivated-prompt.component';

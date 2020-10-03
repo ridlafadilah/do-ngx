@@ -2,7 +2,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpHeaders } fro
 import { Injectable, OnDestroy, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { signatureHeader, SecurityResourceModel, OAUTH_INFO } from '@dongkap/do-core';
 import { AuthSignatureService } from './auth-signature.service';
 
@@ -28,7 +28,7 @@ export class HttpInterceptorSignatureService implements HttpInterceptor, OnDestr
                 }));
             }
         }
-        return next.handle(req).takeUntil(this.destroy$);
+        return next.handle(req).pipe(takeUntil(this.destroy$));
     }
 
 }

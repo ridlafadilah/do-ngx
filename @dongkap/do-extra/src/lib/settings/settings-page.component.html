@@ -8,7 +8,7 @@
       [skeleton]="loadingForm"
       [api]="apiSelectLocale"
       formControlName="locale">
-      <div *xaContentSelect="let item">
+      <div *doContentSelect="let item">
         <span class="{{item.icon ? item.icon : localeIcon}}"></span>
         <span class="label-select">{{item.label ? item.label : item}}</span>
       </div>

@@ -1,17 +1,19 @@
-import { Component, OnInit, Injector, OnDestroy, Inject } from '@angular/core';
+import { Component, Injector, Inject } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { Validators, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import {
-  ApiBaseResponse,
-  HttpBaseModel,
-  IndexedDBFactoryService,
   PROFILE_INDEXED_DB,
   ResponseCode,
   USER_INFO,
   UserInfo,
   Pattern,
 } from '@dongkap/do-core';
+import { HttpBaseModel } from '@dongkap/do-core';
+import { ApiBaseResponse } from '@dongkap/do-core';
+import { IndexedDBFactoryService } from '@dongkap/do-core';
 import { BaseFormComponent, SelectParamModel } from '@dongkap/do-common';
 import { HttpErrorResponse } from '@angular/common/http';
 

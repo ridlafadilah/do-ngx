@@ -6,6 +6,7 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "es2020",
     "moduleResolution": "node",
@@ -44,13 +45,6 @@
       ],
       "@dongkap/do-auth": [
         "@dongkap/do-auth/src"
-      ],
-      "@dongkap/do-extra": [
-        "@dongkap/do-extra/src"
-      ],
-      "do-storage": [
-        "dist/do-storage/do-storage",
-        "dist/do-storage"
       ]
     }
   },
