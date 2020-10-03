@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { NbIconModule } from '@nebular/theme';
+import { TreeNgxModule } from 'tree-ngx';
 
 import { DoTreeComponent } from './do-tree.component';
-import { DoTreeNodeComponent } from './do-tree-node.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { DoBaseModule } from '../base/do-base.module';
-import { NbIconModule } from '@nebular/theme';
 
 export const TREE_COMPONENTS = [
   DoTreeComponent,
-  DoTreeNodeComponent,
 ];
 
 @NgModule({
@@ -20,6 +19,7 @@ export const TREE_COMPONENTS = [
     ReactiveFormsModule,
     NbIconModule,
     TranslateModule,
+    TreeNgxModule,
     DoBaseModule,
   ],
   declarations: [

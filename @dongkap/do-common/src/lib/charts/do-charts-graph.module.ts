@@ -5,6 +5,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ChartModule } from 'angular2-chartjs';
 import { DoChartComponent } from './base/do-chart.component';
+import * as echarts from 'echarts';
 
 export const CHART_COMPONENTS = [
   DoChartComponent,
@@ -16,7 +17,9 @@ export const CHART_COMPONENTS = [
     FormsModule,
     NgxChartsModule,
     ChartModule,
-    NgxEchartsModule,
+    NgxEchartsModule.forRoot({
+      echarts,
+    }),
   ],
   declarations: [
     ...CHART_COMPONENTS,

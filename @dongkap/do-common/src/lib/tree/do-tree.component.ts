@@ -1,23 +1,13 @@
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ContentChild,
-  ViewEncapsulation,
-  ContentChildren,
-  TemplateRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewEncapsulation,
 } from '@angular/core';
-import { OnDestroy } from '@angular/core';
-import { AfterContentInit } from '@angular/core';
-import { QueryList } from '@angular/core';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-
-import { DoTreeNodeComponent } from './do-tree-node.component';
-import { TreeNode } from './tree-node.model';
+import { OnInit } from '@angular/core';
+import { TreeMode } from 'tree-ngx';
 
 @Component({
   selector: 'do-tree',
@@ -26,46 +16,22 @@ import { TreeNode } from './tree-node.model';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DoTreeComponent implements AfterContentInit, OnDestroy {
-  @Input() nodes: TreeNode[];
-
-  @Input('template')
-  _templateInput: TemplateRef<any>;
-
-  @Input() icons = {
-    collapse: 'plus-circle',
-    expand: 'minus-circle',
+export class DoTreeComponent implements OnInit {
+  @Input() public set nodeItemsFn(nodeItems: any) {
+    this.nodeItems = nodeItems;
+  }
+  @Input() public nodeItems: any = [{}];
+  @Input() public options: any = {
+    mode: TreeMode.MultiSelect,
+    checkboxes: true,
+    alwaysEmitSelected: true
   };
+  @Output() onSelect: EventEmitter<any> = new EventEmitter<any>();
 
-  @ContentChild(TemplateRef, { static: true })
-  _templateQuery: TemplateRef<any>;
+  ngOnInit(): void {}
 
-  @ContentChildren(DoTreeNodeComponent) readonly nodeElms: QueryList<DoTreeNodeComponent>;
-
-  @Output() expand = new EventEmitter();
-  @Output() collapse = new EventEmitter();
-  @Output() activate = new EventEmitter();
-  @Output() deactivate = new EventEmitter();
-  @Output() selectNode = new EventEmitter();
-
-  get hasOneLeaf(): boolean {
-    return (this.nodes && this.nodes.length === 1) || this.nodeElms.length === 1;
-  }
-
-  get template(): TemplateRef<any> {
-    return this._templateInput || this._templateQuery;
-  }
-
-  private readonly _destroy$ = new Subject<void>();
-
-  constructor(private readonly _cdr: ChangeDetectorRef) {}
-
-  ngAfterContentInit() {
-    this.nodeElms.changes.pipe(takeUntil(this._destroy$)).subscribe(() => this._cdr.markForCheck());
-  }
-
-  ngOnDestroy() {
-    this._destroy$.next();
-    this._destroy$.complete();
+  onSelectedItems(event: any) {
+    console.log(event);
+    this.onSelect.emit(event);
   }
 }

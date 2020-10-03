@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { HomePageComponent } from '@dongkap/do-extra';
+import { ExerciseComponent } from '@dongkap/do-exercise';
 import { PagesComponent } from './pages.component';
 
 const routes: Routes = [{
@@ -38,9 +39,14 @@ const routes: Routes = [{
       pathMatch: 'full',
     },
     {
+      // Exercise Page To Be Delete
+      path: 'exercise',
+      component: ExerciseComponent,
+    },
+    {
       path: '**',
       redirectTo: '/miscellaneous/404',
-    },
+    }
   ],
 }];
 

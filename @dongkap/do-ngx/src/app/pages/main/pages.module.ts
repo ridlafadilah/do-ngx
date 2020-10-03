@@ -4,6 +4,7 @@ import { NbMenuModule } from '@nebular/theme';
 import { MiscellaneousModule } from '@dongkap/do-auth';
 import { DoThemeModule } from '@dongkap/do-theme';
 import { DoExtraModule } from '@dongkap/do-extra';
+import { DoExerciseModule } from '@dongkap/do-exercise';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 
@@ -14,9 +15,10 @@ import { PagesRoutingModule } from './pages-routing.module';
     NbMenuModule,
     MiscellaneousModule,
     DoExtraModule,
+    DoExerciseModule
   ],
   declarations: [
-    PagesComponent,
+    PagesComponent
   ],
 })
 export class PagesModule {

@@ -16,12 +16,12 @@ import {
 } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { DoValueAccessor } from '../base/do-value-accessor.component';
 import { Observable, Subject, of } from 'rxjs';
 import { switchMap, catchError, map, takeUntil } from 'rxjs/operators';
+import { NgSelectComponent } from '@ng-select/ng-select';
 import { HttpFactoryService, HTTP_SERVICE, HttpBaseModel, HttpMethod } from '@dongkap/do-core';
 import { SelectParamModel, SelectResponseModel } from './select.model';
-import { NgSelectComponent } from '@ng-select/ng-select';
+import { DoValueAccessor } from '../base/do-value-accessor.component';
 import { ContentSelectDirective } from './directive/content-select.directive';
 
 @Component({

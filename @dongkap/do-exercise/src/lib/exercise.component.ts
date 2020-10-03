@@ -97,51 +97,47 @@ export class ExerciseComponent implements OnInit {
   formGroupFilter: FormGroup;
   filters: DatatableFilter[];
   keyword: Keyword;
-  nodes: any[] = [
-    { label: 'Node 1' },
-    {
-        label: 'Node 2',
-        expandable: true,
-        expanded: true,
-        children: [
-          { label: 'Node 1' },
-          { label: 'Node 2' },
-          {
-            label: 'Node 3',
-            expanded: false,
-            expandable: true,
-            children: [
-              { label: 'Node 1' },
-              { label: 'Node 2' },
-              { label: 'Node 3' },
-              { label: 'Node 4' },
-            ],
-          },
-          {
-            label: 'Node 4',
-            expandable: true,
-            expanded: true,
-            children: [
-              { label: 'Node 1' },
-              { label: 'Node 2' },
-              { label: 'Node 3' },
-              { label: 'Node 4' },
-            ],
-          },
-        ],
-    },
-    { label: 'Node 3' },
-    {
-      label: 'Node 4',
-      children: [
-        { label: 'Node 1' },
-        { label: 'Node 2' },
-        { label: 'Node 3' },
-        { label: 'Node 4' },
-      ],
-      expandable: true,
-    },
-  ];
+  nodeItems: any[] = [{
+    id: '0',
+    name: 'Heros',
+    children: [
+      {
+        id: '1',
+        name: 'Batman',
+        item: {
+          phrase: 'I am the batman'
+        }
+      },
+      {
+        id: '2',
+        name: 'Superman',
+        item: {
+          phrase: 'Man of steel'
+        }
+      }
+    ],
+    expanded: false
+  },
+  {
+    id: '3',
+    name: 'Villains',
+    children: [
+      {
+        id: '4',
+        name: 'Joker',
+        item: {
+          phrase: 'Why so serius'
+        }
+      },
+      {
+        id: '5',
+        name: 'Lex luthor',
+        item: {
+          phrase: 'I am the villain of this story'
+        }
+      }
+    ]
+  }];
 
   ngOnInit(): void {
   }
