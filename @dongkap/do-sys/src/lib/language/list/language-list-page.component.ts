@@ -60,7 +60,7 @@ export class LanguageListPageComponent extends BaseFilterComponent<any> implemen
   }
 
   back(): boolean {
-    this.router.navigate(['/app/sysconf/parameter']);
+    this.router.navigate(['/app/sysconf/language']);
     return false;
   }
 

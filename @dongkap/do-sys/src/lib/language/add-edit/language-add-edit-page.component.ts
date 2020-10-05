@@ -3,12 +3,12 @@ import { OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { NbDialogService } from '@nebular/theme';
 import { ApiBaseResponse, ResponseCode, HttpBaseModel } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel } from '@dongkap/do-common';
-import { takeUntil } from 'rxjs/operators';
 import { LocaleModel } from '../models/locale.model';
 import { LanguageService } from '../services/language.service';
-import { NbDialogService } from '@nebular/theme';
 import { DialogFlagComponent } from './dialog-flag/dialog-flag.component';
 
 @Component({
@@ -40,7 +40,7 @@ export class LanguageAddEditPageComponent extends BaseFormComponent<any> impleme
       this.action = 'Edit';
     }
     this.apiSelectLanguage = this.api['master']['select-language'];
-    if (this.languageService.getLocale()) {
+    if (this.languageService.getLocale() && (this.route.snapshot.params['action'] === 'edit')) {
       if (this.languageService.getLocale().localeDefault) {
         this.formGroup.get('default').setValue([{
           selected: true,

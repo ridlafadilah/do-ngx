@@ -38,7 +38,17 @@ export const apiPath: APIModel = {
         'datatable-user': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/security/vw/post/datatable/user/v.1',
+            path: '/do/api/security/vw/auth/datatable/user/v.1',
+        },
+        'datatable-role': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/do/api/security/vw/auth/datatable/role/v.1',
+        },
+        'post-role': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/do/api/security/trx/auth/role/v.1',
         },
         'get-profile-base': {
             server: environment.host.master,

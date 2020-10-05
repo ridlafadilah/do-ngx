@@ -8,6 +8,6 @@ export const oauthResource: SecurityResourceModel = {
     aes_key: 'UHVsYW5nQjNuNHI=',
     session_idle: 5,
     session_timeout: 10,
-    signature: false,
+    signature: true,
     vapid: 'BB3fvY674t6pB9TjZONmYxxlebCmSskbf8lvRLTMYHE-zZ7FONNXOCPv4ndOa1FDov10k26UXZl6rQ7nT9sxWwc',
 };
