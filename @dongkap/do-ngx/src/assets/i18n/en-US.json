@@ -72,7 +72,8 @@
 			"general": "Please enter valid data!",
 			"date": "Please enter valid date!",
 			"phoneNumber": "Please enter valid Telephone Number!",
-			"mobileNumber": "Please enter valid Mobile Phone Number!"
+			"mobileNumber": "Please enter valid Mobile Phone Number!",
+			"dateOfBirth": "Please enter valid date!"
 		},
 		"equal": {
 			"newPassword": "Old Password and New Password cannot be the same",

@@ -1,4 +1,4 @@
-<do-page-outlet [header]="'Profile'">
+<do-page-outlet [header]="'Profile System'">
   <div class="row">
     <div class="col-md-4 col-lg-4 col-xxxl-6">
       <form [formGroup]="formGroupImage">
@@ -29,37 +29,6 @@
           [skeleton]="loadingForm"
           formControlName="email">
         </do-input-text>
-        <do-input-text
-          [name]="'idNumber'"
-          [label]="'ID Number'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="idNumber">
-        </do-input-text>
-        <do-select
-          [name]="'gender'"
-          [label]="'Gender'"
-          [required]="true"
-          [api]="apiSelectGender"
-          [queryParam]="paramSelectGender"
-          [searchable]="false"
-          [skeleton]="loadingForm"
-          formControlName="gender">
-        </do-select>
-        <do-input-text
-          [name]="'placeOfBirth'"
-          [label]="'Place of Birth'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="placeOfBirth">
-        </do-input-text>
-        <do-datepicker
-          [name]="'dateOfBirth'"
-          [label]="'Date of Birth'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="dateOfBirth">
-        </do-datepicker>
         <do-input-text
           [name]="'phoneNumber'"
           [label]="'Telephone'"

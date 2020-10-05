@@ -9,7 +9,7 @@ import { HttpBaseModel, ApiBaseResponse, ResponseCode } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-common';
 import { ParameterService } from '../../services/parameter.service';
 import { ParameterModel, ParameterI18nModel, ParameterGroupModel } from '../../models/parameter.model';
-import { LocaleModel } from '../../../language/models/locale.model';
+import { LocaleModel } from '../../../locale/models/locale.model';
 
 @Component({
   selector: 'do-parameter-do-detail-page',
@@ -63,7 +63,7 @@ export class ParameterDoDetailPageComponent extends BaseFormComponent<any> imple
     if (this.isEdit) {
       this.formGroup.get('parameterCode').setValue(this.parameter.parameterCode);
       this.formGroup.get('parameterCode').disable({emitEvent: true});
-      this.apiPathParameterI18n = this.api['master']['parameter-i18n'];
+      this.apiPathParameterI18n = this.api['master']['all-parameter-i18n'];
       this.loadingForm = true;
       this.http.HTTP_AUTH(this.apiPathParameterI18n, {
         'parameterCode': this.parameter.parameterCode,

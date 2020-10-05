@@ -10,6 +10,7 @@ import {
   DoEditorModule,
   DoSelectModule,
   DoImageModule,
+  DoDatePickerModule,
 } from '@dongkap/do-common';
 import { ChangePasswordPageComponent } from './password/change-password-page.component';
 import { ExtraComponent } from './do-extra.component';
@@ -19,6 +20,7 @@ import { SettingsPageComponent } from './settings/settings-page.component';
 import { SecurityPageComponent } from './security/security-page.component';
 import { DeactivatedPromptComponent } from './security/prompt/deactivated-prompt.component';
 import { HomePageComponent } from './home/home-page.component';
+import { SystemPageComponent } from './system/system-page.component';
 
 const EXTRA_COMPONENTS = [
   ExtraComponent,
@@ -26,6 +28,7 @@ const EXTRA_COMPONENTS = [
   DeactivatedPromptComponent,
   SecurityPageComponent,
   ProfilePageComponent,
+  SystemPageComponent,
   SettingsPageComponent,
   HomePageComponent,
 ];
@@ -48,6 +51,7 @@ const modules = [
   DoBaseModule,
   DoEditorModule,
   DoSelectModule,
+  DoDatePickerModule,
   DoImageModule,
   DoExtraRoutingModule,
 ];

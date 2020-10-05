@@ -72,7 +72,8 @@
 			"general": "Silakan masukkan data yang valid!",
 			"date": "Silakan masukkan tanggal yang valid!",
 			"phoneNumber": "Silakan masukkan format nomor telepon yang valid!",
-			"mobileNumber": "Silakan masukkan format nomor telepon genggam yang valid!"
+			"mobileNumber": "Silakan masukkan format nomor telepon genggam yang valid!",
+			"dateOfBirth": "Silakan masukkan tanggal yang valid!"
 		},
 		"equal": {
 			"newPassword": "Kata Sandi lama dan Kata Sandi Baru tidak boleh sama",

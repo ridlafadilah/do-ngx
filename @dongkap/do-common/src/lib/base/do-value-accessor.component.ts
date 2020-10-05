@@ -21,6 +21,7 @@ export abstract class DoValueAccessor<T> extends DoValidatorAccessor {
     set value(value: T) {
         if (this._value !== value) {
             this._value = value;
+            console.log(value);
             if (value instanceof Date)
                 this.onChange(formatDate(value, this.format, this.locale));
             else

@@ -18,11 +18,11 @@ import { IndexedDBFactoryService } from '@dongkap/do-core';
 import { BaseFormComponent, SelectParamModel } from '@dongkap/do-common';
 
 @Component({
-  selector: 'do-profile-page',
-  styleUrls: ['./profile-page.component.scss'],
-  templateUrl: './profile-page.component.html',
+  selector: 'do-system-page',
+  styleUrls: ['./system-page.component.scss'],
+  templateUrl: './system-page.component.html',
 })
-export class ProfilePageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class SystemPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
 
   public image: string;
   public formGroupImage: FormGroup;
@@ -31,9 +31,6 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public minLength: number = 5;
   public disabledUpload: boolean = false;
-
-  public apiSelectGender: HttpBaseModel;
-  public paramSelectGender: SelectParamModel[];
 
   public apiSelectCountry: HttpBaseModel;
 
@@ -56,10 +53,6 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     super(injector,
       {
         'name': [],
-        'idNumber': [],
-        'placeOfBirth': [],
-        'dateOfBirth': [],
-        'gender': [],
         'email': [],
         'phoneNumber': [],
         'address': [null, [Validators.minLength(5)]],
@@ -72,7 +65,6 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     this.formGroupImage = this.formBuilder.group({
       'image': [],
     });
-    this.apiSelectGender = this.api['master']['select-parameter'];
     this.apiSelectCountry = this.api['master']['select-country'];
     this.apiSelectProvince = this.api['master']['select-province'];
     this.apiSelectCity = this.api['master']['select-city'];
@@ -81,14 +73,10 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   }
 
   ngOnInit(): void {
-    this.onInit('profile', 'get-profile');
+    this.onInit('profile', 'get-profile-system');
     this.profileIndexedDB.get('image-b64').then((value: any) => {
       this.image = value;
     });
-    this.paramSelectGender = [{
-      key: 'parameterGroupCode',
-      value: 'GENDER',
-    }];
     this.paramSelectProvince = [{
       key: 'country',
       value: 'undefined',
@@ -116,13 +104,8 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
         (success: any) => {
           this.loadingForm = false;
           this.formGroup.controls['name'].setValue(success['name']);
-          this.formGroup.controls['idNumber'].setValue(success['idNumber']);
-          success['gender'] ? this.formGroup.controls['gender'].setValue(success['gender']) : null;
-          this.formGroup.controls['placeOfBirth'].setValue(success['placeOfBirth']);
-          this.formGroup.get('dateOfBirth').setValue(success['dateOfBirth']);
           this.formGroup.controls['email'].setValue(success['email']);
           success['address'] ? this.formGroup.controls['address'].setValue(success['address']) : null;
-          success['country'] ? this.formGroup.controls['country'].setValue(success['country']) : null;
           success['province'] ? this.formGroup.controls['province'].setValue(success['province']) : null;
           success['city'] ? this.formGroup.controls['city'].setValue(success['city']) : null;
           success['district'] ? this.formGroup.controls['district'].setValue(success['district']) : null;
@@ -238,10 +221,6 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   onSubmit() {
     const data: any = {
       name: this.formGroup.get('name').value,
-      idNumber: this.formGroup.get('idNumber').value,
-      placeOfBirth: this.formGroup.get('placeOfBirth').value,
-      dateOfBirth: this.formGroup.get('dateOfBirth').value,
-      gender: this.valueSelect('gender'),
       email: this.formGroup.get('email').value,
       phoneNumber: this.formGroup.get('phoneNumber').value,
       address: this.formGroup.get('address').value,
@@ -251,7 +230,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       district: this.valueSelect('district'),
       subDistrict: this.valueSelect('subDistrict'),
     };
-    (super.onSubmit(data, 'profile', 'change-profile') as Observable<ApiBaseResponse>)
+    (super.onSubmit(data, 'profile', 'change-profile-system') as Observable<ApiBaseResponse>)
             .pipe(takeUntil(this.destroy$))
             .subscribe((response: ApiBaseResponse) => {
               if (response) {

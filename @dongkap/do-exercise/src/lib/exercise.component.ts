@@ -161,7 +161,7 @@ export class ExerciseComponent implements OnInit {
         }],
         'currency': ['124124.124'],
         'date': [{
-          value: '08/11/2019',
+          value: '31/31/2019',
           disabled: false,
         }],
         'checkbox': [this.dataCheckboxEdited],

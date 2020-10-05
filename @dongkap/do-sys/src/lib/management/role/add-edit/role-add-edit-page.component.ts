@@ -17,7 +17,6 @@ import { RoleService } from '../services/role.service';
 export class RoleAddEditPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
 
   public action: 'Add' | 'Edit' = 'Add';
-  public apiSelectLanguage: HttpBaseModel;
   public dataDefault: CheckboxModel[] = [
     {
       selected: false,
@@ -35,7 +34,6 @@ export class RoleAddEditPageComponent extends BaseFormComponent<any> implements 
     if ((this.route.snapshot.params['action'] === 'edit')) {
       this.action = 'Edit';
     }
-    this.apiSelectLanguage = this.api['master']['select-language'];
     if (this.roleService.getRole() && (this.route.snapshot.params['action'] === 'edit')) {
       this.formGroup.get('authority').setValue(this.roleService.getRole().authority);
       this.formGroup.get('description').setValue(this.roleService.getRole().description);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ParameterGroupModel, ParameterModel } from '../models/parameter.model';
-import { LocaleModel } from '../../language/models/locale.model';
+import { LocaleModel } from '../../locale/models/locale.model';
 
 @Injectable()
 export class ParameterService {

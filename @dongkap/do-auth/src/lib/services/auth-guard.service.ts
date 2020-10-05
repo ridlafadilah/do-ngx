@@ -19,7 +19,7 @@ export class AuthGuardService implements CanActivate {
             if (!value) {
                 this.router.navigate(['/auth']);
             } else {
-                this.authService.loadPhotoUser();
+                if (state.url !== '/auth/logout') this.authService.loadPhotoUser();
             }
         });
         return result$.asObservable();

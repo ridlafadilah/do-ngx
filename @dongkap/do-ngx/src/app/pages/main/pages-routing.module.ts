@@ -29,9 +29,9 @@ const routes: Routes = [{
         .then(m => m.SysParameterWrapperModule),
     },
     {
-      path: 'sysconf/language',
-      loadChildren: () => import('../sys/sys-language-wrapper.module')
-        .then(m => m.SysLanguageWrapperModule),
+      path: 'sysconf/i18n',
+      loadChildren: () => import('../sys/sys-locale-wrapper.module')
+        .then(m => m.SysLocaleWrapperModule),
     },
     {
       path: 'user',

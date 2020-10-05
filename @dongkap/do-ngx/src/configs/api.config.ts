@@ -13,12 +13,12 @@ export const apiPath: APIModel = {
         'change-password': {
             server: environment.host.security,
             method: HttpMethod.POST,
-            path: '/do/api/security/trx/auth/change-password/v.1',
+            path: '/do/api/security/trx/post/change-password/v.1',
         },
         'deactivated': {
             server: environment.host.security,
             method: HttpMethod.POST,
-            path: '/do/api/security/trx/auth/deactivated/v.1',
+            path: '/do/api/security/trx/post/deactivated/v.1',
         },
         'change-settings': {
             server: environment.host.security,
@@ -36,41 +36,51 @@ export const apiPath: APIModel = {
             path: '/do/api/security/vw/get/menus/v.1',
         },
         'datatable-user': {
-            server: environment.host.master,
+            server: environment.host.security,
             method: HttpMethod.POST,
             path: '/do/api/security/vw/auth/datatable/user/v.1',
         },
         'datatable-role': {
-            server: environment.host.master,
+            server: environment.host.security,
             method: HttpMethod.POST,
             path: '/do/api/security/vw/auth/datatable/role/v.1',
         },
         'post-role': {
-            server: environment.host.master,
+            server: environment.host.security,
             method: HttpMethod.POST,
             path: '/do/api/security/trx/auth/role/v.1',
         },
-        'get-profile-base': {
-            server: environment.host.master,
+        'get-profile-other': {
+            server: environment.host.security,
             method: HttpMethod.POST,
-            path: '/do/api/security/trx/auth/profile/v.1',
+            path: '/do/api/security/vw/auth/profile-other/v.1',
         },
-        'get-profile-personal': {
-            server: environment.host.master,
+        'get-profile-system-other': {
+            server: environment.host.security,
             method: HttpMethod.POST,
-            path: '/do/api/security/trx/auth/profile-personal/v.1',
+            path: '/do/api/security/vw/auth/profile-system-other/v.1',
         },
     },
     profile: {
         'change-profile': {
-            server: environment.host.security,
+            server: environment.host.profile,
             method: HttpMethod.POST,
-            path: '/do/api/profile/trx/auth/profile/v.1',
+            path: '/do/api/profile/trx/post/profile/v.1',
         },
         'get-profile': {
-            server: environment.host.security,
+            server: environment.host.profile,
             method: HttpMethod.GET,
             path: '/do/api/profile/vw/get/profile/v.1',
+        },
+        'change-profile-system': {
+            server: environment.host.profile,
+            method: HttpMethod.POST,
+            path: '/do/api/profile/trx/auth/profile-system/v.1',
+        },
+        'get-profile-system': {
+            server: environment.host.profile,
+            method: HttpMethod.GET,
+            path: '/do/api/profile/vw/auth/profile-system/v.1',
         },
     },
     master: {
@@ -99,15 +109,15 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/do/api/master/vw/post/select/subdistrict/v.1',
         },
+        'datatable-city': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/do/api/master/vw/auth/datatable/city/v.1',
+        },
         'select-language': {
             server: environment.host.master,
             method: HttpMethod.POST,
             path: '/do/api/master/vw/post/select/language/v.1',
-        },
-        'select-locale': {
-            server: environment.host.master,
-            method: HttpMethod.POST,
-            path: '/do/api/master/vw/post/select/locale/v.1',
         },
         'select-all-locale': {
             server: environment.host.master,
@@ -122,32 +132,37 @@ export const apiPath: APIModel = {
         'post-locale': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/trx/post/locale/v.1',
+            path: '/do/api/master/trx/auth/locale/v.1',
         },
-        'datatable-city': {
+        'datatable-locale': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/vw/post/datatable/city/v.1',
+            path: '/do/api/master/vw/auth/datatable/locale/v.1',
+        },
+        'select-parameter': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/do/api/master/vw/post/select/parameter-i18n/v.1',
         },
         'datatable-parameter-group': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/vw/post/datatable/parameter-group/v.1',
+            path: '/do/api/master/vw/auth/datatable/parameter-group/v.1',
         },
         'datatable-parameter': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/vw/post/datatable/parameter/v.1',
+            path: '/do/api/master/vw/auth/datatable/parameter/v.1',
         },
-        'parameter-i18n': {
+        'all-parameter-i18n': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/vw/post/parameter-i18n/v.1',
+            path: '/do/api/master/vw/auth/all/parameter-i18n/v.1',
         },
         'post-parameter-i18n': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/trx/post/parameter-i18n/v.1',
+            path: '/do/api/master/trx/auth/parameter-i18n/v.1',
         },
         'post-parameter-group': {
             server: environment.host.master,
@@ -157,17 +172,7 @@ export const apiPath: APIModel = {
         'delete-parameter-group': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/trx/delete/parameter-group/v.1',
-        },
-        'datatable-locale': {
-            server: environment.host.master,
-            method: HttpMethod.POST,
-            path: '/do/api/master/vw/post/datatable/locale/v.1',
-        },
-        'select-parameter': {
-            server: environment.host.master,
-            method: HttpMethod.POST,
-            path: '/do/api/master/vw/post/select/parameter-i18n/v.1',
+            path: '/do/api/master/trx/auth/delete/parameter-group/v.1',
         },
     },
     file: {

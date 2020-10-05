@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
 import { SelectionType } from '@swimlane/ngx-datatable';
 import { HttpBaseModel, ApiBaseResponse } from '@dongkap/do-core';
 import { BaseFilterComponent, DatatableColumn } from '@dongkap/do-common';
-import { LanguageService } from '../services/language.service';
+import { LocaleService } from '../services/locale.service';
 
 @Component({
-  selector: 'do-language-list-page',
-  styleUrls: ['./language-list-page.component.scss'],
-  templateUrl: './language-list-page.component.html',
+  selector: 'do-locale-list-page',
+  styleUrls: ['./locale-list-page.component.scss'],
+  templateUrl: './locale-list-page.component.html',
 })
-export class LanguageListPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+export class LocaleListPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
 
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
@@ -30,7 +30,7 @@ export class LanguageListPageComponent extends BaseFilterComponent<any> implemen
   ];
   public expanded: boolean = false;
 
-  constructor(public injector: Injector, private router: Router, private languageService: LanguageService) {
+  constructor(public injector: Injector, private router: Router, private localeService: LocaleService) {
     super(injector, {
       'localeCode': [],
       'identifier': [],
@@ -47,25 +47,21 @@ export class LanguageListPageComponent extends BaseFilterComponent<any> implemen
   ngOnDestroy(): void {}
 
   onAddGroup(): void {
-    this.router.navigate(['/app/sysconf/language', 'add']);
+    this.router.navigate(['/app/sysconf/i18n', 'add']);
   }
 
   onViewDetail(data): void {
-    this.languageService.setLocale(data);
-    this.router.navigate(['/app/sysconf/language', 'edit']);
+    this.localeService.setLocale(data);
+    this.router.navigate(['/app/sysconf/i18n', 'edit']);
   }
 
   onReset(): void {
-    this.router.navigate(['/app/sysconf/language']);
+    this.router.navigate(['/app/sysconf/i18n']);
   }
 
   back(): boolean {
-    this.router.navigate(['/app/sysconf/language']);
+    this.router.navigate(['/app/sysconf/i18n']);
     return false;
-  }
-
-  onSubmit(): void {
-    (super.onSubmit(this.formGroup.value, 'master', 'post-language')  as Observable<ApiBaseResponse>);
   }
 
 }

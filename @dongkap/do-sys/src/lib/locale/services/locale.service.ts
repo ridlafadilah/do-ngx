@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { LocaleModel } from '../models/locale.model';
 
 @Injectable()
-export class LanguageService {
+export class LocaleService {
 
     private locale: LocaleModel;
 

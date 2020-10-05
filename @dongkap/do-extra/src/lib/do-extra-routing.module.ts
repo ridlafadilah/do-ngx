@@ -5,6 +5,7 @@ import { ExtraComponent } from './do-extra.component';
 import { ProfilePageComponent } from './profile/profile-page.component';
 import { SettingsPageComponent } from './settings/settings-page.component';
 import { SecurityPageComponent } from './security/security-page.component';
+import { SystemPageComponent } from './system/system-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,6 +17,13 @@ const routes: Routes = [{
       component: ProfilePageComponent,
       data: {
         code: '#PROFILE-PAGE',
+      },
+    },
+    {
+      path: 'system',
+      component: SystemPageComponent,
+      data: {
+        code: '#SYSTEM-PAGE',
       },
     },
     {

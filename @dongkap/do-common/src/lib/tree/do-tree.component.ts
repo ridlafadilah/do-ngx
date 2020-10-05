@@ -31,7 +31,6 @@ export class DoTreeComponent implements OnInit {
   ngOnInit(): void {}
 
   onSelectedItems(event: any) {
-    console.log(event);
     this.onSelect.emit(event);
   }
 }

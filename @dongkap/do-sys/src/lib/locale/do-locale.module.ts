@@ -10,17 +10,17 @@ import {
   DoSelectModule,
   DoTableModule,
 } from '@dongkap/do-common';
-import { LanguageComponent } from './do-language.component';
-import { LanguageListPageComponent } from './list/language-list-page.component';
-import { DoLanguageRoutingModule } from './do-language-routing.module';
-import { LanguageAddEditPageComponent } from './add-edit/language-add-edit-page.component';
-import { LanguageService } from './services/language.service';
+import { LocaleComponent } from './do-locale.component';
+import { LocaleListPageComponent } from './list/locale-list-page.component';
+import { DoLocaleRoutingModule } from './do-locale-routing.module';
+import { LocaleAddEditPageComponent } from './add-edit/locale-add-edit-page.component';
+import { LocaleService } from './services/locale.service';
 import { DialogFlagComponent } from './add-edit/dialog-flag/dialog-flag.component';
 
 const components = [
-  LanguageComponent,
-  LanguageListPageComponent,
-  LanguageAddEditPageComponent,
+  LocaleComponent,
+  LocaleListPageComponent,
+  LocaleAddEditPageComponent,
   DialogFlagComponent,
 ];
 
@@ -38,11 +38,11 @@ const modules = [
   DoBaseModule,
   DoSelectModule,
   DoTableModule,
-  DoLanguageRoutingModule,
+  DoLocaleRoutingModule,
 ];
 
 const providers = [
-  LanguageService,
+  LocaleService,
 ];
 
 const entryComponents = [
@@ -63,4 +63,4 @@ const entryComponents = [
     ...entryComponents,
   ],
 })
-export class DoLanguageModule { }
+export class DoLocaleModule { }

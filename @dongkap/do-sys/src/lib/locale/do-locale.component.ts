@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'do-language',
+  selector: 'do-locale',
   template: `
     <router-outlet></router-outlet>
   `,
 })
-export class LanguageComponent {
+export class LocaleComponent {
 }

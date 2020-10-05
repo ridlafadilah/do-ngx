@@ -25,13 +25,22 @@ export class DoDatePickerComponent extends DoValueAccessor<Date> {
     }
 
     public writeValue(value: any): void {
+      if (new Date(value).toString() !== 'Invalid Date') {
         this._value = new Date(value);
         this.onChange(this.value);
+        const control = this.ngControl.control;
+        if (control) {
+            control.updateValueAndValidity();
+            control.markAsUntouched();
+            control.markAsPristine();
+        }
+      } else {
         const control = this.ngControl.control;
         if (control) {
             control.updateValueAndValidity();
             control.markAsTouched();
             control.markAsDirty();
         }
+      }
     }
 }

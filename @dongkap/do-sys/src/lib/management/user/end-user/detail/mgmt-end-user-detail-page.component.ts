@@ -24,7 +24,7 @@ export class MgmtEndUserDetailPageComponent extends BaseFormComponent<any> imple
   }
 
   ngOnInit(): void {
-    this.onInit('security', 'get-profile-personal');
+    this.onInit('security', 'get-profile-other');
   }
 
   ngOnDestroy(): void {}

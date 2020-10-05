@@ -24,7 +24,7 @@ export class MgmtAdminDetailPageComponent extends BaseFormComponent<any> impleme
   }
 
   ngOnInit(): void {
-    this.onInit('security', 'get-profile-base');
+    this.onInit('security', 'get-profile-system-other');
   }
 
   ngOnDestroy(): void {}
