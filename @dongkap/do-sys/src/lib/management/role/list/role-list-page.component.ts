@@ -62,8 +62,4 @@ export class RoleListPageComponent extends BaseFilterComponent<any> implements O
     return false;
   }
 
-  onSubmit(): void {
-    (super.onSubmit(this.formGroup.value, 'master', 'post-language')  as Observable<ApiBaseResponse>);
-  }
-
 }

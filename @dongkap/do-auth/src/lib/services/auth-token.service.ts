@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { tap, switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 import {
     HTTP_SERVICE, APIModel, signatureHeader,
@@ -59,7 +59,7 @@ export class AuthTokenService {
             HTTP_BASE(this.apiPath['auth']['token'],
                 body,
                 this.getAuthHeader())
-                .pipe(tap((response: any) => {
+                .pipe(map((response: any) => {
                     this.idle.setIdle(response['expires_in']);
                     this.authIndexedDB.logout();
                     this.authIndexedDB.loginStorage(response);

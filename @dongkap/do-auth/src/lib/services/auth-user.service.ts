@@ -1,9 +1,9 @@
 import { Observable, Subject } from 'rxjs';
 import { Injectable, Inject } from '@angular/core';
-import { tap } from 'rxjs/operators';
 import { API, APIModel, HTTP_SERVICE, HttpFactoryService, oauthInfo } from '@dongkap/do-core';
 import { User, UserInfo } from '@dongkap/do-core';
 import { ProfileIndexedDBService } from '../storage/profile-indexeddb.service';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthUserService extends UserInfo {
@@ -89,7 +89,7 @@ export class AuthUserService extends UserInfo {
             this.httpBaseService.HTTP_AUTH(
             this.apiPath['file']['vw-photo-profile'], null, null, null,
             [checksum], 'arraybuffer')
-            .pipe(tap((response: any) => {
+            .pipe(map((response: any) => {
                 let picture: string;
                 const imageBlob = new Blob([response], {
                     type: 'image/png',

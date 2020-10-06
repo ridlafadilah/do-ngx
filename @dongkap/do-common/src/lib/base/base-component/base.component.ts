@@ -1,8 +1,7 @@
 import { Injector } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { APIModel, API, HttpFactoryService, HTTP_SERVICE } from '@dongkap/do-core';
-import { HttpHeaders, HttpParams } from '@angular/common/http';
 
 export abstract class BaseComponent<T> {
 
@@ -23,7 +22,7 @@ export abstract class BaseComponent<T> {
             headers,
             params,
             pathVariable,
-            responseType).pipe(tap());
+            responseType);
     }
 
 }

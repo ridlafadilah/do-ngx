@@ -35,6 +35,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/do/api/security/vw/get/menus/v.1',
         },
+        'get-tree-menus': {
+            server: environment.host.security,
+            method: HttpMethod.GET,
+            path: '/do/api/security/vw/auth/tree/menus/v.1',
+        },
         'datatable-user': {
             server: environment.host.security,
             method: HttpMethod.POST,
@@ -167,7 +172,7 @@ export const apiPath: APIModel = {
         'post-parameter-group': {
             server: environment.host.master,
             method: HttpMethod.POST,
-            path: '/do/api/master/trx/post/parameter-group/v.1',
+            path: '/do/api/master/trx/auth/parameter-group/v.1',
         },
         'delete-parameter-group': {
             server: environment.host.master,
