@@ -1,22 +1,10 @@
 <do-page-outlet [header]="'Menu Management'">
   <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)">
-    <nb-tab tabId="main" tabTitle="Main Menu" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant" [ngClass]="{'tab-body': true}">
-      <tree-ngx
-        id="treeMain"
-        (selectedItems)="onSelectedItems($event)"
-        [nodeItems]="nodeItemsMain"
-        [options]="options"
-        #treeMain>
-      </tree-ngx>
+    <nb-tab tabId="main" tabTitle="Main Menu" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+      <do-main-menu-page #mainMenu></do-main-menu-page>
     </nb-tab>
-    <nb-tab tabId="extra" tabTitle="Extra Menu" [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="giant" [ngClass]="{'tab-body': true}">
-      <tree-ngx
-        id="treeExtra"
-        (selectedItems)="onSelectedItems($event)"
-        [nodeItems]="nodeItemsExtra"
-        [options]="options"
-        #treeExtra>
-      </tree-ngx>
+    <nb-tab tabId="extra" tabTitle="Extra Menu" [lazyLoad]="true" [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="giant">
+      <do-extra-menu-page #extraMenu></do-extra-menu-page>
     </nb-tab>
   </nb-tabset>
 </do-page-outlet>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { LocaleModel } from '@dongkap/do-core';
 import { ParameterGroupModel, ParameterModel } from '../models/parameter.model';
-import { LocaleModel } from '../../locale/models/locale.model';
 
 @Injectable()
 export class ParameterService {

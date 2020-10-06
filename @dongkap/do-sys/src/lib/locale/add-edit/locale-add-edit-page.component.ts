@@ -5,9 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NbDialogService } from '@nebular/theme';
-import { ApiBaseResponse, ResponseCode, HttpBaseModel } from '@dongkap/do-core';
+import { ApiBaseResponse, ResponseCode, HttpBaseModel, LocaleModel } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel } from '@dongkap/do-common';
-import { LocaleModel } from '../models/locale.model';
 import { LocaleService } from '../services/locale.service';
 import { DialogFlagComponent } from './dialog-flag/dialog-flag.component';
 

@@ -5,11 +5,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { HttpBaseModel, ApiBaseResponse, ResponseCode } from '@dongkap/do-core';
+import { HttpBaseModel, ApiBaseResponse, ResponseCode, LocaleModel } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-common';
 import { ParameterService } from '../../services/parameter.service';
 import { ParameterModel, ParameterI18nModel, ParameterGroupModel } from '../../models/parameter.model';
-import { LocaleModel } from '../../../locale/models/locale.model';
 
 @Component({
   selector: 'do-parameter-do-detail-page',

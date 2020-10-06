@@ -6,6 +6,7 @@ import { FileModel } from './utils/http-base.model';
 import { HostModel } from './utils/http-base.model';
 import { HttpMethod } from './utils/http-base.model';
 import { ApiBaseResponse } from './utils/http-base.model';
+import { LocaleModel } from './utils/locale.model';
 import { User, UserInfo, UserData, Contacts, RecentUsers } from './utils/users';
 
 import {
@@ -29,6 +30,7 @@ export {
     FileModel,
     HostModel,
     HttpMethod,
+    LocaleModel,
 
     User,
     Contacts,

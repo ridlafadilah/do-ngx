@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocaleModel } from '../models/locale.model';
+import { LocaleModel } from '@dongkap/do-core';
 
 @Injectable()
 export class LocaleService {

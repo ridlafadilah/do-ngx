@@ -21,10 +21,20 @@ import {
 import { MgmtMenuComponent } from './do-mgmt-menu.component';
 import { MenuListPageComponent } from './list/menu-list-page.component';
 import { DoMgmtMenuRoutingModule } from './do-mgmt-menu-routing.module';
+import { MainMenuPageComponent } from './main/main-menu-page.component';
+import { ExtraMenuPageComponent } from './extra/extra-menu-page.component';
+import { DialogIconComponent } from './dialog-icon/dialog-icon.component';
 
 const components = [
   MgmtMenuComponent,
   MenuListPageComponent,
+  MainMenuPageComponent,
+  ExtraMenuPageComponent,
+  DialogIconComponent,
+];
+
+const entryComponents = [
+  DialogIconComponent,
 ];
 
 const modules = [
@@ -60,5 +70,8 @@ const providers = [
   providers: [
     ...providers,
   ],
+  entryComponents: [
+    ...entryComponents,
+  ]
 })
 export class DoMgmtMenuModule { }
