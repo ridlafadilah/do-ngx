@@ -30,9 +30,40 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   public action: 'Add' | 'Edit' = 'Add';
   public apiSelectParent: HttpBaseModel;
   public apiPathLocale: HttpBaseModel;
-  public isRoot: boolean = true;
-  public isGroup: boolean = false;
+  public root: boolean = true;
+  public group: boolean = false;
   public loadLocale: boolean = false;
+
+  public set isRoot(root: boolean) {
+    this.root = root;
+    if (root) {
+      this.formGroup.get('icon').enable();
+      this.formGroup.get('parent').disable();
+    } else {
+      this.formGroup.get('icon').disable();
+      this.formGroup.get('parent').enable();
+    }
+  }
+  public get isRoot(): boolean { return this.root; }
+  public set isGroup(group: boolean) {
+    this.group = group;
+    if (group) {
+      this.formGroup.get('root').disable();
+      this.formGroup.get('home').disable();
+      this.formGroup.get('code').disable();
+      this.formGroup.get('link').disable();
+      this.formGroup.get('icon').disable();
+      this.formGroup.get('parent').disable();
+    } else {
+      this.formGroup.get('root').enable();
+      this.formGroup.get('home').enable();
+      this.formGroup.get('code').enable();
+      this.formGroup.get('link').enable();
+      this.formGroup.get('icon').enable();
+      this.formGroup.get('parent').enable();
+    }
+  }
+  public get isGroup(): boolean { return this.group; }
 
   constructor(public injector: Injector, private dialogService: NbDialogService) {
     super(injector,
@@ -131,7 +162,10 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       this.formGroup.get('icon').setValue(node.item['icon']);
       this.formGroup.get('order').setValue(node.item['ordering']);
       if (node.item['parentMenu'])
-        this.formGroup.get('parent').setValue(node.item['parentMenu']['title']);
+        this.formGroup.get('parent').setValue({
+          label: node.item['parentMenu']['title'],
+          value: node.item['parentMenu']['id'],
+        });
     }
   }
 
@@ -144,7 +178,19 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   }
 
   onReset() {
-    super.onReset();
+    this.isRoot = true;
+    this.isGroup = false;
+    this.allLocales.forEach(locale => {
+      this.formGroup.get(locale.localeCode).setValue(null);
+    });
+    this.formGroup.get('group').setValue([{ selected: this.isGroup }]);
+    this.formGroup.get('root').setValue([{ selected: this.isRoot }]);
+    this.formGroup.get('home').setValue([{ selected: false }]);
+    this.formGroup.get('code').setValue('N/A');
+    this.formGroup.get('link').setValue('#');
+    this.formGroup.get('icon').setValue(null);
+    this.formGroup.get('order').setValue(null);
+    this.formGroup.get('parent').setValue(null);
     this.action = 'Add';
   }
 

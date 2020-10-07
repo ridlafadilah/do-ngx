@@ -110,7 +110,12 @@ export class ExtraMenuPageComponent extends BaseFormComponent<any> implements On
   }
 
   onReset() {
-    super.onReset();
+    this.allLocales.forEach(locale => {
+      this.formGroup.get(locale.localeCode).setValue(null);
+    });
+    this.formGroup.get('code').setValue('N/A');
+    this.formGroup.get('link').setValue('#');
+    this.formGroup.get('order').setValue(null);;
     this.action = 'Add';
   }
 
