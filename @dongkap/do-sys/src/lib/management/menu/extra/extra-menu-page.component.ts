@@ -107,6 +107,7 @@ export class ExtraMenuPageComponent extends BaseFormComponent<any> implements On
   }
 
   onSubmit() {
+    console.log(this.formGroup.value);
   }
 
   onReset() {

@@ -175,6 +175,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   }
 
   onSubmit() {
+    console.log(this.formGroup.value);
   }
 
   onReset() {
