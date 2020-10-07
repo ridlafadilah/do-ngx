@@ -135,6 +135,8 @@
         [label]="'Order'"
         [required]="true"
         [type]="'number'"
+        [max]="999"
+        [maxLength]="3"
         [skeleton]="loadingForm"
         formControlName="order">
       </do-input-text>

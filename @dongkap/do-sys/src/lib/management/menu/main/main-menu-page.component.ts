@@ -3,10 +3,10 @@ import { OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { TreeMode } from 'tree-ngx';
 import { NbDialogService } from '@nebular/theme';
-import { HttpBaseModel, LocaleModel } from '@dongkap/do-core';
+import { ApiBaseResponse, HttpBaseModel, LocaleModel, ResponseCode } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-common';
 import { DialogIconComponent } from '../dialog-icon/dialog-icon.component';
 
@@ -39,8 +39,10 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
     if (root) {
       this.formGroup.get('icon').enable();
       this.formGroup.get('parent').disable();
+      this.formGroup.get('parent').setValue(null);
     } else {
       this.formGroup.get('icon').disable();
+      this.formGroup.get('icon').setValue(null);
       this.formGroup.get('parent').enable();
     }
   }
@@ -53,14 +55,21 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       this.formGroup.get('code').disable();
       this.formGroup.get('link').disable();
       this.formGroup.get('icon').disable();
-      if (!this.isRoot) this.formGroup.get('parent').disable();
+      this.formGroup.get('parent').disable();
+
+      this.formGroup.get('root').setValue([{ selected: false }]);
+      this.formGroup.get('home').setValue([{ selected: false }]);
+      this.formGroup.get('code').setValue('N/A');
+      this.formGroup.get('link').setValue('#');
+      this.formGroup.get('icon').setValue(null);
+      this.formGroup.get('parent').setValue(null);
     } else {
       this.formGroup.get('root').enable();
       this.formGroup.get('home').enable();
       this.formGroup.get('code').enable();
       this.formGroup.get('link').enable();
-      this.formGroup.get('parent').enable();
       if (this.isRoot) this.formGroup.get('icon').enable();
+      if (!this.isRoot) this.formGroup.get('parent').enable();
     }
   }
   public get isGroup(): boolean { return this.group; }
@@ -68,6 +77,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   constructor(public injector: Injector, private dialogService: NbDialogService) {
     super(injector,
       {
+        'id': [],
         'en-US': [],
         'id-ID': [],
         'root': [{
@@ -123,6 +133,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       ['main']).pipe(map((response: any) => {
           this.nodeItems = [];
           this.nodeItems = [...this.nodeItems, ...response];
+          this.onReset();
           if (this.loadLocale) this.loadingForm = false;
       }));
   }
@@ -159,6 +170,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       this.formGroup.get('group').setValue([{ selected: this.isGroup }]);
       this.formGroup.get('root').setValue([{ selected: this.isRoot }]);
       this.formGroup.get('home').setValue([{ selected: node.item['home'] }]);
+      this.formGroup.get('id').setValue(node['id']);
       this.formGroup.get('code').setValue(node.item['code']);
       this.formGroup.get('link').setValue(node.item['link']);
       this.formGroup.get('icon').setValue(node.item['icon']);
@@ -177,10 +189,77 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
+    let id: string = null;
+    let code: string = 'N/A';
+    let icon: string = null;
+    let link: string = '#';
+    const type: string = 'main';
+    let ordering: number = 0;
+    let home: boolean = false;
+    let group: boolean = false;
+    let level: number = 1;
+    let leaf: boolean = true;
+    const i18n: any = {};
+    let parentMenu: any = null;
+    if (this.formGroup.get('id').value) id = this.formGroup.get('id').value;
+    if (this.formGroup.get('code').value) code = this.formGroup.get('code').value;
+    if (this.formGroup.get('icon').value) icon = this.formGroup.get('icon').value;
+    if (this.formGroup.get('link').value) link = this.formGroup.get('link').value;
+    if (this.formGroup.get('order').value) ordering = +this.formGroup.get('order').value;
+    if (this.formGroup.get('home').value) {
+      if (this.formGroup.get('home').value[0]['selected']) {
+        home = true;
+      }
+    }
+    if (this.formGroup.get('group').value) {
+      if (this.formGroup.get('group').value[0]['selected']) {
+        group = true;
+      }
+    }
+    if (this.formGroup.get('root').value) {
+      if (this.formGroup.get('root').value[0]['selected']) {
+        level = 0;
+        leaf = false;
+      }
+    }
+    this.allLocales.forEach(locale => {
+      i18n[locale.localeCode] = this.formGroup.get(locale.localeCode).value;
+    });
+    if (this.formGroup.get('parent').value) {
+      if (this.formGroup.get('parent').value['value']) {
+        parentMenu = {
+          id: this.formGroup.get('parent').value['value'],
+        };
+      }
+    }
+    const data: any = {
+      'id': id,
+      'code': code,
+      'icon': icon,
+      'link': link,
+      'type': type,
+      'level': level,
+      'ordering': ordering,
+      'home': home,
+      'group': group,
+      'leaf': leaf,
+      'i18n': i18n,
+      'parentMenu': parentMenu,
+    };
+    console.log(data);
+    (super.onSubmit(data, 'security', 'post-menus')  as Observable<ApiBaseResponse>)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
+          this.loadDataMenu().subscribe(() => {
+            this.loadingForm = false;
+          });
+        }
+      });
   }
 
   onReset() {
+    this.disabled = false;
     this.isRoot = true;
     this.isGroup = false;
     this.allLocales.forEach(locale => {
@@ -189,6 +268,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
     this.formGroup.get('group').setValue([{ selected: this.isGroup }]);
     this.formGroup.get('root').setValue([{ selected: this.isRoot }]);
     this.formGroup.get('home').setValue([{ selected: false }]);
+    this.formGroup.get('id').setValue(null);
     this.formGroup.get('code').setValue('N/A');
     this.formGroup.get('link').setValue('#');
     this.formGroup.get('icon').setValue(null);
