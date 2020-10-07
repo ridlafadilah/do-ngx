@@ -30,8 +30,8 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   public action: 'Add' | 'Edit' = 'Add';
   public apiSelectParent: HttpBaseModel;
   public apiPathLocale: HttpBaseModel;
-  public root: boolean = true;
-  public group: boolean = false;
+  public root: boolean;
+  public group: boolean;
   public loadLocale: boolean = false;
 
   public set isRoot(root: boolean) {
@@ -53,14 +53,14 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       this.formGroup.get('code').disable();
       this.formGroup.get('link').disable();
       this.formGroup.get('icon').disable();
-      this.formGroup.get('parent').disable();
+      if (!this.isRoot) this.formGroup.get('parent').disable();
     } else {
       this.formGroup.get('root').enable();
       this.formGroup.get('home').enable();
       this.formGroup.get('code').enable();
       this.formGroup.get('link').enable();
-      this.formGroup.get('icon').enable();
       this.formGroup.get('parent').enable();
+      if (this.isRoot) this.formGroup.get('icon').enable();
     }
   }
   public get isGroup(): boolean { return this.group; }
@@ -94,12 +94,14 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
         'parent': [],
         'order': [],
       });
-    this.apiSelectParent = this.api['master']['select-country'];
+    this.apiSelectParent = this.api['security']['select-main-menus'];
     this.http.HTTP_AUTH(this.api['master']['all-locale']).subscribe(response => {
       this.splitLocale(response);
       this.loadLocale = true;
       this.loadingForm = false;
     });
+    this.isRoot = true;
+    this.isGroup = false;
   }
 
   ngOnInit(): void {}

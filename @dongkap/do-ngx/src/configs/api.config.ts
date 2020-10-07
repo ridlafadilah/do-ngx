@@ -40,6 +40,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/do/api/security/vw/auth/tree/menus/v.1',
         },
+        'select-main-menus': {
+            server: environment.host.security,
+            method: HttpMethod.GET,
+            path: '/do/api/security/vw/auth/select/main-menus/v.1/',
+        },
         'datatable-user': {
             server: environment.host.security,
             method: HttpMethod.POST,

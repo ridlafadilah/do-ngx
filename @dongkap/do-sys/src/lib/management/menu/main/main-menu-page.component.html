@@ -118,16 +118,17 @@
         [eva]="true"
         (clickIcon)="onSearchIcon()"
         formControlName="icon"
-        *ngIf="isRoot && !isGroup">
+        *ngIf="(isRoot && !isGroup)">
       </do-input-icon>
       <do-select
         [name]="'parent'"
         [label]="'Parent Menu'"
         [api]="apiSelectParent"
+        [searchable]="false"
         [skeleton]="loadingForm"
         [required]="true"
         formControlName="parent"
-        *ngIf="!isRoot && !isGroup">
+        *ngIf="(!isRoot && !isGroup)">
       </do-select>
       <do-input-text
         [name]="'order'"
