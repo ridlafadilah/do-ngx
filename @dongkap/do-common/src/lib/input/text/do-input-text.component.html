@@ -19,12 +19,15 @@
       [disabled]="disabled"
       [ngClass]="{
         'status-danger': hasErrors,
-        'status-success': (hasSuccess && required)
+        'status-success': (hasSuccess && required),
+        'input-capslock': capslock
       }"
       (input)="onChange($event.target.value)"
       (change)="onChange($event.target.value)"
       (blur)="onTouched($event.target.value)"
       (focus)="onTouched($event.target.value)"
+      (keydown)="onKeyDown($event)"
+      (keypress)="onKeyUp($event)"
       [(ngModel)]="value"
       #input nbInput fullWidth>
   </div>
