@@ -33,22 +33,30 @@ export class DoInputTextComponent extends DoValueAccessor<string> {
 
     onKeyDown(event: KeyboardEvent) {
       if (this.type === 'number') {
-        if (this.value.length >= this.maxLength) {
-          if (
-            ['DELETE', 'BACKSPACE', 'TAB', 'ESCAPE', 'ENTER'].indexOf(event.key.toUpperCase()) !== -1 ||
-            (event.key.toUpperCase() === 'A' && event.ctrlKey === true) || // Allow: Ctrl+A
-            (event.key.toUpperCase() === 'C' && event.ctrlKey === true) || // Allow: Ctrl+C
-            (event.key.toUpperCase() === 'X' && event.ctrlKey === true) || // Allow: Ctrl+X
-            (event.key.toUpperCase() === 'A' && event.metaKey === true) || // Cmd+A (Mac)
-            (event.key.toUpperCase() === 'C' && event.metaKey === true) || // Cmd+C (Mac)
-            (event.key.toUpperCase() === 'X' && event.metaKey === true) || // Cmd+X (Mac)
-            (event.key.toUpperCase() === 'END') ||
-            (event.key.toUpperCase() === 'HOME') ||
-            (event.key.toUpperCase() === 'LEFT ARROW') ||
-            (event.key.toUpperCase() === 'RIGHT ARROW')) {
-              return true;
-          }
+        if (event.key.toUpperCase() === 'E')
           return false;
+        if (this.step >= 1 && event.key === '.')
+          return false;
+        if (this.min >= 0 && event.key === '-')
+          return false;
+        if (this.value) {
+          if (this.value.length >= this.maxLength) {
+            if (
+              ['DELETE', 'BACKSPACE', 'TAB', 'ESCAPE', 'ENTER'].indexOf(event.key.toUpperCase()) !== -1 ||
+              (event.key.toUpperCase() === 'A' && event.ctrlKey === true) || // Allow: Ctrl+A
+              (event.key.toUpperCase() === 'C' && event.ctrlKey === true) || // Allow: Ctrl+C
+              (event.key.toUpperCase() === 'X' && event.ctrlKey === true) || // Allow: Ctrl+X
+              (event.key.toUpperCase() === 'A' && event.metaKey === true) || // Cmd+A (Mac)
+              (event.key.toUpperCase() === 'C' && event.metaKey === true) || // Cmd+C (Mac)
+              (event.key.toUpperCase() === 'X' && event.metaKey === true) || // Cmd+X (Mac)
+              (event.key.toUpperCase() === 'END') ||
+              (event.key.toUpperCase() === 'HOME') ||
+              (event.key.toUpperCase() === 'LEFT ARROW') ||
+              (event.key.toUpperCase() === 'RIGHT ARROW')) {
+                return true;
+            }
+            return false;
+          }
         }
         return true;
       }

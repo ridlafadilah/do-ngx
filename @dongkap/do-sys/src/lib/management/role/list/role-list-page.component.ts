@@ -2,9 +2,8 @@ import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { SelectionType } from '@swimlane/ngx-datatable';
-import { HttpBaseModel, ApiBaseResponse } from '@dongkap/do-core';
+import { HttpBaseModel } from '@dongkap/do-core';
 import { BaseFilterComponent, DatatableColumn } from '@dongkap/do-common';
 import { RoleService } from '../services/role.service';
 
