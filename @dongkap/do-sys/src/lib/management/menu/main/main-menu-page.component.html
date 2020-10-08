@@ -15,7 +15,7 @@
           <nb-icon
               class="action-trash"
               icon="close-square-outline"
-              (click)="onDeleteTree(node, context)">
+              (click)="onDeleteTree(node, context, dialogprocess)">
           </nb-icon>
         </span>
       </ng-template>
@@ -153,7 +153,7 @@
           <button
             type="submit"
             status="primary"
-            (click)="onSubmit()"
+            (click)="onSubmit(dialogprocess)"
             [disabled]="formGroup.invalid || formGroup.pristine || disabled"
             class="submit-right"
             nbButton>
@@ -174,3 +174,31 @@
     </form>
   </div>
 </div>
+
+<ng-template #dialogprocess let-data let-ref="dialogRef">
+  <nb-card accent="{{action === 'Delete' ? 'danger' : 'warning'}}">
+    <nb-card-header>{{ 'Warning' | translate}}</nb-card-header>
+    <nb-card-body>{{ data | translate}}</nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <button
+          type="reset"
+          status="danger"
+          (click)="ref.close()"
+          class="reset-left"
+          nbButton>
+          {{ 'Cancel' | translate}}
+        </button>
+        <button
+          type="submit"
+          status="primary"
+          (click)="onSubmitDialog(ref)"
+          [disabled]="disabled"
+          class="submit-right"
+          nbButton>
+          {{ action | translate}}
+        </button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

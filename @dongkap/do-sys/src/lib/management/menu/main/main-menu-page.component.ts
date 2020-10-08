@@ -1,11 +1,11 @@
-import { Component, Injector, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { TreeMode } from 'tree-ngx';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { ApiBaseResponse, HttpBaseModel, LocaleModel, ResponseCode } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-common';
 import { DialogIconComponent } from '../dialog-icon/dialog-icon.component';
@@ -27,12 +27,16 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   public allLocales: LocaleModel[] = [];
   public locales: LocaleModel[] = [];
   public localeDefault: LocaleModel = new LocaleModel();
-  public action: 'Add' | 'Edit' = 'Add';
+  public action: 'Add' | 'Edit' | 'Delete' = 'Add';
   public apiSelectParent: HttpBaseModel;
   public apiPathLocale: HttpBaseModel;
   public root: boolean;
   public group: boolean;
   public loadLocale: boolean = false;
+  public title: string = null;
+  private data: any;
+  private context: any;
+  private node: any;
 
   public set isRoot(root: boolean) {
     this.root = root;
@@ -166,6 +170,9 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       this.isGroup = node.item['group'];
       this.allLocales.forEach(locale => {
         this.formGroup.get(locale.localeCode).setValue(node.item['i18n'][locale.localeCode]);
+        if (locale.localeDefault) {
+          this.title = node.item['i18n'][locale.localeCode];
+        }
       });
       this.formGroup.get('group').setValue([{ selected: this.isGroup }]);
       this.formGroup.get('root').setValue([{ selected: this.isRoot }]);
@@ -183,12 +190,16 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
     }
   }
 
-  onDeleteTree(node: any, context: any) {
-    context.delete();
-    console.log(node);
+  onDeleteTree(node: any, context: any, dialog: TemplateRef<any>) {
+    this.action = 'Delete';
+    this.node = node;
+    this.context = context;
+    this.dialogService.open(
+      dialog,
+      { context: 'alert.delete' });
   }
 
-  onSubmit() {
+  onSubmit(dialog: TemplateRef<any>) {
     let id: string = null;
     let code: string = 'N/A';
     let icon: string = null;
@@ -232,7 +243,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
         };
       }
     }
-    const data: any = {
+    this.data = {
       'id': id,
       'code': code,
       'icon': icon,
@@ -246,21 +257,29 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       'i18n': i18n,
       'parentMenu': parentMenu,
     };
-    (super.onSubmit(data, 'security', 'post-menus')  as Observable<ApiBaseResponse>)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(response => {
-        if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
-          this.loadDataMenu().subscribe(() => {
-            this.loadingForm = false;
-          });
-        }
-      });
+    if (this.action === 'Edit') {
+      this.dialogService.open(
+        dialog,
+        { context: 'alert.edit' });
+    } else {
+      this.postMenu();
+    }
+  }
+
+  onSubmitDialog(ref: NbDialogRef<any>) {
+    if (this.action === 'Delete') {
+      this.deleteTreeMenu(ref);
+    } else {
+      this.postMenu(ref);
+    }
   }
 
   onReset() {
     this.disabled = false;
     this.isRoot = true;
     this.isGroup = false;
+    this.title = null;
+    this.action = 'Add';
     this.allLocales.forEach(locale => {
       this.formGroup.get(locale.localeCode).setValue(null);
     });
@@ -273,7 +292,39 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
     this.formGroup.get('icon').setValue(null);
     this.formGroup.get('order').setValue(null);
     this.formGroup.get('parent').setValue(null);
-    this.action = 'Add';
+  }
+
+  private deleteTreeMenu(ref: NbDialogRef<any>) {
+    this.disabled = true;
+    this.http.HTTP_AUTH(this.api['security']['delete-menu'], null, null, null,
+    [this.node['id']]).subscribe(
+      (success: ApiBaseResponse) => {
+        ref.close();
+        this.context.delete();
+        this.disabled = false;
+        this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
+        this.loadDataMenu().subscribe(() => {
+          this.loadingForm = false;
+        });
+      },
+      (error: ApiBaseResponse) => {
+        this.disabled = false;
+        this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
+      },
+    );
+  }
+
+  private postMenu(ref?: NbDialogRef<any>) {
+    (super.onSubmit(this.data, 'security', 'post-menus')  as Observable<ApiBaseResponse>)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(response => {
+        if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
+          this.loadDataMenu().subscribe(() => {
+            this.loadingForm = false;
+          });
+        }
+        if (this.action === 'Edit') ref.close();
+      });
   }
 
 }

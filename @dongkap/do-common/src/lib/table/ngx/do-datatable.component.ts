@@ -183,7 +183,7 @@ export class DoDatatableComponent implements OnInit, OnDestroy {
   }
 
   onKeyDown(event: KeyboardEvent) {
-    if (event.keyCode === 13) {
+    if (event.key.toUpperCase() === 'ENTER') {
       this.doSearch(this._search);
     }
   }

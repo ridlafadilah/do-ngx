@@ -45,6 +45,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/do/api/security/vw/auth/select/main-menus/v.1',
         },
+        'delete-menu': {
+            server: environment.host.security,
+            method: HttpMethod.DELETE,
+            path: '/do/api/security/trx/auth/delete/menu/v.1',
+        },
         'post-menus': {
             server: environment.host.security,
             method: HttpMethod.POST,
