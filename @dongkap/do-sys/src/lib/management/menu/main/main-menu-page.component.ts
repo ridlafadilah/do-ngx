@@ -131,10 +131,10 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
     return this.http.HTTP_AUTH(
       this.api['security']['get-tree-menus'], null, null, null,
       ['main']).pipe(map((response: any) => {
-          this.nodeItems = [];
-          this.nodeItems = [...this.nodeItems, ...response];
-          this.onReset();
-          if (this.loadLocale) this.loadingForm = false;
+        this.nodeItems = [];
+        this.nodeItems = [...this.nodeItems, ...response];
+        this.onReset();
+        if (this.loadLocale) this.loadingForm = false;
       }));
   }
 
@@ -246,7 +246,6 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
       'i18n': i18n,
       'parentMenu': parentMenu,
     };
-    console.log(data);
     (super.onSubmit(data, 'security', 'post-menus')  as Observable<ApiBaseResponse>)
       .pipe(takeUntil(this.destroy$))
       .subscribe(response => {
