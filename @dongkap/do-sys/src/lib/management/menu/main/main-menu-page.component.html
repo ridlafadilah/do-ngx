@@ -7,6 +7,10 @@
       <ng-template #nodeNameTemplate let-node="node" let-context="context">
         <span
           class="node-action"
+          [ngClass]="{
+            'node-action': !node.item.group,
+            'node-action-group': node.item.group
+          }"
           [class.active]="context.active"
           (click)="onSelectNode(node)">
           {{node.name}}
@@ -74,6 +78,7 @@
         [name]="'group'"
         [label]="'Group'"
         [skeleton]="loadingForm"
+        [warnMessage]="'warn.group-menu'"
         (onChecked)="onCheckedGroup($event)"
         formControlName="group">
       </do-checkbox>
@@ -176,7 +181,7 @@
 </div>
 
 <ng-template #dialogprocess let-data let-ref="dialogRef">
-  <nb-card accent="{{action === 'Delete' ? 'danger' : 'warning'}}">
+  <nb-card accent="{{dialogAction === 'Delete' ? 'danger' : 'warning'}}">
     <nb-card-header>{{ 'Warning' | translate}}</nb-card-header>
     <nb-card-body>{{ data | translate}}</nb-card-body>
     <nb-card-footer>
@@ -185,7 +190,7 @@
           type="reset"
           status="danger"
           (click)="ref.close()"
-          class="reset-left"
+          class="reset-left-dialog"
           nbButton>
           {{ 'Cancel' | translate}}
         </button>
@@ -194,9 +199,9 @@
           status="primary"
           (click)="onSubmitDialog(ref)"
           [disabled]="disabled"
-          class="submit-right"
+          class="submit-right-dialog"
           nbButton>
-          {{ action | translate}}
+          {{ dialogAction | translate}}
         </button>
       </div>
     </nb-card-footer>

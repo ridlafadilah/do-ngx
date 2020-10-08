@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { DoErrorMessageComponent } from './error-message/do-error-message.component';
-import { DoPageOutletComponent } from './page-outlet/do-page-outlet.component';
 import { NbCardModule, NbIconModule, NbSelectModule } from '@nebular/theme';
+import { DoPageOutletComponent } from './page-outlet/do-page-outlet.component';
 import { DoContainerOutletComponent } from './container-outlet/do-container-outlet.component';
+import { DoWarnMessageComponent } from './warn-message/do-warn-message.component';
+import { DoErrorMessageComponent } from './error-message/do-error-message.component';
 import { CurrencyMaskDirective } from './directive/currency.directive';
 import { EqualValidator } from './directive/equal-validator.directive';
 import { NotEqualValidator } from './directive/not-equal-validator.directive';
@@ -15,6 +16,7 @@ import { DragDropDirective } from './directive/drag-drop.directive';
 export const BASE_COMPONENTS = [
   DoPageOutletComponent,
   DoContainerOutletComponent,
+  DoWarnMessageComponent,
   DoErrorMessageComponent,
 ];
 

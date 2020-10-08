@@ -19,6 +19,7 @@ export abstract class DoValidatorAccessor implements ControlValueAccessor, Valid
     @Input() disabled: boolean = false;
     @Input() required: boolean = false;
     @Input() paramError: any;
+    @Input() warnMessage: string;
     public onChange = (_: any) => {};
     public onTouched = (_?: any) => {};
     protected onInit(): void {}

@@ -27,6 +27,21 @@
     cursor: pointer;
 }
 
+.node-action-group {
+    font-family: Open Sans, sans-serif;
+    font-weight: 600;
+    line-height: 1.5rem;
+    color: #8f9bb3;
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.node-action-group:hover {
+    background-color: transparent;
+    color: #598bff;
+    cursor: pointer;
+}
+
 .tree-action {
     margin-left: 0.5rem;
     cursor: pointer;
@@ -42,4 +57,13 @@
 
 .submit-right {
     margin-left: 0.25rem;
+}
+
+.reset-left-dialog {
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+}
+
+.submit-right-dialog {
+    margin-left: 0.5rem;
 }

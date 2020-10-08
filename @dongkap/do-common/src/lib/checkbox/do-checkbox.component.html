@@ -3,6 +3,7 @@
   [colLabel]="colLabel" [colContent]="colInput"
   [required]="required" [hasErrors]="hasErrors"
   [errorMessages]="errorMessages" [paramError]="paramError"
+  [warnMessage]="warnMessage"
   [skeleton]="skeleton">
   <div class="col-sm-{{colInput}}" *ngIf="!skeleton; else contentskeleton">
     <nb-checkbox

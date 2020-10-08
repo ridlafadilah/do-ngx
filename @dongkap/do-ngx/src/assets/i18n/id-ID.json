@@ -64,6 +64,9 @@
 		"button-deactivate": "Saya mengerti konsekuensinya, nonaktifkan akun",
 		"fake-form": "Mohon dipastikan kembali, laporan yang anda selidiki sungguh tidak valid."
 	},
+	"warn": {
+		"group-menu": "Mohon urutkan menu di bawah grup!"
+	},
 	"error": {
 		"pattern": {
 			"email": "Silakan masukkan alamat email yang valid!",

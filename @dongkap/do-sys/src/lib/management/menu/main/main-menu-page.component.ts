@@ -27,7 +27,8 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   public allLocales: LocaleModel[] = [];
   public locales: LocaleModel[] = [];
   public localeDefault: LocaleModel = new LocaleModel();
-  public action: 'Add' | 'Edit' | 'Delete' = 'Add';
+  public action: 'Add' | 'Edit' = 'Add';
+  public dialogAction: 'Edit' | 'Delete' = 'Edit';
   public apiSelectParent: HttpBaseModel;
   public apiPathLocale: HttpBaseModel;
   public root: boolean;
@@ -109,11 +110,6 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
         'order': [],
       });
     this.apiSelectParent = this.api['security']['select-main-menus'];
-    this.http.HTTP_AUTH(this.api['master']['all-locale']).subscribe(response => {
-      this.splitLocale(response);
-      this.loadLocale = true;
-      this.loadingForm = false;
-    });
     this.isRoot = true;
     this.isGroup = false;
   }
@@ -131,7 +127,14 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   }
 
   loadDataMenu(): Observable<any> {
-    this.loadingForm = true;
+    if (!this.loadLocale) {
+      this.loadingForm = true;
+      this.http.HTTP_AUTH(this.api['master']['all-locale']).subscribe(response => {
+        this.splitLocale(response);
+        this.loadLocale = true;
+        this.loadingForm = false;
+      });
+    }
     return this.http.HTTP_AUTH(
       this.api['security']['get-tree-menus'], null, null, null,
       ['main']).pipe(map((response: any) => {
@@ -166,6 +169,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   onSelectNode(node: any) {
     if (node.item) {
       this.action = 'Edit';
+      this.dialogAction = this.action;
       this.isRoot = node.item['level'] === 0 ? true : false;
       this.isGroup = node.item['group'];
       this.allLocales.forEach(locale => {
@@ -191,7 +195,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   }
 
   onDeleteTree(node: any, context: any, dialog: TemplateRef<any>) {
-    this.action = 'Delete';
+    this.dialogAction = 'Delete';
     this.node = node;
     this.context = context;
     this.dialogService.open(
@@ -222,11 +226,6 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
         home = true;
       }
     }
-    if (this.formGroup.get('group').value) {
-      if (this.formGroup.get('group').value[0]['selected']) {
-        group = true;
-      }
-    }
     if (this.formGroup.get('root').value) {
       if (this.formGroup.get('root').value[0]['selected']) {
         level = 0;
@@ -241,6 +240,15 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
         parentMenu = {
           id: this.formGroup.get('parent').value['value'],
         };
+      }
+    }
+    if (this.formGroup.get('group').value) {
+      if (this.formGroup.get('group').value[0]['selected']) {
+        group = true;
+        home = false;
+        leaf = false;
+        level = 0;
+        parentMenu = null;
       }
     }
     this.data = {
@@ -267,7 +275,7 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   }
 
   onSubmitDialog(ref: NbDialogRef<any>) {
-    if (this.action === 'Delete') {
+    if (this.dialogAction === 'Delete') {
       this.deleteTreeMenu(ref);
     } else {
       this.postMenu(ref);

@@ -64,6 +64,9 @@
 		"button-deactivate": "I understand the consequences, deactivate account",
 		"fake-form": "Please make sure again, the report you are investigating is really invalid."
 	},
+	"warn": {
+		"group-menu": "Please sort menus under group!"
+	},
 	"error": {
 		"pattern": {
 			"email": "Please enter valid email address!",

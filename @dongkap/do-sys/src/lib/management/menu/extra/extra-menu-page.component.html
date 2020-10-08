@@ -15,7 +15,7 @@
           <nb-icon
               class="action-trash"
               icon="close-square-outline"
-              (click)="onDeleteTree(node, context)">
+              (click)="onDeleteTree(node, context, dialogprocessextra)">
           </nb-icon>
         </span>
       </ng-template>
@@ -89,6 +89,8 @@
         [label]="'Order'"
         [required]="true"
         [type]="'number'"
+        [max]="99"
+        [maxLength]="2"
         [skeleton]="loadingForm"
         formControlName="order">
       </do-input-text>
@@ -105,7 +107,7 @@
           <button
             type="submit"
             status="primary"
-            (click)="onSubmit()"
+            (click)="onSubmit(dialogprocessextra)"
             [disabled]="formGroup.invalid || formGroup.pristine || disabled"
             class="submit-right"
             nbButton>
@@ -126,3 +128,31 @@
     </form>
   </div>
 </div>
+
+<ng-template #dialogprocessextra let-data let-ref="dialogRef">
+  <nb-card accent="{{dialogAction === 'Delete' ? 'danger' : 'warning'}}">
+    <nb-card-header>{{ 'Warning' | translate}}</nb-card-header>
+    <nb-card-body>{{ data | translate}}</nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <button
+          type="reset"
+          status="danger"
+          (click)="ref.close()"
+          class="reset-left-dialog"
+          nbButton>
+          {{ 'Cancel' | translate}}
+        </button>
+        <button
+          type="submit"
+          status="primary"
+          (click)="onSubmitDialog(ref)"
+          [disabled]="disabled"
+          class="submit-right-dialog"
+          nbButton>
+          {{ dialogAction | translate}}
+        </button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

@@ -18,6 +18,7 @@
   </ng-template>
   <ng-content></ng-content>
   <div class="offset-sm-{{colLabel}} col-sm-{{colContent}}">
+    <do-warn-message *ngIf="!skeleton" [warnMessage]="warnMessage"></do-warn-message>
     <do-error-message [hasErrors]="hasErrors" [errorMessages]="errorMessages" [param]="paramError">
     </do-error-message>
   </div>
