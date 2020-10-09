@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
@@ -13,7 +13,9 @@ import { ProfileIndexedDBService } from '../storage/profile-indexeddb.service';
 import { SettingsIndexedDBService } from '../storage/settings-indexeddb.service';
 
 @Injectable()
-export class AuthTokenService {
+export class AuthTokenService implements OnDestroy {
+
+    private timer: any;
 
     constructor(@Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
         @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
@@ -27,12 +29,16 @@ export class AuthTokenService {
         idle.setTimeout(oauthResource['session_timeout']);
         idle.setInterrupts(DEFAULT_INTERRUPTSOURCES);
         idle.onTimeout.subscribe(() => {
-            /* console.log('[RIP] Session Timeout'); */
+            /* console.log('[DONGKAP] Session Timeout'); */
             this.logout();
         });
         idle.onIdleEnd.subscribe(() => {
-            /* console.log('[RIP] Session Idle End'); */
+            /* console.log('[DONGKAP] Session Idle End'); */
         });
+    }
+
+    ngOnDestroy(): void {
+        clearInterval(this.timer);
     }
 
     public login(username: string, password: string): Promise<any> {
@@ -43,10 +49,10 @@ export class AuthTokenService {
             this.getAuthHeader())
                 .toPromise()
                 .then((response: HttpResponse<any>) => {
-                    this.idle.setIdle(response['expires_in']);
+                    this.idle.setIdle(+response['expires_in']);
                     this.idle.watch();
-                    /* console.log('[RIP] Session Idle Start'); */
-                    /* console.log('[RIP] Session Timeout in '+response['expires_in']+' seconds'); */
+                    /* console.log('[DONGKAP] Session Idle Start'); */
+                    /* console.log('[DONGKAP] Session Timeout in ' + response['expires_in'] + ' seconds'); */
                     this.authIndexedDB.loginStorage(response);
                     this.profileIndexedDB.loginStorage(response);
                     this.settingsIndexedDB.loginStorage(response);
@@ -68,9 +74,20 @@ export class AuthTokenService {
     }
 
     public logout() {
-        this.idle.stop();
+        this.timer = setInterval(() => {
+            this.doLogout();
+        }, 5000);
+        this.httpBaseService.HTTP_AUTH(this.apiPath['security']['revoke'])
+            .subscribe(() => {
+                this.doLogout();
+            });
+    }
+
+    private doLogout() {
         this.authIndexedDB.logout();
         this.profileIndexedDB.logout();
+        clearInterval(this.timer);
+        this.idle.stop();
         this.router.navigate(['/auth']);
     }
 
@@ -111,8 +128,8 @@ export class AuthTokenService {
         return body;
     }
 
-    private getBodyRefresh(): Observable<String> {
-        const result$: Subject<String> = new Subject<String>();
+    private getBodyRefresh(): Observable<string> {
+        const result$: Subject<string> = new Subject<string>();
         this.authIndexedDB.getEnc(oauthInfo.refresh_token).then((value: string) => {
             const body: URLSearchParams = new URLSearchParams();
             body.append('client_id', this.oauthResource['client_id']);

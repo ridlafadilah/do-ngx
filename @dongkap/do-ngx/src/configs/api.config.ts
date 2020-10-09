@@ -10,6 +10,11 @@ export const apiPath: APIModel = {
         },
     },
     security: {
+        'revoke': {
+            server: environment.host.security,
+            method: HttpMethod.DELETE,
+            path: '/do/api/security/oauth/token/revoke',
+        },
         'change-password': {
             server: environment.host.security,
             method: HttpMethod.POST,
