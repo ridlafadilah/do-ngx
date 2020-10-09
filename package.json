@@ -2,7 +2,7 @@
   "name": "skeleton",
   "version": "0.0.0",
   "scripts": {
-    "start:do-mock": "ng serve @dongkap/do-mock --port 4242 --base-href=/",
+    "start:do-mock": "ng serve @dongkap/do-mock --port 4141 --base-href=/",
     "clean:do-core": "node_modules/.bin/rimraf dist/@dongkap/do-core",
     "clean:do-theme": "node_modules/.bin/rimraf dist/@dongkap/do-theme",
     "build:do-core": "ng build @dongkap/do-core --prod",
