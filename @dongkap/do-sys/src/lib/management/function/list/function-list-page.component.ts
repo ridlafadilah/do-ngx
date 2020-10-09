@@ -17,8 +17,8 @@ export class FunctionListPageComponent extends BaseFilterComponent<any> implemen
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
   public columns: DatatableColumn[] = [
-    { name: 'Authority', prop: 'authority', width: 150 },
-    { name: 'Description', prop: 'description', width: 275 },
+    { name: 'Authority', prop: 'authority' },
+    { name: 'Description', prop: 'description' },
   ];
   public expanded: boolean = false;
 
@@ -33,14 +33,9 @@ export class FunctionListPageComponent extends BaseFilterComponent<any> implemen
       { controlName: 'description', type: 'input' }];
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {}
-
-  onAddGroup(): void {
-    this.router.navigate(['/app/mgmt/function/control', 'add']);
-  }
 
   onViewDetail(data): void {
     this.functionControlService.setRole(data);
@@ -49,11 +44,6 @@ export class FunctionListPageComponent extends BaseFilterComponent<any> implemen
 
   onReset(): void {
     this.router.navigate(['/app/mgmt/function/control']);
-  }
-
-  back(): boolean {
-    this.router.navigate(['/app/mgmt/function/control']);
-    return false;
   }
 
 }

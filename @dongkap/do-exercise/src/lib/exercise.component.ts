@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { TableColumn } from '@swimlane/ngx-datatable';
+import { TreeMode } from 'tree-ngx';
 import {
   RadioModel,
   CheckboxModel,
@@ -97,6 +98,11 @@ export class ExerciseComponent implements OnInit {
   formGroupFilter: FormGroup;
   filters: DatatableFilter[];
   keyword: Keyword;
+  options: any = {
+    mode: TreeMode.MultiSelect,
+    checkboxes: true,
+    alwaysEmitSelected: false,
+  };
   nodeItems: any[] = [{
     id: '0',
     name: 'Heros',
@@ -121,20 +127,23 @@ export class ExerciseComponent implements OnInit {
   {
     id: '3',
     name: 'Villains',
+    selected: true,
     children: [
       {
         id: '4',
         name: 'Joker',
         item: {
           phrase: 'Why so serius'
-        }
+        },
+        selected: false,
       },
       {
         id: '5',
         name: 'Lex luthor',
         item: {
           phrase: 'I am the villain of this story'
-        }
+        },
+        selected: true,
       }
     ]
   }];

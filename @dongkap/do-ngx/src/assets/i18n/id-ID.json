@@ -118,5 +118,9 @@
 		},
 		"delete": "Apakah anda ingin menghapus data ini?",
 		"edit": "Apakah Anda ingin memperbarui data ini?"
+	},
+	"header": {
+		"parameter" : "Parameter {{value}}",
+		"function-control": "Kontrol Fungsi : {{value}}"
 	}
 }

@@ -40,6 +40,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.GET,
             path: '/do/api/security/vw/auth/tree/menus/v.1',
         },
+        'get-function-menus': {
+            server: environment.host.security,
+            method: HttpMethod.GET,
+            path: '/do/api/security/vw/auth/tree/menu/function/v.1',
+        },
+        'post-functions': {
+            server: environment.host.security,
+            method: HttpMethod.POST,
+            path: '/do/api/security/trx/auth/function/v.1',
+        },
         'select-main-menus': {
             server: environment.host.security,
             method: HttpMethod.GET,

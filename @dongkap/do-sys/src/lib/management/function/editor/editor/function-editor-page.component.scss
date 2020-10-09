@@ -1,0 +1,10 @@
+@import '~@dongkap/do-theme/styles/themes';
+
+@include nb-install-component() {
+
+  nb-tab {
+    flex: 1;
+    padding: 1.5rem 0.25rem !important;
+  }
+
+}

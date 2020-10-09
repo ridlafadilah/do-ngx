@@ -13,6 +13,7 @@ export class DoPageOutletComponent {
   @Input() public width: number = 12;
   @Input() public dataSelect: any[];
   @Input() public selected: any;
+  @Input() public param: any;
   @Output() public selectChange: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private router: Router) {}

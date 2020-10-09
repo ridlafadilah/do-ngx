@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RoleModel } from '../models/role.model';
+import { RoleModel } from '@dongkap/do-core';
 
 @Injectable()
 export class FunctionControlService {

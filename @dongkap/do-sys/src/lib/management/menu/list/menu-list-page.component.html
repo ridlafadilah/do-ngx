@@ -1,9 +1,9 @@
 <do-page-outlet [header]="'Menu Management'">
   <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)">
-    <nb-tab tabId="main" tabTitle="Main Menu" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+    <nb-tab tabId="main" tabTitle="Main Menu">
       <do-main-menu-page #mainMenu></do-main-menu-page>
     </nb-tab>
-    <nb-tab tabId="extra" tabTitle="Extra Menu" [lazyLoad]="true" [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="giant">
+    <nb-tab tabId="extra" tabTitle="Extra Menu" [lazyLoad]="true">
       <do-extra-menu-page #extraMenu></do-extra-menu-page>
     </nb-tab>
   </nb-tabset>

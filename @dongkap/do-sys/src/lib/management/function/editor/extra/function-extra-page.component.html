@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-4 col-lg-4 col-xxxl-6">
+    <do-tree
+      (onSelect)="onSelect($event)"
+      [nodeItems]="nodeItems"
+      [options]="options">
+    </do-tree>
+  </div>
+</div>
+
+<ng-template #dialogprocess let-data let-ref="dialogRef">
+  <nb-card accent="{{'warning'}}">
+    <nb-card-header>{{ 'Warning' | translate}}</nb-card-header>
+    <nb-card-body>{{ data | translate}}</nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <button
+          type="reset"
+          status="danger"
+          (click)="ref.close()"
+          class="reset-left-dialog"
+          nbButton>
+          {{ 'Cancel' | translate}}
+        </button>
+        <button
+          type="submit"
+          status="primary"
+          (click)="onSubmitDialog(ref)"
+          [disabled]="disabled"
+          class="submit-right-dialog"
+          nbButton>
+          {{ 'Submit' | translate}}
+        </button>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

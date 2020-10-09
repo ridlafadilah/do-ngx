@@ -56,7 +56,7 @@
   </div>
 </div>
 
-<do-page-outlet [url]="'/app/sysconf/parameter'" [header]="'Parameter '+parameterGroup.parameterGroupName">
+<do-page-outlet [url]="'/app/sysconf/parameter'" [header]="'header.parameter'" [param]="{value: parameterGroup.parameterGroupName}">
   <div class="row">
     <div class="col-md-12 col-lg-12 col-xxxl-6">
       <do-datatable

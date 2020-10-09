@@ -4,9 +4,8 @@ import { OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { ApiBaseResponse, ResponseCode, HttpBaseModel } from '@dongkap/do-core';
+import { ApiBaseResponse, ResponseCode, RoleModel } from '@dongkap/do-core';
 import { BaseFormComponent, CheckboxModel } from '@dongkap/do-common';
-import { RoleModel } from '../models/role.model';
 import { RoleService } from '../services/role.service';
 
 @Component({
