@@ -1,22 +1,47 @@
 <div class="row">
   <div class="col-md-4 col-lg-4 col-xxxl-6">
-    <div class="save-function">
+    <div class="row save-function">
+      <button
+        [size]="'medium'"
+        [shape]="'rectangle'"
+        [status]="'danger'"
+        [appearance]="'ghost'"
+        (click)="loadDataMenu().subscribe()"
+        nbButton>
+        <nb-icon [status]="'danger'" icon="corner-up-left" pack="eva"></nb-icon>
+        {{'Reset' | translate}}
+      </button>
       <button
         [size]="'medium'"
         [shape]="'rectangle'"
         [status]="'primary'"
-        [appearance]="'outline'"
+        [appearance]="'ghost'"
         [disabled]="disabled"
+        [ngClass]="{
+          'submit-right': true
+        }"
         (click)="onSubmit(dialogprocess)"
         nbButton>
-        <nb-icon [status]="(disabled ? 'basic' : 'primary')" icon="save" pack="eva"></nb-icon>{{'Save' | translate}}
+        <nb-icon [status]="(disabled ? 'basic' : 'primary')" icon="save" pack="eva"></nb-icon>
+        {{'Save' | translate}}
       </button>
     </div>
-    <do-tree
-      (onSelect)="onSelect($event)"
+    <tree-ngx
+      (selectedItems)="onSelect($event)"
       [nodeItems]="nodeItems"
-      [options]="options">
-    </do-tree>
+      [options]="options"
+      #treeMain>
+      <ng-template #nodeNameTemplate let-node="node" let-context="context">
+        <span
+          class="node-action"
+          [ngClass]="{
+            'node-action': !node.item.group,
+            'node-action-group': node.item.group
+          }">
+          {{node.name}}
+        </span>
+      </ng-template>
+    </tree-ngx>
   </div>
 </div>
 

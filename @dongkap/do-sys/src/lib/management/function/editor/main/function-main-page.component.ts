@@ -42,6 +42,7 @@ export class FunctionMainPageComponent extends BaseFormComponent<any> implements
     return this.http.HTTP_AUTH(
       this.api['security']['get-function-menus'], null, null, null,
       ['main', this.functionControlService.getRole().authority]).pipe(map((response: any) => {
+        this.datas = [];
         this.nodeItems = [];
         this.nodeItems = [...this.nodeItems, ...response];
       }));
@@ -65,7 +66,9 @@ export class FunctionMainPageComponent extends BaseFormComponent<any> implements
   }
 
   private postFunction(ref?: NbDialogRef<any>) {
-    const data: any = {};
+    const data: any = {
+      type: 'main',
+    };
     const menus: any[] = [];
     data['authority'] = this.functionControlService.getRole().authority;
     this.datas.forEach(val => {

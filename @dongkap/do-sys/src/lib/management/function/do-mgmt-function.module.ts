@@ -8,6 +8,7 @@ import {
   NbTabsetModule,
   NbSpinnerModule,
 } from '@nebular/theme';
+import { TreeNgxModule } from 'tree-ngx';
 import { DoThemeModule } from '@dongkap/do-theme';
 import {
   DoInputModule,
@@ -16,7 +17,6 @@ import {
   DoBaseModule,
   DoSelectModule,
   DoTableModule,
-  DoTreeModule,
 } from '@dongkap/do-common';
 import { MgmtFunctionComponent } from './do-mgmt-function.component';
 import { DoMgmtFunctionRoutingModule } from './do-mgmt-function-routing.module';
@@ -41,6 +41,9 @@ const modules = [
   NbAlertModule,
   NbIconModule,
   NbDialogModule.forChild(),
+  NbTabsetModule,
+  NbSpinnerModule,
+  TreeNgxModule,
   DoThemeModule,
   DoInputModule,
   DoCheckBoxModule,
@@ -48,9 +51,6 @@ const modules = [
   DoBaseModule,
   DoSelectModule,
   DoTableModule,
-  DoTreeModule,
-  NbTabsetModule,
-  NbSpinnerModule,
   DoMgmtFunctionRoutingModule,
 ];
 
