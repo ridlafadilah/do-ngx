@@ -38,6 +38,7 @@ export class FunctionExtraPageComponent extends BaseFormComponent<any> implement
   ngOnDestroy(): void {}
 
   loadDataMenu(): Observable<any> {
+    this.disabled = true;
     return this.http.HTTP_AUTH(
       this.api['security']['get-function-menus'], null, null, null,
       ['extra', this.functionControlService.getRole().authority]).pipe(map((response: any) => {
@@ -47,6 +48,8 @@ export class FunctionExtraPageComponent extends BaseFormComponent<any> implement
   }
 
   onSelect(datas: any) {
+    if (this.datas.length > 0 && this.datas.length !== datas.length)
+      this.disabled = false;
     this.datas = [];
     this.datas = [...this.datas, ...datas];
   }
@@ -62,7 +65,19 @@ export class FunctionExtraPageComponent extends BaseFormComponent<any> implement
   }
 
   private postFunction(ref?: NbDialogRef<any>) {
-    (super.onSubmit(this.datas, 'security', 'post-functions')  as Observable<ApiBaseResponse>)
+    const data: any = {};
+    const menus: any[] = [];
+    data['authority'] = this.functionControlService.getRole().authority;
+    this.datas.forEach(val => {
+      menus.push(val['id']);
+      if (val['parentMenu']['id']) {
+        if (!menus.includes(val['parentMenu']['id'])) {
+          menus.push(val['parentMenu']['id']);
+        }
+      }
+    });
+    data['menus'] = menus;
+    (super.onSubmit(data, 'security', 'post-functions')  as Observable<ApiBaseResponse>)
       .pipe(takeUntil(this.destroy$))
       .subscribe(response => {
         if (response.respStatusCode === ResponseCode.OK_DEFAULT.toString()) {
