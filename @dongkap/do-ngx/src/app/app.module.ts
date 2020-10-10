@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { APP_BASE_HREF, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import {
   NbChatModule,
   NbDatepickerModule,
@@ -18,7 +19,8 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { TranslateService } from '@ngx-translate/core';
+import { RecaptchaLoaderService, RECAPTCHA_LANGUAGE, RECAPTCHA_SETTINGS } from 'ng-recaptcha';
 import {
   DoCoreModule,
   OAUTH_INFO, ENVIRONMENT, API,
@@ -78,6 +80,19 @@ import { IndexedDBDistributionService } from './services/indexeddb-dist.service'
     },
     {
       provide: OAUTH_INFO, useValue: oauthResource,
+    },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: oauthResource.recaptcha,
+      },
+    },
+    {
+      provide: RECAPTCHA_LANGUAGE,
+      deps: [ TranslateService ],
+      useFactory: (translate: TranslateService) => {
+        return translate.currentLang ? translate.currentLang .split('-')[0] : 'en';
+      },
     },
     IndexedDBDistributionService,
   ],

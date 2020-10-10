@@ -9,7 +9,7 @@
 
 <form [formGroup]="form" (ngSubmit)="login()" aria-labelledby="title">
   <div class="form-control-group">
-    <label class="label">{{ 'Username' | translate }} :</label>
+    <label class="label">{{ 'message.username-login' | translate }} :</label>
     <input [formControlName]="'username'"
           [required]="true"
           [ngClass]="{
@@ -18,18 +18,22 @@
           }"
           name="username"
           id="inputUsername"
-          placeholder="{{ 'Username' | translate }}"
+          placeholder="{{ 'message.username-login-placeholder' | translate }}"
           fieldSize="large"
+          tabindex="1"
           autofocus
           nbInput
           fullWidth>
     <ng-container *ngIf="hasErrorUsername">
-      <span class="caption status-danger">{{'error.username' | translate}}</span>
+      <span class="caption status-danger">{{'error.username-login' | translate}}</span>
     </ng-container>
   </div>
 
   <div class="form-control-group">
-    <label class="label">{{ 'Password' | translate }} :</label>
+    <span class="label-with-link">
+      <label class="label">{{ 'Password' | translate }} :</label>
+      <a class="forgot-password caption-2" routerLink="/auth/forgot-password">{{ 'Forgot Password' | translate}}?</a>
+    </span>
     <input [formControlName]="'password'"
           [required]="true"
           [ngClass]="{
@@ -41,6 +45,7 @@
           id="inputPassword"
           placeholder="{{ 'Password' | translate }}"
           fieldSize="large"
+          tabindex="2"
           nbInput
           fullWidth>
     <ng-container *ngIf="hasErrorPassword">
@@ -57,3 +62,7 @@
     {{ 'Login' | translate }}
   </button>
 </form>
+
+<section class="another-action" aria-label="Register">
+  {{ 'message.login-footer' | translate}} <a class="text-link" routerLink="/auth/register">{{ 'Register' | translate}}</a>
+</section>

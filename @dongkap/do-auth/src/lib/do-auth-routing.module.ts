@@ -6,6 +6,8 @@ import { LoginPageComponent } from './auth/login/login-page.component';
 import { UnauthorizeGuardService } from './services/unauth-guard.service';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { RegisterPageComponent } from './auth/register/register-page.component';
+import { ForgotPageComponent } from './auth/forgot/forgot-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +21,16 @@ const routes: Routes = [{
     {
       path: 'login',
       component: LoginPageComponent,
+      canActivate: [UnauthorizeGuardService],
+    },
+    {
+      path: 'register',
+      component: RegisterPageComponent,
+      canActivate: [UnauthorizeGuardService],
+    },
+    {
+      path: 'forgot-password',
+      component: ForgotPageComponent,
       canActivate: [UnauthorizeGuardService],
     },
     {

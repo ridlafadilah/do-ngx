@@ -1,11 +1,13 @@
 {
 	"Name": "Nama",
+	"Full name": "Nama Lengkap",
 	"Email": "Email",
 	"Address": "Alamat",
-	"Username": "Nama Pengguna",
+	"Username": "Username",
 	"Password": "Kata Sandi",
 	"Date": "Tanggal",
 	"Login": "Masuk",
+	"Register": "Daftar",
 	"Logout": "Keluar",
 	"Settings": "Pengaturan",
 	"Profile": "Profil",
@@ -32,7 +34,6 @@
 	"Mobile Phone": "Telepon Genggam",
 	"Welcome": "Selamat Datang",
 	"Hi": "Halo",
-	"Civilians Emergency Report": "Laporan Darurat Warga Sipil",
 	"Add": "Tambah",
 	"Edit": "Ubah",
 	"Delete": "Hapus",
@@ -55,8 +56,17 @@
 	"Created Date": "Dibuat Tanggal",
 	"Modified": "Diubah",
 	"Modified Date": "Diubah Tanggal",
-	"Fake Report": "Laporan Palsu",
+	"Forgot Password": "Lupa Kata Sandi",
+	"Send": "Kirim",
 	"message": {
+		"username-login": "Username atau email",
+		"username-login-placeholder": "Username / Email",
+		"email-forgot-password": "Masukan email Anda",
+		"terms-conditions-label": "Setuju dengan",
+		"terms-conditions": "Syarat dan Ketentuan",
+		"login-footer": "Belum memiliki akun?",
+		"register-footer": "Sudah memiliki akun?",
+		"forgot-password-link": "Kembali untuk masuk",
 		"danger-zone": "Zona Bahaya",
 		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
 		"deactivate-form": "Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.",
@@ -86,7 +96,9 @@
 		"incorrect": {
 			"password": "Kata Sandi tidak sesuai"
 		},
-		"username": "Nama Pengguna wajib diisi!",
+		"fullname": "Nama Lengkap wajib diisi!",
+		"username": "Username wajib diisi!",
+		"username-login": "Username atau email wajib diisi!",
 		"password": "Kata Sandi wajib diisi!",
 		"required": "Wajib diisi!",
 		"translate": "Silakan muat ulang Browser!",
@@ -98,7 +110,7 @@
 		"500": "Server gagal diakses",
 		"504": "Server timeout"
 	},
-	"Bad credentials": "Nama Pengguna atau Kata Sandi salah",
+	"Bad credentials": "Username atau Kata Sandi salah",
 	"User account is locked": "Akun telah dikunci",
 	"User is disabled": "Akun sudah dinonaktifkan",
 	"User account has expired": "Akun sudah kadaluwarsa",
@@ -110,7 +122,8 @@
 		"typesearch": "Ketik untuk menelusuri"
 	},
 	"subtitle": {
-		"login" : "Halo! Masuk dengan nama pengguna Anda."
+		"login" : "Halo! Masuk dengan username atau email Anda.",
+		"forgot-password" : "Masukkan email Anda, kami akan mengirimkan tautan untuk menyetel ulang kata sandi Anda"
 	},
 	"alert": {
 		"title": {

@@ -7,19 +7,18 @@ import { ApiBaseResponse } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
 
 @Component({
-    selector: 'do-login-page',
-    styleUrls: ['login-page.component.scss'],
-    templateUrl: 'login-page.component.html',
+    selector: 'do-forgot-page',
+    styleUrls: ['forgot-page.component.scss'],
+    templateUrl: 'forgot-page.component.html',
 })
-export class LoginPageComponent implements OnDestroy {
+export class ForgotPageComponent implements OnDestroy {
 
   public responseError: any;
-  public buttonLogin: boolean = false;
+  public buttonForgotPassword: boolean = false;
   private progressBar: number = 25;
 
   public form: FormGroup = new FormGroup({
-    username: new FormControl(),
-    password: new FormControl(),
+    email: new FormControl(),
   });
 
   constructor(private router: Router, private authTokenService: AuthTokenService) {}
@@ -27,7 +26,7 @@ export class LoginPageComponent implements OnDestroy {
   ngOnDestroy(): void {
   }
 
-  public login() {
+  public forgotPassword() {
     if (!this.form.invalid) {
       document.querySelectorAll('.pace-done').forEach(pace => {
         pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
@@ -44,7 +43,7 @@ export class LoginPageComponent implements OnDestroy {
         progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
         progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
       }
-      this.buttonLogin = true;
+      this.buttonForgotPassword = true;
       this.authTokenService.login(
         this.form.get('username').value,
         this.form.get('password').value)
@@ -61,7 +60,7 @@ export class LoginPageComponent implements OnDestroy {
               const response: ApiBaseResponse = (<ApiBaseResponse> error);
               this.responseError = response.respStatusMessage[response.respStatusCode];
             }
-            this.buttonLogin = false;
+            this.buttonForgotPassword = false;
             this.progressBar = 85;
             progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
             progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';

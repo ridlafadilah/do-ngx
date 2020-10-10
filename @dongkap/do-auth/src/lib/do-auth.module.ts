@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { AUTH_INDEXED_DB, PROFILE_INDEXED_DB, SETTINGS_INDEXED_DB, USER_INFO } from '@dongkap/do-core';
 import { DoThemeModule } from '@dongkap/do-theme';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -30,6 +31,8 @@ import { AuthIndexedDBService } from './storage/auth-indexeddb.service';
 import { ProfileIndexedDBService } from './storage/profile-indexeddb.service';
 import { SettingsIndexedDBService } from './storage/settings-indexeddb.service';
 import { AuthLanguageService } from './services/auth-lang.service';
+import { RegisterPageComponent } from './auth/register/register-page.component';
+import { ForgotPageComponent } from './auth/forgot/forgot-page.component';
 
 const AUTH_PROVIDERS = [
   { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorTokenService, multi: true},
@@ -51,6 +54,8 @@ const AUTH_PROVIDERS = [
 const AUTH_COMPONENTS = [
   LoginPageComponent,
   LogoutComponent,
+  RegisterPageComponent,
+  ForgotPageComponent,
 ];
 
 @NgModule({
@@ -68,6 +73,8 @@ const AUTH_COMPONENTS = [
     TranslateModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     DoThemeModule,
     DoLayoutAuthModule,
     DoAuthRoutingModule,

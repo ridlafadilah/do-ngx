@@ -8,6 +8,7 @@ export interface SecurityResourceModel {
     session_timeout?: number;
     signature?: boolean;
     vapid?: string;
+    recaptcha?: string;
 }
 
 export const oauthInfo = {

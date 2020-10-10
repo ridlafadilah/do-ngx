@@ -1,33 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiBaseResponse } from '@dongkap/do-core';
+import { ApiBaseResponse, OAUTH_INFO, SecurityResourceModel } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
 
 @Component({
-    selector: 'do-login-page',
-    styleUrls: ['login-page.component.scss'],
-    templateUrl: 'login-page.component.html',
+    selector: 'do-register-page',
+    styleUrls: ['register-page.component.scss'],
+    templateUrl: 'register-page.component.html',
 })
-export class LoginPageComponent implements OnDestroy {
+export class RegisterPageComponent implements OnDestroy {
 
   public responseError: any;
-  public buttonLogin: boolean = false;
+  public buttonRegister: boolean = false;
   private progressBar: number = 25;
 
   public form: FormGroup = new FormGroup({
+    fullname: new FormControl(),
     username: new FormControl(),
+    email: new FormControl(),
     password: new FormControl(),
+    confirmPassword: new FormControl(),
+    recaptcha: new FormControl(),
+    terms: new FormControl(),
   });
 
-  constructor(private router: Router, private authTokenService: AuthTokenService) {}
+  constructor(private router: Router, private authTokenService: AuthTokenService) {
+  }
 
   ngOnDestroy(): void {
   }
 
-  public login() {
+  public register() {
     if (!this.form.invalid) {
       document.querySelectorAll('.pace-done').forEach(pace => {
         pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
@@ -44,7 +50,7 @@ export class LoginPageComponent implements OnDestroy {
         progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
         progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
       }
-      this.buttonLogin = true;
+      this.buttonRegister = true;
       this.authTokenService.login(
         this.form.get('username').value,
         this.form.get('password').value)
@@ -61,7 +67,7 @@ export class LoginPageComponent implements OnDestroy {
               const response: ApiBaseResponse = (<ApiBaseResponse> error);
               this.responseError = response.respStatusMessage[response.respStatusCode];
             }
-            this.buttonLogin = false;
+            this.buttonRegister = false;
             this.progressBar = 85;
             progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
             progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
@@ -81,6 +87,11 @@ export class LoginPageComponent implements OnDestroy {
             progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
         }
     }
+  }
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved response token: ${captchaResponse}`);
+   
   }
 
   get hasErrorUsername(): boolean {

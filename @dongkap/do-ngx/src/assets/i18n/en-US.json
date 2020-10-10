@@ -1,11 +1,13 @@
 {
 	"Name": "Name",
+	"Full name": "Full name",
 	"Email": "Email",
 	"Address": "Address",
 	"Username": "Username",
 	"Password": "Password",
 	"Date": "Date",
 	"Login": "Login",
+	"Register": "Register",
 	"Logout": "Logout",
 	"Settings": "Settings",
 	"Profile": "Profile",
@@ -32,7 +34,6 @@
 	"Mobile Phone": "Mobile Phone",
 	"Welcome": "Welcome",
 	"Hi": "Hi",
-	"Civilians Emergency Report": "Civilians Emergency Report",
 	"Add": "Add",
 	"Edit": "Edit",
 	"Delete": "Delete",
@@ -55,8 +56,17 @@
 	"Created Date": "Created Date",
 	"Modified": "Modified",
 	"Modified Date": "Modified Date",
-	"Fake Report": "Fake Report",
+	"Forgot Password": "Forgot Password",
+	"Send": "Send",
 	"message": {
+		"username-login": "Username or email",
+		"username-login-placeholder": "Username / Email",
+		"email-forgot-password": "Enter your email address",
+		"terms-conditions-label": "Agree to",
+		"terms-conditions": "Terms & Conditions",
+		"login-footer": "Don't have an account?",
+		"register-footer": "Already have an account?",
+		"forgot-password-link": "Back to Login",
 		"danger-zone": "Danger Zone",
 		"deactivated-account": "Once you deactivated account, there is no going back. Please be certain.",
 		"deactivate-form": "This action cannot be undone. This will permanently disable your account.",
@@ -86,7 +96,9 @@
 		"incorrect": {
 			"password": "Incorrect Password"
 		},
+		"fullname": "Full name is required!",
 		"username": "Username is required!",
+		"username-login": "Username or email is required!",
 		"password": "Password is required!",
 		"required": "This field is required!",
 		"translate": "Please reload Browser!",
@@ -110,7 +122,8 @@
 		"typesearch": "Type to search"
 	},
 	"subtitle": {
-		"login" : "Hello! Login with your username."
+		"login" : "Hello! Login with your username or email.",
+		"forgot-password" : "Enter your email address and we’ll send a link to reset your password"
 	},
 	"alert": {
 		"title": {
