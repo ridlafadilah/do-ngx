@@ -8,6 +8,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/do/oauth/token',
         },
+        signup: {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/do/oauth/signup',
+        },
+        forgot: {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/do/oauth/forgot',
+        },
     },
     security: {
         'revoke': {

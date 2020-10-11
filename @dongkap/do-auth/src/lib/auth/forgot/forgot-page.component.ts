@@ -3,8 +3,7 @@ import { OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiBaseResponse } from '@dongkap/do-core';
-import { AuthTokenService } from '../../services/auth-token.service';
+import { ApiBaseResponse, Pattern } from '@dongkap/do-core';
 
 @Component({
     selector: 'do-forgot-page',
@@ -17,100 +16,37 @@ export class ForgotPageComponent implements OnDestroy {
   public buttonForgotPassword: boolean = false;
   private progressBar: number = 25;
 
+  public patternEmail: string = Pattern.EMAIL;
+
   public form: FormGroup = new FormGroup({
     email: new FormControl(),
   });
 
-  constructor(private router: Router, private authTokenService: AuthTokenService) {}
+  constructor(private router: Router) {}
 
   ngOnDestroy(): void {
   }
 
   public forgotPassword() {
     if (!this.form.invalid) {
-      document.querySelectorAll('.pace-done').forEach(pace => {
-        pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
-        pace.className = pace.className.replace('pace-done', 'pace-running');
-      });
-      document.querySelectorAll('.pace-inactive').forEach(pace => {
-        pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
-        pace.className = pace.className.replace('pace-inactive', 'pace-active');
-      });
-      const progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
-      if (this.progressBar < 35) {
-        this.progressBar = 35;
-        progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-        progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-        progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-      }
-      this.buttonForgotPassword = true;
-      this.authTokenService.login(
-        this.form.get('username').value,
-        this.form.get('password').value)
-        .then(() => {
-            this.progressBar = 90;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-            this.progressBar = 0;
-            this.router.navigate(['/app/home']);
-        })
-        .catch((error: any) => {
-            if (!(error instanceof HttpErrorResponse)) {
-              const response: ApiBaseResponse = (<ApiBaseResponse> error);
-              this.responseError = response.respStatusMessage[response.respStatusCode];
-            }
-            this.buttonForgotPassword = false;
-            this.progressBar = 85;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-            document.querySelectorAll('.pace-running').forEach(pace => {
-              pace.className = pace.className.replace('pace-running', 'pace-done');
-            });
-            document.querySelectorAll('.pace-active').forEach(pace => {
-              pace.className = pace.className.replace('pace-active', 'pace-inactive');
-            });
-            this.progressBar = 0;
-        });
-        if (this.progressBar >= 35 && this.progressBar < 65) {
-            this.progressBar = 65;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-        }
+      console.log(this.form.value);
     }
   }
 
-  get hasErrorUsername(): boolean {
+
+  get hasErrorEmail(): boolean {
     return (
-      this.form.controls['username'] &&
-      this.form.controls['username'].invalid &&
-      this.form.controls['username'].touched
+      this.form.controls['email'] &&
+      this.form.controls['email'].invalid &&
+      this.form.controls['email'].touched
     );
   }
 
-  get hasSuccessUsername(): boolean {
+  get hasSuccessEmail(): boolean {
     return (
-      this.form.controls['username'] &&
-      this.form.controls['username'].valid &&
-      this.form.controls['username'].touched
-    );
-  }
-
-  get hasErrorPassword(): boolean {
-    return (
-      this.form.controls['password'] &&
-      this.form.controls['password'].invalid &&
-      this.form.controls['password'].touched
-    );
-  }
-
-  get hasSuccessPassword(): boolean {
-    return (
-      this.form.controls['password'] &&
-      this.form.controls['password'].valid &&
-      this.form.controls['password'].touched
+      this.form.controls['email'] &&
+      this.form.controls['email'].valid &&
+      this.form.controls['email'].touched
     );
   }
 

@@ -1,10 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { OnDestroy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ApiBaseResponse, OAUTH_INFO, SecurityResourceModel } from '@dongkap/do-core';
-import { AuthTokenService } from '../../services/auth-token.service';
+import { ApiBaseResponse, EncryptionService, OAUTH_INFO, Pattern, SecurityResourceModel } from '@dongkap/do-core';
 
 @Component({
     selector: 'do-register-page',
@@ -13,9 +12,15 @@ import { AuthTokenService } from '../../services/auth-token.service';
 })
 export class RegisterPageComponent implements OnDestroy {
 
-  public responseError: any;
-  public buttonRegister: boolean = false;
-  private progressBar: number = 25;
+  public patternFullname: string = Pattern.FULLNAME;
+  public patternUsername: string = Pattern.USERNAME;
+  public patternEmail: string = Pattern.EMAIL;
+  public patternPassword: string = Pattern.PASSWORD_MEDIUM;
+  public errorMsgFullname: string;
+  public errorMsgUsername: string;
+  public errorMsgEmail: string;
+  public errorMsgPassword: string;
+  public errorMsgConfirmPassword: string;
 
   public form: FormGroup = new FormGroup({
     fullname: new FormControl(),
@@ -23,11 +28,19 @@ export class RegisterPageComponent implements OnDestroy {
     email: new FormControl(),
     password: new FormControl(),
     confirmPassword: new FormControl(),
-    recaptcha: new FormControl(),
     terms: new FormControl(),
+    recaptcha: new FormControl(),
   });
 
-  constructor(private router: Router, private authTokenService: AuthTokenService) {
+  public responseError: any;
+  public buttonRegister: boolean = false;
+  private progressBar: number = 25;
+  private enc: EncryptionService;
+  private oauthResource: SecurityResourceModel;
+
+  constructor(private router: Router, public injector: Injector) {
+    this.enc = injector.get(EncryptionService);
+    this.oauthResource = injector.get(OAUTH_INFO);
   }
 
   ngOnDestroy(): void {
@@ -35,66 +48,46 @@ export class RegisterPageComponent implements OnDestroy {
 
   public register() {
     if (!this.form.invalid) {
-      document.querySelectorAll('.pace-done').forEach(pace => {
-        pace.className = pace.className.replace('pace-done pace-done', 'pace-running');
-        pace.className = pace.className.replace('pace-done', 'pace-running');
-      });
-      document.querySelectorAll('.pace-inactive').forEach(pace => {
-        pace.className = pace.className.replace('pace-inactive pace-inactive', 'pace-active');
-        pace.className = pace.className.replace('pace-inactive', 'pace-active');
-      });
-      const progressDOM = document.getElementsByClassName('pace-progress').item(0) as HTMLElement;
-      if (this.progressBar < 35) {
-        this.progressBar = 35;
-        progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-        progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-        progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-      }
-      this.buttonRegister = true;
-      this.authTokenService.login(
-        this.form.get('username').value,
-        this.form.get('password').value)
-        .then(() => {
-            this.progressBar = 90;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-            this.progressBar = 0;
-            this.router.navigate(['/app/home']);
-        })
-        .catch((error: any) => {
-            if (!(error instanceof HttpErrorResponse)) {
-              const response: ApiBaseResponse = (<ApiBaseResponse> error);
-              this.responseError = response.respStatusMessage[response.respStatusCode];
-            }
-            this.buttonRegister = false;
-            this.progressBar = 85;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-            document.querySelectorAll('.pace-running').forEach(pace => {
-              pace.className = pace.className.replace('pace-running', 'pace-done');
-            });
-            document.querySelectorAll('.pace-active').forEach(pace => {
-              pace.className = pace.className.replace('pace-active', 'pace-inactive');
-            });
-            this.progressBar = 0;
-        });
-        if (this.progressBar >= 35 && this.progressBar < 65) {
-            this.progressBar = 65;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-        }
+      const data: any = this.form.value;
+      data['password'] = this.enc.encryptAES(this.oauthResource['aes_key'], this.form.controls['password'].value);
+      data['confirmPassword'] = this.enc.encryptAES(this.oauthResource['aes_key'], this.form.controls['confirmPassword'].value);
+      console.log(data);
     }
   }
 
-  resolved(captchaResponse: string) {
-    console.log(`Resolved response token: ${captchaResponse}`);
-   
+  get hasErrorFullname(): boolean {
+    if (this.form.controls['fullname'].errors && this.form.controls['fullname'].invalid) {
+      if (this.form.controls['fullname'].errors['required'])
+        this.errorMsgFullname = 'error.fullname.required';
+      else
+        this.errorMsgFullname = 'error.fullname.invalid';
+    } else {
+      this.errorMsgFullname = null;
+    }
+    return (
+      this.form.controls['fullname'] &&
+      this.form.controls['fullname'].invalid &&
+      this.form.controls['fullname'].touched
+    );
+  }
+
+  get hasSuccessFullname(): boolean {
+    return (
+      this.form.controls['fullname'] &&
+      this.form.controls['fullname'].valid &&
+      this.form.controls['fullname'].touched
+    );
   }
 
   get hasErrorUsername(): boolean {
+    if (this.form.controls['username'].errors && this.form.controls['username'].invalid) {
+      if (this.form.controls['username'].errors['required'])
+        this.errorMsgUsername = 'error.username.required';
+      else
+        this.errorMsgUsername = 'error.username.invalid';
+    } else {
+      this.errorMsgUsername = null;
+    }
     return (
       this.form.controls['username'] &&
       this.form.controls['username'].invalid &&
@@ -110,7 +103,28 @@ export class RegisterPageComponent implements OnDestroy {
     );
   }
 
+  get hasErrorEmail(): boolean {
+    return (
+      this.form.controls['email'] &&
+      this.form.controls['email'].invalid &&
+      this.form.controls['email'].touched
+    );
+  }
+
+  get hasSuccessEmail(): boolean {
+    return (
+      this.form.controls['email'] &&
+      this.form.controls['email'].valid &&
+      this.form.controls['email'].touched
+    );
+  }
+
   get hasErrorPassword(): boolean {
+    if (this.form.controls['password'].errors && this.form.controls['password'].invalid) {
+      this.errorMsgPassword = 'error.pattern.Password';
+    } else {
+      this.errorMsgPassword = null;
+    }
     return (
       this.form.controls['password'] &&
       this.form.controls['password'].invalid &&
@@ -126,4 +140,47 @@ export class RegisterPageComponent implements OnDestroy {
     );
   }
 
+  get hasErrorConfirmPassword(): boolean {
+    if (this.form.controls['confirmPassword'].errors && this.form.controls['confirmPassword'].invalid) {
+      this.errorMsgConfirmPassword = 'error.equal.confirmPassword-register';
+    } else {
+      if (this.form.controls['password'].value !== this.form.controls['confirmPassword'].value) {
+        this.errorMsgConfirmPassword = 'error.equal.confirmPassword-register';
+        this.form.controls['confirmPassword'].setValidators([confirmPasswordValidator(this.form)]);
+        this.form.controls['confirmPassword'].updateValueAndValidity();
+      } else {
+        this.errorMsgConfirmPassword = null;
+      }
+    }
+    return (
+      this.form.controls['confirmPassword'] &&
+      this.form.controls['confirmPassword'].invalid &&
+      this.form.controls['confirmPassword'].touched
+    );
+  }
+
+  get hasSuccessConfirmPassword(): boolean {
+    return (
+      this.form.controls['confirmPassword'] &&
+      this.form.controls['confirmPassword'].valid &&
+      this.form.controls['confirmPassword'].touched
+    );
+  }
+
+  onCheckedChange(){
+    if (!this.form.controls['terms'].value) {
+      this.form.controls['terms'].setValue(null);
+    }
+  }
+
+}
+
+export function confirmPasswordValidator(form: FormGroup): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    if (form.controls) {
+      if (form.controls['password'].value !== form.controls['confirmPassword'].value)
+          return { equal: true };
+    }
+    return null;
+  };
 }

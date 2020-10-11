@@ -13,6 +13,9 @@
     <label class="label" for="input-name">{{ 'message.email-forgot-password' | translate }} :</label>
     <input [formControlName]="'email'"
           [required]="true"
+          minlength="4"
+          maxlength="50"
+          [pattern]="patternEmail"
           [ngClass]="{
             'status-danger': hasErrorEmail,
             'status-success': hasSuccessEmail

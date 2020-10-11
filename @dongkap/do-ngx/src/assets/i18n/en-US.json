@@ -90,14 +90,25 @@
 		},
 		"equal": {
 			"newPassword": "Old Password and New Password cannot be the same",
-			"confirmPassword": "New Password and Confirm Password not match"
+			"confirmPassword": "New Password and Confirm Password not match",
+			"confirmPassword-register": "Password and Confirm Password not match"
 		},
 		"minlength": "Minimum length of {{value}} characters",
 		"incorrect": {
 			"password": "Incorrect Password"
 		},
-		"fullname": "Full name is required!",
-		"username": "Username is required!",
+		"fullname": {
+			"required": "Full name is required!",
+			"invalid": "Please enter valid full name!"
+		},
+		"username": {
+			"required": "Username is required!",
+			"invalid": "Please enter valid username!"
+		},
+		"email": {
+			"required": "Email wajib diisi!",
+			"invalid": "Please enter valid email address!"
+		},
 		"username-login": "Username or email is required!",
 		"password": "Password is required!",
 		"required": "This field is required!",

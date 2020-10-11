@@ -90,14 +90,25 @@
 		},
 		"equal": {
 			"newPassword": "Kata Sandi lama dan Kata Sandi Baru tidak boleh sama",
-			"confirmPassword": "Kata Sandi Baru dan Konfirmasi Kata Sandi tidak sama"
+			"confirmPassword": "Kata Sandi Baru dan Konfirmasi Kata Sandi tidak sama",
+			"confirmPassword-register": "Kata Sandi dan Konfirmasi Kata Sandi tidak sama"
 		},
 		"minlength": "Panjang minimal {{value}} karakter",
 		"incorrect": {
 			"password": "Kata Sandi tidak sesuai"
 		},
-		"fullname": "Nama Lengkap wajib diisi!",
-		"username": "Username wajib diisi!",
+		"fullname": {
+			"required": "Nama Lengkap wajib diisi!",
+			"invalid": "Silakan masukkan nama lengkap yang valid!"
+		},
+		"username": {
+			"required": "Username wajib diisi!",
+			"invalid": "Silakan masukkan username yang valid!"
+		},
+		"email": {
+			"required": "Email wajib diisi!",
+			"invalid": "Silakan masukkan alamat email yang valid!"
+		},
 		"username-login": "Username atau email wajib diisi!",
 		"password": "Kata Sandi wajib diisi!",
 		"required": "Wajib diisi!",

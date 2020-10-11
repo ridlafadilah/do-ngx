@@ -10,5 +10,5 @@ export const oauthResource: SecurityResourceModel = {
     session_timeout: 10,
     signature: true,
     vapid: 'BB3fvY674t6pB9TjZONmYxxlebCmSskbf8lvRLTMYHE-zZ7FONNXOCPv4ndOa1FDov10k26UXZl6rQ7nT9sxWwc',
-    recaptcha: '6LeS49UZAAAAANvtPlcF1hacohvwLCvUVs0IJTc9',
+    recaptcha: '6LdQB9YZAAAAAI12Oyn9yoi5BoW0Bivxo8vJl8rd',
 };

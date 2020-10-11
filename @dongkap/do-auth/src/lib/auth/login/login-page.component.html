@@ -32,7 +32,7 @@
   <div class="form-control-group">
     <span class="label-with-link">
       <label class="label">{{ 'Password' | translate }} :</label>
-      <a class="forgot-password caption-2" routerLink="/auth/forgot-password">{{ 'Forgot Password' | translate}}?</a>
+      <a class="forgot-password caption-2" routerLink="/auth/forgot-password" tabindex="-1">{{ 'Forgot Password' | translate}}?</a>
     </span>
     <input [formControlName]="'password'"
           [required]="true"
