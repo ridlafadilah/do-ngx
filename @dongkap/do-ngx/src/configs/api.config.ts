@@ -18,6 +18,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/do/oauth/forgot',
         },
+        'check-user': {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/do/oauth/check-user',
+        },
     },
     security: {
         'revoke': {

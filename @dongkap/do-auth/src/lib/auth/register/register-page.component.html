@@ -37,7 +37,7 @@
     <label class="label" for="input-username">{{ 'Username' | translate }}* :</label>
     <input [formControlName]="'username'"
           [required]="true"
-          minlength="4"
+          minlength="5"
           maxlength="20"
           [pattern]="patternUsername"
           [ngClass]="{
@@ -46,6 +46,7 @@
           }"
           name="username"
           id="inputUsername"
+          (keydown)="onKeyDownUsername($event)"
           placeholder="{{ 'Username' | translate }}"
           fieldSize="large"
           tabindex="2"
@@ -53,7 +54,7 @@
           nbInput
           fullWidth>
     <ng-container *ngIf="hasErrorUsername">
-      <span class="caption status-danger">{{errorMsgUsername | translate}}</span>
+      <span class="caption status-danger">{{errorMsgUsername | translate:paramMsgUsername}}</span>
     </ng-container>
   </div>
 
@@ -61,7 +62,7 @@
     <label class="label" for="input-email">{{ 'Email' | translate }}* :</label>
     <input [formControlName]="'email'"
           [required]="true"
-          minlength="4"
+          minlength="5"
           maxlength="50"
           [pattern]="patternEmail"
           [ngClass]="{
@@ -70,6 +71,7 @@
           }"
           name="email"
           id="inputEmail"
+          (keydown)="onKeyDownEmail($event)"
           placeholder="{{ 'Email' | translate }}"
           fieldSize="large"
           tabindex="3"
@@ -77,7 +79,7 @@
           nbInput
           fullWidth>
     <ng-container *ngIf="hasErrorEmail">
-      <span class="caption status-danger">{{'error.pattern.email' | translate}}</span>
+      <span class="caption status-danger">{{errorMsgEmail | translate:paramMsgEmail}}</span>
     </ng-container>
   </div>
 
@@ -145,12 +147,12 @@
     </re-captcha>
   </div>
 
-  <button [disabled]="form.invalid || buttonRegister"
+  <button [disabled]="!form.valid || buttonRegister"
           fullWidth
           nbButton
           status="primary"
           size="large"
-          [class.btn-pulse]="form.invalid || buttonRegister">
+          [class.btn-pulse]="!form.valid || buttonRegister">
     {{ 'Register' | translate }}
   </button>
 </form>

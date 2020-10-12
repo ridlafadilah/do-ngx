@@ -103,11 +103,13 @@
 		},
 		"username": {
 			"required": "Username is required!",
-			"invalid": "Please enter valid username!"
+			"invalid": "Please enter valid username!",
+			"not-available": "Username {{value}} not available"
 		},
 		"email": {
-			"required": "Email wajib diisi!",
-			"invalid": "Please enter valid email address!"
+			"required": "Email is required!",
+			"invalid": "Please enter valid email address!",
+			"not-available": "Email {{value}} not available"
 		},
 		"username-login": "Username or email is required!",
 		"password": "Password is required!",

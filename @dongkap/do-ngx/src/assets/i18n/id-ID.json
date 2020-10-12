@@ -103,11 +103,13 @@
 		},
 		"username": {
 			"required": "Username wajib diisi!",
-			"invalid": "Silakan masukkan username yang valid!"
+			"invalid": "Silakan masukkan username yang valid!",
+			"not-available": "Username {{value}} tidak tersedia"
 		},
 		"email": {
 			"required": "Email wajib diisi!",
-			"invalid": "Silakan masukkan alamat email yang valid!"
+			"invalid": "Silakan masukkan alamat email yang valid!",
+			"not-available": "Email {{value}} tidak tersedia"
 		},
 		"username-login": "Username atau email wajib diisi!",
 		"password": "Kata Sandi wajib diisi!",
