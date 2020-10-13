@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -15,7 +14,7 @@ import { DialogFlagComponent } from './dialog-flag/dialog-flag.component';
   styleUrls: ['./locale-add-edit-page.component.scss'],
   templateUrl: './locale-add-edit-page.component.html',
 })
-export class LocaleAddEditPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class LocaleAddEditPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public action: 'Add' | 'Edit' = 'Add';
   public apiSelectLanguage: HttpBaseModel;
@@ -57,8 +56,6 @@ export class LocaleAddEditPageComponent extends BaseFormComponent<any> implement
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   onSearchFlag(): void {
     this.dialogService.open(DialogFlagComponent)

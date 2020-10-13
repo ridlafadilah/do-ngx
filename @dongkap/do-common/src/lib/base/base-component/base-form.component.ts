@@ -1,15 +1,16 @@
 import { Injector } from '@angular/core';
+import { OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { BaseComponent } from './base.component';
 import { DoToastrService } from '../../toastr/services/do-toastr.service';
 
-export abstract class BaseFormComponent<T> extends BaseComponent<T> {
+export abstract class BaseFormComponent<T> extends BaseComponent<T> implements OnDestroy {
 
     protected toastr: DoToastrService;
     protected submitSubject$ = new Subject<ApiBaseResponse>();
-    protected destroy$: Subject<void> = new Subject<void>();
+    protected destroy$: Subject<any> = new Subject<any>();
     public formGroup: FormGroup;
     public formBuilder: FormBuilder;
     public disabled: boolean = false;
@@ -25,6 +26,13 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
         if (controlsConfig)
             this.formGroup = this.formBuilder.group(controlsConfig);
         this.toastr = injector.get(DoToastrService);
+    }
+
+    ngOnDestroy(): void {
+        this.destroy$.next(true);
+        this.destroy$.complete();
+        this.destroy$.unsubscribe();
+        this.onDestroy();
     }
 
     onSubmit(body?: any, serviceName?: string, apiName?: string, disableToastr?: boolean): any {
@@ -46,6 +54,8 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> {
             );
         return this.submitSubject$.asObservable();
     }
+
+    onDestroy(): void{}
 
     onReset(): void {}
 

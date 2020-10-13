@@ -1,6 +1,5 @@
 import { Component, Injector, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -16,7 +15,7 @@ import { DialogIconComponent } from '../dialog-icon/dialog-icon.component';
   templateUrl: './main-menu-page.component.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class MainMenuPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class MainMenuPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public nodeItems: any = [];
   public options: any = {
@@ -115,8 +114,6 @@ export class MainMenuPageComponent extends BaseFormComponent<any> implements OnI
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   onCheckedRoot(event: any) {
     this.isRoot = event[0].selected;

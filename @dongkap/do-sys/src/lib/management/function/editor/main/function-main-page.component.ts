@@ -1,6 +1,5 @@
 import { Component, Injector, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { TreeMode } from 'tree-ngx';
@@ -15,7 +14,7 @@ import { FunctionControlService } from '../../services/function-control.service'
   templateUrl: './function-main-page.component.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class FunctionMainPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class FunctionMainPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public nodeItems: any[] = [];
   public options: any = {
@@ -34,8 +33,6 @@ export class FunctionMainPageComponent extends BaseFormComponent<any> implements
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   loadDataMenu(): Observable<any> {
     this.disabled = true;

@@ -31,7 +31,7 @@ import { SecurityResourceModel } from '@dongkap/do-core';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  private destroy$: Subject<void> = new Subject<void>();
+  private destroy$: Subject<any> = new Subject<any>();
   userPictureOnly: boolean = false;
   user: User;
 
@@ -130,8 +130,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroy$.next();
+    this.destroy$.next(true);
     this.destroy$.complete();
+    this.destroy$.unsubscribe();
   }
 
   setMenu() {

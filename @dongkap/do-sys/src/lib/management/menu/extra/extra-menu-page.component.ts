@@ -1,6 +1,5 @@
 import { Component, Injector, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
@@ -16,7 +15,7 @@ import { DialogIconComponent } from '../dialog-icon/dialog-icon.component';
   templateUrl: './extra-menu-page.component.html',
   encapsulation: ViewEncapsulation.None,
 })
-export class ExtraMenuPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class ExtraMenuPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public nodeItems: any = [];
   public options: any = {
@@ -55,8 +54,6 @@ export class ExtraMenuPageComponent extends BaseFormComponent<any> implements On
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   loadDataMenu(): Observable<any> {
     if (!this.loadLocale) {

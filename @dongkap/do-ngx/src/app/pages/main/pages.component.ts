@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { NbMenuItem } from '@nebular/theme';
@@ -15,10 +15,10 @@ import { AUTH_INDEXED_DB, IndexedDBEncFactoryService } from '@dongkap/do-core';
     </do-one-column-layout>
   `,
 })
-export class PagesComponent {
+export class PagesComponent implements OnDestroy {
 
   public menus: NbMenuItem[] = [];
-  private destroy$: Subject<void> = new Subject<void>();
+  private destroy$: Subject<any> = new Subject<any>();
 
   constructor(@Inject(AUTH_INDEXED_DB) private authIndexedDB: IndexedDBEncFactoryService,
     private translate: TranslateService) {
@@ -27,6 +27,12 @@ export class PagesComponent {
         .subscribe(() => {
           this.setMenus();
       });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+    this.destroy$.unsubscribe();
   }
 
   setMenus() {

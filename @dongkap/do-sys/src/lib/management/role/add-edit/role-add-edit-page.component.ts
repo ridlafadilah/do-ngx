@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
+import { OnInit } from '@angular/core';;
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -13,7 +12,7 @@ import { RoleService } from '../services/role.service';
   styleUrls: ['./role-add-edit-page.component.scss'],
   templateUrl: './role-add-edit-page.component.html',
 })
-export class RoleAddEditPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class RoleAddEditPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public action: 'Add' | 'Edit' = 'Add';
   public dataDefault: CheckboxModel[] = [
@@ -40,8 +39,6 @@ export class RoleAddEditPageComponent extends BaseFormComponent<any> implements 
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   onReset(): void {
     this.router.navigate(['/app/mgmt/role']);

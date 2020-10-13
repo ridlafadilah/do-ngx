@@ -13,6 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { AUTH_INDEXED_DB, PROFILE_INDEXED_DB, SETTINGS_INDEXED_DB, USER_INFO } from '@dongkap/do-core';
 import { DoThemeModule } from '@dongkap/do-theme';
+import { DoToastrModule } from '@dongkap/do-common';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UnauthorizeGuardService } from './services/unauth-guard.service';
 import { AuthTokenService } from './services/auth-token.service';
@@ -76,6 +77,7 @@ const AUTH_COMPONENTS = [
     RecaptchaModule,
     RecaptchaFormsModule,
     DoThemeModule,
+    DoToastrModule.forRoot(),
     DoLayoutAuthModule,
     DoAuthRoutingModule,
   ],

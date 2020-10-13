@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -12,7 +11,7 @@ import { BaseFormComponent } from '@dongkap/do-common';
   styleUrls: ['./parameter-add-group-page.component.scss'],
   templateUrl: './parameter-add-group-page.component.html',
 })
-export class ParameterAddGroupPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class ParameterAddGroupPageComponent extends BaseFormComponent<any> implements OnInit {
 
   constructor(public injector: Injector, private router: Router) {
     super(injector,
@@ -23,8 +22,6 @@ export class ParameterAddGroupPageComponent extends BaseFormComponent<any> imple
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   onReset(): void {
     this.router.navigate(['/app/sysconf/parameter']);

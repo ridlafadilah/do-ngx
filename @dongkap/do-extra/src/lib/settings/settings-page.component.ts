@@ -1,6 +1,5 @@
 import { Component, Injector, Inject } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -19,7 +18,7 @@ import { CheckboxModel, BaseFormComponent } from '@dongkap/do-common';
   styleUrls: ['./settings-page.component.scss'],
   templateUrl: './settings-page.component.html',
 })
-export class SettingsPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class SettingsPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public apiSelectLocale: HttpBaseModel;
   public localeIcon: string;
@@ -48,7 +47,6 @@ export class SettingsPageComponent extends BaseFormComponent<any> implements OnI
     this.onInit('security', 'get-settings');
   }
 
-  ngOnDestroy(): void {}
 
   onInit(serviceName: string, apiName: string): void {
     this.loadingForm = true;

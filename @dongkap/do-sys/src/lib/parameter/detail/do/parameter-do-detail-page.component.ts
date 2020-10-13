@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -15,7 +14,7 @@ import { ParameterModel, ParameterI18nModel, ParameterGroupModel } from '../../m
   styleUrls: ['./parameter-do-detail-page.component.scss'],
   templateUrl: './parameter-do-detail-page.component.html',
 })
-export class ParameterDoDetailPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class ParameterDoDetailPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public action: 'Add' | 'Edit' = 'Add';
   public parameter: ParameterModel = new ParameterModel();
@@ -89,8 +88,6 @@ export class ParameterDoDetailPageComponent extends BaseFormComponent<any> imple
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   onReset(): void {
     this.router.navigate(['/app/sysconf/parameter/detail']);

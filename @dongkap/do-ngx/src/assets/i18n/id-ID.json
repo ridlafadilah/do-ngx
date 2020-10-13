@@ -140,7 +140,8 @@
 	},
 	"alert": {
 		"title": {
-			"login" : "Gagal Masuk!"
+			"login" : "Gagal Masuk!",
+			"register" : "Gagal Register!"
 		},
 		"delete": "Apakah anda ingin menghapus data ini?",
 		"edit": "Apakah Anda ingin memperbarui data ini?"

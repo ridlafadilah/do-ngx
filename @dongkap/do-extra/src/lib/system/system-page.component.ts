@@ -1,6 +1,5 @@
 import { Component, Injector, Inject } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Validators, FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -22,7 +21,7 @@ import { BaseFormComponent, SelectParamModel } from '@dongkap/do-common';
   styleUrls: ['./system-page.component.scss'],
   templateUrl: './system-page.component.html',
 })
-export class SystemPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class SystemPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public image: string;
   public formGroupImage: FormGroup;
@@ -94,8 +93,6 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
       value: 'undefined',
     }];
   }
-
-  ngOnDestroy(): void {}
 
   onInit(serviceName: string, apiName: string): void {
     this.loadingForm = true;
