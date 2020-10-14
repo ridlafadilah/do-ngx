@@ -57,6 +57,7 @@
 	"Modified": "Diubah",
 	"Modified Date": "Diubah Tanggal",
 	"Forgot Password": "Lupa Kata Sandi",
+	"Reset Password": "Setel Ulang Kata Sandi",
 	"Send": "Kirim",
 	"message": {
 		"username-login": "Username atau email",
@@ -67,6 +68,7 @@
 		"login-footer": "Belum memiliki akun?",
 		"register-footer": "Sudah memiliki akun?",
 		"forgot-password-link": "Kembali untuk masuk",
+		"reset-password-footer": "Apakah sudah ingat password anda?",
 		"danger-zone": "Zona Bahaya",
 		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
 		"deactivate-form": "Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.",
@@ -136,13 +138,15 @@
 	},
 	"subtitle": {
 		"login" : "Halo! Masuk dengan username atau email Anda.",
-		"forgot-password" : "Masukkan email Anda, kami akan mengirimkan tautan untuk menyetel ulang kata sandi Anda"
+		"forgot-password" : "Masukkan email Anda, kami akan mengirimkan tautan untuk menyetel ulang kata sandi Anda",
+		"reset-password" : "Masukan kata sandi baru Anda"
 	},
 	"alert": {
 		"title": {
 			"login" : "Gagal Masuk!",
 			"register" : "Gagal Register!",
-			"forgot" : "Gagal Lupa Kata Sandi!"
+			"forgot" : "Gagal Lupa Kata Sandi!",
+			"reset-password" : "Gagal Setel Ulang Kata Sandi!"
 		},
 		"delete": "Apakah anda ingin menghapus data ini?",
 		"edit": "Apakah Anda ingin memperbarui data ini?"

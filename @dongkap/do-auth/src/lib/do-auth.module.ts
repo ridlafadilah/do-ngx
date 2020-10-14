@@ -33,6 +33,7 @@ import { ProfileIndexedDBService } from './storage/profile-indexeddb.service';
 import { SettingsIndexedDBService } from './storage/settings-indexeddb.service';
 import { AuthLanguageService } from './services/auth-lang.service';
 import { RegisterPageComponent } from './auth/register/register-page.component';
+import { RequestForgotPageComponent } from './auth/forgot/request-forgot-page.component';
 import { ForgotPageComponent } from './auth/forgot/forgot-page.component';
 
 const AUTH_PROVIDERS = [
@@ -56,6 +57,7 @@ const AUTH_COMPONENTS = [
   LoginPageComponent,
   LogoutComponent,
   RegisterPageComponent,
+  RequestForgotPageComponent,
   ForgotPageComponent,
 ];
 

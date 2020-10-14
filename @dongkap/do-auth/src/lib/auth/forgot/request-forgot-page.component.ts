@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,7 +10,6 @@ import {
   API,
   ApiBaseResponse,
   APIModel,
-  EncryptionService,
   HttpFactoryService,
   HTTP_SERVICE,
   OAUTH_INFO,
@@ -21,45 +20,30 @@ import {
 import { DoToastrService } from '@dongkap/do-common';
 
 @Component({
-    selector: 'do-forgot-page',
-    styleUrls: ['forgot-page.component.scss'],
-    templateUrl: 'forgot-page.component.html',
+    selector: 'do-request-forgot-page',
+    styleUrls: ['request-forgot-page.component.scss'],
+    templateUrl: 'request-forgot-page.component.html',
 })
-export class ForgotPageComponent implements OnDestroy {
+export class RequestForgotPageComponent implements OnDestroy {
 
   public responseError: any;
   public buttonForgotPassword: boolean = false;
   private progressBar: number = 25;
 
-  public patternPassword: string = Pattern.PASSWORD_MEDIUM;
-  public errorMsgNewPassword: string;
-  public errorMsgConfirmPassword: string;
-
-  private verificationId: string;
-  private verificationCode: string;
+  public patternEmail: string = Pattern.EMAIL;
 
   public form: FormGroup = new FormGroup({
-    newPassword: new FormControl(),
-    confirmPassword: new FormControl(),
+    email: new FormControl(),
   });
 
   protected destroy$: Subject<any> = new Subject<any>();
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
     private toastr: DoToastrService,
     private translate: TranslateService,
-    private enc: EncryptionService,
     @Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
     @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
-    @Inject(API)private apiPath: APIModel) {
-    if (this.route.snapshot.params['id'] !== null && this.route.snapshot.params['code'] !== null) {
-      this.verificationId = this.route.snapshot.params['id'];
-      this.verificationCode = this.route.snapshot.params['code'];
-    } else {
-      this.router.navigate(['/auth/login']);
-    }
-  }
+    @Inject(API)private apiPath: APIModel) {}
 
   ngOnDestroy(): void {
     this.destroy$.next(true);
@@ -87,13 +71,10 @@ export class ForgotPageComponent implements OnDestroy {
 
       this.responseError = null;
 
-      const newPassword: string = this.enc.encryptAES(this.oauthResource['aes_key'], this.form.controls['newPassword'].value);
-      const confirmPassword: string = this.enc.encryptAES(this.oauthResource['aes_key'], this.form.controls['confirmPassword'].value);
+      const urlForgotPassword: string = `${document.getElementsByTagName('base')[0].href}auth/forgot-password`;
       const data: any = {
-        'verificationId': this.verificationId,
-        'verificationCode': this.verificationCode,
-        'newPassword': newPassword,
-        'confirmPassword': confirmPassword,
+        'email': this.form.controls['email'].value,
+        'urlForgotPassword': urlForgotPassword,
       };
       const httpHeaders: HttpHeaders = new HttpHeaders({
         'Authorization': 'Basic ' + btoa(this.oauthResource['client_id'] + ':' + this.oauthResource['client_secret']),
@@ -101,7 +82,7 @@ export class ForgotPageComponent implements OnDestroy {
         'Accept-Language': this.translate.currentLang,
       });
       this.buttonForgotPassword = true;
-      this.httpBaseService.HTTP_BASE(this.apiPath['auth']['forgot-password'], data, httpHeaders)
+      this.httpBaseService.HTTP_BASE(this.apiPath['auth']['request-forgot-password'], data, httpHeaders)
       .pipe(takeUntil(this.destroy$))
       .subscribe(
         (response: ApiBaseResponse) => {
@@ -112,7 +93,7 @@ export class ForgotPageComponent implements OnDestroy {
             progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
             progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
             this.progressBar = 0;
-            if (response.respStatusCode === ResponseCode.OK_FORGOT_PASSWORD) {
+            if (response.respStatusCode === ResponseCode.OK_REQUEST_FORGOT_PASSWORD) {
               this.router.navigate(['/auth/login']);
             } else {
               this.form.reset();
@@ -147,67 +128,20 @@ export class ForgotPageComponent implements OnDestroy {
     }
   }
 
-  get hasErrorNewPassword(): boolean {
-    if (this.form.controls['newPassword'].errors &&
-      this.form.controls['newPassword'].invalid &&
-      this.form.controls['newPassword'].touched) {
-      this.errorMsgNewPassword = 'error.pattern.Password';
-    } else {
-      this.errorMsgNewPassword = null;
-    }
+  get hasErrorEmail(): boolean {
     return (
-      this.form.controls['newPassword'] &&
-      this.form.controls['newPassword'].invalid &&
-      this.form.controls['newPassword'].touched
+      this.form.controls['email'] &&
+      this.form.controls['email'].invalid &&
+      this.form.controls['email'].touched
     );
   }
 
-  get hasSuccessNewPassword(): boolean {
+  get hasSuccessEmail(): boolean {
     return (
-      this.form.controls['newPassword'] &&
-      this.form.controls['newPassword'].valid &&
-      this.form.controls['newPassword'].touched
+      this.form.controls['email'] &&
+      this.form.controls['email'].valid &&
+      this.form.controls['email'].touched
     );
   }
 
-  get hasErrorConfirmPassword(): boolean {
-    if (
-      this.form.controls['confirmPassword'].errors &&
-      this.form.controls['confirmPassword'].invalid &&
-      this.form.controls['confirmPassword'].touched) {
-      this.errorMsgConfirmPassword = 'error.equal.confirmPassword';
-    } else {
-      if (this.form.controls['newPassword'].value !== this.form.controls['confirmPassword'].value) {
-        this.errorMsgConfirmPassword = 'error.equal.confirmPassword';
-        this.form.controls['confirmPassword'].setValidators([confirmPasswordValidator(this.form)]);
-        this.form.controls['confirmPassword'].updateValueAndValidity();
-      } else {
-        this.errorMsgConfirmPassword = null;
-      }
-    }
-    return (
-      this.form.controls['confirmPassword'] &&
-      this.form.controls['confirmPassword'].invalid &&
-      this.form.controls['confirmPassword'].touched
-    );
-  }
-
-  get hasSuccessConfirmPassword(): boolean {
-    return (
-      this.form.controls['confirmPassword'] &&
-      this.form.controls['confirmPassword'].valid &&
-      this.form.controls['confirmPassword'].touched
-    );
-  }
-
-}
-
-export function confirmPasswordValidator(form: FormGroup): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    if (form.controls) {
-      if (form.controls['newPassword'].value !== form.controls['confirmPassword'].value)
-          return { equal: true };
-    }
-    return null;
-  };
 }

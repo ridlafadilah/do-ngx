@@ -11,6 +11,7 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, first, switchMap, takeUntil } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 import {
   ApiBaseResponse,
   API,
@@ -23,7 +24,6 @@ import {
   SecurityResourceModel,
   ResponseCode,
 } from '@dongkap/do-core';
-import { TranslateService } from '@ngx-translate/core';
 import { DoToastrService } from '@dongkap/do-common';
 
 @Component({
