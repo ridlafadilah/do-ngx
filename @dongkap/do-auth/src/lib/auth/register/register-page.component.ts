@@ -98,6 +98,7 @@ export class RegisterPageComponent implements OnDestroy {
         progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
       }
 
+      this.responseError = null;
       const data: any = this.form.value;
       data['password'] = this.enc.encryptAES(this.oauthResource['aes_key'], this.form.controls['password'].value);
       data['confirmPassword'] = this.enc.encryptAES(this.oauthResource['aes_key'], this.form.controls['confirmPassword'].value);
@@ -130,7 +131,6 @@ export class RegisterPageComponent implements OnDestroy {
           }
         },
         (error: any) => {
-          console.log(error);
           this.buttonRegister = false;
           this.progressBar = 85;
           progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';

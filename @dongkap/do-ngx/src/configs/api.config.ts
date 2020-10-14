@@ -13,10 +13,15 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/do/oauth/signup',
         },
-        forgot: {
+        'request-forgot-password': {
             server: environment.host.auth,
             method: HttpMethod.POST,
-            path: '/do/oauth/forgot',
+            path: '/do/oauth/request-forgot-password',
+        },
+        'forgot-password': {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/do/oauth/forgot-password',
         },
         'check-user': {
             server: environment.host.auth,

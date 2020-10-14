@@ -141,7 +141,8 @@
 	"alert": {
 		"title": {
 			"login" : "Gagal Masuk!",
-			"register" : "Gagal Register!"
+			"register" : "Gagal Register!",
+			"forgot" : "Gagal Lupa Kata Sandi!"
 		},
 		"delete": "Apakah anda ingin menghapus data ini?",
 		"edit": "Apakah Anda ingin memperbarui data ini?"
