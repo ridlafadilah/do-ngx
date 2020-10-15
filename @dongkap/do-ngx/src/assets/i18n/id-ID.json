@@ -59,6 +59,7 @@
 	"Forgot Password": "Lupa Kata Sandi",
 	"Reset Password": "Setel Ulang Kata Sandi",
 	"Send": "Kirim",
+	"Agree": "Setuju",
 	"message": {
 		"username-login": "Username atau email",
 		"username-login-placeholder": "Username / Email",
@@ -153,6 +154,7 @@
 	},
 	"header": {
 		"parameter" : "Parameter {{value}}",
-		"function-control": "Kontrol Fungsi : {{value}}"
+		"function-control": "Kontrol Fungsi : {{value}}",
+		"terms-conditions": "Syarat dan Ketentuan"
 	}
 }

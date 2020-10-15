@@ -3,6 +3,11 @@ export const environment = {
   locale: 'en-US',
   basePath: '/',
   host: {
+    openapi: {
+      protocol: 'http',
+      host: 'localhost',
+      port: 8085,
+    },
     auth: {
       protocol: 'http',
       host: 'localhost',

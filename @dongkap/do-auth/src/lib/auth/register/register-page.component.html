@@ -131,13 +131,16 @@
   </div>
 
   <div class="form-control-group accept-group">
-    <nb-checkbox
-      name="terms"
-      [formControlName]="'terms'"
-      [required]="true"
-      (change)="onCheckedChange()">
-      {{ 'message.terms-conditions-label' | translate}} <a href="#" target="_blank" tabindex="-1"><strong>{{ 'message.terms-conditions' | translate}}</strong></a>
-    </nb-checkbox>
+    <div class="terms-row row">
+      <nb-checkbox
+        name="terms"
+        [formControlName]="'terms'"
+        [required]="true"
+        (change)="onCheckedChange()">
+        {{ 'message.terms-conditions-label' | translate}}
+      </nb-checkbox>
+      <span class="terms-conditions" (click)="onClickTermsConditions()" tabindex="-1"><strong>{{ 'message.terms-conditions' | translate}}</strong></span>
+    </div>
   </div>
 
   <div class="form-control-group" style="transform:scale(0.7);transform-origin:0;">

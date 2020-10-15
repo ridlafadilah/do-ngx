@@ -59,6 +59,7 @@
 	"Forgot Password": "Forgot Password",
 	"Reset Password": "Reset Password",
 	"Send": "Send",
+	"Agree": "Agree",
 	"message": {
 		"username-login": "Username or email",
 		"username-login-placeholder": "Username / Email",
@@ -153,6 +154,7 @@
 	},
 	"header": {
 		"parameter" : "Parameter {{value}}",
-		"function-control": "Function Control : {{value}}"
+		"function-control": "Function Control : {{value}}",
+		"terms-conditions": "Terms and Conditions"
 	}
 }

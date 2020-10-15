@@ -5,6 +5,8 @@ import {
   NbInputModule,
   NbButtonModule,
   NbIconModule,
+  NbDialogModule,
+  NbCardModule,
 } from '@nebular/theme';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,6 +37,7 @@ import { AuthLanguageService } from './services/auth-lang.service';
 import { RegisterPageComponent } from './auth/register/register-page.component';
 import { RequestForgotPageComponent } from './auth/forgot/request-forgot-page.component';
 import { ForgotPageComponent } from './auth/forgot/forgot-page.component';
+import { TermsConditionsComponent } from './auth/register/terms-conditions/terms-conditions.component';
 
 const AUTH_PROVIDERS = [
   { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorTokenService, multi: true},
@@ -59,6 +62,11 @@ const AUTH_COMPONENTS = [
   RegisterPageComponent,
   RequestForgotPageComponent,
   ForgotPageComponent,
+  TermsConditionsComponent,
+];
+
+const AUTH_ENTRY_COMPONENTS = [
+  TermsConditionsComponent,
 ];
 
 @NgModule({
@@ -66,11 +74,6 @@ const AUTH_COMPONENTS = [
     ...AUTH_COMPONENTS,
   ],
   imports: [
-    NbCheckboxModule,
-    NbAlertModule,
-    NbInputModule,
-    NbButtonModule,
-    NbIconModule,
     CommonModule,
     FormsModule,
     TranslateModule,
@@ -78,6 +81,13 @@ const AUTH_COMPONENTS = [
     HttpClientModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+    NbCheckboxModule,
+    NbAlertModule,
+    NbInputModule,
+    NbButtonModule,
+    NbIconModule,
+    NbCardModule,
+    NbDialogModule.forChild(),
     DoThemeModule,
     DoToastrModule.forRoot(),
     DoLayoutAuthModule,
@@ -85,6 +95,9 @@ const AUTH_COMPONENTS = [
   ],
   exports: [
     ...AUTH_COMPONENTS,
+  ],
+  entryComponents: [
+    ...AUTH_ENTRY_COMPONENTS,
   ],
 })
 export class DoAuthModule {

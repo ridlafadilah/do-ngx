@@ -3,6 +3,10 @@ export const environment = {
   locale: 'en-US',
   basePath: '/',
   host: {
+    openapi: {
+      protocol: 'https',
+      host: 'dongkap-api.herokuapp.com',
+    },
     auth: {
       protocol: 'https',
       host: 'dongkap-api.herokuapp.com',

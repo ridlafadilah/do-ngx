@@ -2,6 +2,13 @@ import { APIModel, HttpMethod } from '@dongkap/do-core';
 import { environment } from '../environments/environment';
 
 export const apiPath: APIModel = {
+    openapi: {
+        'parameter': {
+            server: environment.host.openapi,
+            method: HttpMethod.POST,
+            path: '/do/oa/master/vw/parameter-i18n/v.1',
+        }
+    },
     auth: {
         token: {
             server: environment.host.auth,

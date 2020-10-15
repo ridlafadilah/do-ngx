@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { of, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, first, switchMap, takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { NbDialogService } from '@nebular/theme';
 import {
   ApiBaseResponse,
   API,
@@ -25,6 +26,7 @@ import {
   ResponseCode,
 } from '@dongkap/do-core';
 import { DoToastrService } from '@dongkap/do-common';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 
 @Component({
     selector: 'do-register-page',
@@ -68,6 +70,7 @@ export class RegisterPageComponent implements OnDestroy {
   constructor(private router: Router,
     private enc: EncryptionService,
     private toastr: DoToastrService,
+    private dialogService: NbDialogService,
     private translate: TranslateService,
     @Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
     @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
@@ -323,6 +326,31 @@ export class RegisterPageComponent implements OnDestroy {
     if (!this.form.controls['terms'].value) {
       this.form.controls['terms'].setValue(null);
     }
+  }
+
+  onClickTermsConditions(){
+    const data: any = {
+      'parameterCode': 'TERMS_CONDITIONS.DONGKAP'
+    };
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      'Authorization': 'Basic ' + btoa(this.oauthResource['client_id'] + ':' + this.oauthResource['client_secret']),
+      'Content-Type': 'application/json',
+      'Accept-Language': this.translate.currentLang,
+    });
+    this.httpBaseService.HTTP_BASE(this.apiPath['openapi']['parameter'], data, httpHeaders)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((response: any) => {
+      this.dialogService.open(TermsConditionsComponent, {
+        context: {
+          content: response['parameterValue'],
+        },
+        })
+        .onClose.subscribe((terms: string) => {
+        if (terms) {
+          this.form.controls['terms'].setValue(true);
+        }
+      });
+    });
   }
 
   onKeyDownUsername(event: KeyboardEvent){
