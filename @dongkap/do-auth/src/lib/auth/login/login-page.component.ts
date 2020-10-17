@@ -3,8 +3,10 @@ import { OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NbAuthSocialLink } from '@nebular/auth';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
+import { Subject } from 'rxjs';
 
 @Component({
     selector: 'do-login-page',
@@ -16,11 +18,20 @@ export class LoginPageComponent implements OnDestroy {
   public responseError: any;
   public buttonLogin: boolean = false;
   private progressBar: number = 25;
+  protected destroy$: Subject<any> = new Subject<any>();
 
   public form: FormGroup = new FormGroup({
     username: new FormControl(),
     password: new FormControl(),
   });
+
+  public socialLinks: NbAuthSocialLink[] = [
+    {
+      url: 'http://localhost:8085/do/oauth2/authorize/google?redirect_uri=http://localhost:4242/auth',
+      target: '_self',
+      icon: 'google',
+    }
+  ];
 
   constructor(private router: Router, private authTokenService: AuthTokenService) {}
 

@@ -9,6 +9,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { RegisterPageComponent } from './auth/register/register-page.component';
 import { RequestForgotPageComponent } from './auth/forgot/request-forgot-page.component';
 import { ForgotPageComponent } from './auth/forgot/forgot-page.component';
+import { OAuth2CallbackComponent } from './auth/oauth2/oauth2-callback.component';
 
 const routes: Routes = [{
   path: '',
@@ -37,6 +38,11 @@ const routes: Routes = [{
     {
       path: 'forgot-password/:id/:code',
       component: ForgotPageComponent,
+      canActivate: [UnauthorizeGuardService],
+    },
+    {
+      path: 'callback',
+      component: OAuth2CallbackComponent,
       canActivate: [UnauthorizeGuardService],
     },
     {
