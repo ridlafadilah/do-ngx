@@ -3,7 +3,8 @@ import { AuthTokenService } from '../../services/auth-token.service';
 
 @Component({
     selector: 'do-logout',
-    template: '',
+    styleUrls: ['logout.component.scss'],
+    templateUrl: 'logout.component.html',
 })
 export class LogoutComponent {
 

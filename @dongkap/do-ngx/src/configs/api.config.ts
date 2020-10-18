@@ -15,6 +15,16 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/do/oauth/token',
         },
+        'extract-token': {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/do/oauth/extract-token',
+        },
+        authorize: {
+            server: environment.host.auth,
+            method: HttpMethod.POST,
+            path: '/do/oauth2/authorize',
+        },
         signup: {
             server: environment.host.auth,
             method: HttpMethod.POST,

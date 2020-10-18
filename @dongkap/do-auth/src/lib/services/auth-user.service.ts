@@ -1,15 +1,17 @@
-import { Observable, Subject } from 'rxjs';
 import { Injectable, Inject } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { API, APIModel, HTTP_SERVICE, HttpFactoryService, oauthInfo } from '@dongkap/do-core';
 import { User, UserInfo } from '@dongkap/do-core';
 import { ProfileIndexedDBService } from '../storage/profile-indexeddb.service';
-import { map } from 'rxjs/operators';
+import { AuthIndexedDBService } from '../storage/auth-indexeddb.service';
 
 @Injectable()
 export class AuthUserService extends UserInfo {
 
     constructor(
         private profileIndexedDB: ProfileIndexedDBService,
+        private authIndexedDB: AuthIndexedDBService,
         @Inject(API)private apiPath: APIModel,
         @Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService) {
             super();
@@ -21,22 +23,31 @@ export class AuthUserService extends UserInfo {
             this.profileIndexedDB.get('image-b64'),
             this.profileIndexedDB.get('image'),
             this.profileIndexedDB.get('name'),
+            this.authIndexedDB.getEnc('provider'),
         ]).then((value: any[]) => {
             if (!value[0]) {
-                if (value[1] && value[2]) {
-                    this.getImage(value[1], value[2]);
-                } else {
-                    this.httpBaseService.HTTP_AUTH(
-                    this.apiPath['profile']['get-profile'])
-                    .subscribe((response: any) => {
-                        Promise.all([
-                            this.profileIndexedDB.put('name', response['name']),
-                            this.profileIndexedDB.put('email', response['email']),
-                            this.profileIndexedDB.put('image', response['image']),
-                        ]).then(() => {
-                            this.getImage(response['image'], response['name']);
+                if (value[3] === 'local') {
+                    if (value[1] && value[2]) {
+                        this.getImage(value[1], value[2]);
+                    } else {
+                        this.httpBaseService.HTTP_AUTH(
+                        this.apiPath['profile']['get-profile'])
+                        .subscribe((response: any) => {
+                            Promise.all([
+                                this.profileIndexedDB.put('name', response['name']),
+                                this.profileIndexedDB.put('email', response['email']),
+                                this.profileIndexedDB.put('image', response['image']),
+                            ]).then(() => {
+                                this.getImage(response['image'], response['name']);
+                            });
                         });
-                    });
+                    }
+                } else {
+                    const user: User = {
+                        name: value[2],
+                        picture: value[1],
+                    };
+                    this.loaderUserSubject$.next(user);
                 }
             } else {
                 Promise.all([
@@ -67,8 +78,8 @@ export class AuthUserService extends UserInfo {
                 reader.onloadend = () => {
                     picture = reader.result.toString();
                     const user: User = {
-                        name: name,
-                        picture: picture,
+                        'name': name,
+                        'picture': picture,
                     };
                     this.profileIndexedDB.put('image-b64', picture).then();
                     this.loaderUserSubject$.next(user);
@@ -100,8 +111,8 @@ export class AuthUserService extends UserInfo {
                 reader.onloadend = () => {
                     picture = reader.result.toString();
                     const user: User = {
-                        name: name,
-                        picture: picture,
+                        'name': name,
+                        'picture': picture,
                     };
                     this.profileIndexedDB.put('image-b64', picture).then();
                     this.loaderUserSubject$.next(user);

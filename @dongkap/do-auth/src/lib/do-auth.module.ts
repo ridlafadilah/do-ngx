@@ -7,6 +7,7 @@ import {
   NbIconModule,
   NbDialogModule,
   NbCardModule,
+  NbSpinnerModule,
 } from '@nebular/theme';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -89,6 +90,7 @@ const AUTH_ENTRY_COMPONENTS = [
     NbButtonModule,
     NbIconModule,
     NbCardModule,
+    NbSpinnerModule,
     NbDialogModule.forChild(),
     DoThemeModule,
     DoToastrModule.forRoot(),

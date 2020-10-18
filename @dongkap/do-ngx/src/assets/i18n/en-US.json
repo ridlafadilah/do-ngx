@@ -76,7 +76,9 @@
 		"deactivate-form": "This action cannot be undone. This will permanently disable your account.",
 		"input-password": "Please enter your password to confirm.",
 		"button-deactivate": "I understand the consequences, deactivate account",
-		"fake-form": "Please make sure again, the report you are investigating is really invalid."
+		"fake-form": "Please make sure again, the report you are investigating is really invalid.",
+		"logout": "Logging out...",
+		"callback": "Authenticating..."
 	},
 	"warn": {
 		"group-menu": "Please sort menus under group!"

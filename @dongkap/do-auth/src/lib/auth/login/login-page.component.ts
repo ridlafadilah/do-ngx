@@ -1,13 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { NbAuthSocialLink } from '@nebular/auth';
-import { ApiBaseResponse } from '@dongkap/do-core';
-import { AuthTokenService } from '../../services/auth-token.service';
 import { Subject } from 'rxjs';
-import { AuthIndexedDBService } from '../../storage/auth-indexeddb.service';
+import { NbAuthSocialLink } from '@nebular/auth';
+import { API, ApiBaseResponse, APIModel, HTTP_SERVICE, HttpFactoryService } from '@dongkap/do-core';
+import { AuthTokenService } from '../../services/auth-token.service';
 
 @Component({
     selector: 'do-login-page',
@@ -26,9 +25,13 @@ export class LoginPageComponent implements OnDestroy {
     password: new FormControl(),
   });
 
+  private urlAuthorizeGoogle: string = this.httpBaseService.API(this.apiPath['auth']['authorize']) +
+  '/google?redirect_uri=' +
+  `${document.getElementsByTagName('base')[0].href}auth/callback`;
+
   public socialLinks: NbAuthSocialLink[] = [
     {
-      url: 'http://localhost:8085/do/oauth2/authorize/google?redirect_uri=http://localhost:4242/auth/callback',
+      url: this.urlAuthorizeGoogle,
       target: '_self',
       icon: 'google',
     }
@@ -37,7 +40,12 @@ export class LoginPageComponent implements OnDestroy {
   constructor(
     private router: Router,
     private authTokenService: AuthTokenService,
+    @Inject(API) private apiPath: APIModel,
+    @Inject(HTTP_SERVICE) private httpBaseService: HttpFactoryService,
     route: ActivatedRoute) {
+    this.urlAuthorizeGoogle = this.httpBaseService.API(this.apiPath['auth']['authorize']) +
+      '/google?redirect_uri=' +
+      `${document.getElementsByTagName('base')[0].href}auth/callback`;
     if (route.snapshot.queryParams['error']) {
       console.log(route.snapshot.queryParams['error']);
       this.responseError = 'error.' + route.snapshot.queryParams['error'];
@@ -94,12 +102,12 @@ export class LoginPageComponent implements OnDestroy {
             });
             this.progressBar = 0;
         });
-        if (this.progressBar >= 35 && this.progressBar < 65) {
-            this.progressBar = 65;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-        }
+      if (this.progressBar >= 35 && this.progressBar < 65) {
+        this.progressBar = 65;
+        progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
+        progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
+        progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+      }
     }
   }
 

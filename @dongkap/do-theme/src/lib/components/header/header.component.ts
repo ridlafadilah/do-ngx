@@ -80,10 +80,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.profileIndexedDB.get('name'),
         this.profileIndexedDB.get('image-b64'),
       ]).then((value: any[]) => {
-        this.user = {
-          name: value[0],
-          picture: value[1],
-        };
+        if (!this.user) {
+          this.user = {
+            name: value[0],
+            picture: value[1],
+          };
+        }
       });
       if (this.swPush.isEnabled) {
         this.swPush.subscription.subscribe((subscription: PushSubscription) => {
