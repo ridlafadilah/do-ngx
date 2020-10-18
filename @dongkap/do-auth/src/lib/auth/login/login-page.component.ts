@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NbAuthSocialLink } from '@nebular/auth';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
 import { Subject } from 'rxjs';
+import { AuthIndexedDBService } from '../../storage/auth-indexeddb.service';
 
 @Component({
     selector: 'do-login-page',
@@ -27,13 +28,21 @@ export class LoginPageComponent implements OnDestroy {
 
   public socialLinks: NbAuthSocialLink[] = [
     {
-      url: 'http://localhost:8085/do/oauth2/authorize/google?redirect_uri=http://localhost:4242/auth',
+      url: 'http://localhost:8085/do/oauth2/authorize/google?redirect_uri=http://localhost:4242/auth/callback',
       target: '_self',
       icon: 'google',
     }
   ];
 
-  constructor(private router: Router, private authTokenService: AuthTokenService) {}
+  constructor(
+    private router: Router,
+    private authTokenService: AuthTokenService,
+    route: ActivatedRoute) {
+    if (route.snapshot.queryParams['error']) {
+      console.log(route.snapshot.queryParams['error']);
+      this.responseError = 'error.' + route.snapshot.queryParams['error'];
+    }
+  }
 
   ngOnDestroy(): void {
   }

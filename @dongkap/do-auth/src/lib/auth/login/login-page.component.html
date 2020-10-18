@@ -3,7 +3,7 @@
 <nb-alert *ngIf="responseError" outline="danger" role="alert">
   <p class="alert-title"><b>{{ 'alert.title.login' | translate }}</b></p>
   <ul class="alert-message-list">
-    <li class="alert-message">{{ responseError }}</li>
+    <li class="alert-message">{{ responseError | translate }}</li>
   </ul>
 </nb-alert>
 

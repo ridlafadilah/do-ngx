@@ -125,7 +125,8 @@
 		"403": "Akses ditolak",
 		"404": "Data tidak ditemukan",
 		"500": "Server gagal diakses",
-		"504": "Server timeout"
+		"504": "Server timeout",
+		"ERR_SYS0401": "Email anda terdaftar pada otentikasi yang lain"
 	},
 	"Bad credentials": "Username atau Kata Sandi salah",
 	"User account is locked": "Akun telah dikunci",

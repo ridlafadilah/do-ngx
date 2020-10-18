@@ -125,7 +125,8 @@
 		"403": "Access Denied",
 		"404": "Not Found",
 		"500": "Internal Server Error",
-		"504": "Timeout Server"
+		"504": "Timeout Server",
+		"ERR_SYS0401": "Your email is registered to another authentication"
 	},
 	"Bad credentials": "Incorrect Username or Password",
 	"User account is locked": "Account has been locked",
