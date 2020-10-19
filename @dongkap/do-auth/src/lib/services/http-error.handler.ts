@@ -85,6 +85,7 @@ export class HttpErrorHandler {
                     case 'User account is locked':
                     case 'User is disabled':
                     case 'User account has expired':
+                    case 'User credentials have expired':
                         return throwError(this.errorDefault(error));
                     default:
                         this.authToken.logout();

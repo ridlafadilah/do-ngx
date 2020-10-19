@@ -9,6 +9,7 @@ import { NbDialogRef } from '@nebular/theme';
 export class TermsConditionsComponent {
 
   @Input() content: string;
+  @Input() action: 'Agree' | 'Close' = 'Agree';
 
   constructor(protected ref: NbDialogRef<TermsConditionsComponent>) {
   }

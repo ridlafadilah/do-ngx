@@ -38,7 +38,7 @@ import { AuthLanguageService } from './services/auth-lang.service';
 import { RegisterPageComponent } from './auth/register/register-page.component';
 import { RequestForgotPageComponent } from './auth/forgot/request-forgot-page.component';
 import { ForgotPageComponent } from './auth/forgot/forgot-page.component';
-import { TermsConditionsComponent } from './auth/register/terms-conditions/terms-conditions.component';
+import { TermsConditionsComponent } from './auth/terms-conditions/terms-conditions.component';
 import { OAuth2CallbackComponent } from './auth/oauth2/oauth2-callback.component';
 
 const AUTH_PROVIDERS = [

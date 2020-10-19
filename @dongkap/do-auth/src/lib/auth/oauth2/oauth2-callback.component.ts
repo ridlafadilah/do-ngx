@@ -30,7 +30,6 @@ export class OAuth2CallbackComponent implements OnDestroy {
     if (route.snapshot.queryParams['access_token']) {
       this.extractToken(route.snapshot.queryParams['access_token']);
     } else if (route.snapshot.queryParams['error']) {
-      console.log(route.snapshot.queryParams['error']);
       this.router.navigate(['/auth'], { queryParams: { error: route.snapshot.queryParams['error'] }});
     }
   }

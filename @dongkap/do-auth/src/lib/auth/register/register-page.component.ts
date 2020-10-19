@@ -26,7 +26,7 @@ import { APIModel } from '@dongkap/do-core';
 import { HttpFactoryService } from '@dongkap/do-core';
 import { SecurityResourceModel } from '@dongkap/do-core';
 import { DoToastrService } from '@dongkap/do-common';
-import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
+import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 
 @Component({
     selector: 'do-register-page',

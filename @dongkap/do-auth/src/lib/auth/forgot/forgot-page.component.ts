@@ -141,7 +141,6 @@ export class ForgotPageComponent implements OnDestroy {
             if (error['respStatusCode']) {
               this.responseError = error['respStatusMessage'][error['respStatusCode']];
             }
-          } else {
           }
         });
     }

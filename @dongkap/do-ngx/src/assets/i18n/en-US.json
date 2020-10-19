@@ -38,6 +38,7 @@
 	"Edit": "Edit",
 	"Delete": "Delete",
 	"Cancel": "Cancel",
+	"Close": "Close",
 	"Parameter Group": "Parameter Group",
 	"Parameter Code": "Parameter Code",
 	"Parameter Value": "Parameter Value",
@@ -128,12 +129,17 @@
 		"404": "Not Found",
 		"500": "Internal Server Error",
 		"504": "Timeout Server",
-		"ERR_SYS0401": "Your email is registered to another authentication"
+		"ERR_SYS0401": "Your email is registered to another authentication",
+		"ERR_SYS0411": "Account has been deactivated",
+		"ERR_SYS0412": "Account has been expired",
+		"ERR_SYS0413": "Account has been locked",
+		"ERR_SYS0414": "Account credentials has been expired"
 	},
 	"Bad credentials": "Incorrect Username or Password",
 	"User account is locked": "Account has been locked",
 	"User is disabled": "Account has been deactivated",
 	"User account has expired": "Account has been expired",
+	"User credentials have expired": "Account credentials has been expired",
 	"select": {
 		"notfound": "No items found",
 		"typesearch": "Please enter {{value}} or more characters"

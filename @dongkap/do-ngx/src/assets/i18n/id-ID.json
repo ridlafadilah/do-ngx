@@ -38,6 +38,7 @@
 	"Edit": "Ubah",
 	"Delete": "Hapus",
 	"Cancel": "Batal",
+	"Close": "Keluar",
 	"Parameter Group": "Grup Parameter",
 	"Parameter Code": "Kode Parameter",
 	"Parameter Value": "Nilai Parameter",
@@ -128,12 +129,17 @@
 		"404": "Data tidak ditemukan",
 		"500": "Server gagal diakses",
 		"504": "Server timeout",
-		"ERR_SYS0401": "Email anda terdaftar pada otentikasi yang lain"
+		"ERR_SYS0401": "Email anda terdaftar pada otentikasi yang lain",
+		"ERR_SYS0411": "Akun sudah dinonaktifkan",
+		"ERR_SYS0412": "Akun sudah kadaluwarsa",
+		"ERR_SYS0413": "Akun telah dikunci",
+		"ERR_SYS0414": "Kredensial akun sudah kedaluwarsa"
 	},
 	"Bad credentials": "Username atau Kata Sandi salah",
 	"User account is locked": "Akun telah dikunci",
 	"User is disabled": "Akun sudah dinonaktifkan",
 	"User account has expired": "Akun sudah kadaluwarsa",
+	"User credentials have expired": "Kredensial akun sudah kedaluwarsa",
 	"select": {
 		"notfound": "Data tidak ditemukan",
 		"typesearch": "Silakan masukkan {{value}} karakter atau lebih"

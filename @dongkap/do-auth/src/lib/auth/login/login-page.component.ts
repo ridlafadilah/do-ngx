@@ -2,17 +2,23 @@ import { Component, Inject } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { NbAuthSocialLink } from '@nebular/auth';
+import { NbDialogService } from '@nebular/theme';
 import {
   API,
   HTTP_SERVICE,
+  OAUTH_INFO,
 } from '@dongkap/do-core';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { APIModel } from '@dongkap/do-core';
 import { HttpFactoryService } from '@dongkap/do-core';
+import { SecurityResourceModel } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
+import { takeUntil } from 'rxjs/operators';
+import { TermsConditionsComponent } from '../terms-conditions/terms-conditions.component';
 
 @Component({
     selector: 'do-login-page',
@@ -45,9 +51,12 @@ export class LoginPageComponent implements OnDestroy {
 
   constructor(
     private router: Router,
+    private dialogService: NbDialogService,
+    private translate: TranslateService,
     private authTokenService: AuthTokenService,
     @Inject(API) private apiPath: APIModel,
     @Inject(HTTP_SERVICE) private httpBaseService: HttpFactoryService,
+    @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
     route: ActivatedRoute) {
     if (route.snapshot.queryParams['error']) {
       console.log(route.snapshot.queryParams['error']);
@@ -145,6 +154,27 @@ export class LoginPageComponent implements OnDestroy {
       this.form.controls['password'].valid &&
       this.form.controls['password'].touched
     );
+  }
+
+  public onClickTermsConditions() {
+    const data: any = {
+      'parameterCode': 'TERMS_CONDITIONS.DONGKAP'
+    };
+    const httpHeaders: HttpHeaders = new HttpHeaders({
+      'Authorization': 'Basic ' + btoa(this.oauthResource['client_id'] + ':' + this.oauthResource['client_secret']),
+      'Content-Type': 'application/json',
+      'Accept-Language': this.translate.currentLang,
+    });
+    this.httpBaseService.HTTP_BASE(this.apiPath['openapi']['parameter'], data, httpHeaders)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe((response: any) => {
+      this.dialogService.open(TermsConditionsComponent, {
+        context: {
+          content: response['parameterValue'],
+          action: 'Close',
+        },
+        });
+    });
   }
 
 }

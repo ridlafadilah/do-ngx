@@ -90,3 +90,7 @@
 <section class="another-action" aria-label="Register">
   {{ 'message.login-footer' | translate}} <a class="text-link" routerLink="/auth/register">{{ 'Register' | translate}}</a>
 </section>
+
+<section class="another-action" aria-label="Terms and Conditions">
+  <span class="terms-conditions" (click)="onClickTermsConditions()" tabindex="-1">{{ 'message.terms-conditions' | translate}}</span>
+</section>
