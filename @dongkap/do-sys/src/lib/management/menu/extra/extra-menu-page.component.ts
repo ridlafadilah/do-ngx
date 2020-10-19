@@ -1,4 +1,5 @@
-import { Component, Injector, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, ViewEncapsulation } from '@angular/core';
+import { TemplateRef } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';

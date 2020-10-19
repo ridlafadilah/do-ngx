@@ -8,16 +8,16 @@ import { takeUntil } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import {
   API,
-  ApiBaseResponse,
-  APIModel,
   EncryptionService,
-  HttpFactoryService,
   HTTP_SERVICE,
   OAUTH_INFO,
   Pattern,
   ResponseCode,
-  SecurityResourceModel,
 } from '@dongkap/do-core';
+import { ApiBaseResponse } from '@dongkap/do-core';
+import { APIModel } from '@dongkap/do-core';
+import { HttpFactoryService } from '@dongkap/do-core';
+import { SecurityResourceModel } from '@dongkap/do-core';
 import { DoToastrService } from '@dongkap/do-common';
 
 @Component({

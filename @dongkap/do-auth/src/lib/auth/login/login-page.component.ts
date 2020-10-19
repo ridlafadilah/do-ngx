@@ -5,7 +5,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { NbAuthSocialLink } from '@nebular/auth';
-import { API, ApiBaseResponse, APIModel, HTTP_SERVICE, HttpFactoryService } from '@dongkap/do-core';
+import {
+  API,
+  HTTP_SERVICE,
+} from '@dongkap/do-core';
+import { ApiBaseResponse } from '@dongkap/do-core';
+import { APIModel } from '@dongkap/do-core';
+import { HttpFactoryService } from '@dongkap/do-core';
 import { AuthTokenService } from '../../services/auth-token.service';
 
 @Component({
@@ -26,8 +32,8 @@ export class LoginPageComponent implements OnDestroy {
   });
 
   private urlAuthorizeGoogle: string = this.httpBaseService.API(this.apiPath['auth']['authorize']) +
-  '/google?redirect_uri=' +
-  `${document.getElementsByTagName('base')[0].href}auth/callback`;
+    '/google?redirect_uri=' +
+    `${document.getElementsByTagName('base')[0].href}auth/callback`;
 
   public socialLinks: NbAuthSocialLink[] = [
     {
@@ -43,9 +49,6 @@ export class LoginPageComponent implements OnDestroy {
     @Inject(API) private apiPath: APIModel,
     @Inject(HTTP_SERVICE) private httpBaseService: HttpFactoryService,
     route: ActivatedRoute) {
-    this.urlAuthorizeGoogle = this.httpBaseService.API(this.apiPath['auth']['authorize']) +
-      '/google?redirect_uri=' +
-      `${document.getElementsByTagName('base')[0].href}auth/callback`;
     if (route.snapshot.queryParams['error']) {
       console.log(route.snapshot.queryParams['error']);
       this.responseError = 'error.' + route.snapshot.queryParams['error'];
@@ -77,30 +80,31 @@ export class LoginPageComponent implements OnDestroy {
         this.form.get('username').value,
         this.form.get('password').value)
         .then(() => {
-            this.progressBar = 90;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-            this.progressBar = 0;
-            this.router.navigate(['/app/home']);
+          this.responseError = null;
+          this.progressBar = 90;
+          progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
+          progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
+          progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+          this.progressBar = 0;
+          this.router.navigate(['/app/home']);
         })
         .catch((error: any) => {
-            if (!(error instanceof HttpErrorResponse)) {
-              const response: ApiBaseResponse = (<ApiBaseResponse> error);
-              this.responseError = response.respStatusMessage[response.respStatusCode];
-            }
-            this.buttonLogin = false;
-            this.progressBar = 85;
-            progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
-            progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
-            progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
-            document.querySelectorAll('.pace-running').forEach(pace => {
-              pace.className = pace.className.replace('pace-running', 'pace-done');
-            });
-            document.querySelectorAll('.pace-active').forEach(pace => {
-              pace.className = pace.className.replace('pace-active', 'pace-inactive');
-            });
-            this.progressBar = 0;
+          if (!(error instanceof HttpErrorResponse)) {
+            const response: ApiBaseResponse = (<ApiBaseResponse> error);
+            this.responseError = response.respStatusMessage[response.respStatusCode];
+          }
+          this.buttonLogin = false;
+          this.progressBar = 85;
+          progressDOM.style.transform = 'translate3d(' + this.progressBar + '%, 0px, 0px)';
+          progressDOM.getAttributeNode('data-progress-text').value = this.progressBar + '%';
+          progressDOM.getAttributeNode('data-progress').value = this.progressBar.toString();
+          document.querySelectorAll('.pace-running').forEach(pace => {
+            pace.className = pace.className.replace('pace-running', 'pace-done');
+          });
+          document.querySelectorAll('.pace-active').forEach(pace => {
+            pace.className = pace.className.replace('pace-active', 'pace-inactive');
+          });
+          this.progressBar = 0;
         });
       if (this.progressBar >= 35 && this.progressBar < 65) {
         this.progressBar = 65;

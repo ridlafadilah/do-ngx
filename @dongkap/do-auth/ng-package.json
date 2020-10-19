@@ -8,9 +8,11 @@
       "crypto-js": "crypto-js",
       "@nebular/theme": "@nebular/theme",
       "@ngx-translate/core": "@ngx-translate/core",
+      "ng-recaptcha": "ng-recaptcha",
       "@dongkap/do-theme": "@dongkap/do-theme",
       "@dongkap/do-core": "@dongkap/do-core",
-      "@dongkap/do-storage": "@dongkap/do-storage"
+      "@dongkap/do-storage": "@dongkap/do-storage",
+      "@dongkap/do-common": "@dongkap/do-common"
     }
   }
 }

@@ -14,17 +14,17 @@ import { debounceTime, distinctUntilChanged, first, switchMap, takeUntil } from 
 import { TranslateService } from '@ngx-translate/core';
 import { NbDialogService } from '@nebular/theme';
 import {
-  ApiBaseResponse,
   API,
-  APIModel,
   EncryptionService,
-  HttpFactoryService,
   HTTP_SERVICE,
   OAUTH_INFO,
   Pattern,
-  SecurityResourceModel,
   ResponseCode,
 } from '@dongkap/do-core';
+import { ApiBaseResponse } from '@dongkap/do-core';
+import { APIModel } from '@dongkap/do-core';
+import { HttpFactoryService } from '@dongkap/do-core';
+import { SecurityResourceModel } from '@dongkap/do-core';
 import { DoToastrService } from '@dongkap/do-common';
 import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 
