@@ -165,6 +165,7 @@
 	"header": {
 		"parameter" : "Parameter {{value}}",
 		"function-control": "Kontrol Fungsi : {{value}}",
-		"terms-conditions": "Syarat dan Ketentuan"
+		"terms-conditions": "Syarat dan Ketentuan",
+		"privacy-policy": "Kebijakan Privasi"
 	}
 }

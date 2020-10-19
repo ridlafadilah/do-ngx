@@ -31,8 +31,10 @@ import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
+import { RouterModule } from '@angular/router';
 
 export const NB_MODULES = [
+  RouterModule,
   TranslateModule,
   NbLayoutModule,
   NbMenuModule,

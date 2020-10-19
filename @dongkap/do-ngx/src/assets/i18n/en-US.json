@@ -165,6 +165,7 @@
 	"header": {
 		"parameter" : "Parameter {{value}}",
 		"function-control": "Function Control : {{value}}",
-		"terms-conditions": "Terms and Conditions"
+		"terms-conditions": "Terms and Conditions",
+		"privacy-policy": "Privacy Policy"
 	}
 }

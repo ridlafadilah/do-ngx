@@ -65,6 +65,9 @@ export class LoginPageComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+    this.destroy$.unsubscribe();
   }
 
   public login() {

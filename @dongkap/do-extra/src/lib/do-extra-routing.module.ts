@@ -6,6 +6,8 @@ import { ProfilePageComponent } from './profile/profile-page.component';
 import { SettingsPageComponent } from './settings/settings-page.component';
 import { SecurityPageComponent } from './security/security-page.component';
 import { SystemPageComponent } from './system/system-page.component';
+import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
+import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,6 +38,20 @@ const routes: Routes = [{
     {
       path: 'settings',
       component: SettingsPageComponent,
+      data: {
+        code: '#SETTINGS-PAGE',
+      },
+    },
+    {
+      path: 'terms',
+      component: TermsConditionsPageComponent,
+      data: {
+        code: '#SETTINGS-PAGE',
+      },
+    },
+    {
+      path: 'privacy-policy',
+      component: PrivacyPolicyPageComponent,
       data: {
         code: '#SETTINGS-PAGE',
       },

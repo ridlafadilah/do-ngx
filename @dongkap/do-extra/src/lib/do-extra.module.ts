@@ -21,6 +21,8 @@ import { SecurityPageComponent } from './security/security-page.component';
 import { DeactivatedPromptComponent } from './security/prompt/deactivated-prompt.component';
 import { HomePageComponent } from './home/home-page.component';
 import { SystemPageComponent } from './system/system-page.component';
+import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
+import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
 
 const EXTRA_COMPONENTS = [
   ExtraComponent,
@@ -31,6 +33,8 @@ const EXTRA_COMPONENTS = [
   SystemPageComponent,
   SettingsPageComponent,
   HomePageComponent,
+  TermsConditionsPageComponent,
+  PrivacyPolicyPageComponent,
 ];
 
 const EXTRA_ENTRY_COMPONENTS = [

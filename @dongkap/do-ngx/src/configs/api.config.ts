@@ -226,6 +226,11 @@ export const apiPath: APIModel = {
             method: HttpMethod.POST,
             path: '/do/api/master/vw/auth/datatable/parameter/v.1',
         },
+        'parameter': {
+            server: environment.host.master,
+            method: HttpMethod.POST,
+            path: '/do/api/master/vw/post/parameter-i18n/v.1',
+        },
         'all-parameter-i18n': {
             server: environment.host.master,
             method: HttpMethod.POST,
