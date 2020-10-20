@@ -81,8 +81,14 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
 
   ngOnInit(): void {
     this.onInit('profile', 'get-profile');
-    this.profileIndexedDB.get('image-b64').then((value: any) => {
-      this.image = value;
+    Promise.all([
+      this.profileIndexedDB.get('image-b64'),
+      this.profileIndexedDB.get('image'),
+    ]).then((value: any[]) => {
+      if (value[0])
+        this.image = value[0];
+      else
+        this.image = value[1];
     });
     this.paramSelectGender = [{
       key: 'parameterGroupCode',
