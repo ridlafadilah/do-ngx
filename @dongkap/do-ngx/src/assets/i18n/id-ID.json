@@ -77,10 +77,12 @@
 		"deactivated-account": "Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan.",
 		"deactivate-form": "Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.",
 		"input-password": "Silakan masukan kata sandi anda untuk konfirmasi.",
+		"input-email": "Silakan masukan email anda untuk konfirmasi.",
 		"button-deactivate": "Saya mengerti konsekuensinya, nonaktifkan akun",
 		"fake-form": "Mohon dipastikan kembali, laporan yang anda selidiki sungguh tidak valid.",
 		"logout": "Proses keluar...",
-		"callback": "Proses otentikasi..."
+		"callback": "Proses otentikasi...",
+		"provider": "Anda saat ini masuk dengan {{value}}"
 	},
 	"warn": {
 		"group-menu": "Mohon urutkan menu di bawah grup!"

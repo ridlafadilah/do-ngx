@@ -1,4 +1,14 @@
-<do-change-password-page></do-change-password-page>
+<do-change-password-page *ngIf="!authProvider"></do-change-password-page>
+<nb-card *ngIf="authProvider">
+    <nb-card-body>
+        <div class="row">
+            <nb-icon [status]="'info'" [icon]="'google'" class="icon-provider"></nb-icon>
+            <p class="text-provider">
+                {{ 'message.provider' | translate:provider}}
+            </p>
+        </div>
+    </nb-card-body>
+</nb-card>
 <nb-card>
     <nb-card-body>
         <div class="row">

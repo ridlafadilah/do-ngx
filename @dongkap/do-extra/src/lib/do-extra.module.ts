@@ -23,11 +23,13 @@ import { HomePageComponent } from './home/home-page.component';
 import { SystemPageComponent } from './system/system-page.component';
 import { TermsConditionsPageComponent } from './terms/terms-conditions-page.component';
 import { PrivacyPolicyPageComponent } from './privacy-policy/privacy-policy-page.component';
+import { DeactivatedProviderPromptComponent } from './security/prompt/deactivated-provider-prompt.component';
 
 const EXTRA_COMPONENTS = [
   ExtraComponent,
   ChangePasswordPageComponent,
   DeactivatedPromptComponent,
+  DeactivatedProviderPromptComponent,
   SecurityPageComponent,
   ProfilePageComponent,
   SystemPageComponent,
@@ -39,6 +41,7 @@ const EXTRA_COMPONENTS = [
 
 const EXTRA_ENTRY_COMPONENTS = [
   DeactivatedPromptComponent,
+  DeactivatedProviderPromptComponent,
 ];
 
 const modules = [
