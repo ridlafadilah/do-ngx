@@ -13,8 +13,9 @@
         </nb-select>
       </nb-card-header>
       <nb-card-body>
-        <ng-content #pagecontent></ng-content>        
+        <ng-content select="[pagecontent]"></ng-content>        
       </nb-card-body>
+      <ng-content select="[pagefooter]"></ng-content>
     </nb-card>
   </div>
 </div>

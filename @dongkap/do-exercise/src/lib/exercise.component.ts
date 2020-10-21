@@ -11,7 +11,7 @@ import {
   Keyword,
   DatatableFilter,
 } from '@dongkap/do-common';
-import { HttpBaseModel, HttpMethod } from '@dongkap/do-core';
+import { DatePattern, HttpBaseModel, HttpMethod } from '@dongkap/do-core';
 
 @Component({
   selector: 'do-exercise',
@@ -69,6 +69,7 @@ export class ExerciseComponent implements OnInit {
     },
   ];
   minLength: number = 5;
+  pattern: string = DatePattern.DASH;
 
   rows: any[] = [];
   columns: TableColumn[] = [
@@ -170,7 +171,7 @@ export class ExerciseComponent implements OnInit {
         }],
         'currency': ['124124.124'],
         'date': [{
-          value: '31/31/2019',
+          value: '31/12/2019',
           disabled: false,
         }],
         'checkbox': [this.dataCheckboxEdited],

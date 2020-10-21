@@ -1,5 +1,5 @@
 <do-page-outlet [header]="'Menu Management'">
-  <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)">
+  <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)" pagecontent>
     <nb-tab tabId="main" tabTitle="Main Menu">
       <do-main-menu-page #mainMenu></do-main-menu-page>
     </nb-tab>

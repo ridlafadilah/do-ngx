@@ -1,118 +1,121 @@
 <do-page-outlet [header]="'Exercise'">
-  <div class="col-md-12 col-lg-12 col-xxxl-6">
-    <do-datatable
-      [api]="apiDatatable"
-      [formGroupFilter]="formGroupFilter"
-      [filters]="filters"
-      (onFilter)="doFilterAdvanced($event)"
-      [columns]="columns">
-      <form [formGroup]="formGroupFilter">
-        <do-input-text
-          [name]="'name'"
-          [label]="'Name'"
-          formControlName="name">
-        </do-input-text>
-        <do-input-text
-          [name]="'gender'"
-          [label]="'Gender'"
-          formControlName="gender">
-        </do-input-text>
-        <do-input-text
-          [name]="'company'"
-          [label]="'Company'"
-          formControlName="company">
-        </do-input-text>
-      </form>
-    </do-datatable>
-  </div>
-  <div class="col-md-12 col-lg-12 col-xxxl-6">
-    <do-tree [nodeItems]="nodeItems" [options]="options"></do-tree>
-  </div>
-  <form [formGroup]="formGroup">
+  <div pagecontent>
     <div class="col-md-12 col-lg-12 col-xxxl-6">
-      <do-image-upload
-        [radius]="50"
-        [required]="false"
-        (onUpload)="uploadImage($event)"
-        formControlName="image">
-      </do-image-upload>
+      <do-datatable
+        [api]="apiDatatable"
+        [formGroupFilter]="formGroupFilter"
+        [filters]="filters"
+        (onFilter)="doFilterAdvanced($event)"
+        [columns]="columns">
+        <form [formGroup]="formGroupFilter">
+          <do-input-text
+            [name]="'name'"
+            [label]="'Name'"
+            formControlName="name">
+          </do-input-text>
+          <do-input-text
+            [name]="'gender'"
+            [label]="'Gender'"
+            formControlName="gender">
+          </do-input-text>
+          <do-input-text
+            [name]="'company'"
+            [label]="'Company'"
+            formControlName="company">
+          </do-input-text>
+        </form>
+      </do-datatable>
     </div>
-    <do-input-text
-      [name]="'username'"
-      [label]="'Username'"
-      [required]="true"
-      formControlName="username">
-    </do-input-text>
-    <do-input-currency
-      [name]="'currency'"
-      [label]="'Currency'"
-      [required]="true"
-      formControlName="currency">
-    </do-input-currency>
-    <do-datepicker
-      [name]="'date'"
-      [label]="'Date'"
-      [required]="true"
-      formControlName="date">
-    </do-datepicker>
-    <do-checkbox
-      [name]="'checkbox'"
-      [label]="'Checkbox'"
-      [required]="true"
-      [data]="dataCheckbox"
-      formControlName="checkbox">
-    </do-checkbox>
-    <do-radio
-      [name]="'radio'"
-      [label]="'Radio'"
-      [data]="dataRadio"
-      [required]="true"
-      formControlName="radio">
-    </do-radio>
-    <do-select
-      [name]="'searchSelect'"
-      [label]="'Search Select'"
-      [api]="apiSelect"
-      formControlName="searchSelect">
-    </do-select>
-    <do-select
-      [name]="'staticSelect'"
-      [label]="'Static Select'"
-      [required]="true"
-      [items]="dataStaticSelect"
-      formControlName="staticSelect">
-    </do-select>
-    <do-textarea
-      [name]="'textarea'"
-      [label]="'Textarea'"
-      [minLength]="minLength"
-      [required]="true"
-      formControlName="textarea">
-    </do-textarea>
-    <do-ckeditor
-      [name]="'ckeditor'"
-      [label]="'CKEditor'"
-      [required]="true"
-      formControlName="ckeditor">
-    </do-ckeditor>
-    <do-tiny-mce
-      [id]="'tinyMCE01'"
-      [name]="'tinyMCE'"
-      [label]="'TinyMCE'"
-      [required]="true"
-      formControlName="tinyMCE">
-    </do-tiny-mce>
-    <div class="form-group row">
-      <div class="offset-sm-3 col-sm-9">
-        <button
-          type="submit"
-          nbButton
-          status="primary"
-          (click)="onSubmit()"
-          [disabled]="formGroup.invalid">
-          Submit
-        </button>
+    <div class="col-md-12 col-lg-12 col-xxxl-6">
+      <do-tree [nodeItems]="nodeItems" [options]="options"></do-tree>
+    </div>
+    <form [formGroup]="formGroup">
+      <div class="col-md-12 col-lg-12 col-xxxl-6">
+        <do-image-upload
+          [radius]="50"
+          [required]="false"
+          (onUpload)="uploadImage($event)"
+          formControlName="image">
+        </do-image-upload>
       </div>
-    </div>
-  </form>
+      <do-input-text
+        [name]="'username'"
+        [label]="'Username'"
+        [required]="true"
+        formControlName="username">
+      </do-input-text>
+      <do-input-currency
+        [name]="'currency'"
+        [label]="'Currency'"
+        [required]="true"
+        formControlName="currency">
+      </do-input-currency>
+      <do-datepicker
+        [name]="'date'"
+        [label]="'Date'"
+        [required]="true"
+        [pattern]="pattern"
+        formControlName="date">
+      </do-datepicker>
+      <do-checkbox
+        [name]="'checkbox'"
+        [label]="'Checkbox'"
+        [required]="true"
+        [data]="dataCheckbox"
+        formControlName="checkbox">
+      </do-checkbox>
+      <do-radio
+        [name]="'radio'"
+        [label]="'Radio'"
+        [data]="dataRadio"
+        [required]="true"
+        formControlName="radio">
+      </do-radio>
+      <do-select
+        [name]="'searchSelect'"
+        [label]="'Search Select'"
+        [api]="apiSelect"
+        formControlName="searchSelect">
+      </do-select>
+      <do-select
+        [name]="'staticSelect'"
+        [label]="'Static Select'"
+        [required]="true"
+        [items]="dataStaticSelect"
+        formControlName="staticSelect">
+      </do-select>
+      <do-textarea
+        [name]="'textarea'"
+        [label]="'Textarea'"
+        [minLength]="minLength"
+        [required]="true"
+        formControlName="textarea">
+      </do-textarea>
+      <do-ckeditor
+        [name]="'ckeditor'"
+        [label]="'CKEditor'"
+        [required]="true"
+        formControlName="ckeditor">
+      </do-ckeditor>
+      <do-tiny-mce
+        [id]="'tinyMCE01'"
+        [name]="'tinyMCE'"
+        [label]="'TinyMCE'"
+        [required]="true"
+        formControlName="tinyMCE">
+      </do-tiny-mce>
+      <div class="form-group row">
+        <div class="offset-sm-3 col-sm-9">
+          <button
+            type="submit"
+            nbButton
+            status="primary"
+            (click)="onSubmit()"
+            [disabled]="formGroup.invalid">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
 </do-page-outlet>

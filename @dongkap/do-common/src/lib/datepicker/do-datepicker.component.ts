@@ -3,6 +3,7 @@ import { NgControl } from '@angular/forms';
 import { NbCalendarSize, NbDateService } from '@nebular/theme';
 import { DatePattern } from '@dongkap/do-core';
 import { DoValueAccessor } from '../base/do-value-accessor.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'do-datepicker',
@@ -19,28 +20,32 @@ export class DoDatePickerComponent extends DoValueAccessor<Date> {
 
     constructor(@Optional() @Self() ngControl: NgControl,
       public dateService: NbDateService<Date>,
-      @Inject(LOCALE_ID) public locale: string) {
+      @Inject(LOCALE_ID) public locale: string,
+      private datePipe: DatePipe) {
       super(ngControl, locale);
       this.pattern = DatePattern.SLASH;
     }
 
     public writeValue(value: any): void {
-      if (new Date(value).toString() !== 'Invalid Date') {
-        this._value = new Date(value);
-        this.onChange(this.value);
-        const control = this.ngControl.control;
-        if (control) {
-            control.updateValueAndValidity();
-            control.markAsUntouched();
-            control.markAsPristine();
-        }
-      } else {
-        const control = this.ngControl.control;
-        if (control) {
-            control.updateValueAndValidity();
-            control.markAsTouched();
-            control.markAsDirty();
+      if (String(value).match(this.pattern)) {
+        const dateParse: string = this.parse(value);
+        if (!isNaN(Date.parse(dateParse))) {
+          this._value = new Date(dateParse);
+          this.onChange(this.value);
         }
       }
+      const control = this.ngControl.control;
+      if (control) {
+        control.updateValueAndValidity();
+        control.markAsTouched();
+        control.markAsDirty();
+      }
+    }
+
+    private parse(value: any): string {
+      const year: string = String(value).split('/')[2];
+      const month: string = String(value).split('/')[1];
+      const day: string = String(value).split('/')[0];
+      return year + '/' + month + '/' + day;
     }
 }

@@ -1,5 +1,5 @@
 <do-page-outlet [header]="'header.function-control'" [param]="{value: title}">
-  <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)">
+  <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)" pagecontent>
     <nb-tab tabId="main" tabTitle="Main Menu" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
       <do-function-main-page #mainFunction></do-function-main-page>
     </nb-tab>

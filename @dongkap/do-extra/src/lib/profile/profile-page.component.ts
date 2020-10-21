@@ -120,18 +120,18 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
           this.loadingForm = false;
           this.formGroup.controls['name'].setValue(success['name']);
           this.formGroup.controls['idNumber'].setValue(success['idNumber']);
-          success['gender'] ? this.formGroup.controls['gender'].setValue(success['gender']) : null;
+          if (success['gender']) this.formGroup.controls['gender'].setValue(success['gender']);
           this.formGroup.controls['placeOfBirth'].setValue(success['placeOfBirth']);
-          this.formGroup.get('dateOfBirth').setValue(success['dateOfBirth']);
+          if (success['dateOfBirth']) this.formGroup.get('dateOfBirth').setValue(success['dateOfBirth']);
           this.formGroup.controls['email'].setValue(success['email']);
-          success['address'] ? this.formGroup.controls['address'].setValue(success['address']) : null;
-          success['country'] ? this.formGroup.controls['country'].setValue(success['country']) : null;
-          success['province'] ? this.formGroup.controls['province'].setValue(success['province']) : null;
-          success['city'] ? this.formGroup.controls['city'].setValue(success['city']) : null;
-          success['district'] ? this.formGroup.controls['district'].setValue(success['district']) : null;
-          success['subDistrict'] ? this.formGroup.controls['subDistrict'].setValue(success['subDistrict']) : null;
-          success['phoneNumber'] ? this.formGroup.controls['phoneNumber'].setValue(success['phoneNumber']) : null;
-          success['mobileNumber'] ? this.formGroup.controls['mobileNumber'].setValue(success['mobileNumber']) : null;
+          if (success['address']) this.formGroup.controls['address'].setValue(success['address']);
+          if (success['country']) this.formGroup.controls['country'].setValue(success['country']);
+          if (success['province']) this.formGroup.controls['province'].setValue(success['province']);
+          if (success['city']) this.formGroup.controls['city'].setValue(success['city']);
+          if (success['district']) this.formGroup.controls['district'].setValue(success['district']);
+          if (success['subDistrict']) this.formGroup.controls['subDistrict'].setValue(success['subDistrict']);
+          if (success['phoneNumber']) this.formGroup.controls['phoneNumber'].setValue(success['phoneNumber']);
+          if (success['mobileNumber']) this.formGroup.controls['mobileNumber'].setValue(success['mobileNumber']);
           this.formGroup.markAsPristine();
         },
         (error: HttpErrorResponse) => {

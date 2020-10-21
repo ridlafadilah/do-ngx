@@ -1,5 +1,5 @@
 <do-page-outlet [header]="'Profile'">
-  <div class="row">
+  <div class="row" pagecontent>
     <div class="col-md-4 col-lg-4 col-xxxl-6">
       <form [formGroup]="formGroupImage">
         <do-image-upload
@@ -29,100 +29,110 @@
           [skeleton]="loadingForm"
           formControlName="email">
         </do-input-text>
-        <do-input-text
-          [name]="'idNumber'"
-          [label]="'ID Number'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="idNumber">
-        </do-input-text>
-        <do-select
-          [name]="'gender'"
-          [label]="'Gender'"
-          [required]="true"
-          [api]="apiSelectGender"
-          [queryParam]="paramSelectGender"
-          [searchable]="false"
-          [skeleton]="loadingForm"
-          formControlName="gender">
-        </do-select>
-        <do-input-text
-          [name]="'placeOfBirth'"
-          [label]="'Place of Birth'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="placeOfBirth">
-        </do-input-text>
-        <do-datepicker
-          [name]="'dateOfBirth'"
-          [label]="'Date of Birth'"
-          [required]="true"
-          [skeleton]="loadingForm"
-          formControlName="dateOfBirth">
-        </do-datepicker>
-        <do-input-text
-          [name]="'phoneNumber'"
-          [label]="'Telephone'"
-          [required]="true"
-          [pattern]="patternPhoneNumber"
-          [skeleton]="loadingForm"
-          formControlName="phoneNumber">
-        </do-input-text>
-        <do-textarea
-          [name]="'address'"
-          [label]="'Address'"
-          [required]="true"
-          [minLength]="minLength"
-          [skeleton]="loadingForm"
-          formControlName="address">
-        </do-textarea>
-        <do-select
-          [name]="'country'"
-          [label]="'Country'"
-          [api]="apiSelectCountry"
-          [skeleton]="loadingForm"
-          (onSelect)="onSelectCountry($event)"
-          (onClear)="onClearCountry()"
-          formControlName="country">
-        </do-select>
-        <do-select
-          [name]="'province'"
-          [label]="'Province'"
-          [api]="apiSelectProvince"
-          [queryParam]="paramSelectProvince"
-          [skeleton]="loadingForm"
-          (onSelect)="onSelectProvince($event)"
-          (onClear)="onClearProvince()"
-          formControlName="province">
-        </do-select>
-        <do-select
-          [name]="'city'"
-          [label]="'City'"
-          [api]="apiSelectCity"
-          [queryParam]="paramSelectCity"
-          [skeleton]="loadingForm"
-          (onSelect)="onSelectCity($event)"
-          (onClear)="onClearCity()"
-          formControlName="city">
-        </do-select>
-        <do-select
-          [name]="'district'"
-          [label]="'District'"
-          [api]="apiSelectDistrict"
-          [queryParam]="paramSelectDistrict"
-          [skeleton]="loadingForm"
-          (onSelect)="onSelectDistrict($event)"
-          (onClear)="onClearDistrict()"
-          formControlName="district">
-        </do-select>
-        <do-select
-          [name]="'subDistrict'"
-          [label]="'Sub District'"
-          [api]="apiSelectSubDistrict"
-          [queryParam]="paramSelectSubDistrict"
-          [skeleton]="loadingForm"
-          formControlName="subDistrict">
-        </do-select>
+        <div class="font-row">
+          <div class="header">
+            <div class="name bold">{{'Personal Info' | translate}}</div>
+          </div>
+          <do-input-text
+            [name]="'idNumber'"
+            [label]="'ID Number'"
+            [required]="true"
+            [skeleton]="loadingForm"
+            formControlName="idNumber">
+          </do-input-text>
+          <do-select
+            [name]="'gender'"
+            [label]="'Gender'"
+            [required]="true"
+            [api]="apiSelectGender"
+            [queryParam]="paramSelectGender"
+            [searchable]="false"
+            [skeleton]="loadingForm"
+            formControlName="gender">
+          </do-select>
+          <do-input-text
+            [name]="'placeOfBirth'"
+            [label]="'Place of Birth'"
+            [required]="true"
+            [skeleton]="loadingForm"
+            formControlName="placeOfBirth">
+          </do-input-text>
+          <do-datepicker
+            [name]="'dateOfBirth'"
+            [label]="'Date of Birth'"
+            [required]="true"
+            [skeleton]="loadingForm"
+            formControlName="dateOfBirth">
+          </do-datepicker>
+        </div>
+        <div class="font-row">
+          <div class="header">
+            <div class="name bold">{{'Contact Person' | translate}}</div>
+          </div>
+          <do-input-text
+            [name]="'phoneNumber'"
+            [label]="'Telephone'"
+            [required]="true"
+            [pattern]="patternPhoneNumber"
+            [skeleton]="loadingForm"
+            formControlName="phoneNumber">
+          </do-input-text>
+          <do-textarea
+            [name]="'address'"
+            [label]="'Address'"
+            [required]="true"
+            [minLength]="minLength"
+            [skeleton]="loadingForm"
+            formControlName="address">
+          </do-textarea>
+          <do-select
+            [name]="'country'"
+            [label]="'Country'"
+            [api]="apiSelectCountry"
+            [skeleton]="loadingForm"
+            (onSelect)="onSelectCountry($event)"
+            (onClear)="onClearCountry()"
+            formControlName="country">
+          </do-select>
+          <do-select
+            [name]="'province'"
+            [label]="'Province'"
+            [api]="apiSelectProvince"
+            [queryParam]="paramSelectProvince"
+            [skeleton]="loadingForm"
+            (onSelect)="onSelectProvince($event)"
+            (onClear)="onClearProvince()"
+            formControlName="province">
+          </do-select>
+          <do-select
+            [name]="'city'"
+            [label]="'City'"
+            [api]="apiSelectCity"
+            [queryParam]="paramSelectCity"
+            [skeleton]="loadingForm"
+            (onSelect)="onSelectCity($event)"
+            (onClear)="onClearCity()"
+            formControlName="city">
+          </do-select>
+          <do-select
+            [name]="'district'"
+            [label]="'District'"
+            [api]="apiSelectDistrict"
+            [queryParam]="paramSelectDistrict"
+            [skeleton]="loadingForm"
+            (onSelect)="onSelectDistrict($event)"
+            (onClear)="onClearDistrict()"
+            formControlName="district">
+          </do-select>
+          <do-select
+            [name]="'subDistrict'"
+            [label]="'Sub District'"
+            [api]="apiSelectSubDistrict"
+            [queryParam]="paramSelectSubDistrict"
+            [skeleton]="loadingForm"
+            formControlName="subDistrict">
+          </do-select>
+        </div>
         <do-button-submit
           (onSubmit)="onSubmit()"
           [name]="'Update Profile'"
