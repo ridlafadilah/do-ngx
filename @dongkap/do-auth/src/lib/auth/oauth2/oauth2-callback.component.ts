@@ -1,7 +1,8 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators';;
 import { Idle } from '@ng-idle/core';
 import { API, APIModel, HttpFactoryService, HTTP_SERVICE, OAUTH_INFO, SecurityResourceModel } from '@dongkap/do-core';
 import { AuthIndexedDBService } from '../../storage/auth-indexeddb.service';
@@ -15,7 +16,7 @@ import { SettingsIndexedDBService } from '../../storage/settings-indexeddb.servi
 })
 export class OAuth2CallbackComponent implements OnDestroy {
 
-  private destroy$ = new Subject<void>();
+  protected destroy$: Subject<any> = new Subject<any>();
 
   constructor(
     private router: Router,
@@ -35,6 +36,7 @@ export class OAuth2CallbackComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.destroy$.next(true);
     this.destroy$.next();
     this.destroy$.complete();
   }
@@ -44,6 +46,7 @@ export class OAuth2CallbackComponent implements OnDestroy {
     HTTP_BASE(this.apiPath['auth']['extract-token'],
         this.getAuthBody(accessToken).toString(),
         this.getAuthHeader())
+            .pipe(takeUntil(this.destroy$))
             .toPromise()
             .then((response: HttpResponse<any>) => {
                 this.idle.setIdle(+response['expires_in']);

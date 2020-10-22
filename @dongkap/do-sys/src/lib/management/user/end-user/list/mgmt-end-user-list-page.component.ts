@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { SelectionType } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
 import { HttpBaseModel } from '@dongkap/do-core';
@@ -12,7 +11,7 @@ import { ManagementUserService } from '../../services/mgmt-user.service';
   styleUrls: ['./mgmt-end-user-list-page.component.scss'],
   templateUrl: './mgmt-end-user-list-page.component.html',
 })
-export class MgmtEndUserListPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+export class MgmtEndUserListPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
@@ -46,8 +45,6 @@ export class MgmtEndUserListPageComponent extends BaseFilterComponent<any> imple
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   onViewDetail(data): void {
     this.userService.setUser(data);

@@ -1,8 +1,8 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
 import { TableColumn } from '@swimlane/ngx-datatable';
 import { NbDialogService, NbDialogRef } from '@nebular/theme';
 import { HttpBaseModel, ApiBaseResponse } from '@dongkap/do-core';
@@ -14,7 +14,7 @@ import { ParameterService } from '../../services/parameter.service';
   styleUrls: ['./parameter-list-group-page.component.scss'],
   templateUrl: './parameter-list-group-page.component.html',
 })
-export class ParameterListGroupPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+export class ParameterListGroupPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public apiPathLocale: HttpBaseModel;
@@ -53,8 +53,6 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
     });
   }
 
-  ngOnDestroy(): void {}
-
   onAddGroup(): void {
     this.router.navigate(['/app/sysconf/parameter/group', 'add']);
   }
@@ -79,17 +77,19 @@ export class ParameterListGroupPageComponent extends BaseFilterComponent<any> im
 
   onDelete(ref: NbDialogRef<any>): void {
     this.disabled = true;
-    this.http.HTTP_AUTH(this.apiPathDelete, this.parameterGroupCodes).subscribe(
-      (success: ApiBaseResponse) => {
-        ref.close();
-        this.disabled = false;
-        this.reload = true;
-        this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
-      },
-      (error: ApiBaseResponse) => {
-        this.disabled = false;
-        this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
-      },
+    this.http.HTTP_AUTH(this.apiPathDelete, this.parameterGroupCodes)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+        (success: ApiBaseResponse) => {
+          ref.close();
+          this.disabled = false;
+          this.reload = true;
+          this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
+        },
+        (error: ApiBaseResponse) => {
+          this.disabled = false;
+          this.toastr.showI18n(error.respStatusMessage[error.respStatusCode], true, null, 'danger');
+        },
     );
   }
 

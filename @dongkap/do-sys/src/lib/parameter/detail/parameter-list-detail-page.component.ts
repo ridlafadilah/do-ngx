@@ -1,6 +1,5 @@
 import { Component, Injector, ViewChild } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { TableColumn, SelectionType } from '@swimlane/ngx-datatable';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -15,7 +14,7 @@ import { ParameterEditGroupCollapseComponent } from '../group/edit-group/paramet
   styleUrls: ['./parameter-list-detail-page.component.scss'],
   templateUrl: './parameter-list-detail-page.component.html',
 })
-export class ParameterListDetailPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+export class ParameterListDetailPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
@@ -54,8 +53,6 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
 
   ngOnInit(): void {
   }
-
-  ngOnDestroy(): void {}
 
   onAddGroup(event): void {
     this.parameterService.setParameter(null);

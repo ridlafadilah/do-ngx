@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectionType } from '@swimlane/ngx-datatable';
 import { HttpBaseModel } from '@dongkap/do-core';
@@ -12,7 +11,7 @@ import { FunctionControlService } from '../services/function-control.service';
   styleUrls: ['./function-list-page.component.scss'],
   templateUrl: './function-list-page.component.html',
 })
-export class FunctionListPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+export class FunctionListPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
@@ -34,8 +33,6 @@ export class FunctionListPageComponent extends BaseFilterComponent<any> implemen
   }
 
   ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
 
   onViewDetail(data): void {
     this.functionControlService.setRole(data);

@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectionType } from '@swimlane/ngx-datatable';
 import { HttpBaseModel } from '@dongkap/do-core';
@@ -12,7 +11,7 @@ import { LocaleService } from '../services/locale.service';
   styleUrls: ['./locale-list-page.component.scss'],
   templateUrl: './locale-list-page.component.html',
 })
-export class LocaleListPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+export class LocaleListPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
@@ -42,8 +41,6 @@ export class LocaleListPageComponent extends BaseFilterComponent<any> implements
 
   ngOnInit(): void {
   }
-
-  ngOnDestroy(): void {}
 
   onAddGroup(): void {
     this.router.navigate(['/app/sysconf/i18n', 'add']);

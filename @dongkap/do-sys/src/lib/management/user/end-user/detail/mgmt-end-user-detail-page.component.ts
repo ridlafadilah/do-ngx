@@ -1,8 +1,8 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-common';
 import { ManagementUserService } from '../../services/mgmt-user.service';
@@ -12,7 +12,7 @@ import { ManagementUserService } from '../../services/mgmt-user.service';
   styleUrls: ['./mgmt-end-user-detail-page.component.scss'],
   templateUrl: './mgmt-end-user-detail-page.component.html',
 })
-export class MgmtEndUserDetailPageComponent extends BaseFormComponent<any> implements OnInit, OnDestroy {
+export class MgmtEndUserDetailPageComponent extends BaseFormComponent<any> implements OnInit {
 
   public profile: any = {};
   public image: string;
@@ -29,8 +29,6 @@ export class MgmtEndUserDetailPageComponent extends BaseFormComponent<any> imple
     this.onInit('security', 'get-profile-other');
   }
 
-  ngOnDestroy(): void {}
-
   onInit(serviceName: string, apiName: string): void {
     if (!this.userService.getUser()) {
       this.router.navigate(['/app/mgmt/user/end']);
@@ -41,6 +39,7 @@ export class MgmtEndUserDetailPageComponent extends BaseFormComponent<any> imple
       username: this.userService.getUser().username,
     };
     this.exec(serviceName, apiName, data)
+      .pipe(takeUntil(this.destroy$))
       .subscribe(
         (success: any) => {
           this.loadingForm = false;

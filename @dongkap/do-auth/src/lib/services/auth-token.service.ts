@@ -2,7 +2,7 @@ import { Injectable, Inject, OnDestroy } from '@angular/core';
 import { HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { Idle, DEFAULT_INTERRUPTSOURCES } from '@ng-idle/core';
 import {
     HTTP_SERVICE, APIModel, signatureHeader,
@@ -16,6 +16,7 @@ import { SettingsIndexedDBService } from '../storage/settings-indexeddb.service'
 export class AuthTokenService implements OnDestroy {
 
     private timer: any;
+    protected destroy$: Subject<any> = new Subject<any>();
 
     constructor(@Inject(HTTP_SERVICE)private httpBaseService: HttpFactoryService,
         @Inject(OAUTH_INFO)private oauthResource: SecurityResourceModel,
@@ -39,6 +40,9 @@ export class AuthTokenService implements OnDestroy {
 
     ngOnDestroy(): void {
         clearInterval(this.timer);
+        this.destroy$.next(true);
+        this.destroy$.next();
+        this.destroy$.complete();
     }
 
     public login(username: string, password: string): Promise<any> {
@@ -47,6 +51,7 @@ export class AuthTokenService implements OnDestroy {
         HTTP_BASE(this.apiPath['auth']['token'],
             this.getAuthBody(username, password).toString(),
             this.getAuthHeader())
+                .pipe(takeUntil(this.destroy$))
                 .toPromise()
                 .then((response: HttpResponse<any>) => {
                     this.idle.setIdle(+response['expires_in']);
@@ -65,6 +70,7 @@ export class AuthTokenService implements OnDestroy {
             HTTP_BASE(this.apiPath['auth']['token'],
                 body,
                 this.getAuthHeader())
+                .pipe(takeUntil(this.destroy$))
                 .pipe(map((response: any) => {
                     this.idle.setIdle(response['expires_in']);
                     this.authIndexedDB.logout();
@@ -78,6 +84,7 @@ export class AuthTokenService implements OnDestroy {
             this.doLogout();
         }, 5000);
         this.httpBaseService.HTTP_AUTH(this.apiPath['security']['revoke'])
+            .pipe(takeUntil(this.destroy$))
             .subscribe(() => {
                 this.doLogout();
             });

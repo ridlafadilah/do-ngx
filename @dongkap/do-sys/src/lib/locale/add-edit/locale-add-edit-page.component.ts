@@ -34,7 +34,7 @@ export class LocaleAddEditPageComponent extends BaseFormComponent<any> implement
         'icon': [],
         'default': [],
       });
-    if (this.localeService.getLocale()) {
+    if (this.localeService.getLocale() || (this.route.snapshot.params['action'] === 'add')) {
       if ((this.route.snapshot.params['action'] === 'edit')) {
         this.action = 'Edit';
       }

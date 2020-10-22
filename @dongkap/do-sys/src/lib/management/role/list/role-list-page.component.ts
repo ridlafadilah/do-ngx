@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SelectionType } from '@swimlane/ngx-datatable';
 import { HttpBaseModel } from '@dongkap/do-core';
@@ -12,7 +11,7 @@ import { RoleService } from '../services/role.service';
   styleUrls: ['./role-list-page.component.scss'],
   templateUrl: './role-list-page.component.html',
 })
-export class RoleListPageComponent extends BaseFilterComponent<any> implements OnInit, OnDestroy {
+export class RoleListPageComponent extends BaseFilterComponent<any> implements OnInit {
 
   public apiPath: HttpBaseModel;
   public selectionType: SelectionType = SelectionType.single;
@@ -40,8 +39,6 @@ export class RoleListPageComponent extends BaseFilterComponent<any> implements O
 
   ngOnInit(): void {
   }
-
-  ngOnDestroy(): void {}
 
   onAddGroup(): void {
     this.router.navigate(['/app/mgmt/role', 'add']);
