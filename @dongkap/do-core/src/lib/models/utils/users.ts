@@ -23,5 +23,6 @@ export abstract class UserData {
 export abstract class UserInfo {
   abstract loadPhotoUser(): void;
   abstract updatePhotoUser(file: File, checksum: string): Observable<User>;
+  abstract updateNameUser(name: string): Observable<User>;
   abstract getUser(): Observable<User>;
 }

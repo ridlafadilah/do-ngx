@@ -228,6 +228,7 @@ export class DoSelectComponent extends DoValueAccessor<any> implements OnDestroy
         (event.key.toUpperCase() === 'HOME') ||
         (event.key.toUpperCase() === 'LEFT ARROW') ||
         (event.key.toUpperCase() === 'RIGHT ARROW') || (!event.key.match(/[!@#$%^&*()?":{}|<>\[\];\\=~`]/g))) {
+          this.reset();
           if (term) {
             if (term.length > this.maxTermLength) {
               return false;

@@ -91,6 +91,26 @@ export class AuthUserService extends UserInfo {
         return this.loaderUserSubject$.asObservable();
     }
 
+    public updateNameUser(name: string): Observable<User> {
+        this.profileIndexedDB.put('name', name).then();
+        Promise.all([
+            this.profileIndexedDB.get('image-b64'),
+            this.profileIndexedDB.get('image'),
+        ]).then((value: any[]) => {
+            let picture: string;
+            if (value[0])
+                picture = value[0];
+            else
+                picture = value[1];
+            const user: User = {
+                'name': name,
+                'picture': picture,
+            };
+            this.loaderUserSubject$.next(user);
+        });
+        return this.loaderUserSubject$.asObservable();
+    }
+
     public getUser(): Observable<any> {
         return this.loaderUserSubject$.asObservable();
     }
