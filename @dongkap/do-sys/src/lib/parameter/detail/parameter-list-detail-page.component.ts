@@ -38,9 +38,9 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
       'parameterGroupCode': [],
       'parameterGroupName': [],
     });
-    this.apiPath = this.api['master']['datatable-parameter'];
-    this.filters = [{ controlName: 'parameterCode', type: 'input' }];
     if (this.parameterService.getParameterGroup()) {
+      this.apiPath = this.api['master']['datatable-parameter'];
+      this.filters = [{ controlName: 'parameterCode', type: 'input' }];
       this.parameterGroup = this.parameterService.getParameterGroup();
       this.keyword = {
         parameterGroupCode: this.parameterGroup.parameterGroupCode,
@@ -48,9 +48,6 @@ export class ParameterListDetailPageComponent extends BaseFilterComponent<any> i
       this.formGroup.get('parameterGroupCode').setValue(this.parameterGroup.parameterGroupCode);
       this.formGroup.get('parameterGroupName').setValue(this.parameterGroup.parameterGroupName);
     } else {
-      this.keyword = {
-        parameterGroupCode: null,
-      };
       this.router.navigate(['/app/sysconf/parameter']);
     }
   }

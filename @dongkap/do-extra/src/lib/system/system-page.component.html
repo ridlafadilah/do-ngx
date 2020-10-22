@@ -1,4 +1,4 @@
-<do-page-outlet [header]="'Profile System'">
+<do-page-outlet [header]="'Profile'">
   <div class="row" pagecontent>
     <div class="col-md-4 col-lg-4 col-xxxl-6">
       <form [formGroup]="formGroupImage">
@@ -29,9 +29,16 @@
           [skeleton]="loadingForm"
           formControlName="email">
         </do-input-text>
+        <do-input-text
+          [name]="'username'"
+          [label]="'Username'"
+          [required]="true"
+          [skeleton]="loadingForm"
+          formControlName="username">
+        </do-input-text>
         <div class="font-row">
           <div class="header">
-            <div class="name bold">{{'Contact Person' | translate}}</div>
+            <div class="name bold">{{'label.contact-person' | translate}}</div>
           </div>
           <do-input-text
             [name]="'phoneNumber'"

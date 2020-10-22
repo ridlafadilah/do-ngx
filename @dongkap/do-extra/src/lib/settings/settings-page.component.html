@@ -2,7 +2,7 @@
   <form [formGroup]="formGroup" pagecontent>
     <do-select
       [name]="'locale'"
-      [label]="'Locale'"
+      [label]="'label.language'"
       [required]="true"
       [searchable]="false"
       [skeleton]="loadingForm"
@@ -15,7 +15,7 @@
     </do-select>
     <do-checkbox
       [name]="'checkbox'"
-      [label]="'Dark Mode'"
+      [label]="'label.dark-mode'"
       [data]="dataTheme"
       [skeleton]="loadingForm"
       formControlName="theme">

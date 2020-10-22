@@ -37,40 +37,40 @@ export class ParameterDoDetailPageComponent extends BaseFormComponent<any> imple
     });
     if (this.parameterService.getParameterGroup()) {
       this.parameterGroup = this.parameterService.getParameterGroup();
+      if ((this.route.snapshot.params['action'] === 'edit')) {
+        if (this.parameterService.getParameter()) {
+          this.action = 'Edit';
+          this.isEdit = true;
+          this.parameter = this.parameterService.getParameter();
+        } else {
+          this.router.navigate(['/app/sysconf/parameter']);
+        }
+      }
+      if (!this.parameterService.getLocales()) {
+        this.apiPathLocale = this.api['master']['all-locale'];
+        this.http.HTTP_AUTH(this.apiPathLocale).subscribe(response => {
+          this.parameterService.setLocales(response);
+          this.splitLocale(response);
+        });
+      } else {
+        this.splitLocale(this.parameterService.getLocales());
+      }
+      if (this.isEdit) {
+        this.formGroup.get('parameterCode').setValue(this.parameter.parameterCode);
+        this.formGroup.get('parameterCode').disable({emitEvent: true});
+        this.apiPathParameterI18n = this.api['master']['all-parameter-i18n'];
+        this.loadingForm = true;
+        this.http.HTTP_AUTH(this.apiPathParameterI18n, {
+          'parameterCode': this.parameter.parameterCode,
+        }).subscribe((response: ParameterI18nModel[]) => {
+          response.forEach(data => {
+            this.formGroup.get(data.locale).setValue(data.parameterValue);
+            this.loadingForm = false;
+          });
+        });
+      }
     } else {
       this.router.navigate(['/app/sysconf/parameter']);
-    }
-    if ((this.route.snapshot.params['action'] === 'edit')) {
-      if (this.parameterService.getParameter()) {
-        this.action = 'Edit';
-        this.isEdit = true;
-        this.parameter = this.parameterService.getParameter();
-      } else {
-        this.router.navigate(['/app/sysconf/parameter']);
-      }
-    }
-    if (!this.parameterService.getLocales()) {
-      this.apiPathLocale = this.api['master']['all-locale'];
-      this.http.HTTP_AUTH(this.apiPathLocale).subscribe(response => {
-        this.parameterService.setLocales(response);
-        this.splitLocale(response);
-      });
-    } else {
-      this.splitLocale(this.parameterService.getLocales());
-    }
-    if (this.isEdit) {
-      this.formGroup.get('parameterCode').setValue(this.parameter.parameterCode);
-      this.formGroup.get('parameterCode').disable({emitEvent: true});
-      this.apiPathParameterI18n = this.api['master']['all-parameter-i18n'];
-      this.loadingForm = true;
-      this.http.HTTP_AUTH(this.apiPathParameterI18n, {
-        'parameterCode': this.parameter.parameterCode,
-      }).subscribe((response: ParameterI18nModel[]) => {
-        response.forEach(data => {
-          this.formGroup.get(data.locale).setValue(data.parameterValue);
-          this.loadingForm = false;
-        });
-      });
     }
   }
 

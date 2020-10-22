@@ -15,6 +15,7 @@ import { HttpBaseModel } from '@dongkap/do-core';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { IndexedDBFactoryService } from '@dongkap/do-core';
 import { BaseFormComponent, SelectParamModel } from '@dongkap/do-common';
+import { AuthIndexedDBService } from '@dongkap/do-auth';
 
 @Component({
   selector: 'do-system-page',
@@ -30,6 +31,7 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public minLength: number = 5;
   public disabledUpload: boolean = false;
+  public provider: string = 'local';
 
   public apiSelectCountry: HttpBaseModel;
 
@@ -48,9 +50,14 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
   constructor(
     public injector: Injector,
     @Inject(USER_INFO) private userService: UserInfo,
-    @Inject(PROFILE_INDEXED_DB) private profileIndexedDB: IndexedDBFactoryService) {
+    @Inject(PROFILE_INDEXED_DB) private profileIndexedDB: IndexedDBFactoryService,
+    private authIndexedDB: AuthIndexedDBService) {
     super(injector,
       {
+        'username': [{
+          value: null,
+          disabled: true,
+        }],
         'name': [],
         'email': [],
         'phoneNumber': [],
@@ -69,12 +76,24 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
     this.apiSelectCity = this.api['master']['select-city'];
     this.apiSelectDistrict = this.api['master']['select-district'];
     this.apiSelectSubDistrict = this.api['master']['select-subdistrict'];
+    this.authIndexedDB.getEnc('provider').then((value: string) => {
+      if (value !== 'local') {
+        this.provider = value;
+        this.formGroup.controls['email'].disable();
+      }
+    });
   }
 
   ngOnInit(): void {
     this.onInit('profile', 'get-profile-system');
-    this.profileIndexedDB.get('image-b64').then((value: any) => {
-      this.image = value;
+    Promise.all([
+      this.profileIndexedDB.get('image-b64'),
+      this.profileIndexedDB.get('image'),
+    ]).then((value: any[]) => {
+      if (value[0])
+        this.image = value[0];
+      else
+        this.image = value[1];
     });
     this.paramSelectProvince = [{
       key: 'country',
@@ -101,14 +120,71 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
         (success: any) => {
           this.loadingForm = false;
           this.formGroup.controls['name'].setValue(success['name']);
+          this.formGroup.controls['username'].setValue(success['username']);
           this.formGroup.controls['email'].setValue(success['email']);
-          success['address'] ? this.formGroup.controls['address'].setValue(success['address']) : null;
-          success['province'] ? this.formGroup.controls['province'].setValue(success['province']) : null;
-          success['city'] ? this.formGroup.controls['city'].setValue(success['city']) : null;
-          success['district'] ? this.formGroup.controls['district'].setValue(success['district']) : null;
-          success['subDistrict'] ? this.formGroup.controls['subDistrict'].setValue(success['subDistrict']) : null;
-          success['phoneNumber'] ? this.formGroup.controls['phoneNumber'].setValue(success['phoneNumber']) : null;
-          success['mobileNumber'] ? this.formGroup.controls['mobileNumber'].setValue(success['mobileNumber']) : null;
+          if (success['address']) this.formGroup.controls['address'].setValue(success['address']);
+          if (success['country']) {
+            this.formGroup.controls['country'].setValue({
+              label: success['country'],
+              value: success['countryCode']
+            });
+            this.paramSelectProvince = [
+              {
+                key: 'country',
+                value: success['countryCode'],
+              },
+            ];
+          }
+          if (success['province']) {
+            this.formGroup.controls['province'].setValue({
+              label: success['province'],
+              value: success['provinceCode']
+            });
+            this.paramSelectCity = [
+              {
+                key: 'province',
+                value: success['provinceCode'],
+              },
+            ];
+          }
+          if (success['city']) {
+            this.formGroup.controls['city'].setValue({
+              label: success['city'],
+              value: success['cityCode']
+            });
+            this.paramSelectDistrict = [
+              {
+                key: 'city',
+                value: success['cityCode'],
+              },
+            ];
+          }
+          if (success['district']) {
+            this.formGroup.controls['district'].setValue({
+              label: success['district'],
+              value: success['districtCode']
+            });
+            this.paramSelectSubDistrict = [
+              {
+                key: 'district',
+                value: success['districtCode'],
+              },
+            ];
+          }
+          if (success['subDistrict']) {
+            this.formGroup.controls['subDistrict'].setValue({
+              label: success['subDistrict'],
+              value: success['subDistrictCode']
+            });
+          }
+          if (success['phoneNumber']) this.formGroup.controls['phoneNumber'].setValue(success['phoneNumber']);
+          if (success['mobileNumber']) this.formGroup.controls['mobileNumber'].setValue(success['mobileNumber']);
+          this.authIndexedDB.getEnc('provider').then((value: string) => {
+            if (value !== 'local') {
+              this.provider = value;
+              this.formGroup.controls['email'].disable();
+            }
+          });
           this.formGroup.markAsPristine();
         },
         (error: HttpErrorResponse) => {
@@ -162,27 +238,29 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
 
   onClearCountry(): void {
     this.formGroup.patchValue({
-      'province': [],
-      'city': [],
-      'district': [],
-      'subDistrict': [],
+      'province': null,
+      'city': null,
+      'district': null,
+      'subDistrict': null,
     });
   }
   onClearProvince(): void {
     this.formGroup.patchValue({
-      'city': [],
-      'district': [],
-      'subDistrict': [],
+      'city': null,
+      'district': null,
+      'subDistrict': null,
     });
   }
   onClearCity(): void {
     this.formGroup.patchValue({
-      'district': [],
-      'subDistrict': [],
+      'district': null,
+      'subDistrict': null,
     });
   }
   onClearDistrict(): void {
-    this.formGroup.get('subDistrict').patchValue([]);
+    this.formGroup.patchValue({
+      'subDistrict': null,
+    });
   }
 
   uploadImage(file: any) {
@@ -215,18 +293,37 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
     }
   }
 
+  valueSelectNonLabel(prop: string): string {
+    if (this.formGroup.get(prop).value) {
+      if (this.formGroup.get(prop).value.value) {
+        return this.formGroup.get(prop).value.value;
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
+
   onSubmit() {
     const data: any = {
       name: this.formGroup.get('name').value,
-      email: this.formGroup.get('email').value,
       phoneNumber: this.formGroup.get('phoneNumber').value,
       address: this.formGroup.get('address').value,
       country: this.valueSelect('country'),
+      countryCode: this.valueSelectNonLabel('country'),
       province: this.valueSelect('province'),
+      provinceCode: this.valueSelectNonLabel('province'),
       city: this.valueSelect('city'),
+      cityCode: this.valueSelectNonLabel('city'),
       district: this.valueSelect('district'),
+      districtCode: this.valueSelectNonLabel('district'),
       subDistrict: this.valueSelect('subDistrict'),
+      subDistrictCode: this.valueSelectNonLabel('subDistrict'),
     };
+    if (this.provider === 'local') {
+      data['email'] = this.formGroup.get('email').value;
+    }
     (super.onSubmit(data, 'profile', 'change-profile-system') as Observable<ApiBaseResponse>)
             .pipe(takeUntil(this.destroy$))
             .subscribe((response: ApiBaseResponse) => {
@@ -241,6 +338,9 @@ export class SystemPageComponent extends BaseFormComponent<any> implements OnIni
                     this.formGroup.controls['phoneNumber'].setErrors({
                       'error.pattern.phoneNumber': true,
                     });
+                    break;
+                  case ResponseCode.OK_SCR004.toString():
+                    this.userService.updateNameUser(this.formGroup.get('name').value);
                     break;
                   default:
                     break;

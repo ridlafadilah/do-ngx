@@ -31,6 +31,9 @@ export class RoleAddEditPageComponent extends BaseFormComponent<any> implements 
       });
     if ((this.route.snapshot.params['action'] === 'edit')) {
       this.action = 'Edit';
+      if (!this.roleService.getRole()) {
+        this.router.navigate(['/app/mgmt/role']);
+      }
     }
     if (this.roleService.getRole() && (this.route.snapshot.params['action'] === 'edit')) {
       this.formGroup.get('authority').setValue(this.roleService.getRole().authority);

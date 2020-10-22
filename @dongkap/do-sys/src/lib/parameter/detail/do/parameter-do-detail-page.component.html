@@ -28,7 +28,7 @@
               </div>
             </ng-template>
             <div class="col-sm-9">
-              <do-input-icon
+              <do-input-icon *ngIf="localeDefault.localeCode"
                 [name]="localeDefault.localeCode"
                 [nolabel]="true"
                 [required]="true"

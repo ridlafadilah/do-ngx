@@ -10,12 +10,12 @@ import {
   USER_INFO,
   UserInfo,
   Pattern,
-  AUTH_INDEXED_DB,
 } from '@dongkap/do-core';
 import { HttpBaseModel } from '@dongkap/do-core';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { IndexedDBFactoryService } from '@dongkap/do-core';
 import { BaseFormComponent, SelectParamModel } from '@dongkap/do-common';
+import { AuthIndexedDBService } from '@dongkap/do-auth';
 
 @Component({
   selector: 'do-profile-page',
@@ -54,7 +54,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     public injector: Injector,
     @Inject(USER_INFO) private userService: UserInfo,
     @Inject(PROFILE_INDEXED_DB) private profileIndexedDB: IndexedDBFactoryService,
-    @Inject(AUTH_INDEXED_DB) private authIndexedDB: IndexedDBFactoryService) {
+    private authIndexedDB: AuthIndexedDBService) {
     super(injector,
       {
         'username': [{
@@ -84,7 +84,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     this.apiSelectCity = this.api['master']['select-city'];
     this.apiSelectDistrict = this.api['master']['select-district'];
     this.apiSelectSubDistrict = this.api['master']['select-subdistrict'];
-    this.authIndexedDB.get('provider').then((value: string) => {
+    this.authIndexedDB.getEnc('provider').then((value: string) => {
       if (value !== 'local') {
         this.provider = value;
         this.formGroup.controls['email'].disable();
@@ -200,7 +200,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
           }
           if (success['phoneNumber']) this.formGroup.controls['phoneNumber'].setValue(success['phoneNumber']);
           if (success['mobileNumber']) this.formGroup.controls['mobileNumber'].setValue(success['mobileNumber']);
-          this.authIndexedDB.get('provider').then((value: string) => {
+          this.authIndexedDB.getEnc('provider').then((value: string) => {
             if (value !== 'local') {
               this.provider = value;
               this.formGroup.controls['email'].disable();
@@ -334,7 +334,6 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       dateOfBirth: this.formGroup.get('dateOfBirth').value,
       gender: this.valueSelect('gender'),
       genderCode: this.valueSelectNonLabel('gender'),
-      email: (this.provider === 'local') ? this.formGroup.get('email').value : null,
       phoneNumber: this.formGroup.get('phoneNumber').value,
       address: this.formGroup.get('address').value,
       country: this.valueSelect('country'),
@@ -348,6 +347,9 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       subDistrict: this.valueSelect('subDistrict'),
       subDistrictCode: this.valueSelectNonLabel('subDistrict'),
     };
+    if (this.provider === 'local') {
+      data['email'] = this.formGroup.get('email').value;
+    }
     (super.onSubmit(data, 'profile', 'change-profile') as Observable<ApiBaseResponse>)
             .pipe(takeUntil(this.destroy$))
             .subscribe((response: ApiBaseResponse) => {

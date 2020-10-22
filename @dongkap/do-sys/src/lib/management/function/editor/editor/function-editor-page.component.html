@@ -1,9 +1,9 @@
 <do-page-outlet [header]="'header.function-control'" [param]="{value: title}">
   <nb-tabset fullWidth (changeTab)="toggleLoadingAnimation($event)" pagecontent>
-    <nb-tab tabId="main" tabTitle="Main Menu" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+    <nb-tab tabId="main" tabTitle="{{'tab.main-menu' | translate}}" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
       <do-function-main-page #mainFunction></do-function-main-page>
     </nb-tab>
-    <nb-tab tabId="extra" tabTitle="Extra Menu" [lazyLoad]="true" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
+    <nb-tab tabId="extra" tabTitle="{{'tab.extra-menu' | translate}}" [lazyLoad]="true" [nbSpinner]="loading" nbSpinnerStatus="info" nbSpinnerSize="giant">
       <do-function-extra-page #extraFunction></do-function-extra-page>
     </nb-tab>
   </nb-tabset>

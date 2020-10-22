@@ -42,8 +42,4 @@ export class FunctionListPageComponent extends BaseFilterComponent<any> implemen
     this.router.navigate(['/app/mgmt/function/control', 'edit']);
   }
 
-  onReset(): void {
-    this.router.navigate(['/app/mgmt/function/control']);
-  }
-
 }

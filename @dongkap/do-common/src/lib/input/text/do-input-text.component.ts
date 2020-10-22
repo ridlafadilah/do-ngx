@@ -51,8 +51,8 @@ export class DoInputTextComponent extends DoValueAccessor<string> {
               (event.key.toUpperCase() === 'X' && event.metaKey === true) || // Cmd+X (Mac)
               (event.key.toUpperCase() === 'END') ||
               (event.key.toUpperCase() === 'HOME') ||
-              (event.key.toUpperCase() === 'LEFT ARROW') ||
-              (event.key.toUpperCase() === 'RIGHT ARROW')) {
+              (event.key.toUpperCase() === 'ARROWLEFT') ||
+              (event.key.toUpperCase() === 'ARROWRIGHT')) {
                 return true;
             }
             return false;

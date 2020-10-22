@@ -2,6 +2,7 @@ import { Component, Injector } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { ApiBaseResponse } from '@dongkap/do-core';
 import { BaseFormComponent } from '@dongkap/do-common';
 import { ManagementUserService } from '../../services/mgmt-user.service';
@@ -19,6 +20,7 @@ export class MgmtAdminDetailPageComponent extends BaseFormComponent<any> impleme
 
   constructor(
     public injector: Injector,
+    private router: Router,
     private userService: ManagementUserService) {
     super(injector);
   }
@@ -30,6 +32,10 @@ export class MgmtAdminDetailPageComponent extends BaseFormComponent<any> impleme
   ngOnDestroy(): void {}
 
   onInit(serviceName: string, apiName: string): void {
+    if (!this.userService.getUser()) {
+      this.router.navigate(['/app/mgmt/user/admin']);
+      return;
+    }
     this.loadingForm = true;
     const data: any = {
       username: this.userService.getUser().username,

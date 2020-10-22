@@ -214,27 +214,41 @@ export class DoSelectComponent extends DoValueAccessor<any> implements OnDestroy
     }
 
     onKeyDown(event: KeyboardEvent, term: string) {
-      if (
-        ['DELETE', 'BACKSPACE', 'TAB', 'ESCAPE', 'ENTER', 'DECIMAL POINT', 'PERIOD', 'DASH'].indexOf(event.key.toUpperCase()) !== -1 ||
-        (event.key.toUpperCase() === 'A' && event.ctrlKey === true) || // Allow: Ctrl+A
-        (event.key.toUpperCase() === 'C' && event.ctrlKey === true) || // Allow: Ctrl+C
-        (event.key.toUpperCase() === 'V' && event.ctrlKey === true) || // Allow: Ctrl+V
-        (event.key.toUpperCase() === 'X' && event.ctrlKey === true) || // Allow: Ctrl+X
-        (event.key.toUpperCase() === 'A' && event.metaKey === true) || // Cmd+A (Mac)
-        (event.key.toUpperCase() === 'C' && event.metaKey === true) || // Cmd+C (Mac)
-        (event.key.toUpperCase() === 'V' && event.metaKey === true) || // Cmd+V (Mac)
-        (event.key.toUpperCase() === 'X' && event.metaKey === true) || // Cmd+X (Mac)
-        (event.key.toUpperCase() === 'END') ||
-        (event.key.toUpperCase() === 'HOME') ||
-        (event.key.toUpperCase() === 'LEFT ARROW') ||
-        (event.key.toUpperCase() === 'RIGHT ARROW') || (!event.key.match(/[!@#$%^&*()?":{}|<>\[\];\\=~`]/g))) {
-          this.reset();
-          if (term) {
-            if (term.length > this.maxTermLength) {
-              return false;
+      if (event.key) {
+        if (
+          ['DELETE', 'BACKSPACE', 'TAB', 'ESCAPE', 'ENTER', 'DECIMAL POINT', 'PERIOD', 'DASH'].indexOf(event.key.toUpperCase()) !== -1 ||
+          (event.key.toUpperCase() === 'A' && event.ctrlKey === true) || // Allow: Ctrl+A
+          (event.key.toUpperCase() === 'C' && event.ctrlKey === true) || // Allow: Ctrl+C
+          (event.key.toUpperCase() === 'V' && event.ctrlKey === true) || // Allow: Ctrl+V
+          (event.key.toUpperCase() === 'X' && event.ctrlKey === true) || // Allow: Ctrl+X
+          (event.key.toUpperCase() === 'A' && event.metaKey === true) || // Cmd+A (Mac)
+          (event.key.toUpperCase() === 'C' && event.metaKey === true) || // Cmd+C (Mac)
+          (event.key.toUpperCase() === 'V' && event.metaKey === true) || // Cmd+V (Mac)
+          (event.key.toUpperCase() === 'X' && event.metaKey === true) || // Cmd+X (Mac)
+          (event.key.toUpperCase() === 'END') ||
+          (event.key.toUpperCase() === 'HOME') ||
+          (event.key.toUpperCase() === 'ARROWLEFT') ||
+          (event.key.toUpperCase() === 'ARROWRIGHT') ||
+          (event.key.toUpperCase() === 'ARROWDOWN') ||
+          (event.key.toUpperCase() === 'ARROWUP') || (!event.key.match(/[!@#$%^&*()?":{}|<>\[\];\\=~`]/g))) {
+            if (!(event.ctrlKey === true ||
+              event.metaKey === true ||
+              event.altKey === true ||
+              (event.key.toUpperCase() === 'END') ||
+              (event.key.toUpperCase() === 'HOME') ||
+              (event.key.toUpperCase() === 'ARROWLEFT') ||
+              (event.key.toUpperCase() === 'ARROWRIGHT') ||
+              (event.key.toUpperCase() === 'ARROWDOWN') ||
+              (event.key.toUpperCase() === 'ARROWUP'))) {
+              this.reset();
             }
-          }
-          return true;
+            if (term) {
+              if (term.length > this.maxTermLength) {
+                return false;
+              }
+            }
+            return true;
+        }
       }
       return false;
     }

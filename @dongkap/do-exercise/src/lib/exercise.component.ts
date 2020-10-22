@@ -69,7 +69,7 @@ export class ExerciseComponent implements OnInit {
     },
   ];
   minLength: number = 5;
-  pattern: string = DatePattern.DASH;
+  pattern: string = DatePattern.SLASH;
 
   rows: any[] = [];
   columns: TableColumn[] = [

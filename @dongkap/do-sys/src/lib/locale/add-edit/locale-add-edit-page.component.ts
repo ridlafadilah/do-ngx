@@ -34,24 +34,28 @@ export class LocaleAddEditPageComponent extends BaseFormComponent<any> implement
         'icon': [],
         'default': [],
       });
-    if ((this.route.snapshot.params['action'] === 'edit')) {
-      this.action = 'Edit';
-    }
-    this.apiSelectLanguage = this.api['master']['select-language'];
-    if (this.localeService.getLocale() && (this.route.snapshot.params['action'] === 'edit')) {
-      if (this.localeService.getLocale().localeDefault) {
-        this.formGroup.get('default').setValue([{
-          selected: true,
-        }]);
-        this.formGroup.get('default').disable();
-      } else {
-        this.formGroup.get('default').setValue([{
-          selected: false,
-        }]);
+    if (this.localeService.getLocale()) {
+      if ((this.route.snapshot.params['action'] === 'edit')) {
+        this.action = 'Edit';
       }
-      this.formGroup.get('icon').setValue(this.localeService.getLocale().icon);
-      this.formGroup.get('language').setValue(this.localeService.getLocale().identifier);
-      this.formGroup.get('language').disable();
+      this.apiSelectLanguage = this.api['master']['select-language'];
+      if (this.localeService.getLocale() && (this.route.snapshot.params['action'] === 'edit')) {
+        if (this.localeService.getLocale().localeDefault) {
+          this.formGroup.get('default').setValue([{
+            selected: true,
+          }]);
+          this.formGroup.get('default').disable();
+        } else {
+          this.formGroup.get('default').setValue([{
+            selected: false,
+          }]);
+        }
+        this.formGroup.get('icon').setValue(this.localeService.getLocale().icon);
+        this.formGroup.get('language').setValue(this.localeService.getLocale().identifier);
+        this.formGroup.get('language').disable();
+      }
+    } else {
+      this.router.navigate(['/app/sysconf/i18n']);
     }
   }
 
