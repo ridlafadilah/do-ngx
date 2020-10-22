@@ -29,6 +29,13 @@
           [skeleton]="loadingForm"
           formControlName="email">
         </do-input-text>
+        <do-input-text
+          [name]="'username'"
+          [label]="'Username'"
+          [required]="true"
+          [skeleton]="loadingForm"
+          formControlName="username">
+        </do-input-text>
         <div class="font-row">
           <div class="header">
             <div class="name bold">{{'Personal Info' | translate}}</div>

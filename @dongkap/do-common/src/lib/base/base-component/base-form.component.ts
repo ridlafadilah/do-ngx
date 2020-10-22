@@ -41,7 +41,8 @@ export abstract class BaseFormComponent<T> extends BaseComponent<T> implements O
             .subscribe(
                 (success: ApiBaseResponse) => {
                     this.submitSubject$.next(success);
-                    this.disabled = true;
+                    this.formGroup.markAsPristine();
+                    this.disabled = false;
                     if (!disableToastr)
                         this.toastr.showI18n(success.respStatusMessage[success.respStatusCode], true);
                 },

@@ -10,6 +10,7 @@ import {
   USER_INFO,
   UserInfo,
   Pattern,
+  AUTH_INDEXED_DB,
 } from '@dongkap/do-core';
 import { HttpBaseModel } from '@dongkap/do-core';
 import { ApiBaseResponse } from '@dongkap/do-core';
@@ -30,6 +31,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   public patternPhoneNumber: string = Pattern.PHONE_NUMBER;
   public minLength: number = 5;
   public disabledUpload: boolean = false;
+  public provider: string = 'local';
 
   public apiSelectGender: HttpBaseModel;
   public paramSelectGender: SelectParamModel[];
@@ -51,9 +53,14 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
   constructor(
     public injector: Injector,
     @Inject(USER_INFO) private userService: UserInfo,
-    @Inject(PROFILE_INDEXED_DB) private profileIndexedDB: IndexedDBFactoryService) {
+    @Inject(PROFILE_INDEXED_DB) private profileIndexedDB: IndexedDBFactoryService,
+    @Inject(AUTH_INDEXED_DB) private authIndexedDB: IndexedDBFactoryService) {
     super(injector,
       {
+        'username': [{
+          value: null,
+          disabled: true,
+        }],
         'name': [],
         'idNumber': [],
         'placeOfBirth': [],
@@ -77,6 +84,12 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
     this.apiSelectCity = this.api['master']['select-city'];
     this.apiSelectDistrict = this.api['master']['select-district'];
     this.apiSelectSubDistrict = this.api['master']['select-subdistrict'];
+    this.authIndexedDB.get('provider').then((value: string) => {
+      if (value !== 'local') {
+        this.provider = value;
+        this.formGroup.controls['email'].disable();
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -119,6 +132,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
         (success: any) => {
           this.loadingForm = false;
           this.formGroup.controls['name'].setValue(success['name']);
+          this.formGroup.controls['username'].setValue(success['username']);
           this.formGroup.controls['idNumber'].setValue(success['idNumber']);
           if (success['gender']) {
             this.formGroup.controls['gender'].setValue({
@@ -186,6 +200,12 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
           }
           if (success['phoneNumber']) this.formGroup.controls['phoneNumber'].setValue(success['phoneNumber']);
           if (success['mobileNumber']) this.formGroup.controls['mobileNumber'].setValue(success['mobileNumber']);
+          this.authIndexedDB.get('provider').then((value: string) => {
+            if (value !== 'local') {
+              this.provider = value;
+              this.formGroup.controls['email'].disable();
+            }
+          });
           this.formGroup.markAsPristine();
         },
         (error: HttpErrorResponse) => {
@@ -314,7 +334,7 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
       dateOfBirth: this.formGroup.get('dateOfBirth').value,
       gender: this.valueSelect('gender'),
       genderCode: this.valueSelectNonLabel('gender'),
-      email: this.formGroup.get('email').value,
+      email: (this.provider === 'local') ? this.formGroup.get('email').value : null,
       phoneNumber: this.formGroup.get('phoneNumber').value,
       address: this.formGroup.get('address').value,
       country: this.valueSelect('country'),
@@ -344,7 +364,6 @@ export class ProfilePageComponent extends BaseFormComponent<any> implements OnIn
                     });
                     break;
                   case ResponseCode.OK_SCR004.toString():
-                    this.disabled = false;
                     this.userService.updateNameUser(this.formGroup.get('name').value);
                     break;
                   default:
