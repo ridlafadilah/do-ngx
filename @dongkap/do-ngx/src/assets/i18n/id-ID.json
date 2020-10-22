@@ -78,6 +78,8 @@
 	"Order": "Urut",
 	"Selected": "Dipilih",
 	"Total": "Total",
+	"Place of Birth": "Tempat Lahir",
+	"Date of Birth": "Tanggal Lahir",
 	"message": {
 		"username-login": "Username atau email",
 		"username-login-placeholder": "Username / Email",

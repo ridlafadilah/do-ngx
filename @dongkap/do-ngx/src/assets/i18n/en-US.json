@@ -78,6 +78,8 @@
 	"Order": "Order",
 	"Selected": "Selected",
 	"Total": "Total",
+	"Place of Birth": "Place of Birth",
+	"Date of Birth": "Date of Birth",
 	"message": {
 		"username-login": "Username or email",
 		"username-login-placeholder": "Username / Email",
