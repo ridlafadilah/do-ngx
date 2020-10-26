@@ -17,12 +17,12 @@ import { IndexedDBDistributionService } from './services/indexeddb-dist.service'
 export class AppComponent implements OnInit {
 
   constructor(
+    public indexedDBDistribution: IndexedDBDistributionService, 
     private analytics: AnalyticsService,
     private seoService: SeoService,
     private translate: TranslateService,
     private themeService: NbThemeService,
     private settingsIndexedDB: SettingsIndexedDBService,
-    public indexedDBDistribution: IndexedDBDistributionService,
     @Inject(LOCALE_ID) public locale: string) {
   }
 
