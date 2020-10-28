@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../../out-tsc/@dongkap/do-ngx",
     "baseUrl": "./",
+    "skipLibCheck": true,
     "paths": {
       "crypto": [
         "../../node_modules/crypto-js"

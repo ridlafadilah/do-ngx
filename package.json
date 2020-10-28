@@ -43,7 +43,7 @@
     "install:do-sys": "npm run p:do-sys && npm r @dongkap/do-sys && npm i -O ./dist/@dongkap/do-sys/dongkap-do-sys-0.0.1.tgz",
     "install:do-exercise": "npm run p:do-exercise && npm r @dongkap/do-exercise && npm i -O ./dist/@dongkap/do-exercise/dongkap-do-exercise-0.0.1.tgz",
     "install:do-ngx": "npm run p:do-ngx && npm r @dongkap/do-ngx && npm i -O ./dist/@dongkap/do-ngx/dongkap-do-ngx-0.0.1.tgz",
-    "install:all-lib": "npm run install:do-core && npm run install:do-theme && npm run install:do-common && npm run install:do-storage && npm run install:do-auth && npm run install:do-extra && npm run install:do-sys && npm run install:do-exercise && npm run install:do-ngx",
+    "install:all-lib": "npm run install:do-core && npm run install:do-theme && npm run install:do-common && npm run install:do-storage && npm run install:do-auth && npm run install:do-extra && npm run install:do-sys && npm run install:do-exercise",
     "build:do-ngx:github": "ng build @dongkap/do-ngx --configuration=github --base-href=/do-ngx/ --outputPath=dist --deleteOutputPath=false",
     "ng": "ng",
     "conventional-changelog": "conventional-changelog",
