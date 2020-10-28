@@ -94,6 +94,7 @@ Make sure following software is installed on your PC.
   ```
   $ npm run start:do-ngx:heroku
   ```
+  > :warning: _If you are using the Dongkap Develpoment API, sometimes the connection to the server may timeout_
 
 ## Demo
 * [do-ngx](https://ridlafadilah.github.io/do-ngx)
