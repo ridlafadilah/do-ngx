@@ -1,5 +1,5 @@
-# Ngx-Dongkap
-Skeleton of Ngx-Dongkap
+# do-ngx
+Dongkap | Skeleton of [do-ngx](https://github.com/ridlafadilah/do-ngx)
 
 ## Code Scaffolding
 
