@@ -25,5 +25,29 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [{
+    "name": "api-freshness",
+    "urls": [
+      "/do/oauth",
+      "/do/oauth2",
+      "/do/oa"
+    ],
+    "cacheConfig": {
+      "maxSize": 100,
+      "maxAge": "1h",
+      "timeout": "10s",
+      "strategy": "freshness"
+    }
+  }, {
+    "name": "api-performance",
+    "urls": [
+      "/do/api"
+    ],
+    "cacheConfig": {
+      "maxSize": 100,
+      "maxAge": "1h",
+      "strategy": "performance"
+    }
+  }]
 }

@@ -51,7 +51,7 @@ In this framework I only added a few features, including:
   * tree-ngx
 
 * __PWA__
-  * Service Worker ( _soon_ )
+  * Service Worker
   * Web Push Notification ( _soon_ )
 
 * __Web Socket__ ( _soon_ )
@@ -97,7 +97,7 @@ Make sure following software is installed on your PC.
   > :warning: _If you are using the Dongkap Develpoment API, sometimes the connection to the server may timeout_
 
 ## Demo
-* [do-ngx](https://ridlafadilah.github.io/do-ngx)
+* [do-ngx](https://ridlafadilah.github.io/do-ngx/index.html)
 * [ngx-admin](http://www.akveo.com/ngx-admin/?utm_campaign=ngx_admin%20-%20demo%20-%20ngx_admin%20github%20readme&utm_source=ngx_admin&utm_medium=referral&utm_content=live_demo_link)
 
 ## How can I support?
