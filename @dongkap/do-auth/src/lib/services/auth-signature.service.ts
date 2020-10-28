@@ -64,7 +64,7 @@ export class AuthSignatureService {
             switchMap((value: string[]) => {
             const key = value[0] + ':' +
                         this.timestamp() + ':' +
-                        this.date() + ':' +
+                        // this.date() + ':' +
                         url + ':' +
                         value[1];
             return of(this.enc.getHmacSha256(this.oauthResource['private_key'], key));
