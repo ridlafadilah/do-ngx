@@ -29,23 +29,23 @@
   "dataGroups": [{
     "name": "api-freshness",
     "urls": [
-      "/do/oauth",
-      "/do/oauth2",
-      "/do/oa"
+      "/do/oauth/**",
+      "/do/oauth2/**",
+      "/do/oa/**"
     ],
     "cacheConfig": {
-      "maxSize": 100,
+      "maxSize": 150,
       "maxAge": "1h",
-      "timeout": "10s",
+      "timeout": "30s",
       "strategy": "freshness"
     }
   }, {
     "name": "api-performance",
     "urls": [
-      "/do/api"
+      "/do/api/**"
     ],
     "cacheConfig": {
-      "maxSize": 100,
+      "maxSize": 300,
       "maxAge": "1h",
       "timeout": "60s",
       "strategy": "performance"
