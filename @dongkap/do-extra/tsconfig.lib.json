@@ -4,7 +4,8 @@
     "outDir": "../../out-tsc/@dongkap/do-extra",
     "baseUrl": "./",
     "declaration": true,
-    "inlineSources": true
+    "inlineSources": true,
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
