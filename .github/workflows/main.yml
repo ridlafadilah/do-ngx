@@ -1,0 +1,26 @@
+name: Dongkap CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master      
+
+    - name: Build & Deploy
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: demo
+        FOLDER: dist
+        BUILD_SCRIPT: npm install --no-progress && npm run install:all-lib --no-progress && npm run build:do-ngx:github --no-progress

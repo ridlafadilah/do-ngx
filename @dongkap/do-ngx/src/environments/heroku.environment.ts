@@ -15,6 +15,10 @@ export const environment = {
       protocol: 'https',
       host: 'dongkap-api.herokuapp.com',
     },
+    profile: {
+      protocol: 'https',
+      host: 'dongkap-api.herokuapp.com',
+    },
     master: {
       protocol: 'https',
       host: 'dongkap-api.herokuapp.com',
