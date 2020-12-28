@@ -256,7 +256,7 @@ export const apiPath: APIModel = {
         'photo-profile': {
             server: environment.host.file,
             method: HttpMethod.POST,
-            path: '/do/api/file/trx/auth/photo-profile/v.1',
+            path: '/do/api/file/trx/post/photo-profile/v.1',
         },
         'vw-photo-profile': {
             server: environment.host.file,
