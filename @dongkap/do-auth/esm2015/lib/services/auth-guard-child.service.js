@@ -1,0 +1,51 @@
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { EncryptionService } from '@dongkap/do-core';
+import { AuthTokenService } from './auth-token.service';
+import { AuthIndexedDBService } from '../storage/auth-indexeddb.service';
+export class AuthGuardChildService {
+    constructor(router, authTokenService, enc, storage) {
+        this.router = router;
+        this.authTokenService = authTokenService;
+        this.enc = enc;
+        this.storage = storage;
+    }
+    canActivateChild(route, state) {
+        const result$ = new Subject();
+        this.authTokenService.isLogin().then((value) => {
+            result$.next(value);
+            if (route.data) {
+                Promise.all([
+                    this.storage.getEnc('menus'),
+                    this.storage.getEnc('extras'),
+                ]).then((strg) => {
+                    if (!(strg[0].includes(route.data['code']) || strg[1].includes(route.data['code']))) {
+                        this.router.navigate(['/app/home']);
+                    }
+                    return result$.asObservable();
+                });
+            }
+            if (!value) {
+                this.router.navigate(['/auth']);
+            }
+        });
+        return result$.asObservable();
+    }
+}
+AuthGuardChildService.ctorParameters = () => [
+    { type: Router },
+    { type: AuthTokenService },
+    { type: EncryptionService },
+    { type: AuthIndexedDBService }
+];
+AuthGuardChildService.decorators = [
+    { type: Injectable }
+];
+AuthGuardChildService.ctorParameters = () => [
+    { type: Router },
+    { type: AuthTokenService },
+    { type: EncryptionService },
+    { type: AuthIndexedDBService }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXV0aC1ndWFyZC1jaGlsZC5zZXJ2aWNlLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQGRvbmdrYXAvZG8tYXV0aC8iLCJzb3VyY2VzIjpbImxpYi9zZXJ2aWNlcy9hdXRoLWd1YXJkLWNoaWxkLnNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFVBQVUsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUUzQyxPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0saUJBQWlCLENBQUM7QUFHekMsT0FBTyxFQUFjLE9BQU8sRUFBRSxNQUFNLE1BQU0sQ0FBQztBQUMzQyxPQUFPLEVBQUUsaUJBQWlCLEVBQUUsTUFBTSxrQkFBa0IsQ0FBQztBQUNyRCxPQUFPLEVBQUUsZ0JBQWdCLEVBQUUsTUFBTSxzQkFBc0IsQ0FBQztBQUN4RCxPQUFPLEVBQUUsb0JBQW9CLEVBQUUsTUFBTSxtQ0FBbUMsQ0FBQztBQUd6RSxNQUFNLE9BQU8scUJBQXFCO0lBQzlCLFlBQ1ksTUFBYyxFQUNkLGdCQUFrQyxFQUNsQyxHQUFzQixFQUN0QixPQUE2QjtRQUg3QixXQUFNLEdBQU4sTUFBTSxDQUFRO1FBQ2QscUJBQWdCLEdBQWhCLGdCQUFnQixDQUFrQjtRQUNsQyxRQUFHLEdBQUgsR0FBRyxDQUFtQjtRQUN0QixZQUFPLEdBQVAsT0FBTyxDQUFzQjtJQUFHLENBQUM7SUFFN0MsZ0JBQWdCLENBQUMsS0FBNkIsRUFBRSxLQUEwQjtRQUN0RSxNQUFNLE9BQU8sR0FBcUIsSUFBSSxPQUFPLEVBQVcsQ0FBQztRQUN6RCxJQUFJLENBQUMsZ0JBQWdCLENBQUMsT0FBTyxFQUFFLENBQUMsSUFBSSxDQUFDLENBQUMsS0FBYyxFQUFFLEVBQUU7WUFDcEQsT0FBTyxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQztZQUNwQixJQUFJLEtBQUssQ0FBQyxJQUFJLEVBQUU7Z0JBQ1osT0FBTyxDQUFDLEdBQUcsQ0FBQztvQkFDUixJQUFJLENBQUMsT0FBTyxDQUFDLE1BQU0sQ0FBQyxPQUFPLENBQUM7b0JBQzVCLElBQUksQ0FBQyxPQUFPLENBQUMsTUFBTSxDQUFDLFFBQVEsQ0FBQztpQkFDaEMsQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDLElBQWMsRUFBRSxFQUFFO29CQUN2QixJQUFJLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUMsSUFBSSxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUMsUUFBUSxDQUFDLEtBQUssQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUMsQ0FBQyxFQUFFO3dCQUNqRixJQUFJLENBQUMsTUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDLFdBQVcsQ0FBQyxDQUFDLENBQUM7cUJBQ3ZDO29CQUNELE9BQU8sT0FBTyxDQUFDLFlBQVksRUFBRSxDQUFDO2dCQUNsQyxDQUFDLENBQUMsQ0FBQzthQUNOO1lBQ0QsSUFBSSxDQUFDLEtBQUssRUFBRTtnQkFDUixJQUFJLENBQUMsTUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxDQUFDLENBQUM7YUFDbkM7UUFDTCxDQUFDLENBQUMsQ0FBQztRQUNILE9BQU8sT0FBTyxDQUFDLFlBQVksRUFBRSxDQUFDO0lBQ2xDLENBQUM7OztZQXpCbUIsTUFBTTtZQUNJLGdCQUFnQjtZQUM3QixpQkFBaUI7WUFDYixvQkFBb0I7OztZQU41QyxVQUFVOzs7WUFSRixNQUFNO1lBS04sZ0JBQWdCO1lBRGhCLGlCQUFpQjtZQUVqQixvQkFBb0IiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBJbmplY3RhYmxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBSb3V0ZXJTdGF0ZVNuYXBzaG90IH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcbmltcG9ydCB7IFJvdXRlciB9IGZyb20gJ0Bhbmd1bGFyL3JvdXRlcic7XG5pbXBvcnQgeyBBY3RpdmF0ZWRSb3V0ZVNuYXBzaG90IH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcbmltcG9ydCB7IENhbkFjdGl2YXRlQ2hpbGQgfSBmcm9tICdAYW5ndWxhci9yb3V0ZXInO1xuaW1wb3J0IHsgT2JzZXJ2YWJsZSwgU3ViamVjdCB9IGZyb20gJ3J4anMnO1xuaW1wb3J0IHsgRW5jcnlwdGlvblNlcnZpY2UgfSBmcm9tICdAZG9uZ2thcC9kby1jb3JlJztcbmltcG9ydCB7IEF1dGhUb2tlblNlcnZpY2UgfSBmcm9tICcuL2F1dGgtdG9rZW4uc2VydmljZSc7XG5pbXBvcnQgeyBBdXRoSW5kZXhlZERCU2VydmljZSB9IGZyb20gJy4uL3N0b3JhZ2UvYXV0aC1pbmRleGVkZGIuc2VydmljZSc7XG5cbkBJbmplY3RhYmxlKClcbmV4cG9ydCBjbGFzcyBBdXRoR3VhcmRDaGlsZFNlcnZpY2UgaW1wbGVtZW50cyBDYW5BY3RpdmF0ZUNoaWxkIHtcbiAgICBjb25zdHJ1Y3RvcihcbiAgICAgICAgcHJpdmF0ZSByb3V0ZXI6IFJvdXRlcixcbiAgICAgICAgcHJpdmF0ZSBhdXRoVG9rZW5TZXJ2aWNlOiBBdXRoVG9rZW5TZXJ2aWNlLFxuICAgICAgICBwcml2YXRlIGVuYzogRW5jcnlwdGlvblNlcnZpY2UsXG4gICAgICAgIHByaXZhdGUgc3RvcmFnZTogQXV0aEluZGV4ZWREQlNlcnZpY2UpIHt9XG5cbiAgICBjYW5BY3RpdmF0ZUNoaWxkKHJvdXRlOiBBY3RpdmF0ZWRSb3V0ZVNuYXBzaG90LCBzdGF0ZTogUm91dGVyU3RhdGVTbmFwc2hvdCk6IE9ic2VydmFibGU8Ym9vbGVhbj4ge1xuICAgICAgICBjb25zdCByZXN1bHQkOiBTdWJqZWN0PGJvb2xlYW4+ID0gbmV3IFN1YmplY3Q8Ym9vbGVhbj4oKTtcbiAgICAgICAgdGhpcy5hdXRoVG9rZW5TZXJ2aWNlLmlzTG9naW4oKS50aGVuKCh2YWx1ZTogYm9vbGVhbikgPT4ge1xuICAgICAgICAgICAgcmVzdWx0JC5uZXh0KHZhbHVlKTtcbiAgICAgICAgICAgIGlmIChyb3V0ZS5kYXRhKSB7XG4gICAgICAgICAgICAgICAgUHJvbWlzZS5hbGwoW1xuICAgICAgICAgICAgICAgICAgICB0aGlzLnN0b3JhZ2UuZ2V0RW5jKCdtZW51cycpLFxuICAgICAgICAgICAgICAgICAgICB0aGlzLnN0b3JhZ2UuZ2V0RW5jKCdleHRyYXMnKSxcbiAgICAgICAgICAgICAgICBdKS50aGVuKChzdHJnOiBzdHJpbmdbXSkgPT4ge1xuICAgICAgICAgICAgICAgICAgICBpZiAoIShzdHJnWzBdLmluY2x1ZGVzKHJvdXRlLmRhdGFbJ2NvZGUnXSkgfHwgc3RyZ1sxXS5pbmNsdWRlcyhyb3V0ZS5kYXRhWydjb2RlJ10pKSkge1xuICAgICAgICAgICAgICAgICAgICAgICAgdGhpcy5yb3V0ZXIubmF2aWdhdGUoWycvYXBwL2hvbWUnXSk7XG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHJlc3VsdCQuYXNPYnNlcnZhYmxlKCk7XG4gICAgICAgICAgICAgICAgfSk7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBpZiAoIXZhbHVlKSB7XG4gICAgICAgICAgICAgICAgdGhpcy5yb3V0ZXIubmF2aWdhdGUoWycvYXV0aCddKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfSk7XG4gICAgICAgIHJldHVybiByZXN1bHQkLmFzT2JzZXJ2YWJsZSgpO1xuICAgIH1cblxufVxuIl19

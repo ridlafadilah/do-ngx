@@ -1,0 +1,36 @@
+import { Injector } from '@angular/core';
+import { TemplateRef } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
+import { HttpBaseModel, LocaleModel } from '@dongkap/do-core';
+import { BaseFormComponent } from '@dongkap/do-common';
+export declare class ExtraMenuPageComponent extends BaseFormComponent<any> implements OnInit {
+    injector: Injector;
+    private dialogService;
+    nodeItems: any;
+    options: any;
+    allLocales: LocaleModel[];
+    locales: LocaleModel[];
+    localeDefault: LocaleModel;
+    action: 'Add' | 'Edit';
+    dialogAction: 'Edit' | 'Delete';
+    apiPathLocale: HttpBaseModel;
+    loadLocale: boolean;
+    title: string;
+    private data;
+    private context;
+    private node;
+    constructor(injector: Injector, dialogService: NbDialogService);
+    ngOnInit(): void;
+    loadDataMenu(): Observable<any>;
+    splitLocale(values: LocaleModel[]): void;
+    onSearchIcon(): void;
+    onSelectNode(node: any): void;
+    onDeleteTree(node: any, context: any, dialog: TemplateRef<any>): void;
+    onSubmit(dialog: TemplateRef<any>): void;
+    onSubmitDialog(ref: NbDialogRef<any>): void;
+    onReset(): void;
+    private deleteTreeMenu;
+    private postMenu;
+}

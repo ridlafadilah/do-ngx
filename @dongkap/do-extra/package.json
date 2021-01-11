@@ -1,0 +1,21 @@
+{
+  "name": "@dongkap/do-extra",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.1.2",
+    "@angular/core": "^10.1.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "main": "bundles/dongkap-do-extra.umd.js",
+  "module": "fesm5/dongkap-do-extra.js",
+  "es2015": "fesm2015/dongkap-do-extra.js",
+  "esm5": "esm5/dongkap-do-extra.js",
+  "esm2015": "esm2015/dongkap-do-extra.js",
+  "fesm5": "fesm5/dongkap-do-extra.js",
+  "fesm2015": "fesm2015/dongkap-do-extra.js",
+  "typings": "dongkap-do-extra.d.ts",
+  "metadata": "dongkap-do-extra.metadata.json",
+  "sideEffects": false
+}

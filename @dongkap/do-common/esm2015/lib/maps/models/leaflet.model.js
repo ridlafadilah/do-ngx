@@ -1,0 +1,7 @@
+export class LeafletModel {
+    constructor() {
+        this.title = '';
+        this.alt = '';
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibGVhZmxldC5tb2RlbC5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0Bkb25na2FwL2RvLWNvbW1vbi8iLCJzb3VyY2VzIjpbImxpYi9tYXBzL21vZGVscy9sZWFmbGV0Lm1vZGVsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBLE1BQU0sT0FBTyxZQUFZO0lBQXpCO1FBRVcsVUFBSyxHQUFZLEVBQUUsQ0FBQztRQUNwQixRQUFHLEdBQVksRUFBRSxDQUFDO0lBRTdCLENBQUM7Q0FBQSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IExhdExuZ0V4cHJlc3Npb24gfSBmcm9tICdsZWFmbGV0JztcblxuZXhwb3J0IGNsYXNzIExlYWZsZXRNb2RlbCB7XG4gICAgcHVibGljIG1hcms6IExhdExuZ0V4cHJlc3Npb247XG4gICAgcHVibGljIHRpdGxlPzogc3RyaW5nID0gJyc7XG4gICAgcHVibGljIGFsdD86IHN0cmluZyA9ICcnO1xuICAgIHB1YmxpYyBjbGFzc05hbWU/OiBzdHJpbmc7XG59XG4iXX0=

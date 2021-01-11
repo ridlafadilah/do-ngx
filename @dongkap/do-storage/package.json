@@ -1,0 +1,21 @@
+{
+  "name": "@dongkap/do-storage",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.1.2",
+    "@angular/core": "^10.1.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "main": "bundles/dongkap-do-storage.umd.js",
+  "module": "fesm5/dongkap-do-storage.js",
+  "es2015": "fesm2015/dongkap-do-storage.js",
+  "esm5": "esm5/dongkap-do-storage.js",
+  "esm2015": "esm2015/dongkap-do-storage.js",
+  "fesm5": "fesm5/dongkap-do-storage.js",
+  "fesm2015": "fesm2015/dongkap-do-storage.js",
+  "typings": "dongkap-do-storage.d.ts",
+  "metadata": "dongkap-do-storage.metadata.json",
+  "sideEffects": false
+}

@@ -1,0 +1,31 @@
+import { Injector } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IDBPDatabase, StoreValue, StoreKey } from 'idb';
+import { EncryptionService } from '@dongkap/do-core';
+import { SecurityResourceModel } from '@dongkap/do-core';
+export declare class IndexedDBService<T> {
+    private storeName;
+    protected $dbPromise: Promise<IDBPDatabase<T>>;
+    protected enc: EncryptionService;
+    protected oauthResource: SecurityResourceModel;
+    constructor(injector: Injector, dbname: string, version: number, storeName: any);
+    openSessionIDB(dbname: string, version: number): Promise<IDBPDatabase<T>>;
+    getAllOf(): Observable<any>;
+    getOf(key: any): Observable<any>;
+    putOf(key: any, val: any): Observable<any>;
+    removeOf(key: any): Observable<void>;
+    getAll(): Promise<StoreValue<T, any>[]>;
+    get(key: any): Promise<StoreValue<T, any>>;
+    put(key: any, val: any): Promise<StoreKey<T, any>>;
+    remove(key: any): Promise<void>;
+    clearAll(): Promise<void>;
+    keys(): Promise<StoreKey<T, any>[]>;
+    getAllVal(storeName: any): Promise<StoreValue<T, any>[]>;
+    getKeyVal(storeName: any, key: any): Promise<StoreValue<T, any>>;
+    putKeyVal(storeName: any, key: any, val: any): Promise<StoreKey<T, any>>;
+    removeKeyVal(storeName: any, key: any): Promise<void>;
+    clearAllKeyVal(storeName: any): Promise<void>;
+    keysKeyVal(storeName: any): Promise<StoreKey<T, any>[]>;
+    addArticle(storeName: any, value: any): Promise<StoreKey<T, any>>;
+    addAllArticle(storeName: any, values: any[]): Promise<void>;
+}

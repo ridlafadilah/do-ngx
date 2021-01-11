@@ -1,0 +1,21 @@
+{
+  "name": "@dongkap/do-common",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.1.2",
+    "@angular/core": "^10.1.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "main": "bundles/dongkap-do-common.umd.js",
+  "module": "fesm5/dongkap-do-common.js",
+  "es2015": "fesm2015/dongkap-do-common.js",
+  "esm5": "esm5/dongkap-do-common.js",
+  "esm2015": "esm2015/dongkap-do-common.js",
+  "fesm5": "fesm5/dongkap-do-common.js",
+  "fesm2015": "fesm2015/dongkap-do-common.js",
+  "typings": "dongkap-do-common.d.ts",
+  "metadata": "dongkap-do-common.metadata.json",
+  "sideEffects": false
+}

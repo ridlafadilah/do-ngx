@@ -1,0 +1,13 @@
+import { Injectable } from '@angular/core';
+export class RoleService {
+    getRole() {
+        return this.role;
+    }
+    setRole(role) {
+        this.role = role;
+    }
+}
+RoleService.decorators = [
+    { type: Injectable }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicm9sZS5zZXJ2aWNlLmpzIiwic291cmNlUm9vdCI6Im5nOi8vQGRvbmdrYXAvZG8tc3lzLyIsInNvdXJjZXMiOlsibGliL21hbmFnZW1lbnQvcm9sZS9zZXJ2aWNlcy9yb2xlLnNlcnZpY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFVBQVUsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUkzQyxNQUFNLE9BQU8sV0FBVztJQUliLE9BQU87UUFDVixPQUFPLElBQUksQ0FBQyxJQUFJLENBQUM7SUFDckIsQ0FBQztJQUVNLE9BQU8sQ0FBQyxJQUFlO1FBQzFCLElBQUksQ0FBQyxJQUFJLEdBQUcsSUFBSSxDQUFDO0lBQ3JCLENBQUM7OztZQVhKLFVBQVUiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBJbmplY3RhYmxlIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBSb2xlTW9kZWwgfSBmcm9tICdAZG9uZ2thcC9kby1jb3JlJztcblxuQEluamVjdGFibGUoKVxuZXhwb3J0IGNsYXNzIFJvbGVTZXJ2aWNlIHtcblxuICAgIHByaXZhdGUgcm9sZTogUm9sZU1vZGVsO1xuXG4gICAgcHVibGljIGdldFJvbGUoKTogUm9sZU1vZGVsIHtcbiAgICAgICAgcmV0dXJuIHRoaXMucm9sZTtcbiAgICB9XG5cbiAgICBwdWJsaWMgc2V0Um9sZShyb2xlOiBSb2xlTW9kZWwpIHtcbiAgICAgICAgdGhpcy5yb2xlID0gcm9sZTtcbiAgICB9XG5cbn1cbiJdfQ==

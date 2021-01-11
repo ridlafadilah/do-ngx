@@ -1,0 +1,38 @@
+import { OnDestroy } from '@angular/core';
+import { FormGroup, ValidatorFn } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { EncryptionService } from '@dongkap/do-core';
+import { APIModel } from '@dongkap/do-core';
+import { HttpFactoryService } from '@dongkap/do-core';
+import { SecurityResourceModel } from '@dongkap/do-core';
+import { DoToastrService } from '@dongkap/do-common';
+export declare class ForgotPageComponent implements OnDestroy {
+    private router;
+    private route;
+    private toastr;
+    private translate;
+    private enc;
+    private httpBaseService;
+    private oauthResource;
+    private apiPath;
+    responseError: any;
+    buttonForgotPassword: boolean;
+    private progressBar;
+    patternPassword: string;
+    errorMsgNewPassword: string;
+    errorMsgConfirmPassword: string;
+    private verificationId;
+    private verificationCode;
+    form: FormGroup;
+    protected destroy$: Subject<any>;
+    constructor(router: Router, route: ActivatedRoute, toastr: DoToastrService, translate: TranslateService, enc: EncryptionService, httpBaseService: HttpFactoryService, oauthResource: SecurityResourceModel, apiPath: APIModel);
+    ngOnDestroy(): void;
+    forgotPassword(): void;
+    get hasErrorNewPassword(): boolean;
+    get hasSuccessNewPassword(): boolean;
+    get hasErrorConfirmPassword(): boolean;
+    get hasSuccessConfirmPassword(): boolean;
+}
+export declare function confirmPasswordValidator(form: FormGroup): ValidatorFn;

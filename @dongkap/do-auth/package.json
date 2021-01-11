@@ -1,0 +1,21 @@
+{
+  "name": "@dongkap/do-auth",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.1.2",
+    "@angular/core": "^10.1.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "main": "bundles/dongkap-do-auth.umd.js",
+  "module": "fesm5/dongkap-do-auth.js",
+  "es2015": "fesm2015/dongkap-do-auth.js",
+  "esm5": "esm5/dongkap-do-auth.js",
+  "esm2015": "esm2015/dongkap-do-auth.js",
+  "fesm5": "fesm5/dongkap-do-auth.js",
+  "fesm2015": "fesm2015/dongkap-do-auth.js",
+  "typings": "dongkap-do-auth.d.ts",
+  "metadata": "dongkap-do-auth.metadata.json",
+  "sideEffects": false
+}

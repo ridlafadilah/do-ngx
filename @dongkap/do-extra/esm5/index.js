@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of do-extra
+ */
+export * from './lib/do-extra.module';
+export { HomePageComponent } from './lib/home/home-page.component';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AZG9uZ2thcC9kby1leHRyYS8iLCJzb3VyY2VzIjpbImluZGV4LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyx1QkFBdUIsQ0FBQztBQUV0QyxPQUFPLEVBQUUsaUJBQWlCLEVBQUUsTUFBTSxnQ0FBZ0MsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2YgZG8tZXh0cmFcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi9kby1leHRyYS5tb2R1bGUnO1xuXG5leHBvcnQgeyBIb21lUGFnZUNvbXBvbmVudCB9IGZyb20gJy4vbGliL2hvbWUvaG9tZS1wYWdlLmNvbXBvbmVudCc7Il19

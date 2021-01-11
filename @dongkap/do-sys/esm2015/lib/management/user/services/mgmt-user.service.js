@@ -1,0 +1,13 @@
+import { Injectable } from '@angular/core';
+export class ManagementUserService {
+    getUser() {
+        return this.user;
+    }
+    setUser(user) {
+        this.user = user;
+    }
+}
+ManagementUserService.decorators = [
+    { type: Injectable }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWdtdC11c2VyLnNlcnZpY2UuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9AZG9uZ2thcC9kby1zeXMvIiwic291cmNlcyI6WyJsaWIvbWFuYWdlbWVudC91c2VyL3NlcnZpY2VzL21nbXQtdXNlci5zZXJ2aWNlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxVQUFVLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFJM0MsTUFBTSxPQUFPLHFCQUFxQjtJQUl2QixPQUFPO1FBQ1YsT0FBTyxJQUFJLENBQUMsSUFBSSxDQUFDO0lBQ3JCLENBQUM7SUFFTSxPQUFPLENBQUMsSUFBbUI7UUFDOUIsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUM7SUFDckIsQ0FBQzs7O1lBWEosVUFBVSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEluamVjdGFibGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IE1nbXRVc2VyTW9kZWwgfSBmcm9tICcuLi9tb2RlbHMvbWdtdC11c2VyLm1vZGVsJztcblxuQEluamVjdGFibGUoKVxuZXhwb3J0IGNsYXNzIE1hbmFnZW1lbnRVc2VyU2VydmljZSB7XG5cbiAgICBwcml2YXRlIHVzZXI6IE1nbXRVc2VyTW9kZWw7XG5cbiAgICBwdWJsaWMgZ2V0VXNlcigpOiBNZ210VXNlck1vZGVsIHtcbiAgICAgICAgcmV0dXJuIHRoaXMudXNlcjtcbiAgICB9XG5cbiAgICBwdWJsaWMgc2V0VXNlcih1c2VyOiBNZ210VXNlck1vZGVsKSB7XG4gICAgICAgIHRoaXMudXNlciA9IHVzZXI7XG4gICAgfVxuXG59XG4iXX0=

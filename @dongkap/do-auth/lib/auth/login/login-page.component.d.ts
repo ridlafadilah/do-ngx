@@ -1,0 +1,35 @@
+import { OnDestroy } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { NbAuthSocialLink } from '@nebular/auth';
+import { NbDialogService } from '@nebular/theme';
+import { APIModel } from '@dongkap/do-core';
+import { HttpFactoryService } from '@dongkap/do-core';
+import { SecurityResourceModel } from '@dongkap/do-core';
+import { AuthTokenService } from '../../services/auth-token.service';
+export declare class LoginPageComponent implements OnDestroy {
+    private router;
+    private dialogService;
+    private translate;
+    private authTokenService;
+    private apiPath;
+    private httpBaseService;
+    private oauthResource;
+    responseError: any;
+    buttonLogin: boolean;
+    private progressBar;
+    protected destroy$: Subject<any>;
+    form: FormGroup;
+    private urlAuthorizeGoogle;
+    socialLinks: NbAuthSocialLink[];
+    constructor(router: Router, dialogService: NbDialogService, translate: TranslateService, authTokenService: AuthTokenService, apiPath: APIModel, httpBaseService: HttpFactoryService, oauthResource: SecurityResourceModel, route: ActivatedRoute);
+    ngOnDestroy(): void;
+    login(): void;
+    get hasErrorUsername(): boolean;
+    get hasSuccessUsername(): boolean;
+    get hasErrorPassword(): boolean;
+    get hasSuccessPassword(): boolean;
+    onClickTermsConditions(): void;
+}

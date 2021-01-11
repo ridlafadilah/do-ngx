@@ -1,0 +1,33 @@
+import { OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TableColumn } from '@swimlane/ngx-datatable';
+import { RadioModel, CheckboxModel, SelectResponseModel, Keyword, DatatableFilter } from '@dongkap/do-common';
+import { HttpBaseModel } from '@dongkap/do-core';
+export declare class ExerciseComponent implements OnInit {
+    private formBuilder;
+    _d: DomSanitizer;
+    formGroup: FormGroup;
+    dataCheckbox: CheckboxModel[];
+    dataCheckboxEdited: CheckboxModel[];
+    dataRadio: RadioModel[];
+    dataStaticSelect: SelectResponseModel[];
+    minLength: number;
+    pattern: string;
+    rows: any[];
+    columns: TableColumn[];
+    apiDatatable: HttpBaseModel;
+    apiSelect: HttpBaseModel;
+    formGroupFilter: FormGroup;
+    filters: DatatableFilter[];
+    keyword: Keyword;
+    options: any;
+    nodeItems: any[];
+    ngOnInit(): void;
+    constructor(formBuilder: FormBuilder, _d: DomSanitizer);
+    doFilterAdvanced(keyword: Keyword): void;
+    fetchDatatable(cb: any): void;
+    onSubmit(): void;
+    uploadImage(file: any): void;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@dongkap/do-core",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^10.1.2",
+    "@angular/core": "^10.1.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "main": "bundles/dongkap-do-core.umd.js",
+  "module": "fesm5/dongkap-do-core.js",
+  "es2015": "fesm2015/dongkap-do-core.js",
+  "esm5": "esm5/dongkap-do-core.js",
+  "esm2015": "esm2015/dongkap-do-core.js",
+  "fesm5": "fesm5/dongkap-do-core.js",
+  "fesm2015": "fesm2015/dongkap-do-core.js",
+  "typings": "dongkap-do-core.d.ts",
+  "metadata": "dongkap-do-core.metadata.json",
+  "sideEffects": false
+}
